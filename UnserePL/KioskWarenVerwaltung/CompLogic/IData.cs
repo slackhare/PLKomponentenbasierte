@@ -14,5 +14,9 @@ namespace CompLogic {
     public interface IDataDis {
         void     SelectCar( ICar iCar, ref DataTable dataTable);
         void     InsertCar( ICar iCar );
+        void     SelectProduct(IProduct iProduct, ref DataTable dataTable);
+        void     InsertProduct(IProduct iProduct);
+        void     SelectProductCategory(IProductCategory iProductCategor, ref DataTable dataTable);
+        void     InsertProductCategory(IProductCategory iProductCategor);
     }
 }
