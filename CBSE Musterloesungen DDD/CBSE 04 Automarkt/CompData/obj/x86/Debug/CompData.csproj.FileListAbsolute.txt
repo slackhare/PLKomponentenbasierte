@@ -35,3 +35,10 @@ C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompData\
 C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompData\bin\x86\Debug\CompLogic.pdb
 C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompData\obj\x86\Debug\CompData.dll
 C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompData\obj\x86\Debug\CompData.pdb
+C:\PLKomponentenbasierte\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompData\bin\x86\Debug\CompData.dll
+C:\PLKomponentenbasierte\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompData\bin\x86\Debug\CompData.pdb
+C:\PLKomponentenbasierte\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompData\bin\x86\Debug\CompLogic.dll
+C:\PLKomponentenbasierte\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompData\bin\x86\Debug\CompLogic.pdb
+C:\PLKomponentenbasierte\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompData\obj\x86\Debug\CompData.csprojResolveAssemblyReference.cache
+C:\PLKomponentenbasierte\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompData\obj\x86\Debug\CompData.dll
+C:\PLKomponentenbasierte\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompData\obj\x86\Debug\CompData.pdb

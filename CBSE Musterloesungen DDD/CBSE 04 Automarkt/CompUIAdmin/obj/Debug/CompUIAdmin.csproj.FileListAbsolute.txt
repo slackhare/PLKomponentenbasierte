@@ -7,3 +7,12 @@ C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompUIAdm
 C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompUIAdmin\bin\Debug\CompLogic.pdb
 C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompUIAdmin\obj\Debug\CompUIAdmin.dll
 C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompUIAdmin\obj\Debug\CompUIAdmin.pdb
+C:\PLKomponentenbasierte\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompUIAdmin\bin\Debug\CompUIAdmin.dll
+C:\PLKomponentenbasierte\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompUIAdmin\bin\Debug\CompUIAdmin.pdb
+C:\PLKomponentenbasierte\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompUIAdmin\bin\Debug\CompLogic.dll
+C:\PLKomponentenbasierte\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompUIAdmin\bin\Debug\CompLogic.pdb
+C:\PLKomponentenbasierte\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompUIAdmin\obj\Debug\CompUIAdmin.csprojResolveAssemblyReference.cache
+C:\PLKomponentenbasierte\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompUIAdmin\obj\Debug\CompUI.Admin.CDialogAdmin.resources
+C:\PLKomponentenbasierte\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompUIAdmin\obj\Debug\CompUIAdmin.csproj.GenerateResource.Cache
+C:\PLKomponentenbasierte\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompUIAdmin\obj\Debug\CompUIAdmin.dll
+C:\PLKomponentenbasierte\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompUIAdmin\obj\Debug\CompUIAdmin.pdb
