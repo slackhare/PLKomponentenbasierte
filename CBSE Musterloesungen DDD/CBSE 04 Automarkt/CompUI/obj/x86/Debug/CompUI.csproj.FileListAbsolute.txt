@@ -82,3 +82,16 @@ C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompUI\bi
 C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompUI\bin\x86\Debug\CompLogic.pdb
 C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompUI\obj\x86\Debug\CompUI.dll
 C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompUI\obj\x86\Debug\CompUI.pdb
+C:\PLKomponentenbasierte\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompUI\bin\x86\Debug\CompUI.dll
+C:\PLKomponentenbasierte\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompUI\bin\x86\Debug\CompUI.pdb
+C:\PLKomponentenbasierte\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompUI\bin\x86\Debug\CompLogic.dll
+C:\PLKomponentenbasierte\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompUI\bin\x86\Debug\CompLogic.pdb
+C:\PLKomponentenbasierte\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompUI\obj\x86\Debug\CompUI.csprojResolveAssemblyReference.cache
+C:\PLKomponentenbasierte\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompUI\obj\x86\Debug\CompUI.CDialogMain.resources
+C:\PLKomponentenbasierte\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompUI\obj\x86\Debug\CompUI.CDialogSearch.resources
+C:\PLKomponentenbasierte\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompUI\obj\x86\Debug\CompUI.CDialogSearchView.resources
+C:\PLKomponentenbasierte\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompUI\obj\x86\Debug\CompUI.Properties.Resources.resources
+C:\PLKomponentenbasierte\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompUI\obj\x86\Debug\CompUI.CDialogTrade.resources
+C:\PLKomponentenbasierte\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompUI\obj\x86\Debug\CompUI.csproj.GenerateResource.Cache
+C:\PLKomponentenbasierte\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompUI\obj\x86\Debug\CompUI.dll
+C:\PLKomponentenbasierte\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompUI\obj\x86\Debug\CompUI.pdb
