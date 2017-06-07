@@ -16,5 +16,9 @@ namespace CompLogic {
 
    public interface ILogicTrade {
       void InsertCar( ICar iCar );
-   }
+
+        void InsertProduct(IProduct iProduct);
+
+        void InsertProductCategory(IProductCategory iProductCategory);
+    }
 }
