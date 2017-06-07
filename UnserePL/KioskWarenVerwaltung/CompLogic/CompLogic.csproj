@@ -59,7 +59,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ProductCategory\CFactoryCProductCategory.cs" />
+    <Compile Include="ProductCategory\CProductCategory.cs" />
+    <Compile Include="ProductCategory\IFactoryIProductCategory.cs" />
+    <Compile Include="Product\CProduct.cs" />
+    <Compile Include="Product\CFactoryCProduct.cs" />
+    <Compile Include="Product\IFactoryIProduct.cs" />
     <Compile Include="CLogic.cs" />
+    <Compile Include="IProductCategory.cs" />
+    <Compile Include="IProduct.cs" />
     <Compile Include="IDialogAdmin.cs" />
     <Compile Include="CFactoryCLogic.cs" />
     <Compile Include="IData.cs" />
@@ -71,7 +79,7 @@
     <Compile Include="Car\IFactoryICar.cs" />
     <Compile Include="Car\Car.cs" />
     <Compile Include="ICar.cs" />
-    <Compile Include="Car\Utils.cs" />
+    <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

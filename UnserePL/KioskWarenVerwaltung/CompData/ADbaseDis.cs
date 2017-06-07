@@ -30,7 +30,26 @@ namespace CompData {
             this.DbCommandSelectCar( iCar, dbCommand );
             dbDataAdapter.Fill( dataTable );                      
         }
-       
+
+        public void SelectProduct(ICar iCar, ref DataTable dataTable)
+        {
+            DbDataAdapter dbDataAdapter = this.CreateDbDataAdapter("Produkt");
+            DbCommand dbCommand = dbDataAdapter.SelectCommand;
+            dbCommand.CommandType = CommandType.Text;
+            dbCommand.Parameters.Clear();
+            dbCommand.CommandText = @"SELECT * FROM Produkt";
+            dbDataAdapter.Fill(dataTable);
+        }
+        public void SelectProductCategory(ICar iCar, ref DataTable dataTable)
+        {
+            DbDataAdapter dbDataAdapter = this.CreateDbDataAdapter("Produktkategorie");
+            DbCommand dbCommand = dbDataAdapter.SelectCommand;
+            dbCommand.CommandType = CommandType.Text;
+            dbCommand.Parameters.Clear();
+            dbCommand.CommandText = @"SELECT * FROM Produktkategorie";
+            dbDataAdapter.Fill(dataTable);
+        }
+
         protected virtual void DbCommandSelectCar( ICar iCar, DbCommand dbCommand ) {
 
             dbCommand.CommandType = CommandType.Text;
