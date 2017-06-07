@@ -89,7 +89,6 @@ namespace CompUI {
             {
                 // Suchen ausführen
                 _iLogicSearch.SelectProduct(_iProduct, ref dataTable);
-                _iLogicSearch.SelectCar(_iCar, ref dataTable);
                 // Ergebnis in DialogSearchView darstellen
                 if (_dialogSearchView is CDialogSearchView)
                 {
@@ -124,6 +123,10 @@ namespace CompUI {
 
         private void timerWarnung_Tick(object sender, EventArgs e)
         {
+            DataTable datatable = new DataTable();
+            _iProduct.Stock = 10;
+            _iLogicSearch.SelectProduct(_iProduct, ref datatable);
+            // TODO Es Wird eine Methode benötigt das den Datatable mit allen Produckten Füllt die <= 10 Stück aujf lager haben
 
         }
 

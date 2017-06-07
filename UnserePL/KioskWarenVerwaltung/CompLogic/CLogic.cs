@@ -1,7 +1,7 @@
 ﻿using System.Data;
 namespace CompLogic {
 
-    internal class CLogic : ILogicSearch, ILogicTrade, ILogicUpdate, ILogic {
+    internal class CLogic : ILogicSearch, ILogicTrade, ILogicUpdate, ILogicWarning, ILogic {
 
         #region Fields
         private IData     _iData;
@@ -65,7 +65,14 @@ namespace CompLogic {
         #region Interface ILogicUpdate Methods
         public void UpdateProduct(IProduct iProduct)
         {
+            _iDataDis.UpdateProduct(iProduct);
+        }
+        #endregion
 
+        #region Interface ILogicWarning Methods
+        public void Warning(int grenze, ref DataTable datatable)
+        {
+            //TODO Entsprechende Methode in _iDataDis einfügen
         }
         #endregion
     }

@@ -34,6 +34,8 @@
             this.numericUpDownAnz = new System.Windows.Forms.NumericUpDown();
             this.labelAnz = new System.Windows.Forms.Label();
             this.buttonVerkaufen = new System.Windows.Forms.Button();
+            this.labelWarnung = new System.Windows.Forms.Label();
+            this.richTextBoxWarntext = new System.Windows.Forms.RichTextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAnz)).BeginInit();
             this.SuspendLayout();
@@ -124,6 +126,27 @@
             this.buttonVerkaufen.UseVisualStyleBackColor = true;
             this.buttonVerkaufen.Click += new System.EventHandler(this.buttonVerkaufen_Click);
             // 
+            // labelWarnung
+            // 
+            this.labelWarnung.AutoSize = true;
+            this.labelWarnung.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelWarnung.ForeColor = System.Drawing.Color.Red;
+            this.labelWarnung.Location = new System.Drawing.Point(611, 114);
+            this.labelWarnung.Name = "labelWarnung";
+            this.labelWarnung.Size = new System.Drawing.Size(369, 55);
+            this.labelWarnung.TabIndex = 6;
+            this.labelWarnung.Text = "!!!WARNUNG!!!";
+            // 
+            // richTextBoxWarntext
+            // 
+            this.richTextBoxWarntext.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxWarntext.Location = new System.Drawing.Point(621, 177);
+            this.richTextBoxWarntext.Name = "richTextBoxWarntext";
+            this.richTextBoxWarntext.Size = new System.Drawing.Size(359, 160);
+            this.richTextBoxWarntext.TabIndex = 8;
+            this.richTextBoxWarntext.Tag = "";
+            this.richTextBoxWarntext.Text = "";
+            // 
             // CDialogMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -131,6 +154,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1099, 658);
+            this.Controls.Add(this.richTextBoxWarntext);
+            this.Controls.Add(this.labelWarnung);
             this.Controls.Add(this.buttonVerkaufen);
             this.Controls.Add(this.labelAnz);
             this.Controls.Add(this.numericUpDownAnz);
@@ -166,5 +191,7 @@
         private System.Windows.Forms.NumericUpDown numericUpDownAnz;
         private System.Windows.Forms.Label labelAnz;
         private System.Windows.Forms.Button buttonVerkaufen;
+        private System.Windows.Forms.Label labelWarnung;
+        private System.Windows.Forms.RichTextBox richTextBoxWarntext;
     }
 }
