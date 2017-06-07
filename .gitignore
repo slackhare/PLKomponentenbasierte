@@ -3,7 +3,7 @@ CBSE 04 Automarkt/TestApp/obj/*
 CBSE 04 Automarkt/TestApp/Properties/Settings.settings
 CBSE 04 Automarkt/.vs/*
 
-CBSE042Automarkt/TestApp/bin/*
-CBSE042Automarkt/TestApp/obj/*
+CBSE042Automarkt/TestApp/bin/
+CBSE042Automarkt/TestApp/obj/
 CBSE042Automarkt/TestApp/Properties/Settings.settings
-CBSE042Automarkt/.vs/*
+CBSE042Automarkt/.vs/
