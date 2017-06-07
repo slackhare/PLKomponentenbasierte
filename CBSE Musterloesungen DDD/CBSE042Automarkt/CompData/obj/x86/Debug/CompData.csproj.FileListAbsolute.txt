@@ -1,0 +1,44 @@
+D:\1 Visual Studio Projects\16 SoSe CBSE\CBSE_Autoverwaltung\CompData\bin\x86\Debug\CompData.dll
+D:\1 Visual Studio Projects\16 SoSe CBSE\CBSE_Autoverwaltung\CompData\bin\x86\Debug\CompData.pdb
+D:\1 Visual Studio Projects\16 SoSe CBSE\CBSE_Autoverwaltung\CompData\obj\x86\Debug\CompData.dll
+D:\1 Visual Studio Projects\16 SoSe CBSE\CBSE_Autoverwaltung\CompData\obj\x86\Debug\CompData.pdb
+D:\1 Visual Studio Projects\16 SoSe CBSE\CBSE_Autoverwaltung\CompData\obj\x86\Debug\CompData.csprojResolveAssemblyReference.cache
+C:\1 Visual Studio Projects\16 SoSe CBSE\CBSE_Autoverwaltung\CompData\bin\x86\Debug\CompData.dll
+C:\1 Visual Studio Projects\16 SoSe CBSE\CBSE_Autoverwaltung\CompData\bin\x86\Debug\CompData.pdb
+C:\1 Visual Studio Projects\16 SoSe CBSE\CBSE_Autoverwaltung\CompData\obj\x86\Debug\CompData.dll
+C:\1 Visual Studio Projects\16 SoSe CBSE\CBSE_Autoverwaltung\CompData\obj\x86\Debug\CompData.pdb
+G:\1 Visual Studio Projects\16 SoSe CBSE\CBSE_Autoverwaltung\CompData\bin\x86\Debug\CompData.dll
+G:\1 Visual Studio Projects\16 SoSe CBSE\CBSE_Autoverwaltung\CompData\bin\x86\Debug\CompData.pdb
+G:\1 Visual Studio Projects\16 SoSe CBSE\CBSE_Autoverwaltung\CompData\obj\x86\Debug\CompData.csprojResolveAssemblyReference.cache
+G:\1 Visual Studio Projects\16 SoSe CBSE\CBSE_Autoverwaltung\CompData\obj\x86\Debug\CompData.dll
+G:\1 Visual Studio Projects\16 SoSe CBSE\CBSE_Autoverwaltung\CompData\obj\x86\Debug\CompData.pdb
+e:\1 Visual Studio Projects\16 SoSe CBSE\CBSE_Autoverwaltung\CompData\bin\x86\Debug\CompData.dll
+e:\1 Visual Studio Projects\16 SoSe CBSE\CBSE_Autoverwaltung\CompData\bin\x86\Debug\CompData.pdb
+e:\1 Visual Studio Projects\16 SoSe CBSE\CBSE_Autoverwaltung\CompData\obj\x86\Debug\CompData.csprojResolveAssemblyReference.cache
+e:\1 Visual Studio Projects\16 SoSe CBSE\CBSE_Autoverwaltung\CompData\obj\x86\Debug\CompData.dll
+e:\1 Visual Studio Projects\16 SoSe CBSE\CBSE_Autoverwaltung\CompData\obj\x86\Debug\CompData.pdb
+G:\1 Visual Studio Projects\16 SoSe CBSE\CBSE_Autoverwaltung\CompData\bin\x86\Debug\CompUtils.dll
+G:\1 Visual Studio Projects\16 SoSe CBSE\CBSE_Autoverwaltung\CompData\bin\x86\Debug\CompUtils.pdb
+e:\1 Visual Studio Projects\16 SoSe CBSE\CBSE_Autoverwaltung\CompData\bin\x86\Debug\CompUtils.dll
+e:\1 Visual Studio Projects\16 SoSe CBSE\CBSE_Autoverwaltung\CompData\bin\x86\Debug\CompUtils.pdb
+C:\1 Visual Studio Projects\Backup\16 SoSe CBSE\CBSE_Autoverwaltung\CompData\bin\x86\Debug\CompData.dll
+C:\1 Visual Studio Projects\Backup\16 SoSe CBSE\CBSE_Autoverwaltung\CompData\bin\x86\Debug\CompData.pdb
+C:\1 Visual Studio Projects\Backup\16 SoSe CBSE\CBSE_Autoverwaltung\CompData\bin\x86\Debug\CompUtils.dll
+C:\1 Visual Studio Projects\Backup\16 SoSe CBSE\CBSE_Autoverwaltung\CompData\bin\x86\Debug\CompUtils.pdb
+C:\1 Visual Studio Projects\Backup\16 SoSe CBSE\CBSE_Autoverwaltung\CompData\obj\x86\Debug\CompData.csprojResolveAssemblyReference.cache
+C:\1 Visual Studio Projects\Backup\16 SoSe CBSE\CBSE_Autoverwaltung\CompData\obj\x86\Debug\CompData.dll
+C:\1 Visual Studio Projects\Backup\16 SoSe CBSE\CBSE_Autoverwaltung\CompData\obj\x86\Debug\CompData.pdb
+C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompData\obj\x86\Debug\CompData.csprojResolveAssemblyReference.cache
+C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompData\bin\x86\Debug\CompData.dll
+C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompData\bin\x86\Debug\CompData.pdb
+C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompData\bin\x86\Debug\CompLogic.dll
+C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompData\bin\x86\Debug\CompLogic.pdb
+C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompData\obj\x86\Debug\CompData.dll
+C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompData\obj\x86\Debug\CompData.pdb
+C:\PLKomponentenbasierte\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompData\bin\x86\Debug\CompData.dll
+C:\PLKomponentenbasierte\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompData\bin\x86\Debug\CompData.pdb
+C:\PLKomponentenbasierte\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompData\bin\x86\Debug\CompLogic.dll
+C:\PLKomponentenbasierte\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompData\bin\x86\Debug\CompLogic.pdb
+C:\PLKomponentenbasierte\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompData\obj\x86\Debug\CompData.csprojResolveAssemblyReference.cache
+C:\PLKomponentenbasierte\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompData\obj\x86\Debug\CompData.dll
+C:\PLKomponentenbasierte\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompData\obj\x86\Debug\CompData.pdb

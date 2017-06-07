@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CompData.CDatabaseAccess">
+    <Position X="5.75" Y="8.25" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CDatabaseAccess.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CompData.Dbase.ADbase" Collapsed="true">
+    <Position X="5.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQARAACAAQEKAGAIAACAkAQgAQACECJiAAAAQCCAAA=</HashCode>
+      <FileName>Dbase\ADbase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CompData.Dbase.ADbaseCmd" Collapsed="true">
+    <Position X="8" Y="3" Width="1.5" />
+    <AssociationLine Name="_aDatabase" Type="CompData.Dbase.ADbase" FixedToPoint="true">
+      <Path>
+        <Point X="8" Y="3.5" />
+        <Point X="6.75" Y="3.5" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Dbase\ADbaseCmd.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_aDatabase" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CompData.Dbase.ADbaseQuery" Collapsed="true">
+    <Position X="2.5" Y="3" Width="1.5" />
+    <AssociationLine Name="_aDatabase" Type="CompData.Dbase.ADbase" FixedFromPoint="true">
+      <Path>
+        <Point X="4" Y="3.438" />
+        <Point X="5.25" Y="3.438" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAIABAAAQACAAAIAAIAAAAAAAAAhAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Dbase\ADbaseQuery.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_aDatabase" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CompData.Dbase.Access.CDbaseAccess" Collapsed="true">
+    <Position X="5.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Dbase\Access\CDbaseAccess.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CompData.Dbase.Access.CDbaseCmdAccess" Collapsed="true">
+    <Position X="8" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Dbase\Access\CDBaseCmdAccess.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CompData.Dbase.Access.CDbaseQueryAccess" Collapsed="true">
+    <Position X="2.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Dbase\Access\CDBaseQueryAccess.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CompData.Dbase.Access.CFactoryDbaseAccess" Collapsed="true">
+    <Position X="0.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Dbase\Access\CFactoryDBaseAccess.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CompData.Dtable.ADtable" Collapsed="true">
+    <Position X="12.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAQAAAAAEBCAAAAFQAAAAQAAAgAAAAIA=</HashCode>
+      <FileName>Dtable\ADtable.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CompData.Dtable.CarDtable" Collapsed="true">
+    <Position X="10.75" Y="4.25" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Dtable\CarDtable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CompData.Dtable.CTraderDtable" Collapsed="true">
+    <Position X="12.25" Y="4.25" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Dtable\CTraderDtable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="CompLogic.IDbase" Collapsed="true">
+    <Position X="5.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="CompLogic.IDbaseCmd" Collapsed="true">
+    <Position X="8" Y="1.25" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="CompLogic.IDbaseQuery" Collapsed="true">
+    <Position X="2.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="CompLogic.IDtable" Collapsed="true">
+    <Position X="12" Y="1.25" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
