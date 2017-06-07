@@ -59,7 +59,7 @@
             this.lagerAuffüllenToolStripMenuItem.Name = "lagerAuffüllenToolStripMenuItem";
             this.lagerAuffüllenToolStripMenuItem.Size = new System.Drawing.Size(111, 23);
             this.lagerAuffüllenToolStripMenuItem.Text = "Lager auffüllen";
-            this.lagerAuffüllenToolStripMenuItem.Click += new System.EventHandler(this.insertMenuItem_Click);
+            this.lagerAuffüllenToolStripMenuItem.Click += new System.EventHandler(this.restockMenuItem_Click);
             // 
             // timerWarnung
             // 

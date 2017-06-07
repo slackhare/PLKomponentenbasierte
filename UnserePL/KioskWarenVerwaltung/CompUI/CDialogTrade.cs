@@ -40,12 +40,14 @@ namespace CompUI {
         }
 
       private void buttonOK_Click( object sender, EventArgs e ) {
+            /* Kompiliert nicht, erstmal auskommentiert
          ICar iCar = _dialogMain.Car;
          iCar.Make = this.comboBoxMake.Text;
          iCar.Model = this.comboBoxModel.Text;
          iCar.Price = Utils.ParseDouble( this.textBoxPrice.Text, 0 );
          iCar.Registration = Utils.ParseInt( this.textBox.Text, 0 );
          iCar.Mileage = Utils.ParseInt( this.textBoxMileage.Text, 0 );
+         */
 
          this.DialogResult = DialogResult.OK;
          this.Close( );
@@ -63,5 +65,10 @@ namespace CompUI {
             this.Close();
         }
         #endregion
+
+        private void checkedListBoxKategorie_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

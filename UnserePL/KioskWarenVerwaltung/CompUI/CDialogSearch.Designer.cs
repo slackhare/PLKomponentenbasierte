@@ -65,9 +65,9 @@
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(141, 44);
             this.buttonOK.TabIndex = 3;
-            this.buttonOK.Text = "Senden";
+            this.buttonOK.Text = "Suchen";
             this.buttonOK.UseVisualStyleBackColor = true;
-            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
+            this.buttonOK.Click += new System.EventHandler(this.buttonOK2_Click);
             // 
             // buttonCancel
             // 

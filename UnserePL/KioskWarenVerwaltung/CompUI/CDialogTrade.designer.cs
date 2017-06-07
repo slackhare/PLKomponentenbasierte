@@ -88,6 +88,7 @@
             this.checkedListBoxKategorie.Name = "checkedListBoxKategorie";
             this.checkedListBoxKategorie.Size = new System.Drawing.Size(306, 112);
             this.checkedListBoxKategorie.TabIndex = 2;
+            this.checkedListBoxKategorie.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxKategorie_SelectedIndexChanged);
             // 
             // textBoxName
             // 
