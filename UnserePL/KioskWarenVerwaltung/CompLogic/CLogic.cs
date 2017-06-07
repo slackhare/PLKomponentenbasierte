@@ -35,11 +35,29 @@ namespace CompLogic {
         public void SelectCar( ICar iCar, ref DataTable datatable ) {
             _iDataDis.SelectCar( iCar, ref datatable );
         }
+
+        public void SelectProduct(IProduct iProduct, ref DataTable datatable)
+        {
+            _iDataDis.SelectProduct(iProduct, ref datatable);
+        }
+
+        public void SelectProductCategory(IProductCategory iProductCategory, ref DataTable datatable)
+        {
+            _iDataDis.SelectProductCategory(iProductCategory, ref datatable);
+        }
         #endregion
-          
+
         #region Interface ILogicTrade Methods
         public void InsertCar( ICar iCar ) {
             _iDataDis.InsertCar( iCar );
+        }
+        public void InsertProduct(IProduct iProduct)
+        {
+            _iDataDis.InsertProduct(iProduct);
+        }
+        public void InsertProductCategory(IProductCategory iProductCategory)
+        {
+            _iDataDis.InsertProductCategory(iProductCategory);
         }
         #endregion
 
