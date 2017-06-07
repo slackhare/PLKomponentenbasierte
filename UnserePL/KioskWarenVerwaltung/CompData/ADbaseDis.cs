@@ -17,13 +17,26 @@ namespace CompData {
             _dbConnection = aData.Connection;
         }
         #endregion
-           
-        public virtual void InsertCar( ICar iCar ) {
-            DbDataAdapter dbDataAdapter = this.CreateDbDataAdapter( "CarTable" );
-            DataTable dataTable = this.GetSchema( dbDataAdapter );
-            iCar.AddNewDataRow( dataTable );
+        public virtual void InsertCar(ICar iCar)
+        {
+            DbDataAdapter dbDataAdapter = this.CreateDbDataAdapter("CarTable");
+            DataTable dataTable = this.GetSchema(dbDataAdapter);
+            iCar.AddNewDataRow(dataTable);
         }
-                
+           
+        public virtual void InsertProduct( IProduct iProduct) {
+            DbDataAdapter dbDataAdapter = this.CreateDbDataAdapter( "Produkt" );
+            DataTable dataTable = this.GetSchema( dbDataAdapter );
+            iProduct.AddNewDataRow( dataTable );
+        }
+
+        public virtual void InsertProductCategory(IProductCategory iProductCategory)
+        {
+            DbDataAdapter dbDataAdapter = this.CreateDbDataAdapter("Produktkategorie");
+            DataTable dataTable = this.GetSchema(dbDataAdapter);
+            iProductCategory.AddNewDataRow(dataTable);
+        }
+
         public void SelectCar( ICar iCar, ref DataTable dataTable) {            
             DbDataAdapter dbDataAdapter = this.CreateDbDataAdapter( "CarTable" );
             DbCommand dbCommand = dbDataAdapter.SelectCommand;
