@@ -22,36 +22,46 @@ namespace CompUI {
 
       #region Method
       private void CDialogTrade_Load( object sender, EventArgs e ) {
-         comboBoxMake.Items.Clear( );
-         comboBoxMake.Items.AddRange( _dialogMain.Make );
-         comboBoxMake.Items.Add( "Alle" );
-         comboBoxMake.Text = comboBoxMake.Items [ 0 ].ToString( );
+         checkedListBoxKategorie.Items.Clear( );
+         checkedListBoxKategorie.Items.AddRange( _dialogMain.Kategorie );
+         checkedListBoxKategorie.Text = checkedListBoxKategorie.Items [ 0 ].ToString( );
       }
 
       private void comboBoxMake_SelectedIndexChanged( object sender, EventArgs e ) {
-         if( this.comboBoxMake.Items.Count <= 0 ) return;
-         this.comboBoxMake.Text = this.comboBoxMake.SelectedItem.ToString( );
-         string make =  this.comboBoxMake.Text;
-         if( make == "Alle" ) return;
+         if( this.checkedListBoxKategorie.Items.Count <= 0 ) return;
+         this.checkedListBoxKategorie.Text = this.checkedListBoxKategorie.SelectedItem.ToString( );
+         string kategorie =  this.checkedListBoxKategorie.Text;
+         if( kategorie == "Alle" ) return;
 
-         // Alle Modelle des Herstellers aus der Datenbank lesen
-         comboBoxModel.Items.Clear( );
-         comboBoxModel.Items.AddRange( _iLogicSearch.GetModel( make ) );
-         comboBoxModel.Items.Add( "Alle" );
-         comboBoxModel.Text = comboBoxModel.Items [ 0 ].ToString( );
-      }
+            // Alle Modelle des Herstellers aus der Datenbank lesen
+            checkedListBoxKategorie.Items.Clear();
+            checkedListBoxKategorie.Items.AddRange(_dialogMain.Kategorie);
+            checkedListBoxKategorie.Text = checkedListBoxKategorie.Items[0].ToString();
+        }
 
       private void buttonOK_Click( object sender, EventArgs e ) {
          ICar iCar = _dialogMain.Car;
          iCar.Make = this.comboBoxMake.Text;
          iCar.Model = this.comboBoxModel.Text;
          iCar.Price = Utils.ParseDouble( this.textBoxPrice.Text, 0 );
-         iCar.Registration = Utils.ParseInt( this.textBoxRegistration.Text, 0 );
+         iCar.Registration = Utils.ParseInt( this.textBox.Text, 0 );
          iCar.Mileage = Utils.ParseInt( this.textBoxMileage.Text, 0 );
 
          this.DialogResult = DialogResult.OK;
          this.Close( );
       }
-      #endregion
-   }
+
+        private void buttonOK2_Click(object sender, EventArgs e)
+        {
+            IProduct iProduct = _dialogMain.Produkt;
+            iProduct.Name = this.textBoxName.Text;
+            iProduct.Category = Utils.ParseInt(this.checkedListBoxKategorie.Text, 1);
+            iProduct.Stock = Utils.ParseInt(numericUpDownAnz.Value.ToString(), 10);
+            iProduct.Price = Utils.ParseDouble(this.textBoxPreis.Text, 10);
+
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+        #endregion
+    }
 }

@@ -4,6 +4,8 @@ using System.Windows.Forms;
 
 using CompLogic;
 using CompLogic.Car;
+using CompLogic.Product;
+
 namespace CompUI {
 
    internal partial class CDialogMain : Form, IDialog {
@@ -11,7 +13,8 @@ namespace CompUI {
       #region Fields
       private int                 _nCars;
       private object[]            _arrayMake;
-      // Komposition
+      private object[]            _arrayKategorie;
+      // Komposition 
       private CDialogSearch       _dialogSearch;
       private CDialogSearchView   _dialogSearchView;
       private CDialogTrade        _dialogTrade;
@@ -20,11 +23,14 @@ namespace CompUI {
       private ILogicSearch        _iLogicSearch;
       private ILogicTrade         _iLogicTrade;
       private ICar                _iCar;
+      private IProduct _iProduct;
       #endregion
 
       #region Properties
+      internal IProduct Produkt { get { return _iProduct; } }
       internal ICar       Car  { get { return _iCar;      } }
       internal object [ ] Make { get { return _arrayMake; } }
+      internal object [] Kategorie { get { return _arrayKategorie; } }
       #endregion
 
       #region Ctor
@@ -37,13 +43,17 @@ namespace CompUI {
          _dialogSearch = new CDialogSearch( iLogic, this );
          _dialogSearchView = new CDialogSearchView( this );
          _dialogTrade = new CDialogTrade( iLogic, this );
-      }
+
+
+         _iProduct = new CFactoryCProduct().Create();
+        }
       #endregion
 
       #region Methods Interface IDialog
       public void Init( ) {
          _iLogicSearch.Init( ref _nCars, out _arrayMake );
       }
+      //public void InitKat( ref)
       #endregion
 
       #region Events
@@ -51,7 +61,6 @@ namespace CompUI {
          // Anzahl Autos in Datenbank abfragen
          //int nCars = _iLogicSearch.CountCars();
          this.Init( );
-         this.labelCarsCount.Text = _nCars.ToString( ) + " Treffer";
       }
 
       // Eventhandler Suchen
@@ -70,8 +79,27 @@ namespace CompUI {
          }
       }
 
-      // Eventhandler Verkaufen
-      private void tradeMenuItem_Click( object sender, EventArgs e ) {
+        private void searchMenuItem2_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = _dialogSearch.ShowDialog();
+            DataTable dataTable = new DataTable();
+            if (dialogResult == DialogResult.OK)
+            {
+                // Suchen ausführen
+                _iLogicSearch.SelectProduct(_iProduct, ref dataTable);
+                _iLogicSearch.SelectCar(_iCar, ref dataTable);
+                // Ergebnis in DialogSearchView darstellen
+                if (_dialogSearchView is CDialogSearchView)
+                {
+                    // Down Cast
+                    (_dialogSearchView as CDialogSearchView).ResultTable = dataTable;
+                }
+                dialogResult = _dialogSearchView.ShowDialog();
+            }
+        }
+
+        // Eventhandler Verkaufen
+        private void tradeMenuItem_Click( object sender, EventArgs e ) {
          DialogResult dialogResult = _dialogTrade.ShowDialog();
          DataTable dataTable = new DataTable();
          if( dialogResult == DialogResult.OK ) {
@@ -79,16 +107,25 @@ namespace CompUI {
             _iLogicTrade.InsertCar( _iCar );
          }
       }
-      #endregion
 
-      // Eventhandler Konto
-      private void accountMenuItem_Click( object sender, EventArgs e ) {
+        private void insertMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = _dialogTrade.ShowDialog();
+            DataTable dataTable = new DataTable();
+            if (dialogResult == DialogResult.OK)
+            {
+                // Einfügen ausführen
+                _iLogicTrade.InsertProduct(_iProduct);
+            }
+        }
 
-      }
 
-      // Eventhandler Admin
-      private void adminMenuItem_Click( object sender, EventArgs e ) {
+        private void timerWarnung_Tick(object sender, EventArgs e)
+        {
 
-      }
-   }
+        }
+        #endregion
+
+
+    }
 }

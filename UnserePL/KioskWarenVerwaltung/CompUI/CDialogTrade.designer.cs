@@ -24,166 +24,147 @@
         /// </summary>
         private void InitializeComponent( ) {
             this.buttonOK = new System.Windows.Forms.Button();
-            this.labelReg = new System.Windows.Forms.Label();
-            this.labelkm = new System.Windows.Forms.Label();
-            this.labelPrice = new System.Windows.Forms.Label();
-            this.comboBoxModel = new System.Windows.Forms.ComboBox();
-            this.labelModel = new System.Windows.Forms.Label();
-            this.comboBoxMake = new System.Windows.Forms.ComboBox();
-            this.labelMake = new System.Windows.Forms.Label();
-            this.textBoxRegistration = new System.Windows.Forms.TextBox();
-            this.textBoxPrice = new System.Windows.Forms.TextBox();
-            this.textBoxMileage = new System.Windows.Forms.TextBox();
+            this.labelKategorie = new System.Windows.Forms.Label();
+            this.labelName = new System.Windows.Forms.Label();
             this.buttonESC = new System.Windows.Forms.Button();
+            this.checkedListBoxKategorie = new System.Windows.Forms.CheckedListBox();
+            this.textBoxName = new System.Windows.Forms.TextBox();
+            this.labelAnz = new System.Windows.Forms.Label();
+            this.labelPreis = new System.Windows.Forms.Label();
+            this.textBoxPreis = new System.Windows.Forms.TextBox();
+            this.numericUpDownAnz = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAnz)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonOK
             // 
             this.buttonOK.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonOK.Location = new System.Drawing.Point(395, 314);
+            this.buttonOK.Location = new System.Drawing.Point(18, 208);
             this.buttonOK.Margin = new System.Windows.Forms.Padding(6);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(184, 54);
-            this.buttonOK.TabIndex = 31;
+            this.buttonOK.TabIndex = 5;
             this.buttonOK.Text = "Ok";
             this.buttonOK.UseVisualStyleBackColor = true;
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
-            // labelReg
+            // labelKategorie
             // 
-            this.labelReg.AutoSize = true;
-            this.labelReg.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelReg.Location = new System.Drawing.Point(442, 9);
-            this.labelReg.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.labelReg.Name = "labelReg";
-            this.labelReg.Size = new System.Drawing.Size(158, 35);
-            this.labelReg.TabIndex = 27;
-            this.labelReg.Text = "Zulassung";
+            this.labelKategorie.AutoSize = true;
+            this.labelKategorie.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelKategorie.Location = new System.Drawing.Point(15, 63);
+            this.labelKategorie.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.labelKategorie.Name = "labelKategorie";
+            this.labelKategorie.Size = new System.Drawing.Size(81, 17);
+            this.labelKategorie.TabIndex = 27;
+            this.labelKategorie.Text = "Kategorien:";
             // 
-            // labelkm
+            // labelName
             // 
-            this.labelkm.AutoSize = true;
-            this.labelkm.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelkm.Location = new System.Drawing.Point(442, 208);
-            this.labelkm.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.labelkm.Name = "labelkm";
-            this.labelkm.Size = new System.Drawing.Size(137, 35);
-            this.labelkm.TabIndex = 25;
-            this.labelkm.Text = "kmStand";
-            // 
-            // labelPrice
-            // 
-            this.labelPrice.AutoSize = true;
-            this.labelPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPrice.Location = new System.Drawing.Point(452, 107);
-            this.labelPrice.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.labelPrice.Name = "labelPrice";
-            this.labelPrice.Size = new System.Drawing.Size(86, 35);
-            this.labelPrice.TabIndex = 23;
-            this.labelPrice.Text = "Preis";
-            // 
-            // comboBoxModel
-            // 
-            this.comboBoxModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxModel.FormattingEnabled = true;
-            this.comboBoxModel.Location = new System.Drawing.Point(16, 148);
-            this.comboBoxModel.Margin = new System.Windows.Forms.Padding(6);
-            this.comboBoxModel.Name = "comboBoxModel";
-            this.comboBoxModel.Size = new System.Drawing.Size(338, 43);
-            this.comboBoxModel.TabIndex = 22;
-            // 
-            // labelModel
-            // 
-            this.labelModel.AutoSize = true;
-            this.labelModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelModel.Location = new System.Drawing.Point(11, 107);
-            this.labelModel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.labelModel.Name = "labelModel";
-            this.labelModel.Size = new System.Drawing.Size(106, 35);
-            this.labelModel.TabIndex = 21;
-            this.labelModel.Text = "Modell";
-            // 
-            // comboBoxMake
-            // 
-            this.comboBoxMake.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxMake.FormattingEnabled = true;
-            this.comboBoxMake.Items.AddRange(new object[] {
-            "Ford",
-            "Opel",
-            "VW"});
-            this.comboBoxMake.Location = new System.Drawing.Point(15, 55);
-            this.comboBoxMake.Margin = new System.Windows.Forms.Padding(6);
-            this.comboBoxMake.Name = "comboBoxMake";
-            this.comboBoxMake.Size = new System.Drawing.Size(331, 43);
-            this.comboBoxMake.TabIndex = 20;
-            this.comboBoxMake.SelectedIndexChanged += new System.EventHandler(this.comboBoxMake_SelectedIndexChanged);
-            // 
-            // labelMake
-            // 
-            this.labelMake.AutoSize = true;
-            this.labelMake.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMake.Location = new System.Drawing.Point(15, 17);
-            this.labelMake.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.labelMake.Name = "labelMake";
-            this.labelMake.Size = new System.Drawing.Size(101, 35);
-            this.labelMake.TabIndex = 19;
-            this.labelMake.Text = "Marke";
-            // 
-            // textBoxRegistration
-            // 
-            this.textBoxRegistration.Location = new System.Drawing.Point(448, 56);
-            this.textBoxRegistration.Name = "textBoxRegistration";
-            this.textBoxRegistration.Size = new System.Drawing.Size(337, 41);
-            this.textBoxRegistration.TabIndex = 37;
-            // 
-            // textBoxPrice
-            // 
-            this.textBoxPrice.Location = new System.Drawing.Point(448, 150);
-            this.textBoxPrice.Name = "textBoxPrice";
-            this.textBoxPrice.Size = new System.Drawing.Size(337, 41);
-            this.textBoxPrice.TabIndex = 38;
-            // 
-            // textBoxMileage
-            // 
-            this.textBoxMileage.Location = new System.Drawing.Point(448, 246);
-            this.textBoxMileage.Name = "textBoxMileage";
-            this.textBoxMileage.Size = new System.Drawing.Size(337, 41);
-            this.textBoxMileage.TabIndex = 39;
+            this.labelName.AutoSize = true;
+            this.labelName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelName.Location = new System.Drawing.Point(15, 17);
+            this.labelName.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.labelName.Name = "labelName";
+            this.labelName.Size = new System.Drawing.Size(96, 17);
+            this.labelName.TabIndex = 19;
+            this.labelName.Text = "Produktname:";
             // 
             // buttonESC
             // 
             this.buttonESC.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonESC.Location = new System.Drawing.Point(186, 314);
+            this.buttonESC.Location = new System.Drawing.Point(214, 208);
             this.buttonESC.Margin = new System.Windows.Forms.Padding(6);
             this.buttonESC.Name = "buttonESC";
             this.buttonESC.Size = new System.Drawing.Size(184, 54);
-            this.buttonESC.TabIndex = 40;
+            this.buttonESC.TabIndex = 6;
             this.buttonESC.Text = "Abbruch";
             this.buttonESC.UseVisualStyleBackColor = true;
             // 
+            // checkedListBoxKategorie
+            // 
+            this.checkedListBoxKategorie.FormattingEnabled = true;
+            this.checkedListBoxKategorie.Location = new System.Drawing.Point(18, 83);
+            this.checkedListBoxKategorie.Name = "checkedListBoxKategorie";
+            this.checkedListBoxKategorie.Size = new System.Drawing.Size(306, 112);
+            this.checkedListBoxKategorie.TabIndex = 2;
+            // 
+            // textBoxName
+            // 
+            this.textBoxName.Location = new System.Drawing.Point(18, 37);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(306, 23);
+            this.textBoxName.TabIndex = 1;
+            // 
+            // labelAnz
+            // 
+            this.labelAnz.AutoSize = true;
+            this.labelAnz.Location = new System.Drawing.Point(330, 18);
+            this.labelAnz.Name = "labelAnz";
+            this.labelAnz.Size = new System.Drawing.Size(55, 17);
+            this.labelAnz.TabIndex = 43;
+            this.labelAnz.Text = "Anzahl:";
+            // 
+            // labelPreis
+            // 
+            this.labelPreis.AutoSize = true;
+            this.labelPreis.Location = new System.Drawing.Point(330, 64);
+            this.labelPreis.Name = "labelPreis";
+            this.labelPreis.Size = new System.Drawing.Size(71, 17);
+            this.labelPreis.TabIndex = 44;
+            this.labelPreis.Text = "Preis in €:";
+            // 
+            // textBoxPreis
+            // 
+            this.textBoxPreis.Location = new System.Drawing.Point(333, 83);
+            this.textBoxPreis.Name = "textBoxPreis";
+            this.textBoxPreis.Size = new System.Drawing.Size(100, 23);
+            this.textBoxPreis.TabIndex = 4;
+            // 
+            // numericUpDownAnz
+            // 
+            this.numericUpDownAnz.Location = new System.Drawing.Point(333, 37);
+            this.numericUpDownAnz.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericUpDownAnz.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownAnz.Name = "numericUpDownAnz";
+            this.numericUpDownAnz.Size = new System.Drawing.Size(100, 23);
+            this.numericUpDownAnz.TabIndex = 45;
+            this.numericUpDownAnz.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // CDialogTrade
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 36F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(823, 383);
+            this.ClientSize = new System.Drawing.Size(549, 277);
+            this.Controls.Add(this.numericUpDownAnz);
+            this.Controls.Add(this.textBoxPreis);
+            this.Controls.Add(this.labelPreis);
+            this.Controls.Add(this.labelAnz);
+            this.Controls.Add(this.textBoxName);
+            this.Controls.Add(this.checkedListBoxKategorie);
             this.Controls.Add(this.buttonESC);
-            this.Controls.Add(this.textBoxMileage);
-            this.Controls.Add(this.textBoxPrice);
-            this.Controls.Add(this.textBoxRegistration);
             this.Controls.Add(this.buttonOK);
-            this.Controls.Add(this.labelReg);
-            this.Controls.Add(this.labelkm);
-            this.Controls.Add(this.labelPrice);
-            this.Controls.Add(this.comboBoxModel);
-            this.Controls.Add(this.labelModel);
-            this.Controls.Add(this.comboBoxMake);
-            this.Controls.Add(this.labelMake);
+            this.Controls.Add(this.labelKategorie);
+            this.Controls.Add(this.labelName);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "CDialogTrade";
             this.Text = "Bitte geben Sie ihre Daten ein";
             this.Load += new System.EventHandler(this.CDialogTrade_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAnz)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -191,16 +172,14 @@
 
         #endregion
         private System.Windows.Forms.Button buttonOK;
-        private System.Windows.Forms.Label labelReg;
-        private System.Windows.Forms.Label labelkm;
-        private System.Windows.Forms.Label labelPrice;
-        private System.Windows.Forms.ComboBox comboBoxModel;
-        private System.Windows.Forms.Label labelModel;
-        private System.Windows.Forms.ComboBox comboBoxMake;
-        private System.Windows.Forms.Label labelMake;
-        private System.Windows.Forms.TextBox textBoxRegistration;
-        private System.Windows.Forms.TextBox textBoxPrice;
-        private System.Windows.Forms.TextBox textBoxMileage;
+        private System.Windows.Forms.Label labelKategorie;
+        private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.Button buttonESC;
+        private System.Windows.Forms.CheckedListBox checkedListBoxKategorie;
+        private System.Windows.Forms.TextBox textBoxName;
+        private System.Windows.Forms.Label labelAnz;
+        private System.Windows.Forms.Label labelPreis;
+        private System.Windows.Forms.TextBox textBoxPreis;
+        private System.Windows.Forms.NumericUpDown numericUpDownAnz;
     }
 }

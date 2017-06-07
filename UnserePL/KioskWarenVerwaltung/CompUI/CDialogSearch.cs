@@ -22,7 +22,8 @@ namespace CompUI {
       #region Eventhandler
       private void CDialogSearch_Load( object sender, EventArgs e ) {
          comboBoxKategorie.Items.Clear( );
-         comboBoxKategorie.Items.AddRange( _dialogMain.Make );
+         //comboBoxKategorie.Items.AddRange( _dialogMain.Make );
+         comboBoxKategorie.Items.AddRange(_dialogMain.Kategorie);
          comboBoxKategorie.Items.Add( "Alle" );
          comboBoxKategorie.Text = comboBoxKategorie.Items [ 0 ].ToString( );
       }
@@ -49,10 +50,19 @@ namespace CompUI {
          iCar.Mileage = Utils.ParseInt( this.comboBoxMileage.Text, 999999 );
 
          this.DialogResult = DialogResult.OK;
-         this.Close( );
+            this.Close();
       }
 
-      private void buttonCancel_Click( object sender, EventArgs e ) {
+        private void buttonOK2_Click(object sender, EventArgs e)
+        {
+            IProduct iProduct = _dialogMain.Produkt;
+            iProduct.Name = this.textBoxName.Text;
+            iProduct.Category = Utils.ParseInt(this.comboBoxKategorie.Text, 1);
+
+            this.DialogResult = DialogResult.OK;
+        }
+
+        private void buttonCancel_Click( object sender, EventArgs e ) {
          this.DialogResult = DialogResult.Cancel;
          this.Close( );
       }

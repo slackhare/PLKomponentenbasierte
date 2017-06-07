@@ -41,7 +41,7 @@ namespace CompLogic {
             _iDataDis.SelectProduct(iProduct, ref datatable);
         }
 
-        public void SelectProductCategory(IProductCategory iProductCategory, ref DataTable datatable)
+        public void SelectProductCategory(IProductCategory iProductCategory, ref DataTable datatable) // Not needed
         {
             _iDataDis.SelectProductCategory(iProductCategory, ref datatable);
         }
