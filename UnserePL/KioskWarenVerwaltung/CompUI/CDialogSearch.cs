@@ -21,38 +21,29 @@ namespace CompUI {
 
       #region Eventhandler
       private void CDialogSearch_Load( object sender, EventArgs e ) {
-         comboBoxMake.Items.Clear( );
-         comboBoxMake.Items.AddRange( _dialogMain.Make );
-         comboBoxMake.Items.Add( "Alle" );
-         comboBoxMake.Text = comboBoxMake.Items [ 0 ].ToString( );
-
-         if( comboBoxRegistration.Items.Count >= 1 )
-            comboBoxRegistration.Text = comboBoxRegistration.Items [ 0 ].ToString( );
-
-         if( comboBoxPrice.Items.Count >= 1 )
-            comboBoxPrice.Text = comboBoxPrice.Items [ 0 ].ToString( );
-
-         if( comboBoxMileage.Items.Count >= 1 )
-            comboBoxMileage.Text = comboBoxMileage.Items [ 0 ].ToString( );
+         comboBoxKategorie.Items.Clear( );
+         comboBoxKategorie.Items.AddRange( _dialogMain.Make );
+         comboBoxKategorie.Items.Add( "Alle" );
+         comboBoxKategorie.Text = comboBoxKategorie.Items [ 0 ].ToString( );
       }
 
-      private void comboBoxMake_SelectedIndexChanged( object sender, EventArgs e ) {
-         if( this.comboBoxMake.Items.Count <= 0 ) return;
-         this.comboBoxMake.Text = this.comboBoxMake.SelectedItem.ToString( );
-         string make =  this.comboBoxMake.Text;
-         if( make == "Alle" ) return;
+      private void comboBoxKategorie_SelectedIndexChanged( object sender, EventArgs e ) {
+         if( this.comboBoxKategorie.Items.Count <= 0 ) return;
+         this.comboBoxKategorie.Text = this.comboBoxKategorie.SelectedItem.ToString( );
+         string kategorie =  this.comboBoxKategorie.Text;
+         if( kategorie == "Alle" ) return;
 
          // Alle Modelle des Herstellers aus der Datenbank lesen
-         comboBoxModel.Items.Clear( );
-         comboBoxModel.Items.AddRange( _iLogicSearch.GetModel( make ) );
-         comboBoxModel.Items.Add( "Alle" );
-         comboBoxModel.Text = comboBoxModel.Items [ 0 ].ToString( );
+         comboBoxKategorie.Items.Clear( );
+         comboBoxKategorie.Items.AddRange( _iLogicSearch.GetModel( kategorie ) );
+         comboBoxKategorie.Items.Add( "Alle" );
+         comboBoxKategorie.Text = comboBoxKategorie.Items [ 0 ].ToString( );
       }
 
       private void buttonOK_Click( object sender, EventArgs e ) {
          ICar iCar = _dialogMain.Car;
          iCar.Make = this.comboBoxMake.Text;
-         iCar.Model = this.comboBoxModel.Text;
+         iCar.Model = this.comboBoxKategorie.Text;
          iCar.Price = Utils.ParseDouble( this.comboBoxPrice.Text, 999999 );
          iCar.Registration = Utils.ParseInt( this.comboBoxRegistration.Text, 1950 );
          iCar.Mileage = Utils.ParseInt( this.comboBoxMileage.Text, 999999 );
