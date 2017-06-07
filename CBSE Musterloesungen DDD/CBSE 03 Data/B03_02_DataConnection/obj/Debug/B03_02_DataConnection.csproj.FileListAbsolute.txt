@@ -1,0 +1,5 @@
+C:\1 Visual Studio Projects\CBSE Musterloesungen\CBSE 03 Data\B03_02_DataConnection\bin\Debug\B03_02_DataConnection.exe
+C:\1 Visual Studio Projects\CBSE Musterloesungen\CBSE 03 Data\B03_02_DataConnection\bin\Debug\B03_02_DataConnection.pdb
+C:\1 Visual Studio Projects\CBSE Musterloesungen\CBSE 03 Data\B03_02_DataConnection\obj\Debug\B03_02_DataConnection.csprojResolveAssemblyReference.cache
+C:\1 Visual Studio Projects\CBSE Musterloesungen\CBSE 03 Data\B03_02_DataConnection\obj\Debug\B03_02_DataConnection.exe
+C:\1 Visual Studio Projects\CBSE Musterloesungen\CBSE 03 Data\B03_02_DataConnection\obj\Debug\B03_02_DataConnection.pdb

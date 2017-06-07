@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="TestApp.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="PathDbAccess" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\rogallab\CBSE Autoverwaltung\CarDatabase.accdb</Value>
+    </Setting>
+    <Setting Name="ProviderDbAccess" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Provider=Microsoft.ACE.OLEDB.12.0;Data Source=</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

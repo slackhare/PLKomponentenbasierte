@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="System.Data.Common.DbCommand" Collapsed="true">
+    <Position X="9.75" Y="3" Width="2.75" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="System.Data.Common.DbProviderFactory">
+    <Position X="2" Y="4" Width="4.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ADO_NET_Data.Test">
+    <Position X="0.5" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>gAgAAAAAAAAAAAIAAAAAAAAQwAhAAAAIAACABAAAAAI=</HashCode>
+      <FileName>Test.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_oleDbDataAdapter" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="System.Data.OleDb.OleDbCommand">
+    <Position X="9.75" Y="4.5" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <InheritanceLine Type="System.Data.Common.DbCommand" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="11.659" Y="3.691" />
+        <Point X="11.659" Y="4.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Property Name="Connection" />
+      <Property Name="Transaction" />
+      <Property Name="Parameters" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="System.Data.OleDb.OleDbDataReader" Collapsed="true">
+    <Position X="18.25" Y="5" Width="3" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Data.Common.DbDataReader" Collapsed="true">
+    <Position X="18.25" Y="3.75" Width="3" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="System.Data.OleDb.OleDbDataAdapter">
+    <Position X="3.25" Y="10.75" Width="2.75" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="System.Data.OleDb.OleDbConnection" Collapsed="true">
+    <Position X="13.75" Y="5" Width="2.25" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="System.Data.OleDb.OleDbTransaction" Collapsed="true">
+    <Position X="13.75" Y="6" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Data.OleDb.OleDbParameterCollection" Collapsed="true">
+    <Position X="13.75" Y="7" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Interface Name="System.Data.IDbConnection" Collapsed="true" HideInheritanceLine="true">
+    <Position X="4" Y="1.75" Width="2.75" />
+    <InheritanceLine Type="System.IDisposable" IsHidden="true" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="System.Data.IDbCommand" Collapsed="true" HideInheritanceLine="true">
+    <Position X="7.25" Y="3" Width="2" />
+    <InheritanceLine Type="System.IDisposable" IsHidden="true" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="System.Data.IDataRecord" Collapsed="true">
+    <Position X="19.75" Y="0.75" Width="1.75" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="System.Data.IDataReader" Collapsed="true">
+    <Position X="18.25" Y="2" Width="3.25" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="System.IDisposable" Collapsed="true">
+    <Position X="18" Y="0.75" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="System.Data.IDbDataAdapter" Collapsed="true">
+    <Position X="3.25" Y="9.25" Width="2.75" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="System.Data.IDataAdapter" Collapsed="true">
+    <Position X="3.25" Y="8.25" Width="2.75" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

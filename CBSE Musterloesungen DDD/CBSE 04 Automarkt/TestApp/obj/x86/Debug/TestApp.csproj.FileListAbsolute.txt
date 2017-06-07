@@ -1,0 +1,16 @@
+C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\TestApp\bin\x86\Debug\TestApp.exe.config
+C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\TestApp\bin\x86\Debug\TestApp.exe
+C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\TestApp\bin\x86\Debug\TestApp.pdb
+C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\TestApp\bin\x86\Debug\CompData.dll
+C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\TestApp\bin\x86\Debug\CompLogic.dll
+C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\TestApp\bin\x86\Debug\CompUI.dll
+C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\TestApp\bin\x86\Debug\CompUIAdmin.dll
+C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\TestApp\bin\x86\Debug\CompData.pdb
+C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\TestApp\bin\x86\Debug\CompLogic.pdb
+C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\TestApp\bin\x86\Debug\CompUI.pdb
+C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\TestApp\bin\x86\Debug\CompUIAdmin.pdb
+C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\TestApp\obj\x86\Debug\TestApp.csprojResolveAssemblyReference.cache
+C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\TestApp\obj\x86\Debug\TestApp.Properties.Resources.resources
+C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\TestApp\obj\x86\Debug\TestApp.csproj.GenerateResource.Cache
+C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\TestApp\obj\x86\Debug\TestApp.exe
+C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\TestApp\obj\x86\Debug\TestApp.pdb

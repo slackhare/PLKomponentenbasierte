@@ -1,0 +1,23 @@
+D:\1 Visual Studio Projects\16 SoSe CBSE\CBSE_Autoverwaltung\CompData\obj\Debug\CompData.csprojResolveAssemblyReference.cache
+D:\1 Visual Studio Projects\16 SoSe CBSE\CBSE_Autoverwaltung\CompData\bin\Debug\CompData.dll
+D:\1 Visual Studio Projects\16 SoSe CBSE\CBSE_Autoverwaltung\CompData\bin\Debug\CompData.pdb
+D:\1 Visual Studio Projects\16 SoSe CBSE\CBSE_Autoverwaltung\CompData\obj\Debug\CompData.dll
+D:\1 Visual Studio Projects\16 SoSe CBSE\CBSE_Autoverwaltung\CompData\obj\Debug\CompData.pdb
+c:\1 Visual Studio Projects\CBSE Musterloesungen\CBSE 04 Automarkt\CompData\obj\Debug\CompData.csprojResolveAssemblyReference.cache
+c:\1 Visual Studio Projects\CBSE Musterloesungen\CBSE 04 Automarkt\CompData\obj\Debug\CompData.dll
+c:\1 Visual Studio Projects\CBSE Musterloesungen\CBSE 04 Automarkt\CompData\obj\Debug\CompData.pdb
+c:\1 Visual Studio Projects\CBSE Musterloesungen\CBSE 04 Automarkt\CompData\bin\Debug\CompData.dll
+c:\1 Visual Studio Projects\CBSE Musterloesungen\CBSE 04 Automarkt\CompData\bin\Debug\CompData.pdb
+c:\1 Visual Studio Projects\CBSE Musterloesungen\CBSE 04 Automarkt\CompData\bin\Debug\CompUtils.dll
+c:\1 Visual Studio Projects\CBSE Musterloesungen\CBSE 04 Automarkt\CompData\bin\Debug\CompUtils.pdb
+C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompData\bin\Debug\CompData.dll
+C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompData\bin\Debug\CompData.pdb
+C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompData\bin\Debug\CompLogic.dll
+C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompData\bin\Debug\CompUtils.dll
+C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompData\bin\Debug\CompLogic.pdb
+C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompData\bin\Debug\CompUtils.pdb
+C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompData\obj\Debug\CompData.csprojResolveAssemblyReference.cache
+C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompData\obj\Debug\CompData.dll
+C:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompData\obj\Debug\CompData.pdb
+c:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompData\bin\Debug\SimpleInjector.dll
+c:\1 Visual Studio Projects\CBSE Musterloesungen DDD\CBSE 04 Automarkt\CompData\bin\Debug\SimpleInjector.xml

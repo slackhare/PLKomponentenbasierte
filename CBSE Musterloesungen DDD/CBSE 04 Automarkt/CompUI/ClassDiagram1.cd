@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CompUI.CDialogMain">
+    <Position X="4.25" Y="2" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AQgAACAAACAIQBAABAKYAQCCAgYAQAIAAAACBAAABBA=</HashCode>
+      <FileName>CDialogMain.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CompUI.AFactoryIDialog">
+    <Position X="1.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AFactoryIDialog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CompUI.CDialogSearch" Collapsed="true">
+    <Position X="6.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQIAABACAiQAACAIAACQhAACEgEBAAAIAAACAAMAAAA=</HashCode>
+      <FileName>CDialogSearch.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="CompUI.IDialog">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IDialog.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CompUI.IWindow">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IWindow.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
