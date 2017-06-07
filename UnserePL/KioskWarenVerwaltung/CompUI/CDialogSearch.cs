@@ -48,7 +48,6 @@ namespace CompUI {
       //   iCar.Price = Utils.ParseDouble( this.comboBoxPrice.Text, 999999 );
       //   iCar.Registration = Utils.ParseInt( this.comboBoxRegistration.Text, 1950 );
       //   iCar.Mileage = Utils.ParseInt( this.comboBoxMileage.Text, 999999 );
-
       //   this.DialogResult = DialogResult.OK;
       //      this.Close();
       //}

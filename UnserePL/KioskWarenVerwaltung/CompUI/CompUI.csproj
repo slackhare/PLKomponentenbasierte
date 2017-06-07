@@ -65,6 +65,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CDialogRestock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CDialogRestock.Designer.cs">
+      <DependentUpon>CDialogRestock.cs</DependentUpon>
+    </Compile>
     <Compile Include="CFactoryCDialogMain.cs" />
     <Compile Include="CDialogMain.cs">
       <SubType>Form</SubType>
@@ -110,6 +116,9 @@
   <ItemGroup>
     <EmbeddedResource Include="CDialogMain.resx">
       <DependentUpon>CDialogMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CDialogRestock.resx">
+      <DependentUpon>CDialogRestock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CDialogSearch.resx">
       <DependentUpon>CDialogSearch.cs</DependentUpon>

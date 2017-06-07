@@ -38,14 +38,14 @@ namespace CompLogic {
             _iDataDis.SelectCar( iCar, ref datatable );
         }
 
-        public void SelectProduct(IProduct iProduct, ref DataTable datatable)
+        public void SelectProduct(ref DataTable datatable)
         {
-            _iDataDis.SelectProduct(iProduct, ref datatable);
+            _iDataDis.SelectProduct(ref datatable);
         }
 
-        public void SelectProductCategory(IProductCategory iProductCategory, ref DataTable datatable) // Not needed
+        public void SelectProductCategory(ref DataTable datatable) // Not needed
         {
-            _iDataDis.SelectProductCategory(iProductCategory, ref datatable);
+            _iDataDis.SelectProductCategory(ref datatable);
         }
         #endregion
 

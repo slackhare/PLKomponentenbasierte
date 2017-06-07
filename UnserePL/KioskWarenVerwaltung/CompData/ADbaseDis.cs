@@ -45,7 +45,7 @@ namespace CompData {
             dbDataAdapter.Fill( dataTable );                      
         }
 
-        public void SelectProduct(IProduct iProduct, ref DataTable dataTable)
+        public void SelectProduct(ref DataTable dataTable)
         {
             DbDataAdapter dbDataAdapter = this.CreateDbDataAdapter("Produkt");
             DbCommand dbCommand = dbDataAdapter.SelectCommand;
@@ -54,7 +54,7 @@ namespace CompData {
             dbCommand.CommandText = @"SELECT * FROM Produkt";
             dbDataAdapter.Fill(dataTable);
         }
-        public void SelectProductCategory(IProductCategory iProductCategory, ref DataTable dataTable)
+        public void SelectProductCategory(ref DataTable dataTable)
         {
             DbDataAdapter dbDataAdapter = this.CreateDbDataAdapter("Produktkategorie");
             DbCommand dbCommand = dbDataAdapter.SelectCommand;
