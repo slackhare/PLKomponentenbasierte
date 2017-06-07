@@ -14,6 +14,7 @@ namespace CompLogic {
         public ILogicSearch LogicSearch { get { return this; } }
         public ILogicTrade  LogicTrade  { get { return this; } }
         public ILogicUpdate LogicUpdate { get { return this; } }
+        public ILogicWarning LogicWarning { get { return this; } }
         #endregion
 
         #region Ctor
