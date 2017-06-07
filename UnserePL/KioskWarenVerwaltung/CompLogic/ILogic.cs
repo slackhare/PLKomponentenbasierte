@@ -4,6 +4,7 @@ namespace CompLogic {
    public interface ILogic {
       ILogicSearch LogicSearch { get; }
       ILogicTrade LogicTrade { get; }
+        ILogicUpdate LogicUpdate { get; }
    }
 
    public interface ILogicSearch {
@@ -20,6 +21,11 @@ namespace CompLogic {
         void InsertProduct(IProduct iProduct);
 
         void InsertProductCategory(IProductCategory iProductCategory);
+    }
+
+    public interface ILogicUpdate
+    {
+        void UpdateProduct(IProduct iProduct);
     }
 
 }

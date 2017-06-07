@@ -39,17 +39,17 @@ namespace CompUI {
             checkedListBoxKategorie.Text = checkedListBoxKategorie.Items[0].ToString();
         }
 
-      private void buttonOK_Click( object sender, EventArgs e ) {
-         ICar iCar = _dialogMain.Car;
-         iCar.Make = this.comboBoxMake.Text;
-         iCar.Model = this.comboBoxModel.Text;
-         iCar.Price = Utils.ParseDouble( this.textBoxPrice.Text, 0 );
-         iCar.Registration = Utils.ParseInt( this.textBox.Text, 0 );
-         iCar.Mileage = Utils.ParseInt( this.textBoxMileage.Text, 0 );
+      //private void buttonOK_Click( object sender, EventArgs e ) {
+      //   ICar iCar = _dialogMain.Car;
+      //   iCar.Make = this.comboBoxMake.Text;
+      //   iCar.Model = this.comboBoxModel.Text;
+      //   iCar.Price = Utils.ParseDouble( this.textBoxPrice.Text, 0 );
+      //   iCar.Registration = Utils.ParseInt( this.textBox.Text, 0 );
+      //   iCar.Mileage = Utils.ParseInt( this.textBoxMileage.Text, 0 );
 
-         this.DialogResult = DialogResult.OK;
-         this.Close( );
-      }
+      //   this.DialogResult = DialogResult.OK;
+      //   this.Close( );
+      //}
 
         private void buttonOK2_Click(object sender, EventArgs e)
         {

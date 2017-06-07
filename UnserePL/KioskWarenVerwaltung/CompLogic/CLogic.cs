@@ -1,7 +1,7 @@
 ﻿using System.Data;
 namespace CompLogic {
 
-    internal class CLogic : ILogicSearch, ILogicTrade, ILogic {
+    internal class CLogic : ILogicSearch, ILogicTrade, ILogicUpdate, ILogic {
 
         #region Fields
         private IData     _iData;
@@ -13,6 +13,7 @@ namespace CompLogic {
         #region Properties         
         public ILogicSearch LogicSearch { get { return this; } }
         public ILogicTrade  LogicTrade  { get { return this; } }
+        public ILogicUpdate LogicUpdate { get { return this; } }
         #endregion
 
         #region Ctor
@@ -61,5 +62,11 @@ namespace CompLogic {
         }
         #endregion
 
+        #region Interface ILogicUpdate Methods
+        public void UpdateProduct(IProduct iProduct)
+        {
+
+        }
+        #endregion
     }
 }

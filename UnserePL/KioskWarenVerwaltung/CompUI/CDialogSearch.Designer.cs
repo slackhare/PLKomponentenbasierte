@@ -67,7 +67,7 @@
             this.buttonOK.TabIndex = 3;
             this.buttonOK.Text = "Senden";
             this.buttonOK.UseVisualStyleBackColor = true;
-            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
+            this.buttonOK.Click += new System.EventHandler(this.buttonOK2_Click);
             // 
             // buttonCancel
             // 

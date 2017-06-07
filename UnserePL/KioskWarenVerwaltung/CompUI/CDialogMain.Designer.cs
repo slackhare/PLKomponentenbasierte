@@ -30,7 +30,12 @@
             this.timerWarnung = new System.Windows.Forms.Timer(this.components);
             this.timerUpdate = new System.Windows.Forms.Timer(this.components);
             this.labelVerkauf = new System.Windows.Forms.Label();
+            this.comboBoxVerkauf = new System.Windows.Forms.ComboBox();
+            this.numericUpDownAnz = new System.Windows.Forms.NumericUpDown();
+            this.labelAnz = new System.Windows.Forms.Label();
+            this.buttonVerkaufen = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAnz)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -75,6 +80,50 @@
             this.labelVerkauf.TabIndex = 1;
             this.labelVerkauf.Text = "Verkauf";
             // 
+            // comboBoxVerkauf
+            // 
+            this.comboBoxVerkauf.FormattingEnabled = true;
+            this.comboBoxVerkauf.Location = new System.Drawing.Point(39, 141);
+            this.comboBoxVerkauf.Name = "comboBoxVerkauf";
+            this.comboBoxVerkauf.Size = new System.Drawing.Size(327, 28);
+            this.comboBoxVerkauf.TabIndex = 2;
+            // 
+            // numericUpDownAnz
+            // 
+            this.numericUpDownAnz.Location = new System.Drawing.Point(103, 175);
+            this.numericUpDownAnz.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownAnz.Name = "numericUpDownAnz";
+            this.numericUpDownAnz.Size = new System.Drawing.Size(120, 26);
+            this.numericUpDownAnz.TabIndex = 3;
+            this.numericUpDownAnz.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // labelAnz
+            // 
+            this.labelAnz.AutoSize = true;
+            this.labelAnz.Location = new System.Drawing.Point(35, 177);
+            this.labelAnz.Name = "labelAnz";
+            this.labelAnz.Size = new System.Drawing.Size(62, 20);
+            this.labelAnz.TabIndex = 4;
+            this.labelAnz.Text = "Anzahl:";
+            // 
+            // buttonVerkaufen
+            // 
+            this.buttonVerkaufen.Location = new System.Drawing.Point(39, 207);
+            this.buttonVerkaufen.Name = "buttonVerkaufen";
+            this.buttonVerkaufen.Size = new System.Drawing.Size(110, 49);
+            this.buttonVerkaufen.TabIndex = 5;
+            this.buttonVerkaufen.Text = "Verkaufen";
+            this.buttonVerkaufen.UseVisualStyleBackColor = true;
+            this.buttonVerkaufen.Click += new System.EventHandler(this.buttonVerkaufen_Click);
+            // 
             // CDialogMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -82,6 +131,10 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1099, 658);
+            this.Controls.Add(this.buttonVerkaufen);
+            this.Controls.Add(this.labelAnz);
+            this.Controls.Add(this.numericUpDownAnz);
+            this.Controls.Add(this.comboBoxVerkauf);
             this.Controls.Add(this.labelVerkauf);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -95,6 +148,7 @@
             this.Load += new System.EventHandler(this.CDialogMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAnz)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -108,5 +162,9 @@
         private System.Windows.Forms.Timer timerWarnung;
         private System.Windows.Forms.Timer timerUpdate;
         private System.Windows.Forms.Label labelVerkauf;
+        private System.Windows.Forms.ComboBox comboBoxVerkauf;
+        private System.Windows.Forms.NumericUpDown numericUpDownAnz;
+        private System.Windows.Forms.Label labelAnz;
+        private System.Windows.Forms.Button buttonVerkaufen;
     }
 }

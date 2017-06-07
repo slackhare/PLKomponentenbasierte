@@ -22,6 +22,7 @@ namespace CompUI {
       private ILogic              _iLogic;
       private ILogicSearch        _iLogicSearch;
       private ILogicTrade         _iLogicTrade;
+        private ILogicUpdate _iLogicUpdate;
       private ICar                _iCar;
       private IProduct _iProduct;
       #endregion
@@ -39,6 +40,7 @@ namespace CompUI {
          _iLogic = iLogic;
          _iLogicSearch = iLogic.LogicSearch;
          _iLogicTrade = iLogic.LogicTrade;
+            _iLogicUpdate = iLogic.LogicUpdate;
          _iCar = new CFactoryCar( ).Create( );
          _dialogSearch = new CDialogSearch( iLogic, this );
          _dialogSearchView = new CDialogSearchView( this );
@@ -124,8 +126,14 @@ namespace CompUI {
         {
 
         }
-        #endregion
 
+        private void buttonVerkaufen_Click(object sender, EventArgs e)
+        {
+            _iProduct.Name = this.comboBoxVerkauf.Text;
+            _iProduct.Stock = Utils.ParseInt(this.numericUpDownAnz.ToString(), 1);
 
+            _iLogicUpdate.UpdateProduct(_iProduct);
+        }
     }
+    #endregion
 }
