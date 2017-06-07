@@ -35,12 +35,13 @@
             this.labelAnz = new System.Windows.Forms.Label();
             this.buttonVerkaufen = new System.Windows.Forms.Button();
             this.labelWarnung = new System.Windows.Forms.Label();
-            this.richTextBoxWarntext = new System.Windows.Forms.RichTextBox();
             this.labelWarnungGrenze = new System.Windows.Forms.Label();
             this.numericUpDownWarnungGrenze = new System.Windows.Forms.NumericUpDown();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAnz)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWarnungGrenze)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -140,16 +141,6 @@
             this.labelWarnung.TabIndex = 6;
             this.labelWarnung.Text = "!!!WARNUNG!!!";
             // 
-            // richTextBoxWarntext
-            // 
-            this.richTextBoxWarntext.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBoxWarntext.Location = new System.Drawing.Point(621, 177);
-            this.richTextBoxWarntext.Name = "richTextBoxWarntext";
-            this.richTextBoxWarntext.Size = new System.Drawing.Size(359, 160);
-            this.richTextBoxWarntext.TabIndex = 8;
-            this.richTextBoxWarntext.Tag = "";
-            this.richTextBoxWarntext.Text = "";
-            // 
             // labelWarnungGrenze
             // 
             this.labelWarnungGrenze.AutoSize = true;
@@ -166,6 +157,17 @@
             this.numericUpDownWarnungGrenze.Size = new System.Drawing.Size(61, 26);
             this.numericUpDownWarnungGrenze.TabIndex = 10;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(621, 172);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(359, 190);
+            this.dataGridView1.TabIndex = 11;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
             // CDialogMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -173,9 +175,9 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1099, 658);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.numericUpDownWarnungGrenze);
             this.Controls.Add(this.labelWarnungGrenze);
-            this.Controls.Add(this.richTextBoxWarntext);
             this.Controls.Add(this.labelWarnung);
             this.Controls.Add(this.buttonVerkaufen);
             this.Controls.Add(this.labelAnz);
@@ -196,6 +198,7 @@
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAnz)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWarnungGrenze)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -214,8 +217,8 @@
         private System.Windows.Forms.Label labelAnz;
         private System.Windows.Forms.Button buttonVerkaufen;
         private System.Windows.Forms.Label labelWarnung;
-        private System.Windows.Forms.RichTextBox richTextBoxWarntext;
         private System.Windows.Forms.Label labelWarnungGrenze;
         private System.Windows.Forms.NumericUpDown numericUpDownWarnungGrenze;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

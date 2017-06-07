@@ -139,6 +139,11 @@ namespace CompUI {
 
             _iLogicUpdate.UpdateProduct(_iProduct);
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
     #endregion
 }
