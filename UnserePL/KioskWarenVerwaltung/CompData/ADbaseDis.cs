@@ -17,6 +17,7 @@ namespace CompData {
             _dbConnection = aData.Connection;
         }
         #endregion
+
         public virtual void InsertCar(ICar iCar)
         {
             DbDataAdapter dbDataAdapter = this.CreateDbDataAdapter("CarTable");
@@ -61,6 +62,16 @@ namespace CompData {
             dbCommand.Parameters.Clear();
             dbCommand.CommandText = @"SELECT * FROM Produktkategorie";
             dbDataAdapter.Fill(dataTable);
+        }
+
+        public virtual void UpdateProduct(IProduct iProduct)
+        {
+            //TODO Methode Schreiben
+        }
+
+        public virtual void WarningUpdate(decimal grenze, ref DataTable datatable)
+        {
+            //TODO Methode Schreiben
         }
 
         protected virtual void DbCommandSelectCar( ICar iCar, DbCommand dbCommand ) {
@@ -169,6 +180,7 @@ namespace CompData {
                 throw new Exception( message );
             }
         }
+
 
     }
 }

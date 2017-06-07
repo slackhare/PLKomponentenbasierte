@@ -5,7 +5,6 @@ using System.Windows.Forms;
 using CompLogic;
 using CompLogic.Car;
 using CompLogic.Product;
-
 namespace CompUI
 {
 
@@ -27,6 +26,8 @@ namespace CompUI
         private ILogic _iLogic;
         private ILogicSearch _iLogicSearch;
         private ILogicTrade _iLogicTrade;
+        private ILogicWarning _iLogicWarning;
+        private ILogicUpdate _iLogicUpdate;
         private ICar _iCar;
         private IProduct _iProduct;
         #endregion
@@ -45,6 +46,8 @@ namespace CompUI
             _iLogic = iLogic;
             _iLogicSearch = iLogic.LogicSearch;
             _iLogicTrade = iLogic.LogicTrade;
+            _iLogicWarning = iLogic.LogicWarning;
+            _iLogicUpdate = iLogic.LogicUpdate;
             _iCar = new CFactoryCar().Create();
             _dialogSearch = new CDialogSearch(iLogic, this);
             _dialogSearchView = new CDialogSearchView(this);
@@ -139,10 +142,25 @@ namespace CompUI
 
         private void timerWarnung_Tick(object sender, EventArgs e)
         {
+            DataTable datatable = new DataTable();
+            _iLogicWarning.Update(numericUpDownWarnungGrenze.Value, ref datatable);
+            // TODO Es Wird eine Methode benötigt das den Datatable mit allen Produckten Füllt die <= 10 Stück aujf lager haben
+
 
         }
-        #endregion
 
+        private void buttonVerkaufen_Click(object sender, EventArgs e)
+        {
+            _iProduct.Name = this.comboBoxVerkauf.Text;
+            _iProduct.Stock = Utils.ParseInt(this.numericUpDownAnz.ToString(), 1);
 
+            _iLogicUpdate.UpdateProduct(_iProduct);
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
+    #endregion
 }

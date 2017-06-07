@@ -1,11 +1,12 @@
 ﻿using System.Data;
 namespace CompLogic
 {
-
     public interface ILogic
     {
         ILogicSearch LogicSearch { get; }
         ILogicTrade LogicTrade { get; }
+        ILogicUpdate LogicUpdate { get; }
+        ILogicWarning LogicWarning { get; }
     }
 
     public interface ILogicSearch
@@ -25,5 +26,17 @@ namespace CompLogic
 
         void InsertProductCategory(IProductCategory iProductCategory);
     }
+
+    public interface ILogicUpdate
+    {
+        void UpdateProduct(IProduct iProduct);
+    }
+
+    public interface ILogicWarning
+    {
+        void Update(decimal grenze, ref DataTable datatable);
+    }
+
+
 
 }

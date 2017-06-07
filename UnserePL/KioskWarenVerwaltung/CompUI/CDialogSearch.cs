@@ -41,19 +41,16 @@ namespace CompUI {
          comboBoxKategorie.Text = comboBoxKategorie.Items [ 0 ].ToString( );
       }
 
-      private void buttonOK_Click( object sender, EventArgs e ) {
-         ICar iCar = _dialogMain.Car;
-            /* kompliliert nicht, erstmal auskommentiert
-         iCar.Make = this.comboBoxMake.Text;
-         iCar.Model = this.comboBoxKategorie.Text;
-         iCar.Price = Utils.ParseDouble( this.comboBoxPrice.Text, 999999 );
-         iCar.Registration = Utils.ParseInt( this.comboBoxRegistration.Text, 1950 );
-         iCar.Mileage = Utils.ParseInt( this.comboBoxMileage.Text, 999999 );
-         */
-
-         this.DialogResult = DialogResult.OK;
-            this.Close();
-      }
+      //private void buttonOK_Click( object sender, EventArgs e ) {
+      //   ICar iCar = _dialogMain.Car;
+      //   iCar.Make = this.comboBoxMake.Text;
+      //   iCar.Model = this.comboBoxKategorie.Text;
+      //   iCar.Price = Utils.ParseDouble( this.comboBoxPrice.Text, 999999 );
+      //   iCar.Registration = Utils.ParseInt( this.comboBoxRegistration.Text, 1950 );
+      //   iCar.Mileage = Utils.ParseInt( this.comboBoxMileage.Text, 999999 );
+      //   this.DialogResult = DialogResult.OK;
+      //      this.Close();
+      //}
 
         private void buttonOK2_Click(object sender, EventArgs e)
         {

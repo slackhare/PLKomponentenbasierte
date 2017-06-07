@@ -18,5 +18,8 @@ namespace CompLogic {
         void     InsertProduct(IProduct iProduct);
         void     SelectProductCategory(ref DataTable dataTable);
         void     InsertProductCategory(IProductCategory iProductCategor);
+        void UpdateProduct(IProduct iProduct);
+        void WarningUpdate(decimal grenze, ref DataTable datatable);
+
     }
 }
