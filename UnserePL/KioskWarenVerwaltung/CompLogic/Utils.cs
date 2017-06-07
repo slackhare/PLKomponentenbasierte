@@ -1,4 +1,4 @@
-﻿namespace CompLogic.Car {
+﻿namespace CompLogic {
 
     public class Utils {
         public static long CreateGUID() {
