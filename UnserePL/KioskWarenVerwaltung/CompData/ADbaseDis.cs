@@ -69,6 +69,11 @@ namespace CompData {
             //TODO Methode Schreiben
         }
 
+        public virtual void WarningUpdate(decimal grenze, ref DataTable datatable)
+        {
+            //TODO Methode Schreiben
+        }
+
         protected virtual void DbCommandSelectCar( ICar iCar, DbCommand dbCommand ) {
 
             dbCommand.CommandType = CommandType.Text;

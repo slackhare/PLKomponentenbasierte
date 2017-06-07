@@ -23,6 +23,7 @@ namespace CompUI {
       private ILogicSearch        _iLogicSearch;
       private ILogicTrade         _iLogicTrade;
         private ILogicUpdate _iLogicUpdate;
+        private ILogicWarning _iLogicWarning;
       private ICar                _iCar;
       private IProduct _iProduct;
       #endregion
@@ -41,6 +42,7 @@ namespace CompUI {
          _iLogicSearch = iLogic.LogicSearch;
          _iLogicTrade = iLogic.LogicTrade;
             _iLogicUpdate = iLogic.LogicUpdate;
+            _iLogicWarning = iLogic.LogicWarning;
          _iCar = new CFactoryCar( ).Create( );
          _dialogSearch = new CDialogSearch( iLogic, this );
          _dialogSearchView = new CDialogSearchView( this );
@@ -124,9 +126,9 @@ namespace CompUI {
         private void timerWarnung_Tick(object sender, EventArgs e)
         {
             DataTable datatable = new DataTable();
-            _iProduct.Stock = 10;
-            _iLogicSearch.SelectProduct(_iProduct, ref datatable);
+            _iLogicWarning.Update(numericUpDownWarnungGrenze.Value, ref datatable);
             // TODO Es Wird eine Methode benötigt das den Datatable mit allen Produckten Füllt die <= 10 Stück aujf lager haben
+
 
         }
 

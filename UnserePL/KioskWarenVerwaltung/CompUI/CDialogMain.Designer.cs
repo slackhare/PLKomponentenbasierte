@@ -36,8 +36,11 @@
             this.buttonVerkaufen = new System.Windows.Forms.Button();
             this.labelWarnung = new System.Windows.Forms.Label();
             this.richTextBoxWarntext = new System.Windows.Forms.RichTextBox();
+            this.labelWarnungGrenze = new System.Windows.Forms.Label();
+            this.numericUpDownWarnungGrenze = new System.Windows.Forms.NumericUpDown();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAnz)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWarnungGrenze)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -147,6 +150,22 @@
             this.richTextBoxWarntext.Tag = "";
             this.richTextBoxWarntext.Text = "";
             // 
+            // labelWarnungGrenze
+            // 
+            this.labelWarnungGrenze.AutoSize = true;
+            this.labelWarnungGrenze.Location = new System.Drawing.Point(35, 285);
+            this.labelWarnungGrenze.Name = "labelWarnungGrenze";
+            this.labelWarnungGrenze.Size = new System.Drawing.Size(169, 20);
+            this.labelWarnungGrenze.TabIndex = 9;
+            this.labelWarnungGrenze.Text = "Warnung anzeigen ab:";
+            // 
+            // numericUpDownWarnungGrenze
+            // 
+            this.numericUpDownWarnungGrenze.Location = new System.Drawing.Point(210, 283);
+            this.numericUpDownWarnungGrenze.Name = "numericUpDownWarnungGrenze";
+            this.numericUpDownWarnungGrenze.Size = new System.Drawing.Size(61, 26);
+            this.numericUpDownWarnungGrenze.TabIndex = 10;
+            // 
             // CDialogMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -154,6 +173,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1099, 658);
+            this.Controls.Add(this.numericUpDownWarnungGrenze);
+            this.Controls.Add(this.labelWarnungGrenze);
             this.Controls.Add(this.richTextBoxWarntext);
             this.Controls.Add(this.labelWarnung);
             this.Controls.Add(this.buttonVerkaufen);
@@ -174,6 +195,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAnz)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWarnungGrenze)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -193,5 +215,7 @@
         private System.Windows.Forms.Button buttonVerkaufen;
         private System.Windows.Forms.Label labelWarnung;
         private System.Windows.Forms.RichTextBox richTextBoxWarntext;
+        private System.Windows.Forms.Label labelWarnungGrenze;
+        private System.Windows.Forms.NumericUpDown numericUpDownWarnungGrenze;
     }
 }

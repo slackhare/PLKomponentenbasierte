@@ -31,7 +31,7 @@ namespace CompLogic {
 
     public interface ILogicWarning
     {
-        void Warning(int grenze, ref DataTable datatable);
+        void Update(decimal grenze, ref DataTable datatable);
     }
 
 

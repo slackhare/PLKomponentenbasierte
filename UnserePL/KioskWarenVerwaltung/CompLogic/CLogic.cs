@@ -71,9 +71,9 @@ namespace CompLogic {
         #endregion
 
         #region Interface ILogicWarning Methods
-        public void Warning(int grenze, ref DataTable datatable)
+        public void Update(decimal grenze, ref DataTable datatable)
         {
-            //TODO Entsprechende Methode in _iDataDis einfügen
+            _iDataDis.WarningUpdate(grenze, ref datatable);
         }
         #endregion
     }
