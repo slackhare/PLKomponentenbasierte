@@ -67,6 +67,11 @@ namespace CompData {
         public virtual void UpdateProduct(IProduct iProduct)
         {
             //TODO Methode Schreiben
+            DbDataAdapter dbDataAdapter = this.CreateDbDataAdapter("Produkt");
+            DbCommand dbCommand = dbDataAdapter.UpdateCommand;
+            
+            
+            
         }
 
         public virtual void WarningUpdate(decimal grenze, ref DataTable datatable)
@@ -99,6 +104,14 @@ namespace CompData {
             this.AddParameter( dbCommand, "pMileage", iCar.Mileage  );
             
             dbCommand.CommandText += " ORDER BY Price";
+        }
+
+        protected virtual void DbCommandUpdateProduct(IProduct iProduct, DbCommand dbCommand)
+        {
+            dbCommand.CommandType = CommandType.Text;
+            dbCommand.Parameters.Clear();
+            dbCommand.CommandText = @"UPDATE Produkt SET";
+
         }
 
         protected void AddParameter( DbCommand dbCommand, string name, object value ) {
