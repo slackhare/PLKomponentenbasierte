@@ -38,6 +38,7 @@
             this.labelWarnungGrenze = new System.Windows.Forms.Label();
             this.numericUpDownWarnungGrenze = new System.Windows.Forms.NumericUpDown();
             this.dataGridViewWarning = new System.Windows.Forms.DataGridView();
+            this.sortimentErweiternToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAnz)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWarnungGrenze)).BeginInit();
@@ -50,7 +51,8 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.searchMenuItem,
-            this.lagerAuffüllenToolStripMenuItem});
+            this.lagerAuffüllenToolStripMenuItem,
+            this.sortimentErweiternToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(13, 4, 0, 4);
@@ -177,6 +179,12 @@
             this.dataGridViewWarning.TabIndex = 11;
             this.dataGridViewWarning.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
+            // sortimentErweiternToolStripMenuItem
+            // 
+            this.sortimentErweiternToolStripMenuItem.Name = "sortimentErweiternToolStripMenuItem";
+            this.sortimentErweiternToolStripMenuItem.Size = new System.Drawing.Size(142, 23);
+            this.sortimentErweiternToolStripMenuItem.Text = "Sortiment erweitern";
+            // 
             // CDialogMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -229,5 +237,6 @@
         private System.Windows.Forms.Label labelWarnungGrenze;
         private System.Windows.Forms.NumericUpDown numericUpDownWarnungGrenze;
         private System.Windows.Forms.DataGridView dataGridViewWarning;
+        private System.Windows.Forms.ToolStripMenuItem sortimentErweiternToolStripMenuItem;
     }
 }

@@ -49,24 +49,32 @@ namespace CompUI
             //neu laden der box.. scheint nicht zu funktionieren?
             this.checkedListBoxProductsAndStock.Refresh();
         }
+        //Füllt eine Andere Darstellung der Produkte
         private void loadProductsintoTableLayout()
         { 
             _iLogicSearch.SelectProduct(ref _productDataTable);
-            DataColumn name = _productDataTable.Columns[1];
-            DataColumn bestand = _productDataTable.Columns[2];
+
             for (int i = 0; i < _productDataTable.Rows.Count; i++)
             {
+                // Erstellt für jede Spalte der Tabelle die Nötigen Objekte
                 CheckBox col0 = new CheckBox();
                 Label col1 = new Label();
                 NumericUpDown col2 = new NumericUpDown();
-                col0.Text = _productDataTable.Rows[i][name, DataRowVersion.Current].ToString();
-                col1.Text = _productDataTable.Rows[i][bestand, DataRowVersion.Current].ToString();
+                col0.Name = "CheckBoxRow" + i;
+                col2.Name = "NumUpDownRow" + i;
+
+                // Setzt den Nötigen beschriftingstext
+                col0.Text = _productDataTable.Rows[i]["Produktname"].ToString();
+                col1.Text = _productDataTable.Rows[i]["Lagerbestand"].ToString();
+
                 col1.TextAlign = ContentAlignment.MiddleCenter;
+
+                // Füllt die Aktuelle Spalte des tableLayoutPanelRestock mit drei Control Objekten zur bearbeitung
                 Control[] rowcontrols = new Control[3] { col0, col1, col2 };
                 tableLayoutPanelRestock.Controls.AddRange(rowcontrols);
             }
             //neu laden der box.. scheint nicht zu funktionieren?
-            this.checkedListBoxProductsAndStock.Refresh();
+            this.tableLayoutPanelRestock.Refresh();
         }
 
         #region Events
@@ -89,6 +97,12 @@ namespace CompUI
                 }
                 loadProducts();
             }
+        }
+
+        // Wird die Angaben aus der Tabelle für das Datenbankupdate Vorbereiten
+        private void button1_ClicktTabelLayout(object sender, EventArgs e)
+        {
+            
         }
         #endregion
     }

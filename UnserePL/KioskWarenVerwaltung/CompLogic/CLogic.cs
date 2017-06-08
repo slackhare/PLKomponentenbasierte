@@ -90,10 +90,9 @@ namespace CompLogic {
         public void Update(decimal grenze, ref DataTable dataTable)
         {
             SelectProduct(ref dataTable);
-            DataColumn dc = dataTable.Columns[2];
             for (int i = dataTable.Rows.Count - 1; i >= 0; i--)
             {
-                if (Utils.ParseInt(dataTable.Rows[i][dc,DataRowVersion.Current].ToString(), 0) >= grenze)
+                if (Utils.ParseInt(dataTable.Rows[i]["Lagerbestand"].ToString(), 0) >= grenze)
                 {
                     dataTable.Rows[i].Delete();
                 }
