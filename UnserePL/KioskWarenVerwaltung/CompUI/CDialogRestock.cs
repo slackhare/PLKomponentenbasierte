@@ -12,7 +12,7 @@ using System.Data.SqlClient;
 
 namespace CompUI
 {
-    public partial class CDialogRestock : Form
+    internal partial class CDialogRestock : Form
     {
 
         #region Fields
@@ -35,7 +35,7 @@ namespace CompUI
         }
         #endregion
 
-        #region Method
+        #region Methods
         //neu laden der produkte
         private void loadProducts()
         {
@@ -49,18 +49,32 @@ namespace CompUI
             //neu laden der box.. scheint nicht zu funktionieren?
             this.checkedListBoxProductsAndStock.Refresh();
         }
+        private void loadProductsintoTableLayout()
+        { 
+            _iLogicSearch.SelectProduct(ref _productDataTable);
+            DataColumn name = _productDataTable.Columns[1];
+            DataColumn bestand = _productDataTable.Columns[2];
+            for (int i = 0; i < _productDataTable.Rows.Count; i++)
+            {
+                CheckBox col0 = new CheckBox();
+                Label col1 = new Label();
+                NumericUpDown col2 = new NumericUpDown();
+                col0.Text = _productDataTable.Rows[i][name, DataRowVersion.Current].ToString();
+                col1.Text = _productDataTable.Rows[i][bestand, DataRowVersion.Current].ToString();
+                col1.TextAlign = ContentAlignment.MiddleCenter;
+                Control[] rowcontrols = new Control[3] { col0, col1, col2 };
+                tableLayoutPanelRestock.Controls.AddRange(rowcontrols);
+            }
+            //neu laden der box.. scheint nicht zu funktionieren?
+            this.checkedListBoxProductsAndStock.Refresh();
+        }
 
-
+        #region Events
         private void CDialogRestock_Load(object sender, EventArgs e)
         {
-            loadProducts();
+            loadProductsintoTableLayout();
         }
         #endregion
-
-        private void checkedListBoxProductsAndStock_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -76,10 +90,6 @@ namespace CompUI
                 loadProducts();
             }
         }
-
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
+        #endregion
     }
 }

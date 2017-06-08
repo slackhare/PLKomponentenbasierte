@@ -43,6 +43,13 @@ namespace CompLogic {
         public void SelectProduct(ref DataTable datatable)
         {
             _iDataDis.SelectProduct(ref datatable);
+            foreach(DataRow row in datatable.Rows)
+            {
+                if(row.IsNull(0))
+                {
+                    row.Delete();
+                }
+            }
         }
 
         public void SelectProductCategory(ref DataTable datatable) // Not needed
@@ -83,13 +90,15 @@ namespace CompLogic {
         public void Update(decimal grenze, ref DataTable dataTable)
         {
             SelectProduct(ref dataTable);
-
+            DataColumn dc = dataTable.Columns[2];
             for (int i = dataTable.Rows.Count - 1; i >= 0; i--)
             {
-                DataRow dr = dataTable.Rows[i];
-                if (Utils.ParseInt(dr["Lagerbestand"].ToString(), 0) >= grenze)
-                    dr.Delete();
+                if (Utils.ParseInt(dataTable.Rows[i][dc,DataRowVersion.Current].ToString(), 0) >= grenze)
+                {
+                    dataTable.Rows[i].Delete();
+                }
             }
+            dataTable.AcceptChanges();
         }
         #endregion
     }

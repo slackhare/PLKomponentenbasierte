@@ -33,15 +33,12 @@ namespace CompUI {
 
          // set primary key and foreign keys columns invisible
          foreach( DataGridViewColumn column in this.dataGridView1.Columns ) {
-            if( column.Name.Substring( 0, 2 ) == "pk" ||
-                column.Name.Substring( 0, 2 ) == "fk" )
-               column.Visible = false;
+            if( column.Name == "GUID" || column.Name == "Kategorie")
+                column.Visible = false;
          }
-
-         // column width auto
-         foreach( DataGridViewColumn dataGridViewColumn in this.dataGridView1.Columns ) {
-            dataGridViewColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-         }
+         
+            
+         
       }      
       #endregion
    }

@@ -28,20 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.checkedListBoxProductsAndStock = new System.Windows.Forms.CheckedListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.tableLayoutPanelRestock = new System.Windows.Forms.TableLayoutPanel();
+            this.checkedListBoxProductsAndStock = new System.Windows.Forms.CheckedListBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // checkedListBoxProductsAndStock
-            // 
-            this.checkedListBoxProductsAndStock.FormattingEnabled = true;
-            this.checkedListBoxProductsAndStock.Location = new System.Drawing.Point(12, 12);
-            this.checkedListBoxProductsAndStock.Name = "checkedListBoxProductsAndStock";
-            this.checkedListBoxProductsAndStock.Size = new System.Drawing.Size(306, 109);
-            this.checkedListBoxProductsAndStock.TabIndex = 3;
-            this.checkedListBoxProductsAndStock.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxProductsAndStock_SelectedIndexChanged);
             // 
             // button1
             // 
@@ -59,11 +52,46 @@
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
             this.numericUpDown1.TabIndex = 6;
-            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            // 
+            // tableLayoutPanelRestock
+            // 
+            this.tableLayoutPanelRestock.ColumnCount = 3;
+            this.tableLayoutPanelRestock.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanelRestock.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanelRestock.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 77F));
+            this.tableLayoutPanelRestock.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 109F));
+            this.tableLayoutPanelRestock.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanelRestock.Location = new System.Drawing.Point(12, 127);
+            this.tableLayoutPanelRestock.Name = "tableLayoutPanelRestock";
+            this.tableLayoutPanelRestock.RowCount = 1;
+            this.tableLayoutPanelRestock.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 49.18033F));
+            this.tableLayoutPanelRestock.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.81967F));
+            this.tableLayoutPanelRestock.Size = new System.Drawing.Size(306, 122);
+            this.tableLayoutPanelRestock.TabIndex = 7;
+            // 
+            // checkedListBoxProductsAndStock
+            // 
+            this.checkedListBoxProductsAndStock.FormattingEnabled = true;
+            this.checkedListBoxProductsAndStock.Location = new System.Drawing.Point(12, 12);
+            this.checkedListBoxProductsAndStock.Name = "checkedListBoxProductsAndStock";
+            this.checkedListBoxProductsAndStock.Size = new System.Drawing.Size(306, 109);
+            this.checkedListBoxProductsAndStock.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(419, 164);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "label1";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // CDialogRestock
             // 
             this.ClientSize = new System.Drawing.Size(589, 261);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.tableLayoutPanelRestock);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.checkedListBoxProductsAndStock);
@@ -71,6 +99,7 @@
             this.Load += new System.EventHandler(this.CDialogRestock_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -79,8 +108,10 @@
         private System.Windows.Forms.NumericUpDown numericUpDownAnz;
         private System.Windows.Forms.CheckedListBox checkedListBoxProduct;
         private System.Windows.Forms.Button buttonOK;
-        private System.Windows.Forms.CheckedListBox checkedListBoxProductsAndStock;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelRestock;
+        private System.Windows.Forms.CheckedListBox checkedListBoxProductsAndStock;
+        private System.Windows.Forms.Label label1;
     }
 }

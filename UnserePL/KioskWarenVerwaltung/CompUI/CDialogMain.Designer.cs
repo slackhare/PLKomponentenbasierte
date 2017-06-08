@@ -37,11 +37,11 @@
             this.labelWarnung = new System.Windows.Forms.Label();
             this.labelWarnungGrenze = new System.Windows.Forms.Label();
             this.numericUpDownWarnungGrenze = new System.Windows.Forms.NumericUpDown();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewWarning = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAnz)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWarnungGrenze)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWarning)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -74,6 +74,8 @@
             // 
             // timerWarnung
             // 
+            this.timerWarnung.Enabled = true;
+            this.timerWarnung.Interval = 1000;
             this.timerWarnung.Tick += new System.EventHandler(this.timerWarnung_Tick);
             // 
             // labelVerkauf
@@ -157,16 +159,23 @@
             this.numericUpDownWarnungGrenze.Size = new System.Drawing.Size(61, 26);
             this.numericUpDownWarnungGrenze.TabIndex = 10;
             // 
-            // dataGridView1
+            // dataGridViewWarning
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(621, 172);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(359, 190);
-            this.dataGridView1.TabIndex = 11;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridViewWarning.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewWarning.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dataGridViewWarning.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewWarning.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewWarning.ColumnHeadersVisible = false;
+            this.dataGridViewWarning.EnableHeadersVisualStyles = false;
+            this.dataGridViewWarning.GridColor = System.Drawing.SystemColors.Info;
+            this.dataGridViewWarning.Location = new System.Drawing.Point(621, 172);
+            this.dataGridViewWarning.Margin = new System.Windows.Forms.Padding(10);
+            this.dataGridViewWarning.Name = "dataGridViewWarning";
+            this.dataGridViewWarning.RowHeadersVisible = false;
+            this.dataGridViewWarning.RowTemplate.Height = 24;
+            this.dataGridViewWarning.Size = new System.Drawing.Size(359, 190);
+            this.dataGridViewWarning.TabIndex = 11;
+            this.dataGridViewWarning.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // CDialogMain
             // 
@@ -175,7 +184,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1099, 658);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridViewWarning);
             this.Controls.Add(this.numericUpDownWarnungGrenze);
             this.Controls.Add(this.labelWarnungGrenze);
             this.Controls.Add(this.labelWarnung);
@@ -198,7 +207,7 @@
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAnz)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWarnungGrenze)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWarning)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -219,6 +228,6 @@
         private System.Windows.Forms.Label labelWarnung;
         private System.Windows.Forms.Label labelWarnungGrenze;
         private System.Windows.Forms.NumericUpDown numericUpDownWarnungGrenze;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridViewWarning;
     }
 }

@@ -65,6 +65,7 @@ namespace CompUI
         }
         #endregion
 
+        #region Methods
         //neu laden der produkte
         private void loadProducts()
         {
@@ -78,6 +79,21 @@ namespace CompUI
             //neu laden der box.. scheint nicht zu funktionieren?
             this.comboBoxVerkauf.Refresh();
         }
+
+        private void displayWaring( DataTable datatable)
+        {
+            this.dataGridViewWarning.DataSource = datatable;
+
+            // Unnötige Spalten Ausblenden
+            foreach (DataGridViewColumn column in this.dataGridViewWarning.Columns)
+            {
+                if (column.Name== "GUID" || column.Name == "Kategorie" || (column.Name == "Preis") || column.Name == "Kategoriename")
+                {
+                    column.Visible = false;
+                }
+            }
+        }
+        #endregion
 
         #region Methods Interface IDialog
         public void Init()
@@ -144,6 +160,7 @@ namespace CompUI
                 // Einfügen ausführen
                 _iLogicTrade.InsertCar(_iCar);
             }
+            loadProducts();
         }
 
         private void restockMenuItem_Click(object sender, EventArgs e)
@@ -161,11 +178,13 @@ namespace CompUI
         //Wieso eigentlich ein Timer? wär es nicht einfacher, die check-methode beim Verkauf aufzurufen? ist ja der einzige Fall, in dem sich der bestand reduziert
         private void timerWarnung_Tick(object sender, EventArgs e)
         {
+            this.dataGridViewWarning.DataSource = null;
             DataTable datatable = new DataTable();
             _iLogicWarning.Update(numericUpDownWarnungGrenze.Value, ref datatable);
-            // TODO Es Wird eine Methode benötigt das die Datatable mit allen Produckten Füllt die <= 10 Stück aujf lager haben
-
-
+            if (datatable.Rows.Count > 0 )
+            {
+                displayWaring(datatable);
+            }
         }
 
         private void buttonVerkaufen_Click(object sender, EventArgs e)
