@@ -1,4 +1,6 @@
 ﻿using System.Data;
+using CompLogic.Product;
+
 namespace CompLogic {
 
     internal class CLogic : ILogicSearch, ILogicTrade, ILogicUpdate, ILogicWarning, ILogic {
@@ -64,16 +66,30 @@ namespace CompLogic {
         #endregion
 
         #region Interface ILogicUpdate Methods
-        public void UpdateProduct(IProduct iProduct)
+        //Stockt ein Produkt mit einer guid um eine Menge auf
+        public void RestockProduct(string guid, int restockNumber)
         {
-            _iDataDis.UpdateProduct(iProduct);
+            _iDataDis.RestockProduct(guid, restockNumber);
+        }
+
+        public void SellProduct(string guid, int restockNumber)
+        {
+            _iDataDis.RestockProduct(guid, restockNumber*-1);
         }
         #endregion
 
         #region Interface ILogicWarning Methods
-        public void Update(decimal grenze, ref DataTable datatable)
+        //Gibt eine Tabelle zurück (über ref), mit allen produkten, die weniger als die grenze an Lagerbestand haben
+        public void Update(decimal grenze, ref DataTable dataTable)
         {
-            _iDataDis.WarningUpdate(grenze, ref datatable);
+            SelectProduct(ref dataTable);
+
+            for (int i = dataTable.Rows.Count - 1; i >= 0; i--)
+            {
+                DataRow dr = dataTable.Rows[i];
+                if (Utils.ParseInt(dr["Lagerbestand"].ToString(), 0) >= grenze)
+                    dr.Delete();
+            }
         }
         #endregion
     }

@@ -18,8 +18,9 @@ namespace CompLogic {
         void     InsertProduct(IProduct iProduct);
         void     SelectProductCategory(ref DataTable dataTable);
         void     InsertProductCategory(IProductCategory iProductCategor);
-        void UpdateProduct(IProduct iProduct);
-        void WarningUpdate(decimal grenze, ref DataTable datatable);
+        void RestockProduct(string guid, int restockNumber);
+        //Unnötig, wird in der logic gemacht, braucht keinen eignen Datenbankzugriff
+        //void WarningUpdate(decimal grenze, ref DataTable datatable);
 
     }
 }

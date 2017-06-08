@@ -5,6 +5,7 @@ namespace CompLogic.Product
 {
     internal class CProduct : IProduct
     {
+        public string GUID { get; }
         public string Name { get; set; }
         public int Category { get; set; }
         public double Price { get; set; }

@@ -2,6 +2,7 @@
 namespace CompLogic {
 
     public interface IProduct {
+        string GUID { get; }
         string Name         { get; set; }
         int Category        { get; set; }
         double Price        { get; set; }

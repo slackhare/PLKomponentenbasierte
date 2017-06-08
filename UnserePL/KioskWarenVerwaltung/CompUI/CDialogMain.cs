@@ -30,6 +30,8 @@ namespace CompUI
         private ILogicUpdate _iLogicUpdate;
         private ICar _iCar;
         private IProduct _iProduct;
+
+        private DataTable _productDataTable;
         #endregion
 
         #region Properties
@@ -56,8 +58,26 @@ namespace CompUI
 
 
             _iProduct = new CFactoryCProduct().Create();
+
+            //hole produkte
+            _productDataTable = new DataTable();
+            loadProducts();
         }
         #endregion
+
+        //neu laden der produkte
+        private void loadProducts()
+        {
+            _productDataTable.Clear();
+            this.comboBoxVerkauf.Items.Clear();
+            _iLogicSearch.SelectProduct(ref _productDataTable);
+            foreach (DataRow row in _productDataTable.Rows)
+            {
+                this.comboBoxVerkauf.Items.Add(row["Produktname"].ToString() + " : " + row["Lagerbestand"].ToString());
+            }
+            //neu laden der box.. scheint nicht zu funktionieren?
+            this.comboBoxVerkauf.Refresh();
+        }
 
         #region Methods Interface IDialog
         public void Init()
@@ -75,6 +95,7 @@ namespace CompUI
             // Anzahl Autos in Datenbank abfragen
             //int nCars = _iLogicSearch.CountCars();
             this.Init();
+            loadProducts();
         }
 
         // Eventhandler Suchen
@@ -99,17 +120,15 @@ namespace CompUI
         private void searchMenuItem2_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = _dialogSearch.ShowDialog();
-            DataTable dataTable = new DataTable();
             if (dialogResult == DialogResult.OK)
             {
                 // Suchen ausführen
-                _iLogicSearch.SelectProduct(ref dataTable);
-                //_iLogicSearch.SelectCar(_iCar, ref dataTable);
+                loadProducts();
                 // Ergebnis in DialogSearchView darstellen
                 if (_dialogSearchView is CDialogSearchView)
                 {
                     // Down Cast
-                    (_dialogSearchView as CDialogSearchView).ResultTable = dataTable;
+                    (_dialogSearchView as CDialogSearchView).ResultTable = _productDataTable;
                 }
                 dialogResult = _dialogSearchView.ShowDialog();
             }
@@ -139,22 +158,21 @@ namespace CompUI
             }
         }
 
-
+        //Wieso eigentlich ein Timer? wär es nicht einfacher, die check-methode beim Verkauf aufzurufen? ist ja der einzige Fall, in dem sich der bestand reduziert
         private void timerWarnung_Tick(object sender, EventArgs e)
         {
             DataTable datatable = new DataTable();
             _iLogicWarning.Update(numericUpDownWarnungGrenze.Value, ref datatable);
-            // TODO Es Wird eine Methode benötigt das den Datatable mit allen Produckten Füllt die <= 10 Stück aujf lager haben
+            // TODO Es Wird eine Methode benötigt das die Datatable mit allen Produckten Füllt die <= 10 Stück aujf lager haben
 
 
         }
 
         private void buttonVerkaufen_Click(object sender, EventArgs e)
         {
-            _iProduct.Name = this.comboBoxVerkauf.Text;
-            _iProduct.Stock = Utils.ParseInt(this.numericUpDownAnz.ToString(), 1);
-
-            _iLogicUpdate.UpdateProduct(_iProduct);
+            string guid = _productDataTable.Rows[this.comboBoxVerkauf.SelectedIndex]["GUID"].ToString();
+            _iLogicUpdate.SellProduct(guid, Convert.ToInt32(numericUpDownAnz.Value));
+            loadProducts();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

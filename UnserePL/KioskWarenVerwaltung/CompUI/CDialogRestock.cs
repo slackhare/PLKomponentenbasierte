@@ -17,8 +17,10 @@ namespace CompUI
 
         #region Fields
         private ILogicSearch _iLogicSearch;
-        private ILogicTrade _iLogicTrade;
+        private ILogicUpdate _iLogicUpdate;
         private CDialogMain _dialogMain;
+        private DataTable _productDataTable;
+        
         #endregion
 
         #region Ctor
@@ -26,21 +28,32 @@ namespace CompUI
         {
             InitializeComponent();
             _iLogicSearch = iLogic.LogicSearch;
-            _iLogicTrade = iLogic.LogicTrade;
+            _iLogicUpdate = iLogic.LogicUpdate;
             _dialogMain = dialogMain;
             this.numericUpDown1.Minimum = 1;
+            _productDataTable = new DataTable();
         }
         #endregion
 
         #region Method
-        private void CDialogRestock_Load(object sender, EventArgs e)
+        //neu laden der produkte
+        private void loadProducts()
         {
-            DataTable dataTable = new DataTable();
-            _iLogicSearch.SelectProduct(ref dataTable);
-            foreach (DataRow row in dataTable.Rows)
+            _productDataTable.Clear();
+            this.checkedListBoxProductsAndStock.Items.Clear();
+            _iLogicSearch.SelectProduct(ref _productDataTable);
+            foreach (DataRow row in _productDataTable.Rows)
             {
                 this.checkedListBoxProductsAndStock.Items.Add(row["Produktname"].ToString() + " : " + row["Lagerbestand"].ToString());
             }
+            //neu laden der box.. scheint nicht zu funktionieren?
+            this.checkedListBoxProductsAndStock.Refresh();
+        }
+
+
+        private void CDialogRestock_Load(object sender, EventArgs e)
+        {
+            loadProducts();
         }
         #endregion
 
@@ -54,9 +67,13 @@ namespace CompUI
 
             foreach (int indexChecked in checkedListBoxProductsAndStock.CheckedIndices)
             {
-                // Hier jetzt den Bestand hochsetzen
-                this.checkedListBox1.Items.Add(checkedListBoxProductsAndStock.Items[indexChecked].ToString()
-                    + this.numericUpDown1.Value.ToString());
+                // Hier jetzt den Bestand hochsetzen - läuft im moment nur mit einem index, muss ich noch mal gucken..
+                foreach (int i in checkedListBoxProductsAndStock.SelectedIndices)
+                {
+                    string guid = _productDataTable.Rows[i]["GUID"].ToString();
+                    _iLogicUpdate.RestockProduct(guid, Convert.ToInt32(this.numericUpDown1.Value));
+                }
+                loadProducts();
             }
         }
 

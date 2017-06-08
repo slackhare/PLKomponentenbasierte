@@ -29,7 +29,10 @@ namespace CompLogic
 
     public interface ILogicUpdate
     {
-        void UpdateProduct(IProduct iProduct);
+        //sauberer, logik nicht in der Oberfläche
+        void RestockProduct(string guid, int restockNumber);
+
+        void SellProduct(string guid, int restockNumber);
     }
 
     public interface ILogicWarning
