@@ -29,28 +29,20 @@
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanelRestock = new System.Windows.Forms.TableLayoutPanel();
-            this.checkedListBoxProductsAndStock = new System.Windows.Forms.CheckedListBox();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.buttonCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(388, 38);
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(347, 12);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(120, 29);
+            this.button1.Size = new System.Drawing.Size(137, 56);
             this.button1.TabIndex = 4;
             this.button1.Text = "Auffüllen";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(388, 12);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown1.TabIndex = 6;
+            this.button1.Click += new System.EventHandler(this.button1_ClicktTabelLayout);
             // 
             // tableLayoutPanelRestock
             // 
@@ -58,34 +50,31 @@
             this.tableLayoutPanelRestock.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanelRestock.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanelRestock.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 77F));
-            this.tableLayoutPanelRestock.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 109F));
-            this.tableLayoutPanelRestock.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanelRestock.Location = new System.Drawing.Point(12, 127);
+            this.tableLayoutPanelRestock.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanelRestock.Name = "tableLayoutPanelRestock";
             this.tableLayoutPanelRestock.RowCount = 1;
-            this.tableLayoutPanelRestock.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 49.18033F));
-            this.tableLayoutPanelRestock.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.81967F));
-            this.tableLayoutPanelRestock.Size = new System.Drawing.Size(306, 122);
+            this.tableLayoutPanelRestock.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanelRestock.Size = new System.Drawing.Size(306, 239);
             this.tableLayoutPanelRestock.TabIndex = 7;
             // 
-            // checkedListBoxProductsAndStock
+            // buttonCancel
             // 
-            this.checkedListBoxProductsAndStock.FormattingEnabled = true;
-            this.checkedListBoxProductsAndStock.Location = new System.Drawing.Point(12, 12);
-            this.checkedListBoxProductsAndStock.Name = "checkedListBoxProductsAndStock";
-            this.checkedListBoxProductsAndStock.Size = new System.Drawing.Size(306, 109);
-            this.checkedListBoxProductsAndStock.TabIndex = 3;
+            this.buttonCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCancel.Location = new System.Drawing.Point(347, 195);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(137, 56);
+            this.buttonCancel.TabIndex = 8;
+            this.buttonCancel.Text = "Abbrechen";
+            this.buttonCancel.UseVisualStyleBackColor = true;
             // 
             // CDialogRestock
             // 
-            this.ClientSize = new System.Drawing.Size(589, 261);
+            this.ClientSize = new System.Drawing.Size(496, 263);
+            this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.tableLayoutPanelRestock);
-            this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.checkedListBoxProductsAndStock);
             this.Name = "CDialogRestock";
             this.Load += new System.EventHandler(this.CDialogRestock_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -96,8 +85,7 @@
         private System.Windows.Forms.CheckedListBox checkedListBoxProduct;
         private System.Windows.Forms.Button buttonOK;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelRestock;
-        private System.Windows.Forms.CheckedListBox checkedListBoxProductsAndStock;
+        private System.Windows.Forms.Button buttonCancel;
     }
 }

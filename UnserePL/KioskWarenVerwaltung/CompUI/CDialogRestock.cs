@@ -30,28 +30,16 @@ namespace CompUI
             _iLogicSearch = iLogic.LogicSearch;
             _iLogicUpdate = iLogic.LogicUpdate;
             _dialogMain = dialogMain;
-            this.numericUpDown1.Minimum = 1;
             _productDataTable = new DataTable();
         }
         #endregion
 
         #region Methods
-        //neu laden der produkte
-        private void loadProducts()
-        {
-            _productDataTable.Clear();
-            this.checkedListBoxProductsAndStock.Items.Clear();
-            _iLogicSearch.SelectProduct(ref _productDataTable);
-            foreach (DataRow row in _productDataTable.Rows)
-            {
-                this.checkedListBoxProductsAndStock.Items.Add(row["Produktname"].ToString() + " : " + row["Lagerbestand"].ToString());
-            }
-            //neu laden der box.. scheint nicht zu funktionieren?
-            this.checkedListBoxProductsAndStock.Refresh();
-        }
         //Füllt eine Andere Darstellung der Produkte
         private void loadProductsintoTableLayout()
-        { 
+        {
+            tableLayoutPanelRestock.Controls.Clear();
+            _productDataTable.Clear();
             _iLogicSearch.SelectProduct(ref _productDataTable);
 
             for (int i = 0; i < _productDataTable.Rows.Count; i++)
@@ -62,10 +50,14 @@ namespace CompUI
                 NumericUpDown col2 = new NumericUpDown();
                 col0.Name = "CheckBoxRow" + i;
                 col2.Name = "NumUpDownRow" + i;
+                col2.Minimum = 1;
 
                 // Setzt den Nötigen beschriftingstext
                 col0.Text = _productDataTable.Rows[i]["Produktname"].ToString();
                 col1.Text = _productDataTable.Rows[i]["Lagerbestand"].ToString();
+
+
+                // Setzen von Zusatzinformationen
 
                 col1.TextAlign = ContentAlignment.MiddleCenter;
 
@@ -84,25 +76,52 @@ namespace CompUI
         }
         #endregion
 
-        private void button1_Click(object sender, EventArgs e)
-        {
+        //private void button1_Click(object sender, EventArgs e)
+        //{
 
-            foreach (int indexChecked in checkedListBoxProductsAndStock.CheckedIndices)
-            {
-                // Hier jetzt den Bestand hochsetzen - läuft im moment nur mit einem index, muss ich noch mal gucken..
-                foreach (int i in checkedListBoxProductsAndStock.SelectedIndices)
-                {
-                    string guid = _productDataTable.Rows[i]["GUID"].ToString();
-                    _iLogicUpdate.RestockProduct(guid, Convert.ToInt32(this.numericUpDown1.Value));
-                }
-                loadProducts();
-            }
-        }
+        //    foreach (int indexChecked in checkedListBoxProductsAndStock.CheckedIndices)
+        //    {
+        //        // Hier jetzt den Bestand hochsetzen - läuft im moment nur mit einem index, muss ich noch mal gucken..
+        //        foreach (int i in checkedListBoxProductsAndStock.SelectedIndices)
+        //        {
+        //            string guid = _productDataTable.Rows[i]["GUID"].ToString();
+        //            _iLogicUpdate.RestockProduct(guid, Convert.ToInt32(this.numericUpDown1.Value));
+        //        }
+        //        loadProducts();
+        //    }
+        //}
 
         // Wird die Angaben aus der Tabelle für das Datenbankupdate Vorbereiten
         private void button1_ClicktTabelLayout(object sender, EventArgs e)
         {
-            
+            //foreach (CheckBox tocheck in tableLayoutPanelRestock.Controls.OfType<CheckBox>())
+            //{
+            //    foreach (NumericUpDown quant in tableLayoutPanelRestock.Controls.OfType<NumericUpDown>())
+            //    {
+            //        if(tocheck.Checked)
+            //        {
+            //            if (tableLayoutPanelRestock.GetRow(tocheck) == tableLayoutPanelRestock.GetRow(quant))
+            //            {
+            //                string guid = _productDataTable.Rows[tableLayoutPanelRestock.GetRow(tocheck)]["GUID"].ToString();
+            //                _iLogicUpdate.RestockProduct(guid, Convert.ToInt32(quant.Value));
+            //            }
+            //        }
+            //    }
+            //}
+            //loadProductsintoTableLayout();
+
+            CheckBox[] tocheckarray = tableLayoutPanelRestock.Controls.OfType<CheckBox>().ToArray();
+            NumericUpDown[] quantarray = tableLayoutPanelRestock.Controls.OfType<NumericUpDown>().ToArray();
+
+            for(int row = 0; row < tableLayoutPanelRestock.RowCount; row++)
+            {
+                if(tocheckarray[row].Checked)
+                {
+                    string guid = _productDataTable.Rows[row]["GUID"].ToString();
+                    _iLogicUpdate.RestockProduct(guid, Convert.ToInt32(quantarray[row].Value));
+                }
+            }
+            loadProductsintoTableLayout();
         }
         #endregion
     }
