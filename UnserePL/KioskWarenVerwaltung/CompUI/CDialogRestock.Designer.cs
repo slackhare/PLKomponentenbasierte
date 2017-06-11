@@ -53,7 +53,7 @@
             this.tableLayoutPanelRestock.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanelRestock.Name = "tableLayoutPanelRestock";
             this.tableLayoutPanelRestock.RowCount = 1;
-            this.tableLayoutPanelRestock.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanelRestock.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanelRestock.Size = new System.Drawing.Size(306, 239);
             this.tableLayoutPanelRestock.TabIndex = 7;
             // 

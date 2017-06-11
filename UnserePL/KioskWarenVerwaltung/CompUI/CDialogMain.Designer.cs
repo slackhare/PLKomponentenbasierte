@@ -31,16 +31,13 @@
             this.timerWarnung = new System.Windows.Forms.Timer(this.components);
             this.timerUpdate = new System.Windows.Forms.Timer(this.components);
             this.labelVerkauf = new System.Windows.Forms.Label();
-            this.comboBoxVerkauf = new System.Windows.Forms.ComboBox();
-            this.numericUpDownAnz = new System.Windows.Forms.NumericUpDown();
-            this.labelAnz = new System.Windows.Forms.Label();
             this.buttonVerkaufen = new System.Windows.Forms.Button();
             this.labelWarnung = new System.Windows.Forms.Label();
             this.labelWarnungGrenze = new System.Windows.Forms.Label();
             this.numericUpDownWarnungGrenze = new System.Windows.Forms.NumericUpDown();
             this.dataGridViewWarning = new System.Windows.Forms.DataGridView();
+            this.tableLayoutPanelVerkauf = new System.Windows.Forms.TableLayoutPanel();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAnz)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWarnungGrenze)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWarning)).BeginInit();
             this.SuspendLayout();
@@ -97,43 +94,9 @@
             this.labelVerkauf.TabIndex = 1;
             this.labelVerkauf.Text = "Verkauf";
             // 
-            // comboBoxVerkauf
-            // 
-            this.comboBoxVerkauf.FormattingEnabled = true;
-            this.comboBoxVerkauf.Location = new System.Drawing.Point(39, 141);
-            this.comboBoxVerkauf.Name = "comboBoxVerkauf";
-            this.comboBoxVerkauf.Size = new System.Drawing.Size(327, 28);
-            this.comboBoxVerkauf.TabIndex = 2;
-            // 
-            // numericUpDownAnz
-            // 
-            this.numericUpDownAnz.Location = new System.Drawing.Point(103, 175);
-            this.numericUpDownAnz.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownAnz.Name = "numericUpDownAnz";
-            this.numericUpDownAnz.Size = new System.Drawing.Size(120, 26);
-            this.numericUpDownAnz.TabIndex = 3;
-            this.numericUpDownAnz.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // labelAnz
-            // 
-            this.labelAnz.AutoSize = true;
-            this.labelAnz.Location = new System.Drawing.Point(35, 177);
-            this.labelAnz.Name = "labelAnz";
-            this.labelAnz.Size = new System.Drawing.Size(62, 20);
-            this.labelAnz.TabIndex = 4;
-            this.labelAnz.Text = "Anzahl:";
-            // 
             // buttonVerkaufen
             // 
-            this.buttonVerkaufen.Location = new System.Drawing.Point(39, 207);
+            this.buttonVerkaufen.Location = new System.Drawing.Point(408, 597);
             this.buttonVerkaufen.Name = "buttonVerkaufen";
             this.buttonVerkaufen.Size = new System.Drawing.Size(110, 49);
             this.buttonVerkaufen.TabIndex = 5;
@@ -155,7 +118,7 @@
             // labelWarnungGrenze
             // 
             this.labelWarnungGrenze.AutoSize = true;
-            this.labelWarnungGrenze.Location = new System.Drawing.Point(35, 285);
+            this.labelWarnungGrenze.Location = new System.Drawing.Point(542, 574);
             this.labelWarnungGrenze.Name = "labelWarnungGrenze";
             this.labelWarnungGrenze.Size = new System.Drawing.Size(169, 20);
             this.labelWarnungGrenze.TabIndex = 9;
@@ -163,7 +126,7 @@
             // 
             // numericUpDownWarnungGrenze
             // 
-            this.numericUpDownWarnungGrenze.Location = new System.Drawing.Point(210, 283);
+            this.numericUpDownWarnungGrenze.Location = new System.Drawing.Point(717, 572);
             this.numericUpDownWarnungGrenze.Name = "numericUpDownWarnungGrenze";
             this.numericUpDownWarnungGrenze.Size = new System.Drawing.Size(61, 26);
             this.numericUpDownWarnungGrenze.TabIndex = 10;
@@ -184,7 +147,21 @@
             this.dataGridViewWarning.RowTemplate.Height = 24;
             this.dataGridViewWarning.Size = new System.Drawing.Size(359, 190);
             this.dataGridViewWarning.TabIndex = 11;
-            this.dataGridViewWarning.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // tableLayoutPanelVerkauf
+            // 
+            this.tableLayoutPanelVerkauf.AutoScroll = true;
+            this.tableLayoutPanelVerkauf.ColumnCount = 4;
+            this.tableLayoutPanelVerkauf.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanelVerkauf.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanelVerkauf.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanelVerkauf.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanelVerkauf.Location = new System.Drawing.Point(12, 141);
+            this.tableLayoutPanelVerkauf.Name = "tableLayoutPanelVerkauf";
+            this.tableLayoutPanelVerkauf.RowCount = 1;
+            this.tableLayoutPanelVerkauf.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 331F));
+            this.tableLayoutPanelVerkauf.Size = new System.Drawing.Size(506, 453);
+            this.tableLayoutPanelVerkauf.TabIndex = 12;
             // 
             // CDialogMain
             // 
@@ -193,14 +170,12 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1099, 658);
+            this.Controls.Add(this.tableLayoutPanelVerkauf);
             this.Controls.Add(this.dataGridViewWarning);
             this.Controls.Add(this.numericUpDownWarnungGrenze);
             this.Controls.Add(this.labelWarnungGrenze);
             this.Controls.Add(this.labelWarnung);
             this.Controls.Add(this.buttonVerkaufen);
-            this.Controls.Add(this.labelAnz);
-            this.Controls.Add(this.numericUpDownAnz);
-            this.Controls.Add(this.comboBoxVerkauf);
             this.Controls.Add(this.labelVerkauf);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -214,7 +189,6 @@
             this.Load += new System.EventHandler(this.CDialogMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAnz)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWarnungGrenze)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWarning)).EndInit();
             this.ResumeLayout(false);
@@ -230,14 +204,12 @@
         private System.Windows.Forms.Timer timerWarnung;
         private System.Windows.Forms.Timer timerUpdate;
         private System.Windows.Forms.Label labelVerkauf;
-        private System.Windows.Forms.ComboBox comboBoxVerkauf;
-        private System.Windows.Forms.NumericUpDown numericUpDownAnz;
-        private System.Windows.Forms.Label labelAnz;
         private System.Windows.Forms.Button buttonVerkaufen;
         private System.Windows.Forms.Label labelWarnung;
         private System.Windows.Forms.Label labelWarnungGrenze;
         private System.Windows.Forms.NumericUpDown numericUpDownWarnungGrenze;
         private System.Windows.Forms.DataGridView dataGridViewWarning;
         private System.Windows.Forms.ToolStripMenuItem sortimentErweiternToolStripMenuItem;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelVerkauf;
     }
 }

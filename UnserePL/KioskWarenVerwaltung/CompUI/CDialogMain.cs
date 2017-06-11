@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
+using System.Drawing;
 
 using CompLogic;
 using CompLogic.Car;
 using CompLogic.Product;
+using System.Linq;
+
 namespace CompUI
 {
 
@@ -92,6 +95,38 @@ namespace CompUI
                 }
             }
         }
+
+        private void loadVerkaufTable()
+        {
+            tableLayoutPanelVerkauf.RowStyles.Clear();
+            for (int i = 0; i < _productDataTable.Rows.Count; i++)
+            {
+                // Erstellt für jede Spalte der Tabelle die Nötigen Objekte
+                CheckBox col0 = new CheckBox();
+                Label col1 = new Label();
+                NumericUpDown col2 = new NumericUpDown();
+                Label col3 = new Label();
+
+                col2.Minimum = 1;
+
+                // Setzt den Nötigen beschriftingstext
+                col0.Text = _productDataTable.Rows[i]["Produktname"].ToString();
+                col1.Text = _productDataTable.Rows[i]["Lagerbestand"].ToString();
+                col3.Text = _productDataTable.Rows[i]["Preis"].ToString();
+
+
+                // Setzen von Zusatzinformationen
+
+                col1.TextAlign = ContentAlignment.BottomCenter;
+                col3.TextAlign = ContentAlignment.BottomCenter;
+
+                // Füllt die Aktuelle Spalte des tableLayoutPanelRestock mit drei Control Objekten zur bearbeitung
+                Control[] rowcontrols = new Control[4] { col0, col1, col2, col3};
+                tableLayoutPanelVerkauf.Controls.AddRange(rowcontrols);
+                tableLayoutPanelVerkauf.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
+            }
+            this.tableLayoutPanelVerkauf.Refresh();
+        }
         #endregion
 
         #region Methods Interface IDialog
@@ -112,8 +147,8 @@ namespace CompUI
         {
             // Kategorienamen aus der Datenbank Holen
             this.InitKat();
-            loadProducts();
-
+            this.loadProducts();
+            this.loadVerkaufTable();
 
         }
 
@@ -164,6 +199,7 @@ namespace CompUI
                 _iLogicTrade.InsertProduct(_iProduct);
             }
             loadProducts();
+            loadVerkaufTable();
         }
 
         private void restockMenuItem_Click(object sender, EventArgs e)
@@ -177,6 +213,8 @@ namespace CompUI
                 //_iLogicTrade.InsertProduct(_iProduct);
 
             }
+            loadProducts();
+            loadVerkaufTable();
         }
 
         //Wieso eigentlich ein Timer? wär es nicht einfacher, die check-methode beim Verkauf aufzurufen? ist ja der einzige Fall, in dem sich der bestand reduziert
@@ -193,15 +231,21 @@ namespace CompUI
 
         private void buttonVerkaufen_Click(object sender, EventArgs e)
         {
-            string guid = _productDataTable.Rows[this.comboBoxVerkauf.SelectedIndex]["GUID"].ToString();
-            _iLogicUpdate.SellProduct(guid, Convert.ToInt32(numericUpDownAnz.Value));
+            CheckBox[] tocheckarray = tableLayoutPanelVerkauf.Controls.OfType<CheckBox>().ToArray();
+            NumericUpDown[] quantarray = tableLayoutPanelVerkauf.Controls.OfType<NumericUpDown>().ToArray();
+
+            for (int row = 0; row < tableLayoutPanelVerkauf.RowCount; row++)
+            {
+                if (tocheckarray[row].Checked)
+                {
+                    string guid = _productDataTable.Rows[row]["GUID"].ToString();
+                    _iLogicUpdate.SellProduct(guid, Convert.ToInt32(quantarray[row].Value));
+                }
+            }
             loadProducts();
+            loadVerkaufTable();
         }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+        #endregion
     }
-    #endregion
+
 }

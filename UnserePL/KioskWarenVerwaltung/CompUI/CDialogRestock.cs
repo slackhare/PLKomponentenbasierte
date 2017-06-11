@@ -41,6 +41,7 @@ namespace CompUI
             tableLayoutPanelRestock.Controls.Clear();
             _productDataTable.Clear();
             _iLogicSearch.SelectProduct(ref _productDataTable);
+            tableLayoutPanelRestock.RowStyles.Clear();
 
             for (int i = 0; i < _productDataTable.Rows.Count; i++)
             {
@@ -59,13 +60,16 @@ namespace CompUI
 
                 // Setzen von Zusatzinformationen
 
-                col1.TextAlign = ContentAlignment.MiddleCenter;
+                col1.TextAlign = ContentAlignment.BottomCenter;
 
                 // Füllt die Aktuelle Spalte des tableLayoutPanelRestock mit drei Control Objekten zur bearbeitung
                 Control[] rowcontrols = new Control[3] { col0, col1, col2 };
                 tableLayoutPanelRestock.Controls.AddRange(rowcontrols);
+                tableLayoutPanelRestock.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
             }
             //neu laden der box.. scheint nicht zu funktionieren?
+
+
             this.tableLayoutPanelRestock.Refresh();
         }
 
