@@ -41,6 +41,23 @@ namespace CompData {
             this.Close();
         }
 
+        public void InitCat(out object[] arrayCategory)
+        {
+            this.DbCommandGetCategory(_dbCommand);
+            this.Open();
+
+            DbDataReader dbDataReader = this.ExecuteQuery(_dbCommand);
+            // Schleife über ResultSet
+            List<object> listCategory = new List<object>();
+            while (dbDataReader.Read())
+            {
+                listCategory.Add(dbDataReader[0]);
+            }
+            arrayCategory = listCategory.ToArray();
+            if (!dbDataReader.IsClosed) dbDataReader.Close();
+            this.Close();
+        }
+
         // List of models for a specified maker
         public object[] GetModel( string make) {
             this.DbCommandGetModel( make, _dbCommand );
@@ -67,6 +84,14 @@ namespace CompData {
         protected virtual void DbCommandGetMake( DbCommand dbCommand ) {
             dbCommand.CommandText =
                  @"SELECT DISTINCT Make FROM CarTable ORDER BY Make";
+            dbCommand.CommandType = CommandType.Text;
+            dbCommand.Parameters.Clear();
+        }
+
+        protected virtual void DbCommandGetCategory(DbCommand dbCommand)
+        {
+            dbCommand.CommandText =
+                 @"SELECT DISTINCT Kategoriename FROM Produktkategorie ORDER BY Kategoriename";
             dbCommand.CommandType = CommandType.Text;
             dbCommand.Parameters.Clear();
         }

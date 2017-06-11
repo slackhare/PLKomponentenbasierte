@@ -12,6 +12,7 @@ namespace CompLogic
     public interface ILogicSearch
     {
         void Init(ref int nCars, out object[] arrayMake);
+        void InitCat(out object[] arrayKategorie);
         object[] GetModel(string make);
         void SelectCar(ICar iCar, ref DataTable dataTable);
         void SelectProduct(ref DataTable dataTable);

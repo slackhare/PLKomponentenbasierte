@@ -20,7 +20,7 @@ namespace CompUI
         // Komposition 
         private CDialogSearch _dialogSearch;
         private CDialogSearchView _dialogSearchView;
-        private CDialogTrade _dialogTrade;
+        private CDialogNew _dialogNew;
         private CDialogRestock _dialogRestock;
         // externe Komponenten
         private ILogic _iLogic;
@@ -53,7 +53,7 @@ namespace CompUI
             _iCar = new CFactoryCar().Create();
             _dialogSearch = new CDialogSearch(iLogic, this);
             _dialogSearchView = new CDialogSearchView(this);
-            _dialogTrade = new CDialogTrade(iLogic, this);
+            _dialogNew = new CDialogNew(iLogic, this);
             _dialogRestock = new CDialogRestock(iLogic, this);
 
 
@@ -61,7 +61,6 @@ namespace CompUI
 
             //hole produkte
             _productDataTable = new DataTable();
-            loadProducts();
         }
         #endregion
 
@@ -102,16 +101,20 @@ namespace CompUI
             //TODO: die folgende Zeile macht keinen Sinn. Es wird die Anzahl der Autos geholt und in 
             _iLogicSearch.Init(ref _nCategorys, out _arrayCategory);
         }
-        //public void InitKat( ref)
+        public void InitKat()
+        {
+            _iLogicSearch.InitCat(out _arrayCategory);
+        }
         #endregion
 
         #region Events
         private void CDialogMain_Load(object sender, EventArgs e)
         {
-            // Anzahl Autos in Datenbank abfragen
-            //int nCars = _iLogicSearch.CountCars();
-            this.Init();
+            // Kategorienamen aus der Datenbank Holen
+            this.InitKat();
             loadProducts();
+
+
         }
 
         // Eventhandler Suchen
@@ -151,14 +154,14 @@ namespace CompUI
         }
 
         // Eventhandler Verkaufen
-        private void tradeMenuItem_Click(object sender, EventArgs e)
+        private void newMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = _dialogTrade.ShowDialog();
+            DialogResult dialogResult = _dialogNew.ShowDialog();
             DataTable dataTable = new DataTable();
             if (dialogResult == DialogResult.OK)
             {
                 // Einfügen ausführen
-                _iLogicTrade.InsertCar(_iCar);
+                _iLogicTrade.InsertProduct(_iProduct);
             }
             loadProducts();
         }
@@ -172,6 +175,7 @@ namespace CompUI
                 // Einfügen ausführen
                 //Kein insert hier, das würde ein neues Produkt anlegen. wir wollen auffüllen. :)
                 //_iLogicTrade.InsertProduct(_iProduct);
+
             }
         }
 

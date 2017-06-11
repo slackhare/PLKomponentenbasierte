@@ -57,7 +57,6 @@
             this.comboBoxKategorie.Name = "comboBoxKategorie";
             this.comboBoxKategorie.Size = new System.Drawing.Size(353, 24);
             this.comboBoxKategorie.TabIndex = 2;
-            this.comboBoxKategorie.SelectedIndexChanged += new System.EventHandler(this.comboBoxKategorie_SelectedIndexChanged);
             // 
             // buttonOK
             // 

@@ -27,6 +27,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.searchMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lagerAuffüllenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sortimentErweiternToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timerWarnung = new System.Windows.Forms.Timer(this.components);
             this.timerUpdate = new System.Windows.Forms.Timer(this.components);
             this.labelVerkauf = new System.Windows.Forms.Label();
@@ -38,7 +39,6 @@
             this.labelWarnungGrenze = new System.Windows.Forms.Label();
             this.numericUpDownWarnungGrenze = new System.Windows.Forms.NumericUpDown();
             this.dataGridViewWarning = new System.Windows.Forms.DataGridView();
-            this.sortimentErweiternToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAnz)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWarnungGrenze)).BeginInit();
@@ -73,6 +73,13 @@
             this.lagerAuffüllenToolStripMenuItem.Size = new System.Drawing.Size(111, 23);
             this.lagerAuffüllenToolStripMenuItem.Text = "Lager auffüllen";
             this.lagerAuffüllenToolStripMenuItem.Click += new System.EventHandler(this.restockMenuItem_Click);
+            // 
+            // sortimentErweiternToolStripMenuItem
+            // 
+            this.sortimentErweiternToolStripMenuItem.Name = "sortimentErweiternToolStripMenuItem";
+            this.sortimentErweiternToolStripMenuItem.Size = new System.Drawing.Size(142, 23);
+            this.sortimentErweiternToolStripMenuItem.Text = "Sortiment erweitern";
+            this.sortimentErweiternToolStripMenuItem.Click += new System.EventHandler(this.newMenuItem_Click);
             // 
             // timerWarnung
             // 
@@ -178,12 +185,6 @@
             this.dataGridViewWarning.Size = new System.Drawing.Size(359, 190);
             this.dataGridViewWarning.TabIndex = 11;
             this.dataGridViewWarning.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // sortimentErweiternToolStripMenuItem
-            // 
-            this.sortimentErweiternToolStripMenuItem.Name = "sortimentErweiternToolStripMenuItem";
-            this.sortimentErweiternToolStripMenuItem.Size = new System.Drawing.Size(142, 23);
-            this.sortimentErweiternToolStripMenuItem.Text = "Sortiment erweitern";
             // 
             // CDialogMain
             // 

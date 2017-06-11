@@ -7,6 +7,7 @@ namespace CompLogic {
 
     public interface IDataCon {
         void Init( ref int nCars, out object[] arrayMake);
+        void InitCat(out object[] arrayKategorie);
         object[] GetModel( string make );
 
     }

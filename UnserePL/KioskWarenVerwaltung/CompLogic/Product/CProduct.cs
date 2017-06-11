@@ -18,7 +18,7 @@ namespace CompLogic.Product
             DataRow dataRow = dataTable.NewRow();
             dataRow["GUID"]                 = Utils.CreateGUID();
             dataRow["Produktname"]          = Name;
-            dataRow["Produktkategorie"]     = Category;
+            dataRow["Kategorie"]     = Category;
             dataRow["Lagerbestand"]         = Stock;
             dataRow["Preis"]                = Price;
  

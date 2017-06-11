@@ -92,7 +92,7 @@ namespace CompUI
         //}
 
         // Wird die Angaben aus der Tabelle für das Datenbankupdate Vorbereiten
-        private void button1_ClicktTabelLayout(object sender, EventArgs e)
+        private void buttonAcc_ClicktTabelLayout(object sender, EventArgs e)
         {
             //foreach (CheckBox tocheck in tableLayoutPanelRestock.Controls.OfType<CheckBox>())
             //{
@@ -121,8 +121,16 @@ namespace CompUI
                     _iLogicUpdate.RestockProduct(guid, Convert.ToInt32(quantarray[row].Value));
                 }
             }
-            loadProductsintoTableLayout();
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
         #endregion
+
+
     }
 }

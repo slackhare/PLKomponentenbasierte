@@ -28,21 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonAcc = new System.Windows.Forms.Button();
             this.tableLayoutPanelRestock = new System.Windows.Forms.TableLayoutPanel();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // buttonAcc
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(347, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(137, 56);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Auffüllen";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_ClicktTabelLayout);
+            this.buttonAcc.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAcc.Location = new System.Drawing.Point(347, 12);
+            this.buttonAcc.Name = "buttonAcc";
+            this.buttonAcc.Size = new System.Drawing.Size(137, 56);
+            this.buttonAcc.TabIndex = 4;
+            this.buttonAcc.Text = "Auffüllen";
+            this.buttonAcc.UseVisualStyleBackColor = true;
+            this.buttonAcc.Click += new System.EventHandler(this.buttonAcc_ClicktTabelLayout);
             // 
             // tableLayoutPanelRestock
             // 
@@ -66,13 +66,14 @@
             this.buttonCancel.TabIndex = 8;
             this.buttonCancel.Text = "Abbrechen";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // CDialogRestock
             // 
             this.ClientSize = new System.Drawing.Size(496, 263);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.tableLayoutPanelRestock);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonAcc);
             this.Name = "CDialogRestock";
             this.Load += new System.EventHandler(this.CDialogRestock_Load);
             this.ResumeLayout(false);
@@ -84,7 +85,7 @@
         private System.Windows.Forms.NumericUpDown numericUpDownAnz;
         private System.Windows.Forms.CheckedListBox checkedListBoxProduct;
         private System.Windows.Forms.Button buttonOK;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonAcc;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelRestock;
         private System.Windows.Forms.Button buttonCancel;
     }

@@ -32,6 +32,11 @@ namespace CompLogic {
             _iDataCon.Init( ref nCars, out arrayMake );
         }
 
+        public void InitCat(out object[] arrayCategory)
+        {
+            _iDataCon.InitCat(out arrayCategory);
+        }
+
         public  object[] GetModel( string make ) {
             return _iDataCon.GetModel( make );
         }

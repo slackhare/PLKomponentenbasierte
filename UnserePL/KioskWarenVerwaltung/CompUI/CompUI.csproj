@@ -97,11 +97,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="CDialogTrade.cs">
+    <Compile Include="CDialogNew.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CDialogTrade.designer.cs">
-      <DependentUpon>CDialogTrade.cs</DependentUpon>
+    <Compile Include="CDialogNew.designer.cs">
+      <DependentUpon>CDialogNew.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -130,8 +130,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="CDialogTrade.resx">
-      <DependentUpon>CDialogTrade.cs</DependentUpon>
+    <EmbeddedResource Include="CDialogNew.resx">
+      <DependentUpon>CDialogNew.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
