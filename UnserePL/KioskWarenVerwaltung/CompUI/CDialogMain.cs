@@ -216,12 +216,11 @@ namespace CompUI
 
         private void buttonVerkaufen_Click(object sender, EventArgs e)
         {
-            CheckBox[] tocheckarray = tableLayoutPanelVerkauf.Controls.OfType<CheckBox>().ToArray();
             NumericUpDown[] quantarray = tableLayoutPanelVerkauf.Controls.OfType<NumericUpDown>().ToArray();
 
             for (int row = 0; row < tableLayoutPanelVerkauf.RowCount; row++)
             {
-                if (tocheckarray[row].Checked)
+                if (Convert.ToInt32(quantarray[row].Value) > 0)
                 {
                     string guid = _productDataTable.Rows[row]["GUID"].ToString();
                     _iLogicUpdate.SellProduct(guid, Convert.ToInt32(quantarray[row].Value));

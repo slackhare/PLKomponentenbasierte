@@ -26,21 +26,25 @@ namespace CompData
             DbDataAdapter dbDataAdapter = this.CreateDbDataAdapter("CarTable");
             DataTable dataTable = this.GetSchema(dbDataAdapter);
             iCar.AddNewDataRow(dataTable);
+            dbDataAdapter.Update(dataTable);
         }
 
         public virtual void InsertProduct(IProduct iProduct)
         {
             DbDataAdapter dbDataAdapter = this.CreateDbDataAdapter("Produkt");
-            DataTable dataTable = this.GetSchema(dbDataAdapter);
+            DataTable dataTable = new DataTable();
+            SelectProduct(ref dataTable);
             iProduct.AddNewDataRow(dataTable);
-            this.Update(dataTable, dbDataAdapter);
+            dbDataAdapter.Update(dataTable);
         }
 
         public virtual void InsertProductCategory(IProductCategory iProductCategory)
         {
             DbDataAdapter dbDataAdapter = this.CreateDbDataAdapter("Produktkategorie");
-            DataTable dataTable = this.GetSchema(dbDataAdapter);
+            DataTable dataTable = new DataTable();
+            SelectProduct(ref dataTable);
             iProductCategory.AddNewDataRow(dataTable);
+            dbDataAdapter.Update(dataTable);
         }
 
         public void SelectCar(ICar iCar, ref DataTable dataTable)
