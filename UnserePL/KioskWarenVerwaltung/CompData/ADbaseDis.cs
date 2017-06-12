@@ -32,21 +32,13 @@ namespace CompData
             dbCommand.CommandType = CommandType.Text;
             dbCommand.Parameters.Clear();
             dbCommand.CommandText = @"INSERT INTO Produkt ( [GUID], [Produktname], [Lagerbestand], [Kategorie], [Preis] ) VALUES (";
-            dbCommand.CommandText += "'";
-            dbCommand.CommandText += Utils.CreateGUID().ToString();
-            dbCommand.CommandText += "', ";
-            dbCommand.CommandText += "'";
-            dbCommand.CommandText += iProduct.Name;
-            dbCommand.CommandText += "', ";
-            dbCommand.CommandText += iProduct.Stock.ToString();
-            dbCommand.CommandText += ", ";
-            dbCommand.CommandText += "'";
-            dbCommand.CommandText += iProduct.Category;
-            dbCommand.CommandText += "', ";
-            dbCommand.CommandText += iProduct.Price.ToString();
-            dbCommand.CommandText += ")";
+            dbCommand.CommandText += "[pGUID], [pProduktname], [pLagerbestand], [pKategorie], [pPreis])";
+            this.AddParameter(dbCommand, "pGUID", Utils.CreateGUID().ToString());
+            this.AddParameter(dbCommand, "pProduktname", iProduct.Name);
+            this.AddParameter(dbCommand, "pLagerbestand", iProduct.Stock);
+            this.AddParameter(dbCommand, "pKategorie", iProduct.Category);
+            this.AddParameter(dbCommand, "pPreis", iProduct.Price);
             _dbConnection.Open();
-            MessageBox.Show(dbCommand.CommandText, "Error Detected in Input", MessageBoxButtons.YesNo);
             dbCommand.ExecuteNonQuery();
         }
 
@@ -168,22 +160,6 @@ namespace CompData
             if (dbDataAdapter == null)
                 throw new Exception(" ADatabase.Update() dbDataAdapter is null");
 
-            MessageBox.Show(dbDataAdapter.InsertCommand.CommandText, "Error Detected in Input", MessageBoxButtons.YesNo);
-            MessageBox.Show(dbDataAdapter.UpdateCommand.CommandText, "Error Detected in Input", MessageBoxButtons.YesNo);
-            foreach (DataRow row in dataTable.Rows)
-            {
-                string s = "";
-                s += row["GUID"].ToString();
-                s += Environment.NewLine;
-                s += row["Produktname"].ToString();
-                s += Environment.NewLine;
-                s += row["Kategorie"].ToString();
-                s += Environment.NewLine;
-                s += row["Lagerbestand"].ToString();
-                s += Environment.NewLine;
-                s += row["Preis"].ToString();
-                MessageBox.Show(s, "Error Detected in Input", MessageBoxButtons.YesNo);
-            }
             int nRows = dbDataAdapter.Update(dataTable);
             // post condition is nRows == 0 zulässig?
 
