@@ -37,6 +37,7 @@
             this.numericUpDownWarnungGrenze = new System.Windows.Forms.NumericUpDown();
             this.dataGridViewWarning = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanelVerkauf = new System.Windows.Forms.TableLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWarnungGrenze)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWarning)).BeginInit();
@@ -163,6 +164,15 @@
             this.tableLayoutPanelVerkauf.Size = new System.Drawing.Size(506, 453);
             this.tableLayoutPanelVerkauf.TabIndex = 12;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(524, 545);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 20);
+            this.label1.TabIndex = 13;
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
             // CDialogMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -170,6 +180,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1099, 658);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.tableLayoutPanelVerkauf);
             this.Controls.Add(this.dataGridViewWarning);
             this.Controls.Add(this.numericUpDownWarnungGrenze);
@@ -211,5 +222,6 @@
         private System.Windows.Forms.DataGridView dataGridViewWarning;
         private System.Windows.Forms.ToolStripMenuItem sortimentErweiternToolStripMenuItem;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelVerkauf;
+        private System.Windows.Forms.Label label1;
     }
 }
