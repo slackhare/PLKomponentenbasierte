@@ -22,7 +22,7 @@ namespace CompLogic.Product
             dataRow["Lagerbestand"]         = Stock;
             dataRow["Preis"]                = Price;
  
-            dataTable.Rows.Add( dataRow ); // DataRow der Tabelle hinzufügen
+            dataTable.Rows.Add( dataRow ); // DataRow der Tabelle hinzufügen2
                                            // RowState steht auf RowState.Added
         }
     }

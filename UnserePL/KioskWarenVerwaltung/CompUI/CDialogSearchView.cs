@@ -27,7 +27,7 @@ namespace CompUI {
 
       #region Methods
       private void CDialogSearchView_Load( object sender, EventArgs e ) {
-
+            // Clear the dataGridView
          // set datasource
          this.dataGridView1.DataSource = ResultTable;
 
@@ -36,7 +36,7 @@ namespace CompUI {
             if( column.Name == "GUID" || column.Name == "Kategorie")
                 column.Visible = false;
          }
-         
+            dataGridView1.Rows.Clear();
             
          
       }      

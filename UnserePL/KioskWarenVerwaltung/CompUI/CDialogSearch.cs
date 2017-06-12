@@ -21,11 +21,11 @@ namespace CompUI {
 
       #region Eventhandler
       private void CDialogSearch_Load( object sender, EventArgs e ) {
-         comboBoxKategorie.Items.Clear( );
-         //comboBoxKategorie.Items.AddRange( _dialogMain.Make );
-         comboBoxKategorie.Items.AddRange(_dialogMain.Kategorie);
-         comboBoxKategorie.Items.Add( "Alle" );
-         comboBoxKategorie.Text = comboBoxKategorie.Items [ 0 ].ToString( );
+             comboBoxKategorie.Items.Clear( );
+            //comboBoxKategorie.Items.AddRange( _dialogMain.Make );
+            comboBoxKategorie.Items.Add("Alle");
+            comboBoxKategorie.Items.AddRange(_dialogMain.Kategorie);
+            comboBoxKategorie.Text = comboBoxKategorie.Items [ 0 ].ToString( );
       }
 
         //private void buttonOK_Click( object sender, EventArgs e ) {

@@ -33,6 +33,7 @@ namespace CompData
             DbDataAdapter dbDataAdapter = this.CreateDbDataAdapter("Produkt");
             DataTable dataTable = this.GetSchema(dbDataAdapter);
             iProduct.AddNewDataRow(dataTable);
+            this.Update(dataTable, dbDataAdapter);
         }
 
         public virtual void InsertProductCategory(IProductCategory iProductCategory)
@@ -121,6 +122,14 @@ namespace CompData
             this.AddParameter(dbCommand, "pMileage", iCar.Mileage);
 
             dbCommand.CommandText += " ORDER BY Price";
+        }
+
+        protected virtual void DbCommandSelectCar(IProduct iProduct, DbCommand dbCommand)
+        {
+            dbCommand.CommandType = CommandType.Text;
+            dbCommand.Parameters.Clear();
+            dbCommand.CommandText = @"SELECT * FROM Produkt";
+
         }
 
         protected virtual void DbCommandUpdateProduct(IProduct iProduct, DbCommand dbCommand)

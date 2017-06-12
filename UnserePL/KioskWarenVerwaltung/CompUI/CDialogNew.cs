@@ -49,6 +49,8 @@ namespace CompUI
             iProduct.Name = this.textBoxName.Text;
             iProduct.Category = Utils.ParseInt(this.comboBoxKategorie.Text, 1);
             iProduct.Stock = Convert.ToInt32(numericUpDownAnz.Value.ToString());
+
+            this.textBoxPreis.Text.Replace(",", ".");
             iProduct.Price = Convert.ToDouble(this.textBoxPreis.Text);
 
             this.DialogResult = DialogResult.OK;
