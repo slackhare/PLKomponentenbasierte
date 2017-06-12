@@ -216,9 +216,9 @@ namespace CompUI
         private void labelPrize_Update(object sender, EventArgs e)
         {
             this.labelPrize.Text = "Preis ingesamt: ";
-            int sumPrice = 0;
+            double sumPrice = 0;
             int numberToSell = 0;
-            int price = 0;
+            double price = 0;
             int column = 0;
             foreach (Control c in this.tableLayoutPanelVerkauf.Controls)
             {
@@ -236,7 +236,7 @@ namespace CompUI
                         break;
                     case 3:
                         //this.label1.Text += "Preis:";
-                        price = Int32.Parse(c.Text);
+                        price = double.Parse(c.Text);
                         break;
                 }
                 //this.label1.Text += c.Text;
