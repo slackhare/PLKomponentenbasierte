@@ -27,18 +27,15 @@ namespace CompUI {
 
       #region Methods
       private void CDialogSearchView_Load( object sender, EventArgs e ) {
-            // Clear the dataGridView
          // set datasource
          this.dataGridView1.DataSource = ResultTable;
 
-         // set primary key and foreign keys columns invisible
-         foreach( DataGridViewColumn column in this.dataGridView1.Columns ) {
-            if( column.Name == "GUID" || column.Name == "Kategorie")
-                column.Visible = false;
-         }
-            dataGridView1.Rows.Clear();
-            
-         
+            // set primary key and foreign keys columns invisible
+            foreach (DataGridViewColumn column in this.dataGridView1.Columns)
+            {
+                if (column.Name == "GUID" || column.Name == "Kategorie")
+                    column.Visible = false;
+            }      
       }      
       #endregion
    }

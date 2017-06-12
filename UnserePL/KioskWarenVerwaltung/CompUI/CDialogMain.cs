@@ -84,8 +84,10 @@ namespace CompUI
 
         private void loadVerkaufTabelle()
         {
+            _productDataTable.Clear();
             _iLogicSearch.SelectProduct(ref _productDataTable);
-            tableLayoutPanelVerkauf.RowStyles.Clear();
+            this.tableLayoutPanelVerkauf.Controls.Clear();
+            this.tableLayoutPanelVerkauf.RowStyles.Clear();
             for (int i = 0; i < _productDataTable.Rows.Count; i++)
             {
                 // Erstellt für jede Spalte der Tabelle die Nötigen Objekte
@@ -95,7 +97,7 @@ namespace CompUI
                 col2.Value = 0;
                 col2.Minimum = 0;
                 //redrawe lable 1 when changed
-                col2.Click += new System.EventHandler(this.label1_Click);
+                col2.Click += new System.EventHandler(this.labelPreis_Update);
                 Label col3 = new Label();
 
                 // Setzt den Nötigen beschriftingstext
@@ -114,7 +116,6 @@ namespace CompUI
                 tableLayoutPanelVerkauf.Controls.AddRange(rowcontrols);
                 tableLayoutPanelVerkauf.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
             }
-            this.tableLayoutPanelVerkauf.Refresh();
         }
         #endregion
 
@@ -164,6 +165,7 @@ namespace CompUI
             if (dialogResult == DialogResult.OK)
             {
                 // Suchen ausführen
+                _productDataTable.Clear();
                 _iLogicSearch.SelectProduct(ref _productDataTable);
                 // Ergebnis in DialogSearchView darstellen
                 if (_dialogSearchView is CDialogSearchView)
@@ -218,8 +220,8 @@ namespace CompUI
         {
             NumericUpDown[] quantarray = tableLayoutPanelVerkauf.Controls.OfType<NumericUpDown>().ToArray();
 
-            for (int row = 0; row < tableLayoutPanelVerkauf.RowCount; row++)
-            {
+            for (int row = 0; row < quantarray.Length; row++)
+                {
                 if (Convert.ToInt32(quantarray[row].Value) > 0)
                 {
                     string guid = _productDataTable.Rows[row]["GUID"].ToString();
@@ -230,9 +232,9 @@ namespace CompUI
         }
         #endregion
 
-        private void label1_Click(object sender, EventArgs e)
+        private void labelPreis_Update(object sender, EventArgs e)
         {
-            this.label1.Text = "Preis ingesamt: ";
+            this.labelPreis.Text = "Preis ingesamt: ";
             int sumPrice = 0;
             int numberToSell = 0;
             int price = 0;
@@ -271,8 +273,8 @@ namespace CompUI
                     column++;
                 }
             }
-            this.label1.Text += sumPrice.ToString();
-            this.label1.Text += " €";
+            this.labelPreis.Text += sumPrice.ToString();
+            this.labelPreis.Text += " €";
         }
     }
 
