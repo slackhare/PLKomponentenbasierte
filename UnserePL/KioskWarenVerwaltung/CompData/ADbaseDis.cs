@@ -23,14 +23,6 @@ namespace CompData
         }
         #endregion
 
-        public virtual void InsertCar(ICar iCar)
-        {
-            DbDataAdapter dbDataAdapter = this.CreateDbDataAdapter("CarTable");
-            DataTable dataTable = this.GetSchema(dbDataAdapter);
-            iCar.AddNewDataRow(dataTable);
-            Update(dataTable, dbDataAdapter);
-        }
-
         public virtual void InsertProduct(IProduct iProduct)
         {
             DbDataAdapter dbDataAdapter = this.CreateDbDataAdapter("Produkt");
@@ -45,14 +37,6 @@ namespace CompData
             DataTable dataTable = this.GetSchema(dbDataAdapter);
             iProductCategory.AddNewDataRow(dataTable);
             Update(dataTable, dbDataAdapter);
-        }
-
-        public void SelectCar(ICar iCar, ref DataTable dataTable)
-        {
-            DbDataAdapter dbDataAdapter = this.CreateDbDataAdapter("CarTable");
-            DbCommand dbCommand = dbDataAdapter.SelectCommand;
-            this.DbCommandSelectCar(iCar, dbCommand);
-            dbDataAdapter.Fill(dataTable);
         }
 
         public void SelectProduct(ref DataTable dataTable)
@@ -89,43 +73,6 @@ namespace CompData
                 }
             }
             Update(tableContent, dbDataAdapter);
-        }
-
-        /*Wird in der logik gemacht, braucht keinen datenbankzugriff
-        public virtual void WarningUpdate(decimal grenze, ref DataTable datatable)
-        {
-            //TODO Methode Schreiben
-        }
-        */
-
-        protected virtual void DbCommandSelectCar(ICar iCar, DbCommand dbCommand)
-        {
-
-            dbCommand.CommandType = CommandType.Text;
-            dbCommand.Parameters.Clear();
-            dbCommand.CommandText = @"SELECT * FROM CarTable";
-
-            if (iCar.Make != "Alle")
-            {
-                dbCommand.CommandText += " WHERE Make = [pMake]";
-                this.AddParameter(dbCommand, "pMake", iCar.Make);
-            }
-            if (iCar.Model != "Alle")
-            {
-                dbCommand.CommandText += " AND Model = [pModel]";
-                this.AddParameter(dbCommand, "pModel", iCar.Model);
-            }
-
-            dbCommand.CommandText += " AND Price <= [pPrice]";
-            this.AddParameter(dbCommand, "pPrice", iCar.Price);
-
-            dbCommand.CommandText += " AND Registration >= [pRegistration]";
-            this.AddParameter(dbCommand, "pRegistration", iCar.Registration);
-
-            dbCommand.CommandText += " AND Mileage <= [pMileage]";
-            this.AddParameter(dbCommand, "pMileage", iCar.Mileage);
-
-            dbCommand.CommandText += " ORDER BY Price";
         }
 
         protected virtual void DbCommandSelectCar(IProduct iProduct, DbCommand dbCommand)

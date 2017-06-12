@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using CompLogic;
+using System.Data;
 
 namespace CompUI
 {
@@ -27,7 +28,10 @@ namespace CompUI
         private void CDialogTrade_Load(object sender, EventArgs e)
         {
             comboBoxKategorie.Items.Clear();
-            comboBoxKategorie.Items.AddRange(_dialogMain.Kategorie);
+            foreach(DataRow row in _dialogMain.ProductCategoryDataTable.Rows)
+            {
+                comboBoxKategorie.Items.Add(row["Kategoriename"]);
+            }
             comboBoxKategorie.Text = comboBoxKategorie.Items[0].ToString();
         }
 
@@ -35,7 +39,7 @@ namespace CompUI
         {
             IProduct iProduct = _dialogMain.Produkt;
             iProduct.Name = this.textBoxName.Text;
-            iProduct.Category = this.comboBoxKategorie.Text;
+            iProduct.Category = _dialogMain.ProductCategoryDataTable.Rows[this.comboBoxKategorie.SelectedIndex].ToString();
             iProduct.Stock = Convert.ToInt32(numericUpDownAnz.Value.ToString());
 
             this.textBoxPreis.Text.Replace(",", ".");

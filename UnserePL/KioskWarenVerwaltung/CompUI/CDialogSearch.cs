@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using CompLogic;
+using System.Data;
 
 namespace CompUI {
     internal partial class CDialogSearch : Form
@@ -25,7 +26,10 @@ namespace CompUI {
         {
             comboBoxKategorie.Items.Clear();
             comboBoxKategorie.Items.Add("Alle");
-            comboBoxKategorie.Items.AddRange(_dialogMain.Kategorie);
+            foreach (DataRow row in _dialogMain.ProductCategoryDataTable.Rows)
+            {
+                comboBoxKategorie.Items.Add(row["Kategoriename"]);
+            }
             comboBoxKategorie.Text = comboBoxKategorie.Items[0].ToString();
         }
 

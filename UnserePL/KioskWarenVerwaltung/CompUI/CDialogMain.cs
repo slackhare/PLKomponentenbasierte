@@ -33,12 +33,12 @@ namespace CompUI
         private IProduct _iProduct;
 
         private DataTable _productDataTable;
+        private DataTable _productCategoryDataTable;
         #endregion
 
         #region Properties
         internal IProduct Produkt { get { return _iProduct; } }
-        internal object[] Make { get { return _arrayMake; } }
-        internal object[] Kategorie { get { return _arrayCategory; } }
+        internal DataTable ProductCategoryDataTable { get { return _productCategoryDataTable; } }
         #endregion
 
         #region Ctor
@@ -60,6 +60,7 @@ namespace CompUI
 
             //hole produkte
             _productDataTable = new DataTable();
+            _productCategoryDataTable = new DataTable();
         }
         #endregion
 
@@ -76,6 +77,12 @@ namespace CompUI
                     column.Visible = false;
                 }
             }
+        }
+
+        private void loadCategoryTabelle()
+        {
+            _productCategoryDataTable.Clear();
+            _iLogicSearch.SelectProductCategory(ref _productCategoryDataTable);
         }
 
         private void loadSellingTabelle()
