@@ -88,7 +88,7 @@
             // 
             this.labelVerkauf.AutoSize = true;
             this.labelVerkauf.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelVerkauf.Location = new System.Drawing.Point(32, 101);
+            this.labelVerkauf.Location = new System.Drawing.Point(12, 46);
             this.labelVerkauf.Name = "labelVerkauf";
             this.labelVerkauf.Size = new System.Drawing.Size(128, 37);
             this.labelVerkauf.TabIndex = 1;
@@ -96,7 +96,7 @@
             // 
             // buttonVerkaufen
             // 
-            this.buttonVerkaufen.Location = new System.Drawing.Point(408, 597);
+            this.buttonVerkaufen.Location = new System.Drawing.Point(408, 545);
             this.buttonVerkaufen.Name = "buttonVerkaufen";
             this.buttonVerkaufen.Size = new System.Drawing.Size(110, 49);
             this.buttonVerkaufen.TabIndex = 5;
@@ -118,7 +118,7 @@
             // labelWarnungGrenze
             // 
             this.labelWarnungGrenze.AutoSize = true;
-            this.labelWarnungGrenze.Location = new System.Drawing.Point(542, 574);
+            this.labelWarnungGrenze.Location = new System.Drawing.Point(524, 574);
             this.labelWarnungGrenze.Name = "labelWarnungGrenze";
             this.labelWarnungGrenze.Size = new System.Drawing.Size(169, 20);
             this.labelWarnungGrenze.TabIndex = 9;
@@ -126,7 +126,7 @@
             // 
             // numericUpDownWarnungGrenze
             // 
-            this.numericUpDownWarnungGrenze.Location = new System.Drawing.Point(717, 572);
+            this.numericUpDownWarnungGrenze.Location = new System.Drawing.Point(699, 572);
             this.numericUpDownWarnungGrenze.Name = "numericUpDownWarnungGrenze";
             this.numericUpDownWarnungGrenze.Size = new System.Drawing.Size(61, 26);
             this.numericUpDownWarnungGrenze.TabIndex = 10;
@@ -156,10 +156,10 @@
             this.tableLayoutPanelVerkauf.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanelVerkauf.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanelVerkauf.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelVerkauf.Location = new System.Drawing.Point(12, 141);
+            this.tableLayoutPanelVerkauf.Location = new System.Drawing.Point(12, 86);
             this.tableLayoutPanelVerkauf.Name = "tableLayoutPanelVerkauf";
             this.tableLayoutPanelVerkauf.RowCount = 1;
-            this.tableLayoutPanelVerkauf.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 331F));
+            this.tableLayoutPanelVerkauf.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 453F));
             this.tableLayoutPanelVerkauf.Size = new System.Drawing.Size(506, 453);
             this.tableLayoutPanelVerkauf.TabIndex = 12;
             // 

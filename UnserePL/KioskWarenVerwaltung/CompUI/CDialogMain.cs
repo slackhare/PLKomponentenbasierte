@@ -68,20 +68,6 @@ namespace CompUI
         #endregion
 
         #region Methods
-        //neu laden der produkte
-        private void loadProducts()
-        {
-            _productDataTable.Clear();
-            this.comboBoxVerkauf.Items.Clear();
-            _iLogicSearch.SelectProduct(ref _productDataTable);
-            foreach (DataRow row in _productDataTable.Rows)
-            {
-                this.comboBoxVerkauf.Items.Add(row["Produktname"].ToString() + " : " + row["Lagerbestand"].ToString());
-            }
-            //neu laden der box.. scheint nicht zu funktionieren?
-            this.comboBoxVerkauf.Refresh();
-        }
-
         private void displayWaring( DataTable datatable)
         {
             this.dataGridViewWarning.DataSource = datatable;
@@ -96,8 +82,9 @@ namespace CompUI
             }
         }
 
-        private void loadVerkaufTable()
+        private void loadVerkaufTabelle()
         {
+            _iLogicSearch.SelectProduct(ref _productDataTable);
             tableLayoutPanelVerkauf.RowStyles.Clear();
             for (int i = 0; i < _productDataTable.Rows.Count; i++)
             {
@@ -146,9 +133,8 @@ namespace CompUI
         private void CDialogMain_Load(object sender, EventArgs e)
         {
             // Kategorienamen aus der Datenbank Holen
-            this.InitKat();
-            this.loadProducts();
-            this.loadVerkaufTable();
+            this.InitKat();     
+            this.loadVerkaufTabelle();
 
         }
 
@@ -177,7 +163,7 @@ namespace CompUI
             if (dialogResult == DialogResult.OK)
             {
                 // Suchen ausführen
-                loadProducts();
+                _iLogicSearch.SelectProduct(ref _productDataTable);
                 // Ergebnis in DialogSearchView darstellen
                 if (_dialogSearchView is CDialogSearchView)
                 {
@@ -198,8 +184,7 @@ namespace CompUI
                 // Einfügen ausführen
                 _iLogicTrade.InsertProduct(_iProduct);
             }
-            loadProducts();
-            loadVerkaufTable();
+            loadVerkaufTabelle();
         }
 
         private void restockMenuItem_Click(object sender, EventArgs e)
@@ -213,8 +198,7 @@ namespace CompUI
                 //_iLogicTrade.InsertProduct(_iProduct);
 
             }
-            loadProducts();
-            loadVerkaufTable();
+            loadVerkaufTabelle();
         }
 
         //Wieso eigentlich ein Timer? wär es nicht einfacher, die check-methode beim Verkauf aufzurufen? ist ja der einzige Fall, in dem sich der bestand reduziert
@@ -242,8 +226,7 @@ namespace CompUI
                     _iLogicUpdate.SellProduct(guid, Convert.ToInt32(quantarray[row].Value));
                 }
             }
-            loadProducts();
-            loadVerkaufTable();
+            loadVerkaufTabelle();
         }
         #endregion
     }
