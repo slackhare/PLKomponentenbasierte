@@ -99,7 +99,7 @@ namespace CompUI
                 col2tosell.Value = 0;
                 col2tosell.Minimum = 0;
                 //redrawe lable 1 when changed
-                col2tosell.ValueChanged += new System.EventHandler(this.labelPrize_Update);
+                col2tosell.Click += new System.EventHandler(this.labelPrize_Update);
                 Label col3 = new Label();
 
                 // Setzt den Nötigen beschriftingstext
@@ -188,7 +188,6 @@ namespace CompUI
         private void buttonSell_Click(object sender, EventArgs e)
         {
             NumericUpDown[] quantarray = tableLayoutPanelVerkauf.Controls.OfType<NumericUpDown>().ToArray();
-
             for (int row = 0; row < quantarray.Length; row++)
             {
                 if (Convert.ToInt32(quantarray[row].Value) > 0)
