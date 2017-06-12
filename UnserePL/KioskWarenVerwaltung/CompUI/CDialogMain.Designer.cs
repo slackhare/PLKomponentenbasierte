@@ -24,6 +24,7 @@
         /// </summary>
         private void InitializeComponent( ) {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CDialogMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.searchMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lagerAuffüllenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -37,7 +38,7 @@
             this.numericUpDownWarnungGrenze = new System.Windows.Forms.NumericUpDown();
             this.dataGridViewWarning = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanelVerkauf = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelPreis = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWarnungGrenze)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWarning)).BeginInit();
@@ -164,14 +165,14 @@
             this.tableLayoutPanelVerkauf.Size = new System.Drawing.Size(506, 453);
             this.tableLayoutPanelVerkauf.TabIndex = 12;
             // 
-            // label1
+            // labelPreis
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(524, 545);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 20);
-            this.label1.TabIndex = 13;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.labelPreis.AutoSize = true;
+            this.labelPreis.Location = new System.Drawing.Point(524, 545);
+            this.labelPreis.Name = "labelPreis";
+            this.labelPreis.Size = new System.Drawing.Size(0, 20);
+            this.labelPreis.TabIndex = 13;
+            this.labelPreis.Click += new System.EventHandler(this.labelPreis_Update);
             // 
             // CDialogMain
             // 
@@ -180,7 +181,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1099, 658);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelPreis);
             this.Controls.Add(this.tableLayoutPanelVerkauf);
             this.Controls.Add(this.dataGridViewWarning);
             this.Controls.Add(this.numericUpDownWarnungGrenze);
@@ -191,12 +192,13 @@
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "CDialogMain";
-            this.Text = "Automarkt";
+            this.Text = "Lagerverwaltung";
             this.Load += new System.EventHandler(this.CDialogMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -222,6 +224,6 @@
         private System.Windows.Forms.DataGridView dataGridViewWarning;
         private System.Windows.Forms.ToolStripMenuItem sortimentErweiternToolStripMenuItem;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelVerkauf;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelPreis;
     }
 }
