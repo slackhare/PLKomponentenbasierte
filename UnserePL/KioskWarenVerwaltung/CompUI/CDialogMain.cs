@@ -14,8 +14,6 @@ namespace CompUI
     {
 
         #region Fields
-        private int _nCars;
-        private object[] _arrayMake;
         //Wieso braucht man die variablen?
         private int _nCategorys;
         private object[] _arrayCategory;
@@ -154,8 +152,7 @@ namespace CompUI
                 dialogResult = _dialogSearchView.ShowDialog();
             }
         }
-
-        // Eventhandler Verkaufen
+        #region MenuItem_Click
         private void newMenuItem_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = _dialogNew.ShowDialog();
@@ -181,25 +178,14 @@ namespace CompUI
             }
             loadSellingTabelle();
         }
-
-        //Wieso eigentlich ein Timer? wär es nicht einfacher, die check-methode beim Verkauf aufzurufen? ist ja der einzige Fall, in dem sich der bestand reduziert
-        private void timerWarnung_Tick(object sender, EventArgs e)
-        {
-            this.dataGridViewWarning.DataSource = null;
-            DataTable datatable = new DataTable();
-            _iLogicWarning.Update(numericUpDownWarnungGrenze.Value, ref datatable);
-            if (datatable.Rows.Count > 0 )
-            {
-                displayWaring(datatable);
-            }
-        }
-
+        #endregion
+        // Eventhandler Verkaufen
         private void buttonSell_Click(object sender, EventArgs e)
         {
             NumericUpDown[] quantarray = tableLayoutPanelVerkauf.Controls.OfType<NumericUpDown>().ToArray();
 
             for (int row = 0; row < quantarray.Length; row++)
-                {
+            {
                 if (Convert.ToInt32(quantarray[row].Value) > 0)
                 {
                     string guid = _productDataTable.Rows[row]["GUID"].ToString();
@@ -208,8 +194,6 @@ namespace CompUI
             }
             loadSellingTabelle();
         }
-        #endregion
-
         private void labelPrize_Update(object sender, EventArgs e)
         {
             this.labelPrize.Text = "Preis ingesamt: ";
@@ -254,6 +238,18 @@ namespace CompUI
             this.labelPrize.Text += sumPrice.ToString();
             this.labelPrize.Text += " €";
         }
+        //Wieso eigentlich ein Timer? wär es nicht einfacher, die check-methode beim Verkauf aufzurufen? ist ja der einzige Fall, in dem sich der bestand reduziert
+        private void timerWarnung_Tick(object sender, EventArgs e)
+        {
+            this.dataGridViewWarning.DataSource = null;
+            DataTable datatable = new DataTable();
+            _iLogicWarning.Update(numericUpDownWarnungGrenze.Value, ref datatable);
+            if (datatable.Rows.Count > 0 )
+            {
+                displayWaring(datatable);
+            }
+        }
+        #endregion
     }
 
 }

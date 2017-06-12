@@ -21,7 +21,7 @@ namespace CompUI {
         }
         #endregion
 
-        #region Eventhandler
+        #region Events
         private void CDialogSearch_Load(object sender, EventArgs e)
         {
             comboBoxKategorie.Items.Clear();

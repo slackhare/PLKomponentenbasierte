@@ -24,7 +24,7 @@ namespace CompUI
         }
         #endregion
 
-        #region Methods
+        #region Events
         private void CDialogTrade_Load(object sender, EventArgs e)
         {
             comboBoxKategorie.Items.Clear();

@@ -25,7 +25,7 @@ namespace CompUI {
       }
       #endregion
 
-      #region Methods
+      #region Events
       private void CDialogSearchView_Load( object sender, EventArgs e ) {
          // set datasource
          this.dataGridView1.DataSource = ResultTable;
