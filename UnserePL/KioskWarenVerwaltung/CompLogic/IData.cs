@@ -12,13 +12,12 @@ namespace CompLogic {
 
     }
 
-    public interface IDataDis {
-        void     SelectCar( ICar iCar, ref DataTable dataTable);
-        void     InsertCar( ICar iCar );
-        void     SelectProduct(ref DataTable dataTable);
-        void     InsertProduct(IProduct iProduct);
-        void     SelectProductCategory(ref DataTable dataTable);
-        void     InsertProductCategory(IProductCategory iProductCategor);
+    public interface IDataDis
+    {
+        void SelectProduct(ref DataTable dataTable);
+        void InsertProduct(IProduct iProduct);
+        void SelectProductCategory(ref DataTable dataTable);
+        void InsertProductCategory(IProductCategory iProductCategor);
         void RestockProduct(string guid, int restockNumber);
         //Unnötig, wird in der logic gemacht, braucht keinen eignen Datenbankzugriff
         //void WarningUpdate(decimal grenze, ref DataTable datatable);

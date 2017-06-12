@@ -72,48 +72,15 @@ namespace CompUI
 
             this.tableLayoutPanelRestock.Refresh();
         }
-
+        #endregion
         #region Events
         private void CDialogRestock_Load(object sender, EventArgs e)
         {
             loadProductsintoTableLayout();
         }
-        #endregion
-
-        //private void button1_Click(object sender, EventArgs e)
-        //{
-
-        //    foreach (int indexChecked in checkedListBoxProductsAndStock.CheckedIndices)
-        //    {
-        //        // Hier jetzt den Bestand hochsetzen - läuft im moment nur mit einem index, muss ich noch mal gucken..
-        //        foreach (int i in checkedListBoxProductsAndStock.SelectedIndices)
-        //        {
-        //            string guid = _productDataTable.Rows[i]["GUID"].ToString();
-        //            _iLogicUpdate.RestockProduct(guid, Convert.ToInt32(this.numericUpDown1.Value));
-        //        }
-        //        loadProducts();
-        //    }
-        //}
-
         // Wird die Angaben aus der Tabelle für das Datenbankupdate Vorbereiten
         private void buttonAcc_ClicktTabelLayout(object sender, EventArgs e)
         {
-            //foreach (CheckBox tocheck in tableLayoutPanelRestock.Controls.OfType<CheckBox>())
-            //{
-            //    foreach (NumericUpDown quant in tableLayoutPanelRestock.Controls.OfType<NumericUpDown>())
-            //    {
-            //        if(tocheck.Checked)
-            //        {
-            //            if (tableLayoutPanelRestock.GetRow(tocheck) == tableLayoutPanelRestock.GetRow(quant))
-            //            {
-            //                string guid = _productDataTable.Rows[tableLayoutPanelRestock.GetRow(tocheck)]["GUID"].ToString();
-            //                _iLogicUpdate.RestockProduct(guid, Convert.ToInt32(quant.Value));
-            //            }
-            //        }
-            //    }
-            //}
-            //loadProductsintoTableLayout();
-
             CheckBox[] tocheckarray = tableLayoutPanelRestock.Controls.OfType<CheckBox>().ToArray();
             NumericUpDown[] quantarray = tableLayoutPanelRestock.Controls.OfType<NumericUpDown>().ToArray();
 
@@ -134,7 +101,5 @@ namespace CompUI
             this.Close();
         }
         #endregion
-
-
     }
 }

@@ -9,7 +9,6 @@ namespace CompLogic {
         private IData     _iData;
         private IDataCon  _iDataCon;
         private IDataDis  _iDataDis;
-        private ICar      _iCar;
         #endregion
 
         #region Properties         
@@ -41,10 +40,6 @@ namespace CompLogic {
             return _iDataCon.GetModel( make );
         }
 
-        public void SelectCar( ICar iCar, ref DataTable datatable ) {
-            _iDataDis.SelectCar( iCar, ref datatable );
-        }
-
         public void SelectProduct(ref DataTable datatable)
         {
             _iDataDis.SelectProduct(ref datatable);
@@ -64,9 +59,6 @@ namespace CompLogic {
         #endregion
 
         #region Interface ILogicTrade Methods
-        public void InsertCar( ICar iCar ) {
-            _iDataDis.InsertCar( iCar );
-        }
         public void InsertProduct(IProduct iProduct)
         {
             _iDataDis.InsertProduct(iProduct);

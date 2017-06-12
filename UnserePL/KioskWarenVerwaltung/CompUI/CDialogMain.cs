@@ -4,7 +4,6 @@ using System.Windows.Forms;
 using System.Drawing;
 
 using CompLogic;
-using CompLogic.Car;
 using CompLogic.Product;
 using System.Linq;
 
@@ -31,7 +30,6 @@ namespace CompUI
         private ILogicTrade _iLogicTrade;
         private ILogicWarning _iLogicWarning;
         private ILogicUpdate _iLogicUpdate;
-        private ICar _iCar;
         private IProduct _iProduct;
 
         private DataTable _productDataTable;
@@ -39,7 +37,6 @@ namespace CompUI
 
         #region Properties
         internal IProduct Produkt { get { return _iProduct; } }
-        internal ICar Car { get { return _iCar; } }
         internal object[] Make { get { return _arrayMake; } }
         internal object[] Kategorie { get { return _arrayCategory; } }
         #endregion
@@ -53,7 +50,6 @@ namespace CompUI
             _iLogicTrade = iLogic.LogicTrade;
             _iLogicWarning = iLogic.LogicWarning;
             _iLogicUpdate = iLogic.LogicUpdate;
-            _iCar = new CFactoryCar().Create();
             _dialogSearch = new CDialogSearch(iLogic, this);
             _dialogSearchView = new CDialogSearchView(this);
             _dialogNew = new CDialogNew(iLogic, this);
@@ -82,7 +78,7 @@ namespace CompUI
             }
         }
 
-        private void loadVerkaufTabelle()
+        private void loadSellingTabelle()
         {
             _productDataTable.Clear();
             _iLogicSearch.SelectProduct(ref _productDataTable);
@@ -91,28 +87,28 @@ namespace CompUI
             for (int i = 0; i < _productDataTable.Rows.Count; i++)
             {
                 // Erstellt für jede Spalte der Tabelle die Nötigen Objekte
-                Label col0 = new Label();
-                Label col1 = new Label();
-                NumericUpDown col2 = new NumericUpDown();
-                col2.Value = 0;
-                col2.Minimum = 0;
+                Label col0name = new Label();
+                Label col1stock = new Label();
+                NumericUpDown col2tosell = new NumericUpDown();
+                col2tosell.Value = 0;
+                col2tosell.Minimum = 0;
                 //redrawe lable 1 when changed
-                col2.Click += new System.EventHandler(this.labelPreis_Update);
+                col2tosell.Click += new System.EventHandler(this.labelPrize_Update);
                 Label col3 = new Label();
 
                 // Setzt den Nötigen beschriftingstext
-                col0.Text = _productDataTable.Rows[i]["Produktname"].ToString();
-                col1.Text = _productDataTable.Rows[i]["Lagerbestand"].ToString();
+                col0name.Text = _productDataTable.Rows[i]["Produktname"].ToString();
+                col1stock.Text = _productDataTable.Rows[i]["Lagerbestand"].ToString();
                 col3.Text = _productDataTable.Rows[i]["Preis"].ToString();
 
 
                 // Setzen von Zusatzinformationen
 
-                col1.TextAlign = ContentAlignment.BottomCenter;
+                col1stock.TextAlign = ContentAlignment.BottomCenter;
                 col3.TextAlign = ContentAlignment.BottomCenter;
 
                 // Füllt die Aktuelle Spalte des tableLayoutPanelRestock mit drei Control Objekten zur bearbeitung
-                Control[] rowcontrols = new Control[4] { col0, col1, col2, col3};
+                Control[] rowcontrols = new Control[4] { col0name, col1stock, col2tosell, col3};
                 tableLayoutPanelVerkauf.Controls.AddRange(rowcontrols);
                 tableLayoutPanelVerkauf.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
             }
@@ -120,13 +116,7 @@ namespace CompUI
         #endregion
 
         #region Methods Interface IDialog
-        public void Init()
-        {
-            _iLogicSearch.Init(ref _nCars, out _arrayMake);
-            //TODO: die folgende Zeile macht keinen Sinn. Es wird die Anzahl der Autos geholt und in 
-            _iLogicSearch.Init(ref _nCategorys, out _arrayCategory);
-        }
-        public void InitKat()
+        public void InitCat()
         {
             _iLogicSearch.InitCat(out _arrayCategory);
         }
@@ -136,30 +126,11 @@ namespace CompUI
         private void CDialogMain_Load(object sender, EventArgs e)
         {
             // Kategorienamen aus der Datenbank Holen
-            this.InitKat();     
-            this.loadVerkaufTabelle();
+            this.InitCat();     
+            this.loadSellingTabelle();
         }
-
         // Eventhandler Suchen
         private void searchMenuItem_Click(object sender, EventArgs e)
-        {
-            DialogResult dialogResult = _dialogSearch.ShowDialog();
-            DataTable dataTable = new DataTable();
-            if (dialogResult == DialogResult.OK)
-            {
-                // Suchen ausführen
-                _iLogicSearch.SelectCar(_iCar, ref dataTable);
-                // Ergebnis in DialogSearchView darstellen
-                if (_dialogSearchView is CDialogSearchView)
-                {
-                    // Down Cast
-                    (_dialogSearchView as CDialogSearchView).ResultTable = dataTable;
-                }
-                dialogResult = _dialogSearchView.ShowDialog();
-            }
-        }
-
-        private void searchMenuItem2_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = _dialogSearch.ShowDialog();
             if (dialogResult == DialogResult.OK)
@@ -187,7 +158,7 @@ namespace CompUI
                 // Einfügen ausführen
                 _iLogicTrade.InsertProduct(_iProduct);
             }
-            loadVerkaufTabelle();
+            loadSellingTabelle();
         }
 
         private void restockMenuItem_Click(object sender, EventArgs e)
@@ -201,7 +172,7 @@ namespace CompUI
                 //_iLogicTrade.InsertProduct(_iProduct);
 
             }
-            loadVerkaufTabelle();
+            loadSellingTabelle();
         }
 
         //Wieso eigentlich ein Timer? wär es nicht einfacher, die check-methode beim Verkauf aufzurufen? ist ja der einzige Fall, in dem sich der bestand reduziert
@@ -216,7 +187,7 @@ namespace CompUI
             }
         }
 
-        private void buttonVerkaufen_Click(object sender, EventArgs e)
+        private void buttonSell_Click(object sender, EventArgs e)
         {
             NumericUpDown[] quantarray = tableLayoutPanelVerkauf.Controls.OfType<NumericUpDown>().ToArray();
 
@@ -228,13 +199,13 @@ namespace CompUI
                     _iLogicUpdate.SellProduct(guid, Convert.ToInt32(quantarray[row].Value));
                 }
             }
-            loadVerkaufTabelle();
+            loadSellingTabelle();
         }
         #endregion
 
-        private void labelPreis_Update(object sender, EventArgs e)
+        private void labelPrize_Update(object sender, EventArgs e)
         {
-            this.labelPreis.Text = "Preis ingesamt: ";
+            this.labelPrize.Text = "Preis ingesamt: ";
             int sumPrice = 0;
             int numberToSell = 0;
             int price = 0;
@@ -273,8 +244,8 @@ namespace CompUI
                     column++;
                 }
             }
-            this.labelPreis.Text += sumPrice.ToString();
-            this.labelPreis.Text += " €";
+            this.labelPrize.Text += sumPrice.ToString();
+            this.labelPrize.Text += " €";
         }
     }
 
