@@ -63,9 +63,9 @@ namespace CompData
             DbDataAdapter dbDataAdapter = this.CreateDbDataAdapter("Produkt");
             DataTable tableContent = new DataTable();
             SelectProduct(ref tableContent);
-            foreach(DataRow row in tableContent.Rows)
+            foreach (DataRow row in tableContent.Rows)
             {
-                if(row["GUID"].ToString().CompareTo(guid) == 0)
+                if (row["GUID"].ToString().CompareTo(guid) == 0)
                 {
                     int stock = Utils.ParseInt(row["Lagerbestand"].ToString(), 0);
                     row["Lagerbestand"] = stock + restockNumber;
@@ -149,31 +149,24 @@ namespace CompData
             if (dbDataAdapter == null)
                 throw new Exception(" ADatabase.Update() dbDataAdapter is null");
 
-            int nRows = 0;
-            try
+            MessageBox.Show(dbDataAdapter.InsertCommand.CommandText, "Error Detected in Input", MessageBoxButtons.YesNo);
+            foreach (DataRow row in dataTable.Rows)
             {
-                foreach (DataRow row in dataTable.Rows)
-                {
-                    string s = "";
-                    s += row["GUID"].ToString();
-                    s += Environment.NewLine;
-                    s += row["Produktname"].ToString();
-                    s += Environment.NewLine;
-                    s += row["Kategorie"].ToString();
-                    s += Environment.NewLine;
-                    s += row["Lagerbestand"].ToString();
-                    s += Environment.NewLine;
-                    s += row["Preis"].ToString();
-                    MessageBox.Show(s, "Error Detected in Input", MessageBoxButtons.YesNo);
-                }
-                nRows = dbDataAdapter.Update(dataTable);
-                // post condition is nRows == 0 zulässig?
+                string s = "";
+                s += row["GUID"].ToString();
+                s += Environment.NewLine;
+                s += row["Produktname"].ToString();
+                s += Environment.NewLine;
+                s += row["Kategorie"].ToString();
+                s += Environment.NewLine;
+                s += row["Lagerbestand"].ToString();
+                s += Environment.NewLine;
+                s += row["Preis"].ToString();
+                MessageBox.Show(s, "Error Detected in Input", MessageBoxButtons.YesNo);
             }
-            catch (Exception exception)
-            {
-                string message = string.Format("ADatabase.Update() fails\n") + exception.Message;
-                throw new Exception(message);
-            }
+            int nRows = dbDataAdapter.Update(dataTable);
+            // post condition is nRows == 0 zulässig?
+
             return nRows;
         }
 
