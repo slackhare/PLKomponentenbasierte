@@ -84,7 +84,7 @@
             // 
             this.timerWarnung.Enabled = true;
             this.timerWarnung.Interval = 1000;
-            this.timerWarnung.Tick += new System.EventHandler(this.timerWarnung_Tick);
+            this.timerWarnung.Tick += new System.EventHandler(this.timerWarning_Tick);
             // 
             // labelVerkauf
             // 

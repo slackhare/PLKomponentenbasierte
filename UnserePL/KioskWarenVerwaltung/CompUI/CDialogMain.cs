@@ -59,6 +59,7 @@ namespace CompUI
             //hole produkte
             _productDataTable = new DataTable();
             _productCategoryDataTable = new DataTable();
+            loadCategoryTabelle();
         }
         #endregion
 
@@ -98,7 +99,7 @@ namespace CompUI
                 col2tosell.Value = 0;
                 col2tosell.Minimum = 0;
                 //redrawe lable 1 when changed
-                col2tosell.Click += new System.EventHandler(this.labelPrize_Update);
+                col2tosell.ValueChanged += new System.EventHandler(this.labelPrize_Update);
                 Label col3 = new Label();
 
                 // Setzt den Nötigen beschriftingstext
@@ -134,6 +135,8 @@ namespace CompUI
             this.InitCat();     
             this.loadSellingTabelle();
         }
+
+        #region MenuItem_Click
         // Eventhandler Suchen
         private void searchMenuItem_Click(object sender, EventArgs e)
         {
@@ -152,7 +155,7 @@ namespace CompUI
                 dialogResult = _dialogSearchView.ShowDialog();
             }
         }
-        #region MenuItem_Click
+        // Eventhandler Sortiment erweitern
         private void newMenuItem_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = _dialogNew.ShowDialog();
@@ -163,6 +166,7 @@ namespace CompUI
                 _iLogicTrade.InsertProduct(_iProduct);
             }
             loadSellingTabelle();
+            loadCategoryTabelle();
         }
 
         private void restockMenuItem_Click(object sender, EventArgs e)
@@ -179,6 +183,7 @@ namespace CompUI
             loadSellingTabelle();
         }
         #endregion
+
         // Eventhandler Verkaufen
         private void buttonSell_Click(object sender, EventArgs e)
         {
@@ -239,7 +244,7 @@ namespace CompUI
             this.labelPrize.Text += " €";
         }
         //Wieso eigentlich ein Timer? wär es nicht einfacher, die check-methode beim Verkauf aufzurufen? ist ja der einzige Fall, in dem sich der bestand reduziert
-        private void timerWarnung_Tick(object sender, EventArgs e)
+        private void timerWarning_Tick(object sender, EventArgs e)
         {
             this.dataGridViewWarning.DataSource = null;
             DataTable datatable = new DataTable();
