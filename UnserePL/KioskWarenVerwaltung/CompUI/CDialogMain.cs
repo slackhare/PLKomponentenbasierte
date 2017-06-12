@@ -89,12 +89,14 @@ namespace CompUI
             for (int i = 0; i < _productDataTable.Rows.Count; i++)
             {
                 // Erstellt für jede Spalte der Tabelle die Nötigen Objekte
-                CheckBox col0 = new CheckBox();
+                Label col0 = new Label();
                 Label col1 = new Label();
                 NumericUpDown col2 = new NumericUpDown();
+                col2.Value = 0;
+                col2.Minimum = 0;
+                //redrawe lable 1 when changed
+                col2.Click += new System.EventHandler(this.label1_Click);
                 Label col3 = new Label();
-
-                col2.Minimum = 1;
 
                 // Setzt den Nötigen beschriftingstext
                 col0.Text = _productDataTable.Rows[i]["Produktname"].ToString();
@@ -135,7 +137,6 @@ namespace CompUI
             // Kategorienamen aus der Datenbank Holen
             this.InitKat();     
             this.loadVerkaufTabelle();
-
         }
 
         // Eventhandler Suchen
@@ -229,6 +230,51 @@ namespace CompUI
             loadVerkaufTabelle();
         }
         #endregion
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            this.label1.Text = "Preis ingesamt: ";
+            int sumPrice = 0;
+            int numberToSell = 0;
+            int price = 0;
+            int column = 0;
+            foreach (Control c in this.tableLayoutPanelVerkauf.Controls)
+            {
+                switch (column)
+                {
+                    case 0:
+                        //this.label1.Text += "Name:";
+                        break;
+                    case 1:
+                        //this.label1.Text += "Lagerbestand:";
+                        break;
+                    case 2:
+                        //this.label1.Text += "Verkaufen:";
+                        numberToSell = Int32.Parse(c.Text);
+                        break;
+                    case 3:
+                        //this.label1.Text += "Preis:";
+                        price = Int32.Parse(c.Text);
+                        break;
+                }
+                //this.label1.Text += c.Text;
+                if (column >= 3)
+                {
+                    sumPrice += (numberToSell * price);
+                    numberToSell = 0;
+                    price = 0;
+                    //this.label1.Text += Environment.NewLine;
+                    column = 0;
+                }
+                else
+                {
+                    //this.label1.Text += " ";
+                    column++;
+                }
+            }
+            this.label1.Text += sumPrice.ToString();
+            this.label1.Text += " €";
+        }
     }
 
 }
