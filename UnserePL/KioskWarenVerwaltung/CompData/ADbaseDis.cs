@@ -26,25 +26,23 @@ namespace CompData
             DbDataAdapter dbDataAdapter = this.CreateDbDataAdapter("CarTable");
             DataTable dataTable = this.GetSchema(dbDataAdapter);
             iCar.AddNewDataRow(dataTable);
-            dbDataAdapter.Update(dataTable);
+            Update(dataTable, dbDataAdapter);
         }
 
         public virtual void InsertProduct(IProduct iProduct)
         {
             DbDataAdapter dbDataAdapter = this.CreateDbDataAdapter("Produkt");
-            DataTable dataTable = new DataTable();
-            SelectProduct(ref dataTable);
+            DataTable dataTable = this.GetSchema(dbDataAdapter);
             iProduct.AddNewDataRow(dataTable);
-            dbDataAdapter.Update(dataTable);
+            Update(dataTable, dbDataAdapter);
         }
 
         public virtual void InsertProductCategory(IProductCategory iProductCategory)
         {
             DbDataAdapter dbDataAdapter = this.CreateDbDataAdapter("Produktkategorie");
-            DataTable dataTable = new DataTable();
-            SelectProduct(ref dataTable);
+            DataTable dataTable = this.GetSchema(dbDataAdapter);
             iProductCategory.AddNewDataRow(dataTable);
-            dbDataAdapter.Update(dataTable);
+            Update(dataTable, dbDataAdapter);
         }
 
         public void SelectCar(ICar iCar, ref DataTable dataTable)
@@ -88,7 +86,7 @@ namespace CompData
                     break;
                 }
             }
-            dbDataAdapter.Update(tableContent);
+            Update(tableContent, dbDataAdapter);
         }
 
         /*Wird in der logik gemacht, braucht keinen datenbankzugriff
