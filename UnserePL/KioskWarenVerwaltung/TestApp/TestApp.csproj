@@ -95,10 +95,6 @@
       <Project>{fc8b945f-fcf0-4928-bb25-c5a4bdc7a14b}</Project>
       <Name>CompLogic</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CompUIAdmin\CompUIAdmin.csproj">
-      <Project>{bb3dfbc9-a958-48d4-bc87-1bdff18c548f}</Project>
-      <Name>CompUIAdmin</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CompUI\CompUI.csproj">
       <Project>{d42b3c5e-39e0-4bcd-9d21-0439b21100db}</Project>
       <Name>CompUI</Name>
@@ -116,7 +112,9 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Resources\911.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -14,15 +14,12 @@ namespace CompLogic
         void Init(ref int nCars, out object[] arrayMake);
         void InitCat(out object[] arrayKategorie);
         object[] GetModel(string make);
-        void SelectCar(ICar iCar, ref DataTable dataTable);
         void SelectProduct(ref DataTable dataTable);
         void SelectProductCategory(ref DataTable dataTable);
     }
 
     public interface ILogicTrade
     {
-        void InsertCar(ICar iCar);
-
         void InsertProduct(IProduct iProduct);
 
         void InsertProductCategory(IProductCategory iProductCategory);
