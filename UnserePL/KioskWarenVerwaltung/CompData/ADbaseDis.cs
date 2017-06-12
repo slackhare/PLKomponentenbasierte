@@ -3,6 +3,8 @@ using System.Data;
 using System.Data.Common;
 
 using CompLogic;
+using System.Windows.Forms;
+
 namespace CompData
 {
     internal abstract class ADataDis : IDataDis
@@ -203,6 +205,20 @@ namespace CompData
             int nRows = 0;
             try
             {
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    string s = "";
+                    s += row["GUID"].ToString();
+                    s += Environment.NewLine;
+                    s += row["Produktname"].ToString();
+                    s += Environment.NewLine;
+                    s += row["Kategorie"].ToString();
+                    s += Environment.NewLine;
+                    s += row["Lagerbestand"].ToString();
+                    s += Environment.NewLine;
+                    s += row["Preis"].ToString();
+                    MessageBox.Show(s, "Error Detected in Input", MessageBoxButtons.YesNo);
+                }
                 nRows = dbDataAdapter.Update(dataTable);
                 // post condition is nRows == 0 zulässig?
             }

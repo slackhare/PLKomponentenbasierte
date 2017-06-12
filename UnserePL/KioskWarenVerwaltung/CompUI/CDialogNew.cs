@@ -51,7 +51,13 @@ namespace CompUI
             iProduct.Stock = Convert.ToInt32(numericUpDownAnz.Value.ToString());
 
             this.textBoxPreis.Text.Replace(",", ".");
-            iProduct.Price = Convert.ToDouble(this.textBoxPreis.Text);
+            try
+            {
+                iProduct.Price = Convert.ToDouble(this.textBoxPreis.Text);
+            }catch(System.FormatException)
+            {
+                iProduct.Price = 0;
+            }
 
             this.DialogResult = DialogResult.OK;
             this.Close();
