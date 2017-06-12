@@ -27,8 +27,27 @@ namespace CompData
         {
             DbDataAdapter dbDataAdapter = this.CreateDbDataAdapter("Produkt");
             DataTable dataTable = this.GetSchema(dbDataAdapter);
-            iProduct.AddNewDataRow(dataTable);
-            Update(dataTable, dbDataAdapter);
+
+            DbCommand dbCommand = dbDataAdapter.InsertCommand;
+            dbCommand.CommandType = CommandType.Text;
+            dbCommand.Parameters.Clear();
+            dbCommand.CommandText = @"INSERT INTO Produkt ( [GUID], [Produktname], [Lagerbestand], [Kategorie], [Preis] ) VALUES (";
+            dbCommand.CommandText += "'";
+            dbCommand.CommandText += Utils.CreateGUID().ToString();
+            dbCommand.CommandText += "', ";
+            dbCommand.CommandText += "'";
+            dbCommand.CommandText += iProduct.Name;
+            dbCommand.CommandText += "', ";
+            dbCommand.CommandText += iProduct.Stock.ToString();
+            dbCommand.CommandText += ", ";
+            dbCommand.CommandText += "'";
+            dbCommand.CommandText += iProduct.Category;
+            dbCommand.CommandText += "', ";
+            dbCommand.CommandText += iProduct.Price.ToString();
+            dbCommand.CommandText += ")";
+            _dbConnection.Open();
+            MessageBox.Show(dbCommand.CommandText, "Error Detected in Input", MessageBoxButtons.YesNo);
+            dbCommand.ExecuteNonQuery();
         }
 
         public virtual void InsertProductCategory(IProductCategory iProductCategory)
@@ -150,6 +169,7 @@ namespace CompData
                 throw new Exception(" ADatabase.Update() dbDataAdapter is null");
 
             MessageBox.Show(dbDataAdapter.InsertCommand.CommandText, "Error Detected in Input", MessageBoxButtons.YesNo);
+            MessageBox.Show(dbDataAdapter.UpdateCommand.CommandText, "Error Detected in Input", MessageBoxButtons.YesNo);
             foreach (DataRow row in dataTable.Rows)
             {
                 string s = "";
