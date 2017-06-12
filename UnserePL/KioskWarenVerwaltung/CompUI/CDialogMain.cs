@@ -61,6 +61,7 @@ namespace CompUI
             //hole produkte
             _productDataTable = new DataTable();
             _productCategoryDataTable = new DataTable();
+            loadCategoryTabelle();
         }
         #endregion
 
@@ -155,7 +156,7 @@ namespace CompUI
             }
         }
 
-        // Eventhandler Verkaufen
+        // Eventhandler Sortiment erweitern
         private void newMenuItem_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = _dialogNew.ShowDialog();
@@ -166,6 +167,7 @@ namespace CompUI
                 _iLogicTrade.InsertProduct(_iProduct);
             }
             loadSellingTabelle();
+            loadCategoryTabelle();
         }
 
         private void restockMenuItem_Click(object sender, EventArgs e)
@@ -194,6 +196,7 @@ namespace CompUI
             }
         }
 
+        //Enventhandler Verkaufen
         private void buttonSell_Click(object sender, EventArgs e)
         {
             NumericUpDown[] quantarray = tableLayoutPanelVerkauf.Controls.OfType<NumericUpDown>().ToArray();

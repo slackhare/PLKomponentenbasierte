@@ -30,7 +30,7 @@ namespace CompUI
             comboBoxKategorie.Items.Clear();
             foreach(DataRow row in _dialogMain.ProductCategoryDataTable.Rows)
             {
-                comboBoxKategorie.Items.Add(row["Kategoriename"]);
+                comboBoxKategorie.Items.Add(row["Kategoriename"].ToString());
             }
             comboBoxKategorie.Text = comboBoxKategorie.Items[0].ToString();
         }
@@ -39,7 +39,7 @@ namespace CompUI
         {
             IProduct iProduct = _dialogMain.Produkt;
             iProduct.Name = this.textBoxName.Text;
-            iProduct.Category = _dialogMain.ProductCategoryDataTable.Rows[this.comboBoxKategorie.SelectedIndex].ToString();
+            iProduct.Category = _dialogMain.ProductCategoryDataTable.Rows[this.comboBoxKategorie.SelectedIndex]["GUID"].ToString();
             iProduct.Stock = Convert.ToInt32(numericUpDownAnz.Value.ToString());
 
             this.textBoxPreis.Text.Replace(",", ".");
