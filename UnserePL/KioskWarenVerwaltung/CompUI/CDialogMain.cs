@@ -24,7 +24,7 @@ namespace CompUI
         // externe Komponenten
         private ILogic _iLogic;
         private ILogicSearch _iLogicSearch;
-        private ILogicTrade _iLogicTrade;
+        private ILogicInsert _iLogicTrade;
         private ILogicWarning _iLogicWarning;
         private ILogicUpdate _iLogicUpdate;
         private IProduct _iProduct;

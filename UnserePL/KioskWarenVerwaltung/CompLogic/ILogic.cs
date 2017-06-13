@@ -4,7 +4,7 @@ namespace CompLogic
     public interface ILogic
     {
         ILogicSearch LogicSearch { get; }
-        ILogicTrade LogicTrade { get; }
+        ILogicInsert LogicTrade { get; }
         ILogicUpdate LogicUpdate { get; }
         ILogicWarning LogicWarning { get; }
     }
@@ -18,7 +18,7 @@ namespace CompLogic
         void SelectProductCategory(ref DataTable dataTable);
     }
 
-    public interface ILogicTrade
+    public interface ILogicInsert
     {
         void InsertProduct(IProduct iProduct);
 
