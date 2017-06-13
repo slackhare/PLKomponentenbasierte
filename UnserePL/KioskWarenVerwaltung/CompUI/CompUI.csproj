@@ -65,6 +65,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CDialogNewCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CDialogNewCategory.Designer.cs">
+      <DependentUpon>CDialogNewCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="CDialogRestock.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,11 +117,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="CDialogMain.resx">
       <DependentUpon>CDialogMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CDialogNewCategory.resx">
+      <DependentUpon>CDialogNewCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CDialogRestock.resx">
       <DependentUpon>CDialogRestock.cs</DependentUpon>
@@ -134,7 +140,9 @@
       <DependentUpon>CDialogNew.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

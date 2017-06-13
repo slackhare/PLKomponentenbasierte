@@ -5,6 +5,7 @@ using System.Drawing;
 
 using CompLogic;
 using CompLogic.Product;
+using CompLogic.ProductCategory;
 using System.Linq;
 
 namespace CompUI
@@ -19,6 +20,7 @@ namespace CompUI
         private CDialogSearchView _dialogSearchView;
         private CDialogNew _dialogNew;
         private CDialogRestock _dialogRestock;
+        private CDialogNewCategory _dialogNewCategory;
         // externe Komponenten
         private ILogic _iLogic;
         private ILogicSearch _iLogicSearch;
@@ -26,6 +28,7 @@ namespace CompUI
         private ILogicWarning _iLogicWarning;
         private ILogicUpdate _iLogicUpdate;
         private IProduct _iProduct;
+        private IProductCategory _iProductCategory;
 
         private DataTable _productDataTable;
         private DataTable _productCategoryDataTable;
@@ -34,6 +37,7 @@ namespace CompUI
 
         #region Properties
         internal IProduct Produkt { get { return _iProduct; } }
+        internal IProductCategory ProductCategory { get { return _iProductCategory; } }
         internal DataTable ProductCategoryDataTable { get { return _productCategoryDataTable; } }
         #endregion
 
@@ -48,11 +52,13 @@ namespace CompUI
             _iLogicUpdate = iLogic.LogicUpdate;
             _dialogSearch = new CDialogSearch(iLogic, this);
             _dialogSearchView = new CDialogSearchView(this);
-            _dialogNew = new CDialogNew(iLogic, this);
+            _dialogNew = new CDialogNew(this);
             _dialogRestock = new CDialogRestock(iLogic, this);
+            _dialogNewCategory = new CDialogNewCategory(this);
 
 
             _iProduct = new CFactoryCProduct().Create();
+            _iProductCategory = new CFactoryCProductCategory().Create();
 
             //hole produkte
             _productDataTable = new DataTable();
@@ -158,20 +164,6 @@ namespace CompUI
                 dialogResult = _dialogSearchView.ShowDialog();
             }
         }
-        // Eventhandler Sortiment erweitern
-        private void newMenuItem_Click(object sender, EventArgs e)
-        {
-            DialogResult dialogResult = _dialogNew.ShowDialog();
-            DataTable dataTable = new DataTable();
-            if (dialogResult == DialogResult.OK)
-            {
-                // Einfügen ausführen
-                _iLogicTrade.InsertProduct(_iProduct);
-            }
-            loadSellingTabelle();
-            loadCategoryTabelle();
-        }
-
         private void restockMenuItem_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = _dialogRestock.ShowDialog();
@@ -184,6 +176,26 @@ namespace CompUI
 
             }
             loadSellingTabelle();
+        }
+        // Eventhandler Sortiment erweitern
+        private void newMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = _dialogNew.ShowDialog();
+            if (dialogResult == DialogResult.OK)
+            {
+                // Einfügen ausführen
+                _iLogicTrade.InsertProduct(_iProduct);
+            }
+            loadSellingTabelle();
+            loadCategoryTabelle();
+        }
+        private void newCategoryMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = _dialogNewCategory.ShowDialog();
+            if (dialogResult == DialogResult.OK)
+            {
+                _iLogicTrade.InsertProductCategory(_iProductCategory);
+            }
         }
         #endregion
 
@@ -236,6 +248,8 @@ namespace CompUI
             this.sumPrice += ((thisValue - lastValue) * price);
             labelPrize.Text = sumPrice.ToString("F") + "€";
         }
+
+
     }
 
 }

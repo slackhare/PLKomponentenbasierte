@@ -46,8 +46,16 @@ namespace CompData
         {
             DbDataAdapter dbDataAdapter = this.CreateDbDataAdapter("Produktkategorie");
             DataTable dataTable = this.GetSchema(dbDataAdapter);
-            iProductCategory.AddNewDataRow(dataTable);
-            Update(dataTable, dbDataAdapter);
+
+            DbCommand dbCommand = dbDataAdapter.InsertCommand;
+            dbCommand.CommandType = CommandType.Text;
+            dbCommand.Parameters.Clear();
+            dbCommand.CommandText = @"INSERT INTO Produktkategorie ( [GUID], [Kategoriename]) VALUES (";
+            dbCommand.CommandText += "[pGUID], [pKategoriename])";
+            this.AddParameter(dbCommand, "pGUID", Utils.CreateGUID().ToString());
+            this.AddParameter(dbCommand, "pKategoriename", iProductCategory.Name);
+            _dbConnection.Open();
+            dbCommand.ExecuteNonQuery();
         }
 
         public void SelectAllProducts(ref DataTable dataTable)

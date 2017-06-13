@@ -27,8 +27,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CDialogMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.searchMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lagerAuffüllenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sortimentErweiternToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.restockMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newProductMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newCategoryMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timerWarnung = new System.Windows.Forms.Timer(this.components);
             this.timerUpdate = new System.Windows.Forms.Timer(this.components);
             this.labelVerkauf = new System.Windows.Forms.Label();
@@ -51,8 +52,9 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.searchMenuItem,
-            this.lagerAuffüllenToolStripMenuItem,
-            this.sortimentErweiternToolStripMenuItem});
+            this.restockMenuItem,
+            this.newProductMenuItem,
+            this.newCategoryMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(13, 4, 0, 4);
@@ -67,19 +69,26 @@
             this.searchMenuItem.Text = "Suchen";
             this.searchMenuItem.Click += new System.EventHandler(this.searchMenuItem_Click);
             // 
-            // lagerAuffüllenToolStripMenuItem
+            // restockMenuItem
             // 
-            this.lagerAuffüllenToolStripMenuItem.Name = "lagerAuffüllenToolStripMenuItem";
-            this.lagerAuffüllenToolStripMenuItem.Size = new System.Drawing.Size(111, 23);
-            this.lagerAuffüllenToolStripMenuItem.Text = "Lager auffüllen";
-            this.lagerAuffüllenToolStripMenuItem.Click += new System.EventHandler(this.restockMenuItem_Click);
+            this.restockMenuItem.Name = "restockMenuItem";
+            this.restockMenuItem.Size = new System.Drawing.Size(111, 23);
+            this.restockMenuItem.Text = "Lager auffüllen";
+            this.restockMenuItem.Click += new System.EventHandler(this.restockMenuItem_Click);
             // 
-            // sortimentErweiternToolStripMenuItem
+            // newProductMenuItem
             // 
-            this.sortimentErweiternToolStripMenuItem.Name = "sortimentErweiternToolStripMenuItem";
-            this.sortimentErweiternToolStripMenuItem.Size = new System.Drawing.Size(142, 23);
-            this.sortimentErweiternToolStripMenuItem.Text = "Sortiment erweitern";
-            this.sortimentErweiternToolStripMenuItem.Click += new System.EventHandler(this.newMenuItem_Click);
+            this.newProductMenuItem.Name = "newProductMenuItem";
+            this.newProductMenuItem.Size = new System.Drawing.Size(142, 23);
+            this.newProductMenuItem.Text = "Sortiment erweitern";
+            this.newProductMenuItem.Click += new System.EventHandler(this.newMenuItem_Click);
+            // 
+            // newCategoryMenuItem
+            // 
+            this.newCategoryMenuItem.Name = "newCategoryMenuItem";
+            this.newCategoryMenuItem.Size = new System.Drawing.Size(201, 23);
+            this.newCategoryMenuItem.Text = "Produktkategorie Hinzufügen";
+            this.newCategoryMenuItem.Click += new System.EventHandler(this.newCategoryMenuItem_Click);
             // 
             // timerWarnung
             // 
@@ -225,7 +234,7 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem searchMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem lagerAuffüllenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem restockMenuItem;
         private System.Windows.Forms.Timer timerWarnung;
         private System.Windows.Forms.Timer timerUpdate;
         private System.Windows.Forms.Label labelVerkauf;
@@ -234,9 +243,10 @@
         private System.Windows.Forms.Label labelWarnungGrenze;
         private System.Windows.Forms.NumericUpDown numericUpDownWarnungGrenze;
         private System.Windows.Forms.DataGridView dataGridViewWarning;
-        private System.Windows.Forms.ToolStripMenuItem sortimentErweiternToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newProductMenuItem;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelVerkauf;
         private System.Windows.Forms.Label labelPrize;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripMenuItem newCategoryMenuItem;
     }
 }

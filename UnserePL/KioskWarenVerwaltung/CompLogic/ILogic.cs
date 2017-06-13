@@ -35,8 +35,6 @@ namespace CompLogic
 
     public interface ILogicWarning
     {
-        void Update(decimal grenze, ref DataTable datatable);
-
         DataTable Format(DataTable toformat, decimal grenze);
     }
 

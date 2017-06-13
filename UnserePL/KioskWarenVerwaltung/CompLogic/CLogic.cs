@@ -1,5 +1,5 @@
-﻿using System.Data;
-using CompLogic.Product;
+﻿using CompLogic.Product;
+using System.Data;
 
 namespace CompLogic {
 
@@ -93,22 +93,12 @@ namespace CompLogic {
         #endregion
 
         #region Interface ILogicWarning Methods
-        //Gibt eine Tabelle zurück (über ref), mit allen produkten, die weniger als die grenze an Lagerbestand haben
-        //ref DataTable dataTable enthält eine Liste aller Produkte, die in der Funktion verändert wird
-        public void Update(decimal grenze, ref DataTable dataTable)
-        {
-            //Wir gehen davon aus, dass die ref dataTable schon mir den aktuellen Werten gefüllt ist
-            SelectProduct(ref dataTable);
-            for (int i = dataTable.Rows.Count - 1; i >= 0; i--)
-            {
-                if (Utils.ParseInt(dataTable.Rows[i]["Lagerbestand"].ToString(), 0) > grenze)
-                {
-                    dataTable.Rows[i].Delete();
-                }
-            }
-            dataTable.AcceptChanges();
-        }
-
+        /// <summary>
+        /// Returns a formated DataTable where all unnecessary columns and rows witch are above the given limit of stock
+        /// </summary>
+        /// <param name="toformat">DataTable that needs to be formated</param>
+        /// <param name="grenze">limit at witch the rows with more stock will be removed</param>
+        /// <returns>The formated DataTable</returns>
         public DataTable Format(DataTable toformat, decimal grenze)
         {
             toformat.Columns.Remove("GUID");

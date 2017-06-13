@@ -9,17 +9,13 @@ namespace CompUI
     {
 
         #region Fields
-        private ILogicSearch _iLogicSearch;
-        private ILogicTrade _iLogicTrade;
         private CDialogMain _dialogMain;
         #endregion
 
         #region Ctor
-        internal CDialogNew(ILogic iLogic, CDialogMain dialogMain)
+        internal CDialogNew(CDialogMain dialogMain)
         {
             InitializeComponent();
-            _iLogicSearch = iLogic.LogicSearch;
-            _iLogicTrade = iLogic.LogicTrade;
             _dialogMain = dialogMain;
         }
         #endregion

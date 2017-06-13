@@ -1,39 +1,72 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="CompUI.CDialogMain">
-    <Position X="4.25" Y="2" Width="4" />
+  <Class Name="CompUI.CFactoryCDialogMain" BaseTypeListCollapsed="true">
+    <Position X="0.75" Y="2" Width="2" />
     <TypeIdentifier>
-      <HashCode>AQgAACAAACAIQBAABAKYAQCCAgYAQAIAAAACBAAABBA=</HashCode>
-      <FileName>CDialogMain.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>CFactoryCDialogMain.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="CompUI.AFactoryIDialog">
-    <Position X="1.25" Y="0.5" Width="1.5" />
+  <Class Name="CompUI.CDialogSearchView">
+    <Position X="12.5" Y="10.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>AFactoryIDialog.cs</FileName>
+      <HashCode>AEAAAAAAAGAgAAAAAACAAAACAAgAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CDialogSearchView.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_dialogMain" />
+    </ShowAsAssociation>
   </Class>
-  <Class Name="CompUI.CDialogSearch" Collapsed="true">
-    <Position X="6.25" Y="2" Width="1.5" />
+  <Class Name="CompUI.CDialogSearch">
+    <Position X="14.5" Y="9.25" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AQIAABACAiQAACAIAACQhAACEgEBAAAIAAACAAMAAAA=</HashCode>
+      <HashCode>AAAAAAAAACAgAAIEAACABAACGgABAAAIAAAAAAEAACA=</HashCode>
       <FileName>CDialogSearch.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_dialogMain" />
+    </ShowAsAssociation>
   </Class>
-  <Interface Name="CompUI.IDialog">
-    <Position X="4.25" Y="0.5" Width="1.5" />
+  <Class Name="CompUI.CDialogRestock">
+    <Position X="12.25" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>IDialog.cs</FileName>
+      <HashCode>AgAAIABAACAgAAAAAACABAACEgAAAAQAAAEAQAAABAA=</HashCode>
+      <FileName>CDialogRestock.cs</FileName>
     </TypeIdentifier>
-  </Interface>
-  <Interface Name="CompUI.IWindow">
-    <Position X="6.25" Y="0.5" Width="1.5" />
+    <ShowAsAssociation>
+      <Field Name="_dialogMain" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CompUI.CDialogNew">
+    <Position X="5.75" Y="5.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>IWindow.cs</FileName>
+      <HashCode>AEAAAAAAACAgAAIERACAAAACCgECQAAYAAAAAAEAACA=</HashCode>
+      <FileName>CDialogNew.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_dialogMain" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CompUI.CDialogMain" BaseTypeListCollapsed="true">
+    <Position X="8" Y="3.25" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>BQQKKApRECQIwBAAHIDIAACCAiABEAYRACFBRgAIAAA=</HashCode>
+      <FileName>CDialogMain.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_dialogNew" />
+      <Field Name="_dialogRestock" />
+      <Field Name="_dialogSearch" />
+      <Field Name="_dialogSearchView" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="CompUI.IFactoryIDialogMain">
+    <Position X="0.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>IFactoryIDialogMain.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Segoe UI" Size="9" />
