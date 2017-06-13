@@ -29,7 +29,7 @@ namespace CompLogic
     {
         //sauberer, logik nicht in der Oberfläche
         bool RestockProduct(string guid, int restockNumber);
-
+        void RestockProduct(IProduct iProduct);
         bool SellProduct(string guid, int restockNumber);
     }
 

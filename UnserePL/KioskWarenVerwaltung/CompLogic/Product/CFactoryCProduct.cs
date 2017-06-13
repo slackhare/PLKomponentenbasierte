@@ -4,5 +4,9 @@
         public IProduct Create() {
             return new CProduct();
         }
+        public IProduct Create(string GUID, string Name, string Category, double Price, int Stock)
+        {
+            return new CProduct(GUID, Name, Category, Price, Stock);
+        }
     }
 }

@@ -24,6 +24,7 @@ namespace CompUI {
         #region Events
         private void CDialogSearch_Load(object sender, EventArgs e)
         {
+            textBoxName.Clear();
             comboBoxKategorie.Items.Clear();
             comboBoxKategorie.Items.Add("Alle");
             foreach (DataRow row in _dialogMain.ProductCategoryDataTable.Rows)

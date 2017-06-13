@@ -95,7 +95,14 @@ namespace CompLogic
                 return false;
             }
         }
-
+        
+        public void RestockProduct(IProduct iProduct)
+        {
+            if(iProduct.Stock >=0)
+            {
+                _iDataDis.UpdateProduct(iProduct);
+            }
+        }
         public bool SellProduct(string guid, int restockNumber)
         {
             return RestockProduct(guid, restockNumber * -1);

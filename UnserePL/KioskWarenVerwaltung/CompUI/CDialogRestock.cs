@@ -54,9 +54,10 @@ namespace CompUI
                 col2.Minimum = 0;
 
                 // Setzt den Nötigen beschriftingstext
-                col0.Text = _productDataTable.Rows[i]["Produktname"].ToString();
-                col1.Text = _productDataTable.Rows[i]["Lagerbestand"].ToString();
-
+                //col0.Text = _productDataTable.Rows[i]["Produktname"].ToString();
+                //col1.Text = _productDataTable.Rows[i]["Lagerbestand"].ToString();
+                col0.Text = _dialogMain.ProductList[i].Name;
+                col1.Text = _dialogMain.ProductList[i].Stock.ToString();
 
                 // Setzen von Zusatzinformationen
 
@@ -78,14 +79,14 @@ namespace CompUI
         // Wird die Angaben aus der Tabelle für das Datenbankupdate Vorbereiten
         private void buttonAcc_ClicktTabelLayout(object sender, EventArgs e)
         {
+
             NumericUpDown[] quantarray = tableLayoutPanelRestock.Controls.OfType<NumericUpDown>().ToArray();
 
             for(int row = 0; row < quantarray.Length; row++)
             {
                 if(Convert.ToInt32(quantarray[row].Value) > 0)
                 {
-                    string guid = _productDataTable.Rows[row]["GUID"].ToString();
-                    _iLogicUpdate.RestockProduct(guid, Convert.ToInt32(quantarray[row].Value));
+                    _dialogMain.ProductList[row].Stock += Convert.ToInt32(quantarray[row].Value);
                 }
             }
             this.DialogResult = DialogResult.OK;

@@ -2,11 +2,13 @@
 using System.Data;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Linq;
+using System.Collections.Generic;
 
 using CompLogic;
 using CompLogic.Product;
 using CompLogic.ProductCategory;
-using System.Linq;
+
 
 namespace CompUI
 {
@@ -29,7 +31,9 @@ namespace CompUI
         private ILogicUpdate _iLogicUpdate;
         private IProduct _iProduct;
         private IProductCategory _iProductCategory;
-
+        private List<IProduct> _ListIProduct;
+        private IFactoryIProduct _iFactoryProduct;
+        // Tabellen
         private DataTable _productDataTable;
         private DataTable _productCategoryDataTable;
         private double sumPrice = 0;
@@ -39,12 +43,14 @@ namespace CompUI
         internal IProduct Produkt { get { return _iProduct; } }
         internal IProductCategory ProductCategory { get { return _iProductCategory; } }
         internal DataTable ProductCategoryDataTable { get { return _productCategoryDataTable; } }
+        internal List<IProduct> ProductList { get { return _ListIProduct; } }
         #endregion
 
         #region Ctor
         internal CDialogMain(ILogic iLogic)
         {
             InitializeComponent();
+
             _iLogic = iLogic;
             _iLogicSearch = iLogic.LogicSearch;
             _iLogicTrade = iLogic.LogicTrade;
@@ -56,16 +62,12 @@ namespace CompUI
             _dialogRestock = new CDialogRestock(iLogic, this);
             _dialogNewCategory = new CDialogNewCategory(this);
 
-
             _iProduct = new CFactoryCProduct().Create();
             _iProductCategory = new CFactoryCProductCategory().Create();
-
-            //hole produkte
+            _ListIProduct = new List<IProduct>();
+            _iFactoryProduct = new CFactoryCProduct();
             _productDataTable = new DataTable();
             _productCategoryDataTable = new DataTable();
-
-            loadSellingTabelle();
-            loadCategoryTabelle();
         }
         #endregion
 
@@ -74,7 +76,9 @@ namespace CompUI
         {
             this.dataGridViewWarning.Controls.Clear();
             this.dataGridViewWarning.DataSource = _iLogicWarning.Format(_productDataTable.Copy(), numericUpDownWarnungGrenze.Value);
+
             this.dataGridViewWarning.Refresh();
+            dataGridViewWarning.ClearSelection();
         }
 
         private void loadCategoryTabelle()
@@ -155,11 +159,21 @@ namespace CompUI
             }
             this.tableLayoutPanelVerkauf.Visible = true;
         }
+
+        private void FillProductList()
+        {
+            foreach (DataRow row in _productDataTable.Rows)
+            {
+                _ListIProduct.Add(_iFactoryProduct.Create(row["GUID"].ToString(), row["Produktname"].ToString(), row["Kategorie"].ToString(), double.Parse(row["Preis"].ToString()), int.Parse(row["Lagerbestand"].ToString())));
+            }
+        }
         #endregion
 
         #region Events
         private void CDialogMain_Load(object sender, EventArgs e)
         {
+            loadSellingTabelle();
+            loadCategoryTabelle();
         }
 
         #region MenuItem_Click
@@ -183,14 +197,15 @@ namespace CompUI
         }
         private void restockMenuItem_Click(object sender, EventArgs e)
         {
+            this._ListIProduct.Clear();
+            this.FillProductList();
             DialogResult dialogResult = _dialogRestock.ShowDialog();
-            DataTable dataTable = new DataTable();
             if (dialogResult == DialogResult.OK)
             {
-                // Einfügen ausführen
-                //Kein insert hier, das würde ein neues Produkt anlegen. wir wollen auffüllen. :)
-                //_iLogicTrade.InsertProduct(_iProduct);
-
+                foreach (IProduct product in _ListIProduct)
+                {
+                    _iLogicUpdate.RestockProduct(product);
+                }
             }
             loadSellingTabelle();
         }
@@ -250,9 +265,6 @@ namespace CompUI
             sumPrice = 0;
             labelPrize.Text = sumPrice.ToString("F") + "€";
         }
-
-        #endregion
-
         private void numericUpDownWarnungGrenze_ValueChanged(object sender, EventArgs e)
         {
             this.displayWarning();
@@ -269,8 +281,7 @@ namespace CompUI
             this.sumPrice += ((thisValue - lastValue) * price);
             labelPrize.Text = sumPrice.ToString("F") + "€";
         }
-
-
+        #endregion
     }
 
 }

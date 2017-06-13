@@ -19,6 +19,15 @@ namespace CompLogic.Product
             Stock = null;
         }
 
+        public CProduct(string GUID, string Name, string Category, double Price, int Stock)
+        {
+            this.GUID = GUID;
+            this.Name = Name;
+            this.Category = Category;
+            this.Price = Price;
+            this.Stock = Stock;
+        }
+
         public void AddNewDataRow(DataTable dataTable)
         {
 

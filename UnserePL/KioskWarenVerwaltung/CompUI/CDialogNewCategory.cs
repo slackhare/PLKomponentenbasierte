@@ -31,6 +31,7 @@ namespace CompUI
         #region Events
         private void CDialogNewCategory_Load(object sender, EventArgs e)
         {
+            textBoxNewCategory.Clear();
             foreach (DataRow row in _dialogMain.ProductCategoryDataTable.Rows)
             {
                 Categories.Add(row[1].ToString());

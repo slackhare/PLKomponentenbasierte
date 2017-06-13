@@ -24,6 +24,9 @@ namespace CompUI
         private void CDialogTrade_Load(object sender, EventArgs e)
         {
             comboBoxKategorie.Items.Clear();
+            textBoxName.Clear();
+            textBoxPreis.Clear();
+            numericUpDownAnz.ResetText();
             foreach(DataRow row in _dialogMain.ProductCategoryDataTable.Rows)
             {
                 comboBoxKategorie.Items.Add(row["Kategoriename"].ToString());

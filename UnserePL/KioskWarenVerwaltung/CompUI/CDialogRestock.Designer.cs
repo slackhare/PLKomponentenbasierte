@@ -47,6 +47,7 @@
             // 
             // tableLayoutPanelRestock
             // 
+            this.tableLayoutPanelRestock.AutoScroll = true;
             this.tableLayoutPanelRestock.ColumnCount = 3;
             this.tableLayoutPanelRestock.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanelRestock.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
