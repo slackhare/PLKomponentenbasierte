@@ -78,7 +78,8 @@ namespace CompLogic {
             IProduct iProduct = new CFactoryCProduct().Create();
             iProduct.GUID = guid;
             _iDataDis.SelectProduct(iProduct, ref dataTable);
-            iProduct.Stock += restockNumber;
+            int oldStock = (System.Int32) dataTable.Rows[0]["Lagerbestand"];
+            iProduct.Stock = oldStock + restockNumber;
             if (iProduct.Stock >= 0) {
                 _iDataDis.UpdateProduct(iProduct);
             }

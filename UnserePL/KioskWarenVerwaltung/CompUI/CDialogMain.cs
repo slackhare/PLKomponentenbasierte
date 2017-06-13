@@ -206,6 +206,8 @@ namespace CompUI
                 }
             }
             loadSellingTabelle();
+            sumPrice = 0;
+            labelPrize.Text = sumPrice.ToString("F") + "€";
         }
         
         //Wieso eigentlich ein Timer? wär es nicht einfacher, die check-methode beim Verkauf aufzurufen? ist ja der einzige Fall, in dem sich der bestand reduziert
