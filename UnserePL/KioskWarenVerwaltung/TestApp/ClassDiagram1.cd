@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TestApp.Test">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAABAAAAEI=</HashCode>
+      <FileName>Test.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_iDbase" />
+      <Field Name="_iDialog" />
+      <Field Name="_iLogic" />
+    </ShowAsAssociation>
+  </Class>
+  <Interface Name="CompLogic.IData">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Property Name="DataCon" />
+      <Property Name="DataDis" />
+    </ShowAsAssociation>
+  </Interface>
+  <Interface Name="CompLogic.IDialog">
+    <Position X="4.25" Y="2" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="CompLogic.ILogic">
+    <Position X="4.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Property Name="LogicSearch" />
+    </ShowAsAssociation>
+  </Interface>
+  <Interface Name="CompLogic.IDataCon">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="CompLogic.IDataDis">
+    <Position X="7.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="CompLogic.ILogicSearch" Collapsed="true">
+    <Position X="7.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

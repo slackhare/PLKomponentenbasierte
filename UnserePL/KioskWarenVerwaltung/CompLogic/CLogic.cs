@@ -63,7 +63,7 @@ namespace CompLogic
         }
         #endregion
 
-        #region Interface ILogicTrade Methods
+        #region Interface ILogicInsert Methods
         public void InsertProduct(IProduct iProduct)
         {
             _iDataDis.InsertProduct(iProduct);
