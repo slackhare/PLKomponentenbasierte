@@ -66,23 +66,9 @@ namespace CompUI
         #region Methods
         private void displayWarning()
         {
-            this.dataGridViewWarning.DataSource =_productDataTable;
-            // Unnötige Spalten Ausblenden
-            foreach (DataGridViewColumn column in this.dataGridViewWarning.Columns)
-            {
-                if (column.Name== "GUID" || column.Name == "Kategorie" || (column.Name == "Preis") || column.Name == "Kategoriename")
-                {
-                    column.Visible = false;
-                }
-            }
-            // Zeilen ausblenden, deren Lagerbestand über dem Grenzwert ist
-            foreach (DataGridViewRow row in this.dataGridViewWarning.Rows)
-            {
-                if((row.Cells[2].Value != null) && (decimal.Parse(row.Cells["Lagerbestand"].Value.ToString()) < numericUpDownWarnungGrenze.Value))
-                {
-                    row.Visible = false;
-                }
-            }
+            this.dataGridViewWarning.Controls.Clear();
+            this.dataGridViewWarning.DataSource = _iLogicWarning.Format(_productDataTable.Clone(), numericUpDownWarnungGrenze.Value);
+            this.dataGridViewWarning.Refresh();         
         }
 
         private void loadCategoryTabelle()

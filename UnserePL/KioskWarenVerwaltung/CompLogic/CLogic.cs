@@ -107,6 +107,24 @@ namespace CompLogic {
             }
             dataTable.AcceptChanges();
         }
+
+        public DataTable Format(DataTable toformat, decimal grenze)
+        {
+            toformat.Columns.Remove("GUID");
+            toformat.Columns.Remove("Kategorie");
+            toformat.Columns.Remove("Preis");
+            toformat.Columns.Remove("Kategoriename");
+
+            for(int row = toformat.Rows.Count - 1; row >= 0; row--)
+            {
+                if(int.Parse(toformat.Rows[row]["Lagerbestand"].ToString()) > grenze)
+                {
+                    toformat.Rows[row].Delete();
+                }
+            }
+            toformat.AcceptChanges();
+            return toformat;
+        } 
         #endregion
     }
 }
