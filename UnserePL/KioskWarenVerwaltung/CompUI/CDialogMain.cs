@@ -65,9 +65,9 @@ namespace CompUI
         #endregion
 
         #region Methods
-        private void displayWaring( DataTable datatable)
+        private void displayWarning()
         {
-            this.dataGridViewWarning.DataSource = datatable;
+            this.dataGridViewWarning.DataSource =_productDataTable;
 
             // Unnötige Spalten Ausblenden
             foreach (DataGridViewColumn column in this.dataGridViewWarning.Columns)
@@ -75,6 +75,14 @@ namespace CompUI
                 if (column.Name== "GUID" || column.Name == "Kategorie" || (column.Name == "Preis") || column.Name == "Kategoriename")
                 {
                     column.Visible = false;
+                }
+            }
+            // Zeilen ausblenden, deren Lagerbestand über dem Grenzwert ist
+            foreach (DataGridViewRow row in this.dataGridViewWarning.Rows)
+            {
+                if(decimal.Parse(row.Cells[2].Value.ToString()) < numericUpDownWarnungGrenze.Value)
+                {
+                    row.Visible = false;
                 }
             }
         }
@@ -120,17 +128,18 @@ namespace CompUI
                 tableLayoutPanelVerkauf.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
             }
             redrawWarning();
+            displayWarning();
         }
 
         private void redrawWarning()
         {
-            this.dataGridViewWarning.DataSource = null;
-            DataTable datatable = new DataTable();
-            _iLogicWarning.Update(numericUpDownWarnungGrenze.Value, ref datatable);
-            if (datatable.Rows.Count > 0)
-            {
-                displayWaring(datatable);
-            }
+            //this.dataGridViewWarning.DataSource = null;
+            //DataTable datatable = new DataTable();
+            //_iLogicWarning.Update(numericUpDownWarnungGrenze.Value, ref datatable);
+            //if (datatable.Rows.Count > 0)
+            //{
+            //    displayWarning(datatable);
+            //}
         }
         #endregion
 
@@ -274,6 +283,7 @@ namespace CompUI
         private void numericUpDownWarnungGrenze_ValueChanged(object sender, EventArgs e)
         {
             this.redrawWarning();
+            this.displayWarning();
         }
         private void numericUpDownInPanel_ValueChanged(object sender, EventArgs e)
         {
