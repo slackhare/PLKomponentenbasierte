@@ -88,55 +88,69 @@ namespace CompUI
             _productDataTable.Clear();
             _iLogicSearch.SelectProduct(ref _productDataTable);
             redrawPanel();
-            redrawWarning();
             displayWarning();
+        }
+
+        private Label newHeaderLabel(String text)
+        {
+            Label header = new Label();
+            header.Text = text;
+            header.TextAlign = ContentAlignment.TopRight;
+            header.AutoSize = true;
+            header.Anchor = (AnchorStyles.Top | AnchorStyles.Right); ;
+            return header;
         }
 
         private void redrawPanel()
         {
             this.tableLayoutPanelVerkauf.Controls.Clear();
             this.tableLayoutPanelVerkauf.RowStyles.Clear();
+            this.tableLayoutPanelVerkauf.Dock = System.Windows.Forms.DockStyle.Fill;
+
+            tableLayoutPanelVerkauf.Controls.AddRange(new Control[5] { newHeaderLabel("Kategoriename"), newHeaderLabel("Produktname"), newHeaderLabel("Lagerbestand"), newHeaderLabel("Verkaufte Stückzahl"), newHeaderLabel("Preis") });
+            tableLayoutPanelVerkauf.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
+
             for (int i = 0; i < _productDataTable.Rows.Count; i++)
             {
-                // Erstellt für jede Spalte der Tabelle die Nötigen Objekte
-                Label col0name = new Label();
-                Label col1stock = new Label();
-                NumericUpDown col2tosell = new NumericUpDown();
-                col2tosell.Value = 0;
-                col2tosell.Minimum = 0;
-                //new System.EventHandler(this.numericUpDownInPanel_ValueChanged);
-                Label col3 = new Label();
-
-                // Setzt den Nötigen beschriftingstext
-                col0name.Text = _productDataTable.Rows[i]["Produktname"].ToString();
-                col1stock.Text = _productDataTable.Rows[i]["Lagerbestand"].ToString();
                 double price = (double)_productDataTable.Rows[i]["Preis"];
-                col3.Text = price.ToString("F");
 
-                //redraw price label when value changed
-                col2tosell.ValueChanged += (sender, e) => this.numericUpDownInPanel_ValueChanged(sender, e, price);
+                Label col0cat = new Label();
+                col0cat.Text = _productDataTable.Rows[i]["Kategoriename"].ToString();
+                col0cat.TextAlign = ContentAlignment.BottomRight;
+                col0cat.AutoSize = true;
+                col0cat.Anchor = (AnchorStyles.Top | AnchorStyles.Right); ;
 
-                // Setzen von Zusatzinformationen
+                Label col1name = new Label();
+                col1name.Text = _productDataTable.Rows[i]["Produktname"].ToString();
+                col1name.TextAlign = ContentAlignment.BottomRight;
+                col1name.AutoSize = true;
+                col1name.Anchor = (AnchorStyles.Top | AnchorStyles.Right); ;
 
-                col1stock.TextAlign = ContentAlignment.BottomCenter;
-                col3.TextAlign = ContentAlignment.BottomCenter;
+                Label col2stock = new Label();
+                col2stock.Text = _productDataTable.Rows[i]["Lagerbestand"].ToString();
+                col2stock.TextAlign = ContentAlignment.BottomRight;
+                col2stock.AutoSize = true;
+                col2stock.Anchor = (AnchorStyles.Top | AnchorStyles.Right); ;
+
+                NumericUpDown col3tosell = new NumericUpDown();
+                col3tosell.ValueChanged += (sender, e) => this.numericUpDownInPanel_ValueChanged(sender, e, price);
+                col3tosell.Value = 0;
+                col3tosell.Minimum = 0;
+                col3tosell.TextAlign = HorizontalAlignment.Right;
+                col3tosell.AutoSize = true;
+                col3tosell.Anchor = (AnchorStyles.Top | AnchorStyles.Right); ;
+
+                Label col4price = new Label();
+                col4price.Text = price.ToString("F") + "€";
+                col4price.TextAlign = ContentAlignment.BottomRight;
+                col4price.AutoSize = true;
+                col4price.Anchor = (AnchorStyles.Top | AnchorStyles.Right); ;
 
                 // Füllt die Aktuelle Spalte des tableLayoutPanelRestock mit drei Control Objekten zur bearbeitung
-                Control[] rowcontrols = new Control[4] { col0name, col1stock, col2tosell, col3 };
+                Control[] rowcontrols = new Control[5] { col0cat, col1name, col2stock, col3tosell, col4price };
                 tableLayoutPanelVerkauf.Controls.AddRange(rowcontrols);
                 tableLayoutPanelVerkauf.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
             }
-        }
-
-        private void redrawWarning()
-        {
-            //this.dataGridViewWarning.DataSource = null;
-            //DataTable datatable = new DataTable();
-            //_iLogicWarning.Update(numericUpDownWarnungGrenze.Value, ref datatable);
-            //if (datatable.Rows.Count > 0)
-            //{
-            //    displayWarning(datatable);
-            //}
         }
         #endregion
 
@@ -203,37 +217,40 @@ namespace CompUI
         private void buttonSell_Click(object sender, EventArgs e)
         {
             NumericUpDown[] quantarray = tableLayoutPanelVerkauf.Controls.OfType<NumericUpDown>().ToArray();
+            double price = 0;
             for (int row = 0; row < quantarray.Length; row++)
             {
                 if (Convert.ToInt32(quantarray[row].Value) > 0)
                 {
                     string guid = _productDataTable.Rows[row]["GUID"].ToString();
-                    _iLogicUpdate.SellProduct(guid, Convert.ToInt32(quantarray[row].Value));
+                    if (!_iLogicUpdate.SellProduct(guid, Convert.ToInt32(quantarray[row].Value)))
+                    {
+                        MessageBox.Show("Das Produkt "
+                            + _productDataTable.Rows[row]["Produktname"].ToString()
+                            + " ist nicht mehr oft genug vorrätig und konnte nicht verkauft werden!",
+                            "Fehler!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        price += Convert.ToInt32(quantarray[row].Value) * ((double)_productDataTable.Rows[row]["Preis"]);
+                    }
                 }
             }
+            if (price > 0)
+            {
+                MessageBox.Show("Der Kunde muss: " + Environment.NewLine + price.ToString("F") + "€" + Environment.NewLine + "bezahlen!",
+                                "Rechung", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
             loadSellingTabelle();
             sumPrice = 0;
             labelPrize.Text = sumPrice.ToString("F") + "€";
         }
-        
-        //Wieso eigentlich ein Timer? wär es nicht einfacher, die check-methode beim Verkauf aufzurufen? ist ja der einzige Fall, in dem sich der bestand reduziert
-        private void timerWarning_Tick(object sender, EventArgs e)
-        {
-            /*
-            this.dataGridViewWarning.DataSource = null;
-            DataTable datatable = _productDataTable.Clone();
-            _iLogicWarning.Update(numericUpDownWarnungGrenze.Value, ref datatable);
-            if (datatable.Rows.Count > 0 )
-            {
-                displayWaring(datatable);
-            }
-            */
-        }
+
         #endregion
 
         private void numericUpDownWarnungGrenze_ValueChanged(object sender, EventArgs e)
         {
-            this.redrawWarning();
             this.displayWarning();
         }
         private void numericUpDownInPanel_ValueChanged(object sender, EventArgs e, double price)

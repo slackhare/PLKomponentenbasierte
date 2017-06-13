@@ -90,12 +90,6 @@
             this.newCategoryMenuItem.Text = "Produktkategorie Hinzufügen";
             this.newCategoryMenuItem.Click += new System.EventHandler(this.newCategoryMenuItem_Click);
             // 
-            // timerWarnung
-            // 
-            this.timerWarnung.Enabled = true;
-            this.timerWarnung.Interval = 1000;
-            this.timerWarnung.Tick += new System.EventHandler(this.timerWarning_Tick);
-            // 
             // labelVerkauf
             // 
             this.labelVerkauf.AutoSize = true;
@@ -139,9 +133,19 @@
             // numericUpDownWarnungGrenze
             // 
             this.numericUpDownWarnungGrenze.Location = new System.Drawing.Point(699, 572);
+            this.numericUpDownWarnungGrenze.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.numericUpDownWarnungGrenze.Name = "numericUpDownWarnungGrenze";
             this.numericUpDownWarnungGrenze.Size = new System.Drawing.Size(61, 26);
             this.numericUpDownWarnungGrenze.TabIndex = 10;
+            this.numericUpDownWarnungGrenze.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.numericUpDownWarnungGrenze.ValueChanged += new System.EventHandler(this.numericUpDownWarnungGrenze_ValueChanged);
             // 
             // dataGridViewWarning
@@ -164,16 +168,20 @@
             // tableLayoutPanelVerkauf
             // 
             this.tableLayoutPanelVerkauf.AutoScroll = true;
-            this.tableLayoutPanelVerkauf.ColumnCount = 4;
+            this.tableLayoutPanelVerkauf.AutoSize = true;
+            this.tableLayoutPanelVerkauf.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanelVerkauf.ColumnCount = 5;
+            this.tableLayoutPanelVerkauf.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanelVerkauf.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanelVerkauf.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanelVerkauf.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanelVerkauf.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanelVerkauf.Location = new System.Drawing.Point(12, 86);
+            this.tableLayoutPanelVerkauf.MaximumSize = new System.Drawing.Size(593, 453);
             this.tableLayoutPanelVerkauf.Name = "tableLayoutPanelVerkauf";
             this.tableLayoutPanelVerkauf.RowCount = 1;
-            this.tableLayoutPanelVerkauf.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 453F));
-            this.tableLayoutPanelVerkauf.Size = new System.Drawing.Size(506, 453);
+            this.tableLayoutPanelVerkauf.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanelVerkauf.Size = new System.Drawing.Size(10, 10);
             this.tableLayoutPanelVerkauf.TabIndex = 12;
             // 
             // labelPrize

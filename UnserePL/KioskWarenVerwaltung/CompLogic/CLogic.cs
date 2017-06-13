@@ -1,34 +1,38 @@
 ﻿using CompLogic.Product;
 using System.Data;
 
-namespace CompLogic {
+namespace CompLogic
+{
 
-    internal class CLogic : ILogicSearch, ILogicTrade, ILogicUpdate, ILogicWarning, ILogic {
+    internal class CLogic : ILogicSearch, ILogicTrade, ILogicUpdate, ILogicWarning, ILogic
+    {
 
         #region Fields
-        private IData     _iData;
-        private IDataCon  _iDataCon;
-        private IDataDis  _iDataDis;
+        private IData _iData;
+        private IDataCon _iDataCon;
+        private IDataDis _iDataDis;
         #endregion
 
         #region Properties         
         public ILogicSearch LogicSearch { get { return this; } }
-        public ILogicTrade  LogicTrade  { get { return this; } }
+        public ILogicTrade LogicTrade { get { return this; } }
         public ILogicUpdate LogicUpdate { get { return this; } }
         public ILogicWarning LogicWarning { get { return this; } }
         #endregion
 
         #region Ctor
-        internal CLogic( IData iData ) {
-            _iData    = iData;
+        internal CLogic(IData iData)
+        {
+            _iData = iData;
             _iDataCon = iData.DataCon;
             _iDataDis = iData.DataDis;
         }
-        #endregion      
-                
+        #endregion
+
         #region Interface ILogicSearch Methods
-        public void Init( ref int nCars, out object [ ] arrayMake ) {
-            _iDataCon.Init( ref nCars, out arrayMake );
+        public void Init(ref int nCars, out object[] arrayMake)
+        {
+            _iDataCon.Init(ref nCars, out arrayMake);
         }
 
         public void InitCat(out object[] arrayCategory)
@@ -36,16 +40,17 @@ namespace CompLogic {
             _iDataCon.InitCat(out arrayCategory);
         }
 
-        public  object[] GetModel( string make ) {
-            return _iDataCon.GetModel( make );
+        public object[] GetModel(string make)
+        {
+            return _iDataCon.GetModel(make);
         }
 
         public void SelectProduct(ref DataTable datatable)
         {
             _iDataDis.SelectAllProducts(ref datatable);
-            foreach(DataRow row in datatable.Rows)
+            foreach (DataRow row in datatable.Rows)
             {
-                if(row.IsNull(0))
+                if (row.IsNull(0))
                 {
                     row.Delete();
                 }
@@ -71,24 +76,29 @@ namespace CompLogic {
 
         #region Interface ILogicUpdate Methods
         //Stockt ein Produkt mit einer guid um eine Menge auf
-        public void RestockProduct(string guid, int restockNumber)
+        public bool RestockProduct(string guid, int restockNumber)
         {
             DataTable dataTable = new DataTable();
 
             IProduct iProduct = new CFactoryCProduct().Create();
             iProduct.GUID = guid;
             _iDataDis.SelectProduct(iProduct, ref dataTable);
-            int oldStock = (System.Int32) dataTable.Rows[0]["Lagerbestand"];
+            int oldStock = (System.Int32)dataTable.Rows[0]["Lagerbestand"];
             iProduct.Stock = oldStock + restockNumber;
-            if (iProduct.Stock >= 0) {
+            if (iProduct.Stock >= 0)
+            {
                 _iDataDis.UpdateProduct(iProduct);
+                return true;
             }
-            //_iDataDis.RestockProduct(guid, restockNumber);
+            else
+            {
+                return false;
+            }
         }
 
-        public void SellProduct(string guid, int restockNumber)
+        public bool SellProduct(string guid, int restockNumber)
         {
-            RestockProduct(guid, restockNumber*-1);
+            return RestockProduct(guid, restockNumber * -1);
         }
         #endregion
 
@@ -106,16 +116,16 @@ namespace CompLogic {
             toformat.Columns.Remove("Preis");
             toformat.Columns.Remove("Kategoriename");
 
-            for(int row = toformat.Rows.Count - 1; row >= 0; row--)
+            for (int row = toformat.Rows.Count - 1; row >= 0; row--)
             {
-                if(((System.Int32)toformat.Rows[row]["Lagerbestand"]) > grenze)
+                if (((System.Int32)toformat.Rows[row]["Lagerbestand"]) > grenze)
                 {
                     toformat.Rows[row].Delete();
                 }
             }
             toformat.AcceptChanges();
             return toformat;
-        } 
+        }
         #endregion
     }
 }
