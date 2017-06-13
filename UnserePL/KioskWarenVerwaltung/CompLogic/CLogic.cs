@@ -76,7 +76,7 @@ namespace CompLogic
 
         #region Interface ILogicUpdate Methods
         //Stockt ein Produkt mit einer guid um eine Menge auf
-        public void RestockProduct(string guid, int restockNumber)
+        public bool RestockProduct(string guid, int restockNumber)
         {
             DataTable dataTable = new DataTable();
 
@@ -88,13 +88,17 @@ namespace CompLogic
             if (iProduct.Stock >= 0)
             {
                 _iDataDis.UpdateProduct(iProduct);
+                return true;
             }
-            //_iDataDis.RestockProduct(guid, restockNumber);
+            else
+            {
+                return false;
+            }
         }
 
-        public void SellProduct(string guid, int restockNumber)
+        public bool SellProduct(string guid, int restockNumber)
         {
-            RestockProduct(guid, restockNumber * -1);
+            return RestockProduct(guid, restockNumber * -1);
         }
         #endregion
 
