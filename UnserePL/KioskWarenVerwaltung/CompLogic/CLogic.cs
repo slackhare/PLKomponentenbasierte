@@ -118,7 +118,7 @@ namespace CompLogic {
 
             for(int row = toformat.Rows.Count - 1; row >= 0; row--)
             {
-                if(int.Parse(toformat.Rows[row]["Lagerbestand"].ToString()) > grenze)
+                if(((System.Int32)toformat.Rows[row]["Lagerbestand"]) > grenze)
                 {
                     toformat.Rows[row].Delete();
                 }

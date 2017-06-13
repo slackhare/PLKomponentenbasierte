@@ -67,8 +67,8 @@ namespace CompUI
         private void displayWarning()
         {
             this.dataGridViewWarning.Controls.Clear();
-            this.dataGridViewWarning.DataSource = _iLogicWarning.Format(_productDataTable.Clone(), numericUpDownWarnungGrenze.Value);
-            this.dataGridViewWarning.Refresh();         
+            this.dataGridViewWarning.DataSource = _iLogicWarning.Format(_productDataTable.Copy(), numericUpDownWarnungGrenze.Value);
+            this.dataGridViewWarning.Refresh();
         }
 
         private void loadCategoryTabelle()
