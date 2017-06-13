@@ -59,6 +59,7 @@ namespace CompUI
             //hole produkte
             _productDataTable = new DataTable();
             _productCategoryDataTable = new DataTable();
+
             loadCategoryTabelle();
         }
         #endregion
@@ -99,7 +100,7 @@ namespace CompUI
                 col2tosell.Value = 0;
                 col2tosell.Minimum = 0;
                 //redrawe lable 1 when changed
-                col2tosell.Click += new System.EventHandler(this.labelPrize_Update);
+                col2tosell.ValueChanged += new System.EventHandler(this.numericUpDownInPanel_ValueChanged);
                 Label col3 = new Label();
 
                 // Setzt den Nötigen beschriftingstext
@@ -117,6 +118,18 @@ namespace CompUI
                 Control[] rowcontrols = new Control[4] { col0name, col1stock, col2tosell, col3};
                 tableLayoutPanelVerkauf.Controls.AddRange(rowcontrols);
                 tableLayoutPanelVerkauf.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
+            }
+            redrawWarning();
+        }
+
+        private void redrawWarning()
+        {
+            this.dataGridViewWarning.DataSource = null;
+            DataTable datatable = new DataTable();
+            _iLogicWarning.Update(numericUpDownWarnungGrenze.Value, ref datatable);
+            if (datatable.Rows.Count > 0)
+            {
+                displayWaring(datatable);
             }
         }
         #endregion
@@ -198,9 +211,9 @@ namespace CompUI
             }
             loadSellingTabelle();
         }
-        private void labelPrize_Update(object sender, EventArgs e)
+        private void redrawPriceLabel()
         {
-            this.labelPrize.Text = "Preis ingesamt: ";
+            this.labelPrize.Text = "";
             double sumPrice = 0;
             int numberToSell = 0;
             double price = 0;
@@ -239,21 +252,33 @@ namespace CompUI
                     column++;
                 }
             }
-            this.labelPrize.Text += sumPrice.ToString();
-            this.labelPrize.Text += " €";
+            this.labelPrize.Text += sumPrice.ToString("F").Replace(".", ",");
+            this.labelPrize.Text += "€";
+            this.labelPrize.Refresh();
         }
         //Wieso eigentlich ein Timer? wär es nicht einfacher, die check-methode beim Verkauf aufzurufen? ist ja der einzige Fall, in dem sich der bestand reduziert
         private void timerWarning_Tick(object sender, EventArgs e)
         {
+            /*
             this.dataGridViewWarning.DataSource = null;
-            DataTable datatable = new DataTable();
+            DataTable datatable = _productDataTable.Clone();
             _iLogicWarning.Update(numericUpDownWarnungGrenze.Value, ref datatable);
             if (datatable.Rows.Count > 0 )
             {
                 displayWaring(datatable);
             }
+            */
         }
         #endregion
+
+        private void numericUpDownWarnungGrenze_ValueChanged(object sender, EventArgs e)
+        {
+            this.redrawWarning();
+        }
+        private void numericUpDownInPanel_ValueChanged(object sender, EventArgs e)
+        {
+            this.redrawPriceLabel();
+        }
     }
 
 }

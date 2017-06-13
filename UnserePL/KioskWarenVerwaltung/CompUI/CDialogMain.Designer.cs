@@ -39,6 +39,7 @@
             this.dataGridViewWarning = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanelVerkauf = new System.Windows.Forms.TableLayoutPanel();
             this.labelPrize = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWarnungGrenze)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWarning)).BeginInit();
@@ -132,6 +133,7 @@
             this.numericUpDownWarnungGrenze.Name = "numericUpDownWarnungGrenze";
             this.numericUpDownWarnungGrenze.Size = new System.Drawing.Size(61, 26);
             this.numericUpDownWarnungGrenze.TabIndex = 10;
+            this.numericUpDownWarnungGrenze.ValueChanged += new System.EventHandler(this.numericUpDownWarnungGrenze_ValueChanged);
             // 
             // dataGridViewWarning
             // 
@@ -165,14 +167,23 @@
             this.tableLayoutPanelVerkauf.Size = new System.Drawing.Size(506, 453);
             this.tableLayoutPanelVerkauf.TabIndex = 12;
             // 
-            // labelPreis
+            // labelPrize
             // 
             this.labelPrize.AutoSize = true;
-            this.labelPrize.Location = new System.Drawing.Point(524, 545);
-            this.labelPrize.Name = "labelPreis";
-            this.labelPrize.Size = new System.Drawing.Size(0, 20);
+            this.labelPrize.Location = new System.Drawing.Point(695, 545);
+            this.labelPrize.Name = "labelPrize";
+            this.labelPrize.Size = new System.Drawing.Size(49, 20);
             this.labelPrize.TabIndex = 13;
-            this.labelPrize.Click += new System.EventHandler(this.labelPrize_Update);
+            this.labelPrize.Text = "0,00€";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(524, 545);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(125, 20);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Preis insgesamt:";
             // 
             // CDialogMain
             // 
@@ -181,6 +192,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1099, 658);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.labelPrize);
             this.Controls.Add(this.tableLayoutPanelVerkauf);
             this.Controls.Add(this.dataGridViewWarning);
@@ -225,5 +237,6 @@
         private System.Windows.Forms.ToolStripMenuItem sortimentErweiternToolStripMenuItem;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelVerkauf;
         private System.Windows.Forms.Label labelPrize;
+        private System.Windows.Forms.Label label1;
     }
 }

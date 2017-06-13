@@ -84,12 +84,14 @@ namespace CompLogic {
 
         #region Interface ILogicWarning Methods
         //Gibt eine Tabelle zurück (über ref), mit allen produkten, die weniger als die grenze an Lagerbestand haben
+        //ref DataTable dataTable enthält eine Liste aller Produkte, die in der Funktion verändert wird
         public void Update(decimal grenze, ref DataTable dataTable)
         {
+            //Wir gehen davon aus, dass die ref dataTable schon mir den aktuellen Werten gefüllt ist
             SelectProduct(ref dataTable);
             for (int i = dataTable.Rows.Count - 1; i >= 0; i--)
             {
-                if (Utils.ParseInt(dataTable.Rows[i]["Lagerbestand"].ToString(), 0) >= grenze)
+                if (Utils.ParseInt(dataTable.Rows[i]["Lagerbestand"].ToString(), 0) > grenze)
                 {
                     dataTable.Rows[i].Delete();
                 }
