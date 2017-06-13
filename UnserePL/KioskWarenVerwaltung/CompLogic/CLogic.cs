@@ -42,7 +42,7 @@ namespace CompLogic {
 
         public void SelectProduct(ref DataTable datatable)
         {
-            _iDataDis.SelectProduct(ref datatable);
+            _iDataDis.SelectAllProducts(ref datatable);
             foreach(DataRow row in datatable.Rows)
             {
                 if(row.IsNull(0))
@@ -54,7 +54,7 @@ namespace CompLogic {
 
         public void SelectProductCategory(ref DataTable datatable) // Not needed
         {
-            _iDataDis.SelectProductCategory(ref datatable);
+            _iDataDis.SelectAllProductCategories(ref datatable);
         }
         #endregion
 
@@ -73,12 +73,21 @@ namespace CompLogic {
         //Stockt ein Produkt mit einer guid um eine Menge auf
         public void RestockProduct(string guid, int restockNumber)
         {
-            _iDataDis.RestockProduct(guid, restockNumber);
+            DataTable dataTable = new DataTable();
+
+            IProduct iProduct = new CFactoryCProduct().Create();
+            iProduct.GUID = guid;
+            _iDataDis.SelectProduct(iProduct, ref dataTable);
+            iProduct.Stock += restockNumber;
+            if (iProduct.Stock >= 0) {
+                _iDataDis.UpdateProduct(iProduct);
+            }
+            //_iDataDis.RestockProduct(guid, restockNumber);
         }
 
         public void SellProduct(string guid, int restockNumber)
         {
-            _iDataDis.RestockProduct(guid, restockNumber*-1);
+            RestockProduct(guid, restockNumber*-1);
         }
         #endregion
 
