@@ -40,18 +40,18 @@ namespace CompUI
         {
             tableLayoutPanelRestock.Controls.Clear();
             _productDataTable.Clear();
-            _iLogicSearch.SelectProduct(ref _productDataTable);
+            _iLogicSearch.SelectAllProducts(ref _productDataTable);
             tableLayoutPanelRestock.RowStyles.Clear();
 
             for (int i = 0; i < _productDataTable.Rows.Count; i++)
             {
                 // Erstellt für jede Spalte der Tabelle die Nötigen Objekte
-                CheckBox col0 = new CheckBox();
+                Label col0 = new Label();
                 Label col1 = new Label();
                 NumericUpDown col2 = new NumericUpDown();
-                col0.Name = "CheckBoxRow" + i;
+                col0.Name = "Label" + i;
                 col2.Name = "NumUpDownRow" + i;
-                col2.Minimum = 1;
+                col2.Minimum = 0;
 
                 // Setzt den Nötigen beschriftingstext
                 col0.Text = _productDataTable.Rows[i]["Produktname"].ToString();
@@ -67,9 +67,6 @@ namespace CompUI
                 tableLayoutPanelRestock.Controls.AddRange(rowcontrols);
                 tableLayoutPanelRestock.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
             }
-            //neu laden der box.. scheint nicht zu funktionieren?
-
-
             this.tableLayoutPanelRestock.Refresh();
         }
         #endregion
@@ -81,12 +78,11 @@ namespace CompUI
         // Wird die Angaben aus der Tabelle für das Datenbankupdate Vorbereiten
         private void buttonAcc_ClicktTabelLayout(object sender, EventArgs e)
         {
-            CheckBox[] tocheckarray = tableLayoutPanelRestock.Controls.OfType<CheckBox>().ToArray();
             NumericUpDown[] quantarray = tableLayoutPanelRestock.Controls.OfType<NumericUpDown>().ToArray();
 
-            for(int row = 0; row < tableLayoutPanelRestock.RowCount; row++)
+            for(int row = 0; row < quantarray.Length; row++)
             {
-                if(tocheckarray[row].Checked)
+                if(Convert.ToInt32(quantarray[row].Value) > 0)
                 {
                     string guid = _productDataTable.Rows[row]["GUID"].ToString();
                     _iLogicUpdate.RestockProduct(guid, Convert.ToInt32(quantarray[row].Value));

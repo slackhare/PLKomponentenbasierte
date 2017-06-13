@@ -80,13 +80,13 @@ namespace CompUI
         private void loadCategoryTabelle()
         {
             _productCategoryDataTable.Clear();
-            _iLogicSearch.SelectProductCategory(ref _productCategoryDataTable);
+            _iLogicSearch.SelectAllProductCategories(ref _productCategoryDataTable);
         }
 
         private void loadSellingTabelle()
         {
             _productDataTable.Clear();
-            _iLogicSearch.SelectProduct(ref _productDataTable);
+            _iLogicSearch.SelectAllProducts(ref _productDataTable);
             redrawPanel();
             displayWarning();
         }
@@ -171,7 +171,7 @@ namespace CompUI
             {
                 // Suchen ausführen
                 _productDataTable.Clear();
-                _iLogicSearch.SelectProduct(ref _productDataTable);
+                _iLogicSearch.SelectAllProducts(ref _productDataTable);
                 // Ergebnis in DialogSearchView darstellen
                 if (_dialogSearchView is CDialogSearchView)
                 {
@@ -213,6 +213,7 @@ namespace CompUI
             {
                 _iLogicTrade.InsertProductCategory(_iProductCategory);
             }
+            loadCategoryTabelle();
         }
         #endregion
 

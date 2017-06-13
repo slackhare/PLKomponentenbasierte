@@ -14,8 +14,8 @@ namespace CompLogic
         void Init(ref int nCars, out object[] arrayMake);
         void InitCat(out object[] arrayKategorie);
         object[] GetModel(string make);
-        void SelectProduct(ref DataTable dataTable);
-        void SelectProductCategory(ref DataTable dataTable);
+        void SelectAllProducts(ref DataTable dataTable);
+        void SelectAllProductCategories(ref DataTable dataTable);
     }
 
     public interface ILogicInsert

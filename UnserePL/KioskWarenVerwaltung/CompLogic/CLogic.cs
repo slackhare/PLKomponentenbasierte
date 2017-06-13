@@ -45,7 +45,7 @@ namespace CompLogic
             return _iDataCon.GetModel(make);
         }
 
-        public void SelectProduct(ref DataTable datatable)
+        public void SelectAllProducts(ref DataTable datatable)
         {
             _iDataDis.SelectAllProducts(ref datatable);
             foreach (DataRow row in datatable.Rows)
@@ -57,7 +57,7 @@ namespace CompLogic
             }
         }
 
-        public void SelectProductCategory(ref DataTable datatable) // Not needed
+        public void SelectAllProductCategories(ref DataTable datatable) // Not needed
         {
             _iDataDis.SelectAllProductCategories(ref datatable);
         }

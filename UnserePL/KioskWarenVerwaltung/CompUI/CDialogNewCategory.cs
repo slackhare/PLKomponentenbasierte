@@ -24,6 +24,7 @@ namespace CompUI
             InitializeComponent();
             _dialogMain = dialogMain;
             Categories = new List<string>();
+            textBoxNewCategory.Text = "";
         }
         #endregion
 

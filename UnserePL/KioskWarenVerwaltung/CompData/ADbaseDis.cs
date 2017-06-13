@@ -40,6 +40,7 @@ namespace CompData
             this.AddParameter(dbCommand, "pPreis", iProduct.Price);
             _dbConnection.Open();
             dbCommand.ExecuteNonQuery();
+            _dbConnection.Close();
         }
 
         public virtual void InsertProductCategory(IProductCategory iProductCategory)
@@ -56,6 +57,7 @@ namespace CompData
             this.AddParameter(dbCommand, "pKategoriename", iProductCategory.Name);
             _dbConnection.Open();
             dbCommand.ExecuteNonQuery();
+            _dbConnection.Close();
         }
 
         public void SelectAllProducts(ref DataTable dataTable)
