@@ -14,9 +14,6 @@ namespace CompUI
     {
 
         #region Fields
-        //Wieso braucht man die variablen?
-        private int _nCategorys;
-        private object[] _arrayCategory;
         // Komposition 
         private CDialogSearch _dialogSearch;
         private CDialogSearchView _dialogSearchView;
@@ -61,6 +58,7 @@ namespace CompUI
             _productDataTable = new DataTable();
             _productCategoryDataTable = new DataTable();
 
+            loadSellingTabelle();
             loadCategoryTabelle();
         }
         #endregion
@@ -90,6 +88,12 @@ namespace CompUI
         {
             _productDataTable.Clear();
             _iLogicSearch.SelectProduct(ref _productDataTable);
+            redrawPanel();
+            redrawWarning();
+        }
+
+        private void redrawPanel()
+        {
             this.tableLayoutPanelVerkauf.Controls.Clear();
             this.tableLayoutPanelVerkauf.RowStyles.Clear();
             for (int i = 0; i < _productDataTable.Rows.Count; i++)
@@ -106,10 +110,10 @@ namespace CompUI
                 // Setzt den Nötigen beschriftingstext
                 col0name.Text = _productDataTable.Rows[i]["Produktname"].ToString();
                 col1stock.Text = _productDataTable.Rows[i]["Lagerbestand"].ToString();
-                double price = (double) _productDataTable.Rows[i]["Preis"];
-                col3.Text = price.ToString();
+                double price = (double)_productDataTable.Rows[i]["Preis"];
+                col3.Text = price.ToString("F");
 
-                //redrawe lable 1 when changed
+                //redraw price label when value changed
                 col2tosell.ValueChanged += (sender, e) => this.numericUpDownInPanel_ValueChanged(sender, e, price);
 
                 // Setzen von Zusatzinformationen
@@ -118,11 +122,10 @@ namespace CompUI
                 col3.TextAlign = ContentAlignment.BottomCenter;
 
                 // Füllt die Aktuelle Spalte des tableLayoutPanelRestock mit drei Control Objekten zur bearbeitung
-                Control[] rowcontrols = new Control[4] { col0name, col1stock, col2tosell, col3};
+                Control[] rowcontrols = new Control[4] { col0name, col1stock, col2tosell, col3 };
                 tableLayoutPanelVerkauf.Controls.AddRange(rowcontrols);
                 tableLayoutPanelVerkauf.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
             }
-            redrawWarning();
         }
 
         private void redrawWarning()
@@ -137,19 +140,9 @@ namespace CompUI
         }
         #endregion
 
-        #region Methods Interface IDialog
-        public void InitCat()
-        {
-            _iLogicSearch.InitCat(out _arrayCategory);
-        }
-        #endregion
-
         #region Events
         private void CDialogMain_Load(object sender, EventArgs e)
         {
-            // Kategorienamen aus der Datenbank Holen
-            this.InitCat();     
-            this.loadSellingTabelle();
         }
 
         #region MenuItem_Click
@@ -236,11 +229,13 @@ namespace CompUI
         }
         private void numericUpDownInPanel_ValueChanged(object sender, EventArgs e, double price)
         {
+            //load and save old value
             NumericUpDown o = (NumericUpDown)sender;
             int thisValue = (int)o.Value;
             int lastValue = (o.Tag == null) ? 0 : (int)o.Tag;
             o.Tag = thisValue;
 
+            //update price
             this.sumPrice += ((thisValue - lastValue) * price);
             labelPrize.Text = sumPrice.ToString("F") + "€";
         }
