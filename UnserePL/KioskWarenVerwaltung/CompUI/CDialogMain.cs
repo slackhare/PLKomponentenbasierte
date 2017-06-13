@@ -32,6 +32,7 @@ namespace CompUI
 
         private DataTable _productDataTable;
         private DataTable _productCategoryDataTable;
+        private double sumPrice = 0;
         #endregion
 
         #region Properties
@@ -107,15 +108,17 @@ namespace CompUI
                 NumericUpDown col2tosell = new NumericUpDown();
                 col2tosell.Value = 0;
                 col2tosell.Minimum = 0;
-                //redrawe lable 1 when changed
-                col2tosell.ValueChanged += new System.EventHandler(this.numericUpDownInPanel_ValueChanged);
+                //new System.EventHandler(this.numericUpDownInPanel_ValueChanged);
                 Label col3 = new Label();
 
                 // Setzt den Nötigen beschriftingstext
                 col0name.Text = _productDataTable.Rows[i]["Produktname"].ToString();
                 col1stock.Text = _productDataTable.Rows[i]["Lagerbestand"].ToString();
-                col3.Text = _productDataTable.Rows[i]["Preis"].ToString();
+                double price = (double) _productDataTable.Rows[i]["Preis"];
+                col3.Text = price.ToString();
 
+                //redrawe lable 1 when changed
+                col2tosell.ValueChanged += (sender, e) => this.numericUpDownInPanel_ValueChanged(sender, e, price);
 
                 // Setzen von Zusatzinformationen
 
@@ -220,51 +223,7 @@ namespace CompUI
             }
             loadSellingTabelle();
         }
-        private void redrawPriceLabel()
-        {
-            this.labelPrize.Text = "";
-            double sumPrice = 0;
-            int numberToSell = 0;
-            double price = 0;
-            int column = 0;
-            foreach (Control c in this.tableLayoutPanelVerkauf.Controls)
-            {
-                switch (column)
-                {
-                    case 0:
-                        //this.label1.Text += "Name:";
-                        break;
-                    case 1:
-                        //this.label1.Text += "Lagerbestand:";
-                        break;
-                    case 2:
-                        //this.label1.Text += "Verkaufen:";
-                        numberToSell = Int32.Parse(c.Text);
-                        break;
-                    case 3:
-                        //this.label1.Text += "Preis:";
-                        price = double.Parse(c.Text);
-                        break;
-                }
-                //this.label1.Text += c.Text;
-                if (column >= 3)
-                {
-                    sumPrice += (numberToSell * price);
-                    numberToSell = 0;
-                    price = 0;
-                    //this.label1.Text += Environment.NewLine;
-                    column = 0;
-                }
-                else
-                {
-                    //this.label1.Text += " ";
-                    column++;
-                }
-            }
-            this.labelPrize.Text += sumPrice.ToString("F").Replace(".", ",");
-            this.labelPrize.Text += "€";
-            this.labelPrize.Refresh();
-        }
+        
         //Wieso eigentlich ein Timer? wär es nicht einfacher, die check-methode beim Verkauf aufzurufen? ist ja der einzige Fall, in dem sich der bestand reduziert
         private void timerWarning_Tick(object sender, EventArgs e)
         {
@@ -285,9 +244,15 @@ namespace CompUI
             this.redrawWarning();
             this.displayWarning();
         }
-        private void numericUpDownInPanel_ValueChanged(object sender, EventArgs e)
+        private void numericUpDownInPanel_ValueChanged(object sender, EventArgs e, double price)
         {
-            this.redrawPriceLabel();
+            NumericUpDown o = (NumericUpDown)sender;
+            int thisValue = (int)o.Value;
+            int lastValue = (o.Tag == null) ? 0 : (int)o.Tag;
+            o.Tag = thisValue;
+
+            this.sumPrice += ((thisValue - lastValue) * price);
+            labelPrize.Text = sumPrice.ToString("F") + "€";
         }
     }
 
