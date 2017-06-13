@@ -103,6 +103,8 @@ namespace CompUI
 
         private void redrawPanel()
         {
+            this.tableLayoutPanelVerkauf.Visible = false;
+
             this.tableLayoutPanelVerkauf.Controls.Clear();
             this.tableLayoutPanelVerkauf.RowStyles.Clear();
             this.tableLayoutPanelVerkauf.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -151,6 +153,7 @@ namespace CompUI
                 tableLayoutPanelVerkauf.Controls.AddRange(rowcontrols);
                 tableLayoutPanelVerkauf.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
             }
+            this.tableLayoutPanelVerkauf.Visible = true;
         }
         #endregion
 
