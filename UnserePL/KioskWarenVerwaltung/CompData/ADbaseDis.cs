@@ -66,7 +66,7 @@ namespace CompData
             DbCommand dbCommand = dbDataAdapter.SelectCommand;
             dbCommand.CommandType = CommandType.Text;
             dbCommand.Parameters.Clear();
-            dbCommand.CommandText = @"SELECT Produkt.*, Produktkategorie.Kategoriename FROM Produkt, Produktkategorie WHERE Produktkategorie.GUID = Produkt.Kategorie AND Produktkategorie.GUID = [pGUID]";
+            dbCommand.CommandText = @"SELECT Produkt.*, Produktkategorie.Kategoriename FROM Produkt, Produktkategorie WHERE Produktkategorie.GUID = Produkt.Kategorie AND Produkt.GUID = [pGUID]";
             this.AddParameter(dbCommand, "pGUID", iProduct.GUID);
             Fill(dataTable, dbDataAdapter);
         }
