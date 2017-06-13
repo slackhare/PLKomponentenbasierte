@@ -85,9 +85,6 @@
 
         #endregion
 
-        private System.Windows.Forms.NumericUpDown numericUpDownAnz;
-        private System.Windows.Forms.CheckedListBox checkedListBoxProduct;
-        private System.Windows.Forms.Button buttonOK;
         private System.Windows.Forms.Button buttonAcc;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelRestock;
         private System.Windows.Forms.Button buttonCancel;
