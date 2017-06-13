@@ -4,7 +4,7 @@ using System.Data;
 namespace CompLogic
 {
 
-    internal class CLogic : ILogicSearch, ILogicTrade, ILogicUpdate, ILogicWarning, ILogic
+    internal class CLogic : ILogicSearch, ILogicInsert, ILogicUpdate, ILogicWarning, ILogic
     {
 
         #region Fields
@@ -15,7 +15,7 @@ namespace CompLogic
 
         #region Properties         
         public ILogicSearch LogicSearch { get { return this; } }
-        public ILogicTrade LogicTrade { get { return this; } }
+        public ILogicInsert LogicTrade { get { return this; } }
         public ILogicUpdate LogicUpdate { get { return this; } }
         public ILogicWarning LogicWarning { get { return this; } }
         #endregion
