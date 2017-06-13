@@ -14,11 +14,14 @@ namespace CompLogic {
 
     public interface IDataDis
     {
-        void SelectProduct(ref DataTable dataTable);
+        void SelectAllProducts(ref DataTable dataTable);
+        void SelectProduct(IProduct iProduct, ref DataTable dataTable);
         void InsertProduct(IProduct iProduct);
-        void SelectProductCategory(ref DataTable dataTable);
+        void UpdateProduct(IProduct iProduct);
+        void SelectAllProductCategories(ref DataTable dataTable);
+        void SelectProductCategory(IProductCategory iProductCategory, ref DataTable dataTable);
         void InsertProductCategory(IProductCategory iProductCategor);
-        void RestockProduct(string guid, int restockNumber);
+        //void RestockProduct(string guid, int restockNumber);
         //Unnötig, wird in der logic gemacht, braucht keinen eignen Datenbankzugriff
         //void WarningUpdate(decimal grenze, ref DataTable datatable);
 

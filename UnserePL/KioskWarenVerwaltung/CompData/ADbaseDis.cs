@@ -50,30 +50,73 @@ namespace CompData
             Update(dataTable, dbDataAdapter);
         }
 
-        public void SelectProduct(ref DataTable dataTable)
+        public void SelectAllProducts(ref DataTable dataTable)
         {
             DbDataAdapter dbDataAdapter = this.CreateDbDataAdapter("Produkt");
             DbCommand dbCommand = dbDataAdapter.SelectCommand;
             dbCommand.CommandType = CommandType.Text;
             dbCommand.Parameters.Clear();
             dbCommand.CommandText = @"SELECT Produkt.*, Produktkategorie.Kategoriename FROM Produkt, Produktkategorie WHERE Produktkategorie.GUID = Produkt.Kategorie";
-            dbDataAdapter.Fill(dataTable);
+            Fill(dataTable, dbDataAdapter);
         }
-        public void SelectProductCategory(ref DataTable dataTable)
+
+        public void SelectProduct(IProduct iProduct, ref DataTable dataTable)
+        {
+            DbDataAdapter dbDataAdapter = this.CreateDbDataAdapter("Produkt");
+            DbCommand dbCommand = dbDataAdapter.SelectCommand;
+            dbCommand.CommandType = CommandType.Text;
+            dbCommand.Parameters.Clear();
+            dbCommand.CommandText = @"SELECT Produkt.*, Produktkategorie.Kategoriename FROM Produkt, Produktkategorie WHERE Produktkategorie.GUID = Produkt.Kategorie AND Produktkategorie.GUID = [pGUID]";
+            this.AddParameter(dbCommand, "pGUID", iProduct.GUID);
+            Fill(dataTable, dbDataAdapter);
+        }
+
+        public void SelectAllProductCategories(ref DataTable dataTable)
         {
             DbDataAdapter dbDataAdapter = this.CreateDbDataAdapter("Produktkategorie");
             DbCommand dbCommand = dbDataAdapter.SelectCommand;
             dbCommand.CommandType = CommandType.Text;
             dbCommand.Parameters.Clear();
             dbCommand.CommandText = @"SELECT * FROM Produktkategorie";
-            dbDataAdapter.Fill(dataTable);
+            Fill(dataTable, dbDataAdapter);
         }
 
+        public void SelectProductCategory(IProductCategory iProductCategory, ref DataTable dataTable)
+        {
+            DbDataAdapter dbDataAdapter = this.CreateDbDataAdapter("Produktkategorie");
+            DbCommand dbCommand = dbDataAdapter.SelectCommand;
+            dbCommand.CommandType = CommandType.Text;
+            dbCommand.Parameters.Clear();
+            dbCommand.CommandText = @"SELECT * FROM Produktkategorie WHERE GUID = [pGUID]";
+            this.AddParameter(dbCommand, "pGUID", iProductCategory.GUID);
+            Fill(dataTable, dbDataAdapter);
+        }
+
+        public void UpdateProduct(IProduct iProduct)
+        {
+            DbDataAdapter dbDataAdapter = this.CreateDbDataAdapter("Produkt");
+            DataTable tableContent = new DataTable();
+            SelectAllProducts(ref tableContent);
+            foreach (DataRow row in tableContent.Rows)
+            {
+                if (row["GUID"].ToString().CompareTo(iProduct.GUID) == 0)
+                {
+                    if (iProduct.Name != null) row["Produktname"] = iProduct.Name;
+                    if (iProduct.Category != null) row["Kategorie"] = iProduct.Category;
+                    if (iProduct.Stock != null) row["Lagerbestand"] = iProduct.Stock;
+                    if (iProduct.Price != null) row["Preis"] = iProduct.Price;
+                    break;
+                }
+            }
+            Update(tableContent, dbDataAdapter);
+        }
+
+        /*
         public virtual void RestockProduct(string guid, int restockNumber)
         {
             DbDataAdapter dbDataAdapter = this.CreateDbDataAdapter("Produkt");
             DataTable tableContent = new DataTable();
-            SelectProduct(ref tableContent);
+            SelectAllProducts(ref tableContent);
             foreach (DataRow row in tableContent.Rows)
             {
                 if (row["GUID"].ToString().CompareTo(guid) == 0)
@@ -85,22 +128,7 @@ namespace CompData
             }
             Update(tableContent, dbDataAdapter);
         }
-
-        protected virtual void DbCommandSelectCar(IProduct iProduct, DbCommand dbCommand)
-        {
-            dbCommand.CommandType = CommandType.Text;
-            dbCommand.Parameters.Clear();
-            dbCommand.CommandText = @"SELECT * FROM Produkt";
-
-        }
-
-        protected virtual void DbCommandUpdateProduct(IProduct iProduct, DbCommand dbCommand)
-        {
-            dbCommand.CommandType = CommandType.Text;
-            dbCommand.Parameters.Clear();
-            dbCommand.CommandText = @"UPDATE Produkt SET";
-
-        }
+        */
 
         protected void AddParameter(DbCommand dbCommand, string name, object value)
         {
