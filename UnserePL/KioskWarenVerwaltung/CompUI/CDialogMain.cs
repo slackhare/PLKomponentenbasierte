@@ -271,10 +271,10 @@ namespace CompUI
         private void numericUpDownInPanel_ValueChanged(object sender, EventArgs e, double price)
         {
             //load and save old value
-            NumericUpDown o = (NumericUpDown)sender;
-            int thisValue = (int)o.Value;
-            int lastValue = (o.Tag == null) ? 0 : (int)o.Tag;
-            o.Tag = thisValue;
+            NumericUpDown oldvalue = (NumericUpDown)sender;
+            int thisValue = (int)oldvalue.Value;
+            int lastValue = (oldvalue.Tag == null) ? 0 : (int)oldvalue.Tag;
+            oldvalue.Tag = thisValue;
 
             //update price
             this.sumPrice += ((thisValue - lastValue) * price);
@@ -285,8 +285,6 @@ namespace CompUI
             redrawPanel();
         }
         #endregion
-
-
     }
 
 }
