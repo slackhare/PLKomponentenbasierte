@@ -18,7 +18,6 @@ namespace CompUI
 
         #region Fields
         // Komposition 
-        private CDialogSearchView _dialogSearchView;
         private CDialogNewProduct _dialogNew;
         private CDialogRestock _dialogRestock;
         private CDialogNewCategory _dialogNewCategory;
@@ -58,7 +57,6 @@ namespace CompUI
             _iLogicInsert = iLogic.LogicInsert;
             _iLogicWarning = iLogic.LogicWarning;
             _iLogicUpdate = iLogic.LogicUpdate;
-            _dialogSearchView = new CDialogSearchView(this);
             _dialogNew = new CDialogNewProduct(_iLogicInsert, this);
             _dialogRestock = new CDialogRestock(_iLogicUpdate, this);
             _dialogNewCategory = new CDialogNewCategory(_iLogicInsert, this);
