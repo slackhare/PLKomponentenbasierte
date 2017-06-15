@@ -31,6 +31,7 @@ namespace CompUI
         private ILogicUpdate _iLogicUpdate;
 
         private List<IProduct> _ListIProduct;
+        private List<IProductCategory> _ListCategory;
 
         private IFactoryIProduct _iFactoryProduct;
         private IFactoryIProductCategory _iFactoryProductCategory;
@@ -43,6 +44,7 @@ namespace CompUI
         #region Properties
         internal DataTable ProductCategoryDataTable { get { return _productCategoryDataTable; } }
         internal List<IProduct> ProductList { get { return _ListIProduct; } }
+        internal List<IProductCategory> CategoryList { get { return _ListCategory; } }
         internal IFactoryIProduct FactoryProduct { get { return _iFactoryProduct; } }
         internal IFactoryIProductCategory FactoryProductCategory { get { return _iFactoryProductCategory; } }
         #endregion
@@ -63,6 +65,7 @@ namespace CompUI
             _dialogNewCategory = new CDialogNewCategory(_iLogicInsert, this);
 
             _ListIProduct = new List<IProduct>();
+            _ListCategory = new List<IProductCategory>();
 
             _iFactoryProduct = new CFactoryCProduct();
             _iFactoryProductCategory = new CFactoryCProductCategory();
@@ -83,14 +86,16 @@ namespace CompUI
 
         private void loadCategoryTabelle()
         {
+
             _productCategoryDataTable.Clear();
             _iLogicSearch.SelectAllProductCategories(ref _productCategoryDataTable);
         }
 
         private void loadProductTabelle()
         {
-            _productDataTable.Clear();
-            _iLogicSearch.SelectAllProducts(ref _productDataTable);
+            _iLogicSearch.FillListProduct(ref _ListIProduct);
+            //_productDataTable.Clear();
+            //_iLogicSearch.SelectAllProducts(ref _productDataTable);
             redrawPanel();
             displayWarning();
         }
@@ -115,6 +120,11 @@ namespace CompUI
 
             tableLayoutPanelSelling.Controls.AddRange(new Control[5] { newHeaderLabel("Kategoriename"), newHeaderLabel("Produktname"), newHeaderLabel("Lagerbestand"), newHeaderLabel("Verkaufte Stückzahl"), newHeaderLabel("Preis") });
             tableLayoutPanelSelling.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
+
+            foreach (IProduct product in _ListIProduct)
+            {
+              
+            }
 
             for (int i = 0; i < _productDataTable.Rows.Count; i++)
             {
@@ -173,8 +183,10 @@ namespace CompUI
         #region Events
         private void CDialogMain_Load(object sender, EventArgs e)
         {
+
             loadProductTabelle();
-            loadCategoryTabelle();
+            // loadCategoryTabelle();
+            _iLogicSearch.FillListCategory(ref _ListCategory);
         }
 
         #region MenuItem_Click
@@ -221,7 +233,7 @@ namespace CompUI
             //{
             //    //_iLogicInsert.InsertProductCategory(_iProductCategory);
             //}
-            loadCategoryTabelle();
+            _iLogicSearch.FillListCategory(ref _ListCategory);
         }
         
 
