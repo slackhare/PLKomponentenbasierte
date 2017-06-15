@@ -128,19 +128,9 @@
             0,
             0,
             0});
-            this.numericUpDownAnz.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.numericUpDownAnz.Name = "numericUpDownAnz";
             this.numericUpDownAnz.Size = new System.Drawing.Size(100, 23);
             this.numericUpDownAnz.TabIndex = 45;
-            this.numericUpDownAnz.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             // 
             // comboBoxKategorie
             // 

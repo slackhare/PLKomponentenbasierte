@@ -27,8 +27,8 @@ namespace CompUI
         {
             comboBoxKategorie.Items.Clear();
             textBoxName.Clear();
-            textBoxPrice.Clear();
-            numericUpDownAnz.ResetText();
+            textBoxPrice.Text = "0,00";
+            numericUpDownAnz.Value = 0;
 
             foreach (IProductCategory category in _dialogMain.CategoryList)
             {
@@ -44,21 +44,36 @@ namespace CompUI
         private void buttonOK_Click(object sender, EventArgs e)
         {
             IProduct iProduct = _dialogMain.FactoryProduct.Create();
-            iProduct.Name = this.textBoxName.Text;
-            iProduct.Category = _dialogMain.CategoryList[this.comboBoxKategorie.SelectedIndex];
-            iProduct.Stock = Convert.ToInt32(numericUpDownAnz.Value.ToString());
+            bool allright = true;
 
-            this.textBoxPrice.Text.Replace(",", ".");
+            if (this.textBoxName.Text.CompareTo("") == 0) {
+                allright = false;
+                MessageBox.Show("Bitte geben sie einen Produktnamen an!",
+                            "Fehler!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
             try
             {
+                this.textBoxPrice.Text.Replace(",", ".");
                 iProduct.Price = Convert.ToDouble(this.textBoxPrice.Text);
-            }catch(System.FormatException)
-            {
-                iProduct.Price = 0;
             }
-            _iLogicInsert.InsertProduct(iProduct);
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            catch (System.FormatException)
+            {
+                allright = false;
+                MessageBox.Show("Bitte geben sie einen Preis an!",
+                            "Fehler!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            if (allright)
+            {
+                iProduct.Name = this.textBoxName.Text;
+                iProduct.Category = _dialogMain.CategoryList[this.comboBoxKategorie.SelectedIndex];
+                iProduct.Stock = Convert.ToInt32(numericUpDownAnz.Value.ToString());
+
+                _iLogicInsert.InsertProduct(iProduct);
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
         }
         #endregion
 
