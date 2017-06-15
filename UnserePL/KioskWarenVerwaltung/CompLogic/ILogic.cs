@@ -4,7 +4,7 @@ namespace CompLogic
     public interface ILogic
     {
         ILogicSearch LogicSearch { get; }
-        ILogicInsert LogicTrade { get; }
+        ILogicInsert LogicInsert { get; }
         ILogicUpdate LogicUpdate { get; }
         ILogicWarning LogicWarning { get; }
     }

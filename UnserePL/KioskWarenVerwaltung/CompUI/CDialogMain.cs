@@ -20,13 +20,13 @@ namespace CompUI
         // Komposition 
         private CDialogSearch _dialogSearch;
         private CDialogSearchView _dialogSearchView;
-        private CDialogNew _dialogNew;
+        private CDialogNewProduct _dialogNew;
         private CDialogRestock _dialogRestock;
         private CDialogNewCategory _dialogNewCategory;
         // externe Komponenten
         private ILogic _iLogic;
         private ILogicSearch _iLogicSearch;
-        private ILogicInsert _iLogicTrade;
+        private ILogicInsert _iLogicInsert;
         private ILogicWarning _iLogicWarning;
         private ILogicUpdate _iLogicUpdate;
         private IProduct _iProduct;
@@ -53,14 +53,14 @@ namespace CompUI
 
             _iLogic = iLogic;
             _iLogicSearch = iLogic.LogicSearch;
-            _iLogicTrade = iLogic.LogicTrade;
+            _iLogicInsert = iLogic.LogicInsert;
             _iLogicWarning = iLogic.LogicWarning;
             _iLogicUpdate = iLogic.LogicUpdate;
             _dialogSearch = new CDialogSearch(iLogic, this);
             _dialogSearchView = new CDialogSearchView(this);
-            _dialogNew = new CDialogNew(this);
+            _dialogNew = new CDialogNewProduct(_iLogicInsert, this);
             _dialogRestock = new CDialogRestock(iLogic, this);
-            _dialogNewCategory = new CDialogNewCategory(this);
+            _dialogNewCategory = new CDialogNewCategory(_iLogicInsert, this);
 
             _iProduct = new CFactoryCProduct().Create();
             _iProductCategory = new CFactoryCProductCategory().Create();
@@ -208,7 +208,7 @@ namespace CompUI
             if (dialogResult == DialogResult.OK)
             {
                 // Einfügen ausführen
-                _iLogicTrade.InsertProduct(_iProduct);
+                //_iLogicTrade.InsertProduct(_iProduct);
             }
             loadProductTabelle();
         }
@@ -217,7 +217,7 @@ namespace CompUI
             DialogResult dialogResult = _dialogNewCategory.ShowDialog();
             if (dialogResult == DialogResult.OK)
             {
-                _iLogicTrade.InsertProductCategory(_iProductCategory);
+                //_iLogicInsert.InsertProductCategory(_iProductCategory);
             }
             loadCategoryTabelle();
         }

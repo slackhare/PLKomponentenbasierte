@@ -1,12 +1,8 @@
 ﻿using CompLogic;
+using CompLogic.ProductCategory;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CompUI
@@ -16,15 +12,17 @@ namespace CompUI
         #region Fields
         private CDialogMain _dialogMain;
         private List<string> Categories;
+        private ILogicInsert _iLogicInsert;
         #endregion
 
         #region Ctor
-        internal CDialogNewCategory(CDialogMain dialogMain)
+        internal CDialogNewCategory(ILogicInsert iLogicInsert, CDialogMain dialogMain)
         {
             InitializeComponent();
             _dialogMain = dialogMain;
             Categories = new List<string>();
             textBoxNewCategory.Text = "";
+            _iLogicInsert = iLogicInsert;
         }
         #endregion
 
@@ -39,8 +37,9 @@ namespace CompUI
         }
         private void buttonHinzufuegen_Click(object sender, EventArgs e)
         {
-            IProductCategory iProductCategory = _dialogMain.ProductCategory;
+            IProductCategory iProductCategory = new CFactoryCProductCategory().Create();
             iProductCategory.Name = textBoxNewCategory.Text;
+            _iLogicInsert.InsertProductCategory(iProductCategory);
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
