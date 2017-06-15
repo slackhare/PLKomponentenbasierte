@@ -196,28 +196,29 @@ namespace CompUI
         }
         // Eventhandler lager auffüllen
         private void restockMenuItem_Click(object sender, EventArgs e)
-        {
+        { 
             this.FillProductList();
+            _dialogRestock.ShowDialog();
             loadProductTabelle();
         }
         // Eventhandler Sortiment erweitern
         private void newMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = _dialogNew.ShowDialog();
-            if (dialogResult == DialogResult.OK)
-            {
-                // Einfügen ausführen
-                //_iLogicTrade.InsertProduct(_iProduct);
-            }
+            /*DialogResult dialogResult =*/ _dialogNew.ShowDialog();
+            //if (dialogResult == DialogResult.OK)
+            //{
+            //    // Einfügen ausführen
+            //    //_iLogicTrade.InsertProduct(_iProduct);
+            //}
             loadProductTabelle();
         }
         private void newCategoryMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = _dialogNewCategory.ShowDialog();
-            if (dialogResult == DialogResult.OK)
-            {
-                //_iLogicInsert.InsertProductCategory(_iProductCategory);
-            }
+            _dialogNewCategory.ShowDialog();
+            //if (dialogResult == DialogResult.OK)
+            //{
+            //    //_iLogicInsert.InsertProductCategory(_iProductCategory);
+            //}
             loadCategoryTabelle();
         }
         
