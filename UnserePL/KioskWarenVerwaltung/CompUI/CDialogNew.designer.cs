@@ -30,8 +30,8 @@
             this.buttonESC = new System.Windows.Forms.Button();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.labelAnz = new System.Windows.Forms.Label();
-            this.labelPreis = new System.Windows.Forms.Label();
-            this.textBoxPreis = new System.Windows.Forms.TextBox();
+            this.labelPrice = new System.Windows.Forms.Label();
+            this.textBoxPrice = new System.Windows.Forms.TextBox();
             this.numericUpDownAnz = new System.Windows.Forms.NumericUpDown();
             this.comboBoxKategorie = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAnz)).BeginInit();
@@ -101,19 +101,19 @@
             // 
             // labelPreis
             // 
-            this.labelPreis.AutoSize = true;
-            this.labelPreis.Location = new System.Drawing.Point(330, 65);
-            this.labelPreis.Name = "labelPreis";
-            this.labelPreis.Size = new System.Drawing.Size(71, 17);
-            this.labelPreis.TabIndex = 44;
-            this.labelPreis.Text = "Preis in €:";
+            this.labelPrice.AutoSize = true;
+            this.labelPrice.Location = new System.Drawing.Point(330, 65);
+            this.labelPrice.Name = "labelPrice";
+            this.labelPrice.Size = new System.Drawing.Size(71, 17);
+            this.labelPrice.TabIndex = 44;
+            this.labelPrice.Text = "Preis in €:";
             // 
             // textBoxPreis
             // 
-            this.textBoxPreis.Location = new System.Drawing.Point(333, 85);
-            this.textBoxPreis.Name = "textBoxPreis";
-            this.textBoxPreis.Size = new System.Drawing.Size(100, 23);
-            this.textBoxPreis.TabIndex = 4;
+            this.textBoxPrice.Location = new System.Drawing.Point(333, 85);
+            this.textBoxPrice.Name = "textBoxPrice";
+            this.textBoxPrice.Size = new System.Drawing.Size(100, 23);
+            this.textBoxPrice.TabIndex = 4;
             // 
             // numericUpDownAnz
             // 
@@ -152,8 +152,8 @@
             this.ClientSize = new System.Drawing.Size(448, 182);
             this.Controls.Add(this.comboBoxKategorie);
             this.Controls.Add(this.numericUpDownAnz);
-            this.Controls.Add(this.textBoxPreis);
-            this.Controls.Add(this.labelPreis);
+            this.Controls.Add(this.textBoxPrice);
+            this.Controls.Add(this.labelPrice);
             this.Controls.Add(this.labelAnz);
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.buttonESC);
@@ -180,8 +180,8 @@
         private System.Windows.Forms.Button buttonESC;
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.Label labelAnz;
-        private System.Windows.Forms.Label labelPreis;
-        private System.Windows.Forms.TextBox textBoxPreis;
+        private System.Windows.Forms.Label labelPrice;
+        private System.Windows.Forms.TextBox textBoxPrice;
         private System.Windows.Forms.NumericUpDown numericUpDownAnz;
         private System.Windows.Forms.ComboBox comboBoxKategorie;
     }

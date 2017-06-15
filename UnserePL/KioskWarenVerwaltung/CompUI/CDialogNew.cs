@@ -25,7 +25,7 @@ namespace CompUI
         {
             comboBoxKategorie.Items.Clear();
             textBoxName.Clear();
-            textBoxPreis.Clear();
+            textBoxPrice.Clear();
             numericUpDownAnz.ResetText();
             foreach(DataRow row in _dialogMain.ProductCategoryDataTable.Rows)
             {
@@ -41,10 +41,10 @@ namespace CompUI
             iProduct.Category = _dialogMain.ProductCategoryDataTable.Rows[this.comboBoxKategorie.SelectedIndex]["GUID"].ToString();
             iProduct.Stock = Convert.ToInt32(numericUpDownAnz.Value.ToString());
 
-            this.textBoxPreis.Text.Replace(",", ".");
+            this.textBoxPrice.Text.Replace(",", ".");
             try
             {
-                iProduct.Price = Convert.ToDouble(this.textBoxPreis.Text);
+                iProduct.Price = Convert.ToDouble(this.textBoxPrice.Text);
             }catch(System.FormatException)
             {
                 iProduct.Price = 0;
