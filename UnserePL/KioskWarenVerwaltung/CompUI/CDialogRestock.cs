@@ -49,7 +49,7 @@ namespace CompUI
                 col0.Text = product.Name;
                 col0.AutoSize = true;
                 col0.TextAlign = ContentAlignment.BottomRight;
-                col0.Anchor = (AnchorStyles.None | AnchorStyles.Right);
+                col0.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
 
                 Label col1 = new Label();
                 col1.Text = product.Stock.ToString();
@@ -57,14 +57,14 @@ namespace CompUI
                 col1.TextAlign = ContentAlignment.BottomCenter;
                 col1.AutoSize = true;
                 col1.TextAlign = ContentAlignment.BottomRight;
-                col1.Anchor = (AnchorStyles.None | AnchorStyles.Right);
+                col1.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
 
                 NumericUpDown col2 = new NumericUpDown();
                 col2.Name = "NumUpDownRow"+product.GUID;
                 col2.Minimum = 0;
                 col2.AutoSize = true;
                 col2.TextAlign = HorizontalAlignment.Right;
-                col2.Anchor = (AnchorStyles.None | AnchorStyles.Right);
+                col2.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
                 // Setzt den Nötigen beschriftingstext
                 //col0.Text = _productDataTable.Rows[i]["Produktname"].ToString();
                 //col1.Text = _productDataTable.Rows[i]["Lagerbestand"].ToString();
