@@ -12,7 +12,7 @@ namespace CompLogic.Product
         public int? Stock { get; set; }
         public CProduct()
         {
-            GUID = null;
+            GUID = Utils.CreateGUID().ToString();
             Name = null;
             Category = null;
             Price = null;

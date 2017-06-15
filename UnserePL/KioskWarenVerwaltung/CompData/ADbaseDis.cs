@@ -33,7 +33,7 @@ namespace CompData
             dbCommand.Parameters.Clear();
             dbCommand.CommandText = @"INSERT INTO Produkt ( [GUID], [Produktname], [Lagerbestand], [Kategorie], [Preis] ) VALUES (";
             dbCommand.CommandText += "[pGUID], [pProduktname], [pLagerbestand], [pKategorie], [pPreis])";
-            this.AddParameter(dbCommand, "pGUID", Utils.CreateGUID().ToString());
+            this.AddParameter(dbCommand, "pGUID", iProduct.GUID);
             this.AddParameter(dbCommand, "pProduktname", iProduct.Name);
             this.AddParameter(dbCommand, "pLagerbestand", iProduct.Stock);
             this.AddParameter(dbCommand, "pKategorie", iProduct.Category);
@@ -53,7 +53,7 @@ namespace CompData
             dbCommand.Parameters.Clear();
             dbCommand.CommandText = @"INSERT INTO Produktkategorie ( [GUID], [Kategoriename]) VALUES (";
             dbCommand.CommandText += "[pGUID], [pKategoriename])";
-            this.AddParameter(dbCommand, "pGUID", Utils.CreateGUID().ToString());
+            this.AddParameter(dbCommand, "pGUID", iProductCategory.GUID);
             this.AddParameter(dbCommand, "pKategoriename", iProductCategory.Name);
             _dbConnection.Open();
             dbCommand.ExecuteNonQuery();
