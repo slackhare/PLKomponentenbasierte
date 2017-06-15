@@ -54,5 +54,11 @@ namespace CompUI
             this.Close();
         }
         #endregion
+
+        private void buttonESC_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
     }
 }

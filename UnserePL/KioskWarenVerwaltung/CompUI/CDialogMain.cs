@@ -75,7 +75,7 @@ namespace CompUI
         private void displayWarning()
         {
             this.dataGridViewWarning.Controls.Clear();
-            this.dataGridViewWarning.DataSource = _iLogicWarning.Format(_productDataTable.Copy(), numericUpDownWarnungGrenze.Value);
+            this.dataGridViewWarning.DataSource = _iLogicWarning.Format(_productDataTable.Copy(), numericUpDownWarningLimit.Value);
 
             this.dataGridViewWarning.Refresh();
             dataGridViewWarning.ClearSelection();
@@ -87,7 +87,7 @@ namespace CompUI
             _iLogicSearch.SelectAllProductCategories(ref _productCategoryDataTable);
         }
 
-        private void loadSellingTabelle()
+        private void loadProductTabelle()
         {
             _productDataTable.Clear();
             _iLogicSearch.SelectAllProducts(ref _productDataTable);
@@ -107,14 +107,14 @@ namespace CompUI
 
         private void redrawPanel()
         {
-            this.tableLayoutPanelVerkauf.Visible = false;
+            this.tableLayoutPanelSelling.Visible = false;
 
-            this.tableLayoutPanelVerkauf.Controls.Clear();
-            this.tableLayoutPanelVerkauf.RowStyles.Clear();
-            this.tableLayoutPanelVerkauf.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelSelling.Controls.Clear();
+            this.tableLayoutPanelSelling.RowStyles.Clear();
+            this.tableLayoutPanelSelling.Dock = System.Windows.Forms.DockStyle.Fill;
 
-            tableLayoutPanelVerkauf.Controls.AddRange(new Control[5] { newHeaderLabel("Kategoriename"), newHeaderLabel("Produktname"), newHeaderLabel("Lagerbestand"), newHeaderLabel("Verkaufte Stückzahl"), newHeaderLabel("Preis") });
-            tableLayoutPanelVerkauf.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
+            tableLayoutPanelSelling.Controls.AddRange(new Control[5] { newHeaderLabel("Kategoriename"), newHeaderLabel("Produktname"), newHeaderLabel("Lagerbestand"), newHeaderLabel("Verkaufte Stückzahl"), newHeaderLabel("Preis") });
+            tableLayoutPanelSelling.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
 
             for (int i = 0; i < _productDataTable.Rows.Count; i++)
             {
@@ -154,10 +154,10 @@ namespace CompUI
 
                 // Füllt die Aktuelle Spalte des tableLayoutPanelRestock mit drei Control Objekten zur bearbeitung
                 Control[] rowcontrols = new Control[5] { col0cat, col1name, col2stock, col3tosell, col4price };
-                tableLayoutPanelVerkauf.Controls.AddRange(rowcontrols);
-                tableLayoutPanelVerkauf.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
+                tableLayoutPanelSelling.Controls.AddRange(rowcontrols);
+                tableLayoutPanelSelling.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
             }
-            this.tableLayoutPanelVerkauf.Visible = true;
+            this.tableLayoutPanelSelling.Visible = true;
         }
 
         private void FillProductList()
@@ -172,7 +172,7 @@ namespace CompUI
         #region Events
         private void CDialogMain_Load(object sender, EventArgs e)
         {
-            loadSellingTabelle();
+            loadProductTabelle();
             loadCategoryTabelle();
         }
 
@@ -195,6 +195,7 @@ namespace CompUI
                 dialogResult = _dialogSearchView.ShowDialog();
             }
         }
+        // Eventhandler lager auffüllen
         private void restockMenuItem_Click(object sender, EventArgs e)
         {
             this._ListIProduct.Clear();
@@ -207,7 +208,7 @@ namespace CompUI
                     _iLogicUpdate.RestockProduct(product);
                 }
             }
-            loadSellingTabelle();
+            loadProductTabelle();
         }
         // Eventhandler Sortiment erweitern
         private void newMenuItem_Click(object sender, EventArgs e)
@@ -218,8 +219,7 @@ namespace CompUI
                 // Einfügen ausführen
                 _iLogicTrade.InsertProduct(_iProduct);
             }
-            loadSellingTabelle();
-            loadCategoryTabelle();
+            loadProductTabelle();
         }
         private void newCategoryMenuItem_Click(object sender, EventArgs e)
         {
@@ -230,12 +230,12 @@ namespace CompUI
             }
             loadCategoryTabelle();
         }
-        #endregion
+        
 
         // Eventhandler Verkaufen
         private void buttonSell_Click(object sender, EventArgs e)
         {
-            NumericUpDown[] quantarray = tableLayoutPanelVerkauf.Controls.OfType<NumericUpDown>().ToArray();
+            NumericUpDown[] quantarray = tableLayoutPanelSelling.Controls.OfType<NumericUpDown>().ToArray();
             double price = 0;
             for (int row = 0; row < quantarray.Length; row++)
             {
@@ -261,14 +261,18 @@ namespace CompUI
                                 "Rechung", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
-            loadSellingTabelle();
+            loadProductTabelle();
             sumPrice = 0;
             labelPrize.Text = sumPrice.ToString("F") + "€";
         }
-        private void numericUpDownWarnungGrenze_ValueChanged(object sender, EventArgs e)
+        #endregion
+
+        //Eventhandler Grenze geändert
+        private void numericUpDownWarningLimit_ValueChanged(object sender, EventArgs e)
         {
             this.displayWarning();
         }
+        //Eventhandler Anzahl verkauft geändert
         private void numericUpDownInPanel_ValueChanged(object sender, EventArgs e, double price)
         {
             //load and save old value

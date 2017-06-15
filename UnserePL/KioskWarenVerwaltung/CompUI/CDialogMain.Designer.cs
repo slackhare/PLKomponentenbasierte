@@ -30,19 +30,17 @@
             this.restockMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newProductMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newCategoryMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.timerWarnung = new System.Windows.Forms.Timer(this.components);
-            this.timerUpdate = new System.Windows.Forms.Timer(this.components);
-            this.labelVerkauf = new System.Windows.Forms.Label();
-            this.buttonVerkaufen = new System.Windows.Forms.Button();
-            this.labelWarnung = new System.Windows.Forms.Label();
-            this.labelWarnungGrenze = new System.Windows.Forms.Label();
-            this.numericUpDownWarnungGrenze = new System.Windows.Forms.NumericUpDown();
+            this.labelSelling = new System.Windows.Forms.Label();
+            this.buttonSell = new System.Windows.Forms.Button();
+            this.labelWarning = new System.Windows.Forms.Label();
+            this.labelWarningLimit = new System.Windows.Forms.Label();
+            this.numericUpDownWarningLimit = new System.Windows.Forms.NumericUpDown();
             this.dataGridViewWarning = new System.Windows.Forms.DataGridView();
-            this.tableLayoutPanelVerkauf = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanelSelling = new System.Windows.Forms.TableLayoutPanel();
             this.labelPrize = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWarnungGrenze)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWarningLimit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWarning)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,61 +90,61 @@
             // 
             // labelVerkauf
             // 
-            this.labelVerkauf.AutoSize = true;
-            this.labelVerkauf.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelVerkauf.Location = new System.Drawing.Point(12, 46);
-            this.labelVerkauf.Name = "labelVerkauf";
-            this.labelVerkauf.Size = new System.Drawing.Size(128, 37);
-            this.labelVerkauf.TabIndex = 1;
-            this.labelVerkauf.Text = "Verkauf";
+            this.labelSelling.AutoSize = true;
+            this.labelSelling.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSelling.Location = new System.Drawing.Point(12, 46);
+            this.labelSelling.Name = "labelVerkauf";
+            this.labelSelling.Size = new System.Drawing.Size(128, 37);
+            this.labelSelling.TabIndex = 1;
+            this.labelSelling.Text = "Verkauf";
             // 
             // buttonVerkaufen
             // 
-            this.buttonVerkaufen.Location = new System.Drawing.Point(408, 545);
-            this.buttonVerkaufen.Name = "buttonVerkaufen";
-            this.buttonVerkaufen.Size = new System.Drawing.Size(110, 49);
-            this.buttonVerkaufen.TabIndex = 5;
-            this.buttonVerkaufen.Text = "Verkaufen";
-            this.buttonVerkaufen.UseVisualStyleBackColor = true;
-            this.buttonVerkaufen.Click += new System.EventHandler(this.buttonSell_Click);
+            this.buttonSell.Location = new System.Drawing.Point(408, 545);
+            this.buttonSell.Name = "buttonVerkaufen";
+            this.buttonSell.Size = new System.Drawing.Size(110, 49);
+            this.buttonSell.TabIndex = 5;
+            this.buttonSell.Text = "Verkaufen";
+            this.buttonSell.UseVisualStyleBackColor = true;
+            this.buttonSell.Click += new System.EventHandler(this.buttonSell_Click);
             // 
             // labelWarnung
             // 
-            this.labelWarnung.AutoSize = true;
-            this.labelWarnung.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelWarnung.ForeColor = System.Drawing.Color.Red;
-            this.labelWarnung.Location = new System.Drawing.Point(611, 114);
-            this.labelWarnung.Name = "labelWarnung";
-            this.labelWarnung.Size = new System.Drawing.Size(369, 55);
-            this.labelWarnung.TabIndex = 6;
-            this.labelWarnung.Text = "!!!WARNUNG!!!";
+            this.labelWarning.AutoSize = true;
+            this.labelWarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelWarning.ForeColor = System.Drawing.Color.Red;
+            this.labelWarning.Location = new System.Drawing.Point(611, 114);
+            this.labelWarning.Name = "labelWarnung";
+            this.labelWarning.Size = new System.Drawing.Size(369, 55);
+            this.labelWarning.TabIndex = 6;
+            this.labelWarning.Text = "!!!WARNUNG!!!";
             // 
             // labelWarnungGrenze
             // 
-            this.labelWarnungGrenze.AutoSize = true;
-            this.labelWarnungGrenze.Location = new System.Drawing.Point(524, 574);
-            this.labelWarnungGrenze.Name = "labelWarnungGrenze";
-            this.labelWarnungGrenze.Size = new System.Drawing.Size(169, 20);
-            this.labelWarnungGrenze.TabIndex = 9;
-            this.labelWarnungGrenze.Text = "Warnung anzeigen ab:";
+            this.labelWarningLimit.AutoSize = true;
+            this.labelWarningLimit.Location = new System.Drawing.Point(524, 574);
+            this.labelWarningLimit.Name = "labelWarnungGrenze";
+            this.labelWarningLimit.Size = new System.Drawing.Size(169, 20);
+            this.labelWarningLimit.TabIndex = 9;
+            this.labelWarningLimit.Text = "Warnung anzeigen ab:";
             // 
-            // numericUpDownWarnungGrenze
+            // numericUpDownWarningLimit
             // 
-            this.numericUpDownWarnungGrenze.Location = new System.Drawing.Point(699, 572);
-            this.numericUpDownWarnungGrenze.Maximum = new decimal(new int[] {
+            this.numericUpDownWarningLimit.Location = new System.Drawing.Point(699, 572);
+            this.numericUpDownWarningLimit.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
-            this.numericUpDownWarnungGrenze.Name = "numericUpDownWarnungGrenze";
-            this.numericUpDownWarnungGrenze.Size = new System.Drawing.Size(61, 26);
-            this.numericUpDownWarnungGrenze.TabIndex = 10;
-            this.numericUpDownWarnungGrenze.Value = new decimal(new int[] {
+            this.numericUpDownWarningLimit.Name = "numericUpDownWarningLimit";
+            this.numericUpDownWarningLimit.Size = new System.Drawing.Size(61, 26);
+            this.numericUpDownWarningLimit.TabIndex = 10;
+            this.numericUpDownWarningLimit.Value = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.numericUpDownWarnungGrenze.ValueChanged += new System.EventHandler(this.numericUpDownWarnungGrenze_ValueChanged);
+            this.numericUpDownWarningLimit.ValueChanged += new System.EventHandler(this.numericUpDownWarningLimit_ValueChanged);
             // 
             // dataGridViewWarning
             // 
@@ -167,22 +165,22 @@
             // 
             // tableLayoutPanelVerkauf
             // 
-            this.tableLayoutPanelVerkauf.AutoScroll = true;
-            this.tableLayoutPanelVerkauf.AutoSize = true;
-            this.tableLayoutPanelVerkauf.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanelVerkauf.ColumnCount = 5;
-            this.tableLayoutPanelVerkauf.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelVerkauf.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelVerkauf.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelVerkauf.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelVerkauf.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelVerkauf.Location = new System.Drawing.Point(12, 86);
-            this.tableLayoutPanelVerkauf.MaximumSize = new System.Drawing.Size(593, 453);
-            this.tableLayoutPanelVerkauf.Name = "tableLayoutPanelVerkauf";
-            this.tableLayoutPanelVerkauf.RowCount = 1;
-            this.tableLayoutPanelVerkauf.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelVerkauf.Size = new System.Drawing.Size(10, 10);
-            this.tableLayoutPanelVerkauf.TabIndex = 12;
+            this.tableLayoutPanelSelling.AutoScroll = true;
+            this.tableLayoutPanelSelling.AutoSize = true;
+            this.tableLayoutPanelSelling.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanelSelling.ColumnCount = 5;
+            this.tableLayoutPanelSelling.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanelSelling.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanelSelling.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanelSelling.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanelSelling.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanelSelling.Location = new System.Drawing.Point(12, 86);
+            this.tableLayoutPanelSelling.MaximumSize = new System.Drawing.Size(593, 453);
+            this.tableLayoutPanelSelling.Name = "tableLayoutPanelVerkauf";
+            this.tableLayoutPanelSelling.RowCount = 1;
+            this.tableLayoutPanelSelling.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanelSelling.Size = new System.Drawing.Size(10, 10);
+            this.tableLayoutPanelSelling.TabIndex = 12;
             // 
             // labelPrize
             // 
@@ -211,13 +209,13 @@
             this.ClientSize = new System.Drawing.Size(1099, 658);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.labelPrize);
-            this.Controls.Add(this.tableLayoutPanelVerkauf);
+            this.Controls.Add(this.tableLayoutPanelSelling);
             this.Controls.Add(this.dataGridViewWarning);
-            this.Controls.Add(this.numericUpDownWarnungGrenze);
-            this.Controls.Add(this.labelWarnungGrenze);
-            this.Controls.Add(this.labelWarnung);
-            this.Controls.Add(this.buttonVerkaufen);
-            this.Controls.Add(this.labelVerkauf);
+            this.Controls.Add(this.numericUpDownWarningLimit);
+            this.Controls.Add(this.labelWarningLimit);
+            this.Controls.Add(this.labelWarning);
+            this.Controls.Add(this.buttonSell);
+            this.Controls.Add(this.labelSelling);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -231,7 +229,7 @@
             this.Load += new System.EventHandler(this.CDialogMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWarnungGrenze)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWarningLimit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWarning)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -245,14 +243,14 @@
         private System.Windows.Forms.ToolStripMenuItem restockMenuItem;
         private System.Windows.Forms.Timer timerWarnung;
         private System.Windows.Forms.Timer timerUpdate;
-        private System.Windows.Forms.Label labelVerkauf;
-        private System.Windows.Forms.Button buttonVerkaufen;
-        private System.Windows.Forms.Label labelWarnung;
-        private System.Windows.Forms.Label labelWarnungGrenze;
-        private System.Windows.Forms.NumericUpDown numericUpDownWarnungGrenze;
+        private System.Windows.Forms.Label labelSelling;
+        private System.Windows.Forms.Button buttonSell;
+        private System.Windows.Forms.Label labelWarning;
+        private System.Windows.Forms.Label labelWarningLimit;
+        private System.Windows.Forms.NumericUpDown numericUpDownWarningLimit;
         private System.Windows.Forms.DataGridView dataGridViewWarning;
         private System.Windows.Forms.ToolStripMenuItem newProductMenuItem;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelVerkauf;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelSelling;
         private System.Windows.Forms.Label labelPrize;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem newCategoryMenuItem;

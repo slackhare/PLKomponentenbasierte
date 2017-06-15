@@ -81,6 +81,7 @@
             this.buttonESC.TabIndex = 6;
             this.buttonESC.Text = "Abbruch";
             this.buttonESC.UseVisualStyleBackColor = true;
+            this.buttonESC.Click += new System.EventHandler(this.buttonESC_Click);
             // 
             // textBoxName
             // 
