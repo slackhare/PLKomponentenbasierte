@@ -27,7 +27,7 @@ namespace CompLogic.Product
             this.Price = Price;
             this.Stock = Stock;
         }
-
+        // Fügt ein Neues Product in das übergebene datatable ein
         public void AddNewDataRow(DataTable dataTable)
         {
 

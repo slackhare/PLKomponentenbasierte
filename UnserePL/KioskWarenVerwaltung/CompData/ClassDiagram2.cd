@@ -10,13 +10,6 @@
   </Class>
   <Class Name="CompData.AData">
     <Position X="4.75" Y="2.75" Width="2.5" />
-    <AssociationLine Name="_iDataCon" Type="CompLogic.IDataCon" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="6" Y="2.75" />
-        <Point X="6" Y="1.875" />
-        <Point X="3.75" Y="1.875" />
-      </Path>
-    </AssociationLine>
     <AssociationLine Name="_iDataDis" Type="CompLogic.IDataDis" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="6" Y="2.75" />
@@ -27,11 +20,10 @@
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>gAAAAAACCAAACAEAAAAAAAAQgAAAAAAIAAACAAAgEAA=</HashCode>
+      <HashCode>gAAAAAACCAAAAAEAAAAAAAAQgAAAAAAIAAAAAAAgEAA=</HashCode>
       <FileName>AData.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="_iDataCon" />
       <Field Name="_iDataDis" />
     </ShowAsAssociation>
     <Lollipop Position="0.2" />
@@ -39,10 +31,9 @@
   <Class Name="CompData.ADataCon">
     <Position X="1.25" Y="2.75" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAAEAAAAQACAKAAAAAAAAEAQgAgBAAABEAACAACAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAAgAgAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ADataCon.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
   <Class Name="CompData.Dbase.Access.CDataAccess">
     <Position X="4.75" Y="7" Width="2.5" />

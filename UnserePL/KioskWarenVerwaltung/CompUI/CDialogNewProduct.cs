@@ -29,7 +29,7 @@ namespace CompUI
             textBoxName.Clear();
             textBoxPrice.Text = "0,00";
             numericUpDownAnz.Value = 0;
-
+            // füllt die Combobox mit den Namen der Kategorien
             foreach (IProductCategory category in _dialogMain.CategoryList)
             {
                 comboBoxKategorie.Items.Add(category.Name);
@@ -40,18 +40,19 @@ namespace CompUI
             //}
             comboBoxKategorie.Text = comboBoxKategorie.Items[0].ToString();
         }
-
+        // Eventhandler für das Klicken des OK Buttons
         private void buttonOK_Click(object sender, EventArgs e)
         {
+            // Erstellt ein neues IProduct mit der Factory aus _dialogMain
             IProduct iProduct = _dialogMain.FactoryProduct.Create();
             bool allright = true;
-
+            // Überprüft ob ein Productname eingegeben wurde
             if (this.textBoxName.Text.CompareTo("") == 0) {
                 allright = false;
                 MessageBox.Show("Bitte geben sie einen Produktnamen an!",
                             "Fehler!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
+            // Überprüft ob ein Preis eingegeben Wurde
             try
             {
                 this.textBoxPrice.Text.Replace(",", ".");
@@ -63,7 +64,8 @@ namespace CompUI
                 MessageBox.Show("Bitte geben sie einen Preis an!",
                             "Fehler!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
+            // falls alles eingegeben ist wird das IProduct in die Logikschicht gegeben um es in die Datenbank einzufügen
+            // danach wird der Dialog geschlossen
             if (allright)
             {
                 iProduct.Name = this.textBoxName.Text;
@@ -76,7 +78,8 @@ namespace CompUI
             }
         }
         #endregion
-
+        // Eventhandler für das Klicken des Abbruch Buttons
+        // schließt den Dialog
         private void buttonESC_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;

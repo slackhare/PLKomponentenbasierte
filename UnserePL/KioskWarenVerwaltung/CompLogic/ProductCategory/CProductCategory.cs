@@ -24,6 +24,7 @@ namespace CompLogic.ProductCategory
         #endregion
 
         #region Methods
+        // fügt eine neue DataRow in die übergbebene dataTable ein
         public void AddNewDataRow(DataTable dataTable)
         {
 
