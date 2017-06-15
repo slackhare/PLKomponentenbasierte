@@ -100,11 +100,11 @@
             this.labelAnz.AutoSize = true;
             this.labelAnz.Location = new System.Drawing.Point(330, 18);
             this.labelAnz.Name = "labelAnz";
-            this.labelAnz.Size = new System.Drawing.Size(55, 17);
+            this.labelAnz.Size = new System.Drawing.Size(100, 17);
             this.labelAnz.TabIndex = 43;
-            this.labelAnz.Text = "Anzahl:";
+            this.labelAnz.Text = "Lagerbestand:";
             // 
-            // labelPreis
+            // labelPrice
             // 
             this.labelPrice.AutoSize = true;
             this.labelPrice.Location = new System.Drawing.Point(330, 65);
@@ -113,7 +113,7 @@
             this.labelPrice.TabIndex = 44;
             this.labelPrice.Text = "Preis in €:";
             // 
-            // textBoxPreis
+            // textBoxPrice
             // 
             this.textBoxPrice.Location = new System.Drawing.Point(333, 85);
             this.textBoxPrice.Name = "textBoxPrice";
@@ -150,7 +150,7 @@
             this.comboBoxKategorie.Size = new System.Drawing.Size(306, 24);
             this.comboBoxKategorie.TabIndex = 46;
             // 
-            // CDialogNew
+            // CDialogNewProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -169,7 +169,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(6);
-            this.Name = "CDialogNew";
+            this.Name = "CDialogNewProduct";
             this.Text = "Bitte geben Sie ihre Daten ein";
             this.Load += new System.EventHandler(this.CDialogTrade_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAnz)).EndInit();
