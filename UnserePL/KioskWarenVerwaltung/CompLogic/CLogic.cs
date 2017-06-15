@@ -162,6 +162,27 @@ namespace CompLogic
             toformat.AcceptChanges();
             return toformat;
         }
+
+        public DataTable Format(decimal limit)
+        {
+            DataTable toformat = new DataTable();
+            _iDataDis.SelectAllProducts(ref toformat);
+
+            toformat.Columns.Remove("GUID");
+            toformat.Columns.Remove("Kategorie");
+            toformat.Columns.Remove("Preis");
+            toformat.Columns.Remove("Kategoriename");
+
+            for (int row = toformat.Rows.Count - 1; row >= 0; row--)
+            {
+                if (((System.Int32)toformat.Rows[row]["Lagerbestand"]) > limit)
+                {
+                    toformat.Rows[row].Delete();
+                }
+            }
+            toformat.AcceptChanges();
+            return toformat;
+        }
         #endregion
     }
 }

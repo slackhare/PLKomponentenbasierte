@@ -76,17 +76,17 @@ namespace CompUI
         private void displayWarning()
         {
             this.dataGridViewWarning.Controls.Clear();
-            this.dataGridViewWarning.DataSource = _iLogicWarning.Format(_productDataTable.Copy(), numericUpDownWarningLimit.Value);
+            this.dataGridViewWarning.DataSource = _iLogicWarning.Format(numericUpDownWarningLimit.Value);
             this.dataGridViewWarning.Refresh();
             dataGridViewWarning.ClearSelection();
         }
 
-        private void loadCategoryTabelle()
-        {
+        //private void loadCategoryTabelle()
+        //{
 
-            _productCategoryDataTable.Clear();
-            _iLogicSearch.SelectAllProductCategories(ref _productCategoryDataTable);
-        }
+        //    _productCategoryDataTable.Clear();
+        //    _iLogicSearch.SelectAllProductCategories(ref _productCategoryDataTable);
+        //}
 
         private void loadProductTabelle()
         {
@@ -222,9 +222,9 @@ namespace CompUI
         private void CDialogMain_Load(object sender, EventArgs e)
         {
 
-            loadProductTabelle();
             // loadCategoryTabelle();
             _iLogicSearch.FillListCategory(ref _ListCategory);
+            loadProductTabelle();
         }
 
         #region MenuItem_Click

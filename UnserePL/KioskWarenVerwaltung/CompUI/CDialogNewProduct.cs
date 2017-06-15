@@ -29,10 +29,15 @@ namespace CompUI
             textBoxName.Clear();
             textBoxPrice.Clear();
             numericUpDownAnz.ResetText();
-            foreach(DataRow row in _dialogMain.ProductCategoryDataTable.Rows)
+
+            foreach (IProductCategory category in _dialogMain.CategoryList)
             {
-                comboBoxKategorie.Items.Add(row["Kategoriename"].ToString());
+                comboBoxKategorie.Items.Add(category.Name);
             }
+            //foreach(DataRow row in _dialogMain.ProductCategoryDataTable.Rows)
+            //{
+            //    comboBoxKategorie.Items.Add(row["Kategoriename"].ToString());
+            //}
             comboBoxKategorie.Text = comboBoxKategorie.Items[0].ToString();
         }
 
