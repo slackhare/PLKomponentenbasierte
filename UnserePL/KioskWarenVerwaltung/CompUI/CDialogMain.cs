@@ -84,12 +84,12 @@ namespace CompUI
             dataGridViewWarning.ClearSelection();
         }
 
-        private void loadCategoryTabelle()
-        {
+        //private void loadCategoryTabelle()
+        //{
 
-            _productCategoryDataTable.Clear();
-            _iLogicSearch.SelectAllProductCategories(ref _productCategoryDataTable);
-        }
+        //    _productCategoryDataTable.Clear();
+        //    _iLogicSearch.SelectAllProductCategories(ref _productCategoryDataTable);
+        //}
 
         private void loadProductTabelle()
         {
