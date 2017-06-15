@@ -7,7 +7,7 @@ namespace CompLogic.Product
     {
         public string GUID { get; set; }
         public string Name { get; set; }
-        public string Category { get; set; }
+        public IProductCategory Category { get; set; }
         public double? Price { get; set; }
         public int? Stock { get; set; }
         public CProduct()
@@ -19,7 +19,7 @@ namespace CompLogic.Product
             Stock = null;
         }
 
-        public CProduct(string GUID, string Name, string Category, double Price, int Stock)
+        public CProduct(string GUID, string Name, IProductCategory Category, double Price, int Stock)
         {
             this.GUID = GUID;
             this.Name = Name;
@@ -35,7 +35,7 @@ namespace CompLogic.Product
             
             dataRow["GUID"] = Utils.CreateGUID().ToString();
             dataRow["Produktname"] = Name;
-            dataRow["Kategorie"] = Category;
+            dataRow["Kategorie"] = Category.GUID;
             dataRow["Lagerbestand"] = Stock;
             dataRow["Preis"] = Price;
 
