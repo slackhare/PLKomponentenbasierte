@@ -34,7 +34,6 @@
             this.labelWarningLimit = new System.Windows.Forms.Label();
             this.numericUpDownWarningLimit = new System.Windows.Forms.NumericUpDown();
             this.dataGridViewWarning = new System.Windows.Forms.DataGridView();
-            this.tableLayoutPanelSelling = new System.Windows.Forms.TableLayoutPanel();
             this.labelPrize = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxSortCategory = new System.Windows.Forms.ComboBox();
@@ -155,27 +154,6 @@
             this.dataGridViewWarning.Size = new System.Drawing.Size(359, 433);
             this.dataGridViewWarning.TabIndex = 11;
             // 
-            // tableLayoutPanelSelling
-            // 
-            this.tableLayoutPanelSelling.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.tableLayoutPanelSelling.AutoScroll = true;
-            this.tableLayoutPanelSelling.AutoSize = true;
-            this.tableLayoutPanelSelling.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutPanelSelling.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanelSelling.ColumnCount = 5;
-            this.tableLayoutPanelSelling.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelSelling.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelSelling.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelSelling.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelSelling.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelSelling.Location = new System.Drawing.Point(12, 86);
-            this.tableLayoutPanelSelling.MaximumSize = new System.Drawing.Size(700, 453);
-            this.tableLayoutPanelSelling.Name = "tableLayoutPanelSelling";
-            this.tableLayoutPanelSelling.RowCount = 1;
-            this.tableLayoutPanelSelling.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelSelling.Size = new System.Drawing.Size(6, 2);
-            this.tableLayoutPanelSelling.TabIndex = 12;
-            // 
             // labelPrize
             // 
             this.labelPrize.AutoSize = true;
@@ -223,7 +201,6 @@
             this.Controls.Add(this.comboBoxSortCategory);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.labelPrize);
-            this.Controls.Add(this.tableLayoutPanelSelling);
             this.Controls.Add(this.dataGridViewWarning);
             this.Controls.Add(this.numericUpDownWarningLimit);
             this.Controls.Add(this.labelWarningLimit);
@@ -263,7 +240,6 @@
         private System.Windows.Forms.NumericUpDown numericUpDownWarningLimit;
         private System.Windows.Forms.DataGridView dataGridViewWarning;
         private System.Windows.Forms.ToolStripMenuItem newProductMenuItem;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelSelling;
         private System.Windows.Forms.Label labelPrize;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem newCategoryMenuItem;

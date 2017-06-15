@@ -101,37 +101,42 @@ namespace CompUI
         private void redrawPanel()
         {
             List<IProductCategory> categoryList;
-            if (comboBoxSortCategory.SelectedIndex  < 1)
+            if (comboBoxSortCategory.SelectedIndex < 1)
             {
                 categoryList = _ListCategory;
             }
             else
             {
                 categoryList = new List<IProductCategory>();
-                categoryList.Add(_ListCategory[comboBoxSortCategory.SelectedIndex-1]);
+                categoryList.Add(_ListCategory[comboBoxSortCategory.SelectedIndex - 1]);
             }
 
-            this.tableLayoutPanelSelling.Visible = false;
-            this.tableLayoutPanelSelling.Controls.Clear();
-            this.tableLayoutPanelSelling.RowStyles.Clear();
-            //this.tableLayoutPanelSelling.ColumnStyles.Clear();
-            this.tableLayoutPanelSelling.Dock = System.Windows.Forms.DockStyle.Fill;
-
-            /*
-            for (int i = tableLayoutPanelSelling.Controls.Count - 1; i >= 0; --i)
+            if (this.Controls.Find("tableLayoutPanelSelling", true).Length > 0)
             {
-                tableLayoutPanelSelling.Controls[i].Dispose();
+                this.Controls.Find("tableLayoutPanelSelling", true)[0].Dispose();
             }
-            tableLayoutPanelSelling.RowCount = 0;
-            */
-            tableLayoutPanelSelling.Anchor = AnchorStyles.Left;
+            TableLayoutPanel newPanel = new TableLayoutPanel();
+            newPanel.Name = "tableLayoutPanelSelling";
+            newPanel.Location = new Point(12, 86);
+            newPanel.Size = new Size(700, 453);
+            newPanel.Anchor = AnchorStyles.Left;
+            newPanel.AutoScroll = true;
+            newPanel.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
+            newPanel.ColumnCount = 5;
+            for (int i = 0; i < 5; i++)
+            {
+                newPanel.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
+            }
+            this.Controls.Add(newPanel);
 
-            tableLayoutPanelSelling.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
-            tableLayoutPanelSelling.Controls.AddRange(new Control[5] { newHeaderLabel("Kategoriename"), newHeaderLabel("Produktname"), newHeaderLabel("Lagerbestand"), newHeaderLabel("Verkaufte Stückzahl"), newHeaderLabel("Preis") });
+
+            newPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
+            newPanel.Controls.AddRange(new Control[5] { newHeaderLabel("Kategoriename"), newHeaderLabel("Produktname"), newHeaderLabel("Lagerbestand"), newHeaderLabel("Verkaufte Stückzahl"), newHeaderLabel("Preis") });
 
             foreach (IProduct product in _ListIProduct)
             {
-                if(categoryList.Contains(product.Category)){
+                if (categoryList.Contains(product.Category))
+                {
                     double price = (double)product.Price;
 
                     Label col0cat = new Label();
@@ -168,12 +173,13 @@ namespace CompUI
 
                     // Füllt die Aktuelle Spalte des tableLayoutPanelRestock mit drei Control Objekten zur bearbeitung
                     Control[] rowcontrols = new Control[5] { col0cat, col1name, col2stock, col3tosell, col4price };
-                    tableLayoutPanelSelling.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
-                    tableLayoutPanelSelling.Controls.AddRange(rowcontrols);                    
+                    newPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
+                    newPanel.Controls.AddRange(rowcontrols);
                 }
             }
-            this.tableLayoutPanelSelling.Visible = true;
+            newPanel.Visible = true;
         }
+
         private void Fill_SortCategory()
         {
             comboBoxSortCategory.Items.Clear();
@@ -189,7 +195,7 @@ namespace CompUI
         #region Events
         private void CDialogMain_Load(object sender, EventArgs e)
         {
-            _iLogicSearch.FillListCategory(ref _ListCategory);           
+            _iLogicSearch.FillListCategory(ref _ListCategory);
             loadProductTabelle();
             Fill_SortCategory();
         }
@@ -198,30 +204,19 @@ namespace CompUI
         // Eventhandler lager auffüllen
         private void restockMenuItem_Click(object sender, EventArgs e)
         {
-            //this.FillProductList();
             _dialogRestock.ShowDialog();
             loadProductTabelle();
         }
         // Eventhandler Sortiment erweitern
         private void newMenuItem_Click(object sender, EventArgs e)
         {
-            /*DialogResult dialogResult =*/
             _dialogNew.ShowDialog();
-            //if (dialogResult == DialogResult.OK)
-            //{
-            //    // Einfügen ausführen
-            //    //_iLogicTrade.InsertProduct(_iProduct);
-            //}
             loadProductTabelle();
         }
         // Eventhandler neue Kategorie
         private void newCategoryMenuItem_Click(object sender, EventArgs e)
         {
             _dialogNewCategory.ShowDialog();
-            //if (dialogResult == DialogResult.OK)
-            //{
-            //    //_iLogicInsert.InsertProductCategory(_iProductCategory);
-            //}
             _iLogicSearch.FillListCategory(ref _ListCategory);
             Fill_SortCategory();
         }
@@ -230,7 +225,7 @@ namespace CompUI
         // Eventhandler Verkaufen
         private void buttonSell_Click(object sender, EventArgs e)
         {
-            NumericUpDown[] quantarray = tableLayoutPanelSelling.Controls.OfType<NumericUpDown>().ToArray();
+            NumericUpDown[] quantarray = ((TableLayoutPanel)this.Controls.Find("tableLayoutPanelSelling", true)[0]).Controls.OfType<NumericUpDown>().ToArray();
             double price = 0;
             for (int row = 0; row < quantarray.Length; row++)
             {
