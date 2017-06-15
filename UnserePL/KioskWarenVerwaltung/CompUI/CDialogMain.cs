@@ -73,21 +73,23 @@ namespace CompUI
         #endregion
 
         #region Methods
-        private void displayWarning()
+        // Läd eine Neue formatierte Datenquelle in Die dataGridViewWaring um so die Aktuell nötigen Warnungen darzustellen
+        private void redrawWarning()
         {
             this.dataGridViewWarning.Controls.Clear();
             this.dataGridViewWarning.DataSource = _iLogicWarning.Format(numericUpDownWarningLimit.Value);
             this.dataGridViewWarning.Refresh();
             dataGridViewWarning.ClearSelection();
         }
-
+        //Läd die Aktuelle Liste der Produckte erneuert das Verkaufspanel und Aktualisiert die Warnungen
         private void loadProductTabelle()
         {
             _iLogicSearch.FillListProduct(ref _ListIProduct, _ListCategory);
             redrawPanel();
-            displayWarning();
+            redrawWarning();
         }
 
+        // Erzeugt die Tabellenheader für Das Verkaufspanel
         internal Label newHeaderLabel(String text)
         {
             Label header = new Label();
@@ -98,23 +100,25 @@ namespace CompUI
             return header;
         }
 
+        // Erzeugt/Aktualisiert das Verkaufspanel neu
         private void redrawPanel()
         {
             List<IProductCategory> categoryList;
-            if (comboBoxSortCategory.SelectedIndex < 1)
+            if (comboBoxFilterCategory.SelectedIndex < 1)
             {
                 categoryList = _ListCategory;
             }
             else
             {
                 categoryList = new List<IProductCategory>();
-                categoryList.Add(_ListCategory[comboBoxSortCategory.SelectedIndex - 1]);
+                categoryList.Add(_ListCategory[comboBoxFilterCategory.SelectedIndex - 1]);
             }
-
+            // Falls vorhanden wird das Verkaufspanel gelöscht um es zu Erstellen
             if (this.Controls.Find("tableLayoutPanelSelling", true).Length > 0)
             {
                 this.Controls.Find("tableLayoutPanelSelling", true)[0].Dispose();
             }
+            // Setzt die Eigenschaften des Verkaufspanels
             TableLayoutPanel newPanel = new TableLayoutPanel();
             newPanel.Name = "tableLayoutPanelSelling";
             newPanel.Location = new Point(12, 86);
@@ -130,6 +134,7 @@ namespace CompUI
             newPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
             newPanel.Controls.AddRange(new Control[5] { newHeaderLabel("Kategoriename"), newHeaderLabel("Produktname"), newHeaderLabel("Lagerbestand"), newHeaderLabel("Verkaufte Stückzahl"), newHeaderLabel("Preis") });
 
+            // Fügt die nötigen Elemente wie Producktname KAtegorie Preis und einen regler für die Anzahl der zu Verkaufenden Produkte in das Verkaufspanel ein
             foreach (IProduct product in _ListIProduct)
             {
                 if (categoryList.Contains(product.Category))
@@ -177,25 +182,27 @@ namespace CompUI
             newPanel.Visible = true;
             this.Controls.Add(newPanel);
         }
-
-        private void Fill_SortCategory()
+        // Füllt eine Combobox um das Verkaufspanel nach Kategorien zu filtern
+        private void Fill_FilterCategory()
         {
-            comboBoxSortCategory.Items.Clear();
-            comboBoxSortCategory.Items.Add("Alle");
+            comboBoxFilterCategory.Items.Clear();
+            comboBoxFilterCategory.Items.Add("Alle");
             foreach (IProductCategory category in _ListCategory)
             {
-                comboBoxSortCategory.Items.Add(category.Name);
+                comboBoxFilterCategory.Items.Add(category.Name);
             }
-            comboBoxSortCategory.Text = comboBoxSortCategory.Items[0].ToString();
+            comboBoxFilterCategory.Text = comboBoxFilterCategory.Items[0].ToString();
         }
         #endregion
 
         #region Events
+        // Eventhandler für das Laden des Fensters
         private void CDialogMain_Load(object sender, EventArgs e)
         {
+            // Hier werden alle nötigen Dynamisch erzuegten elemente geladen
             _iLogicSearch.FillListCategory(ref _ListCategory);
             loadProductTabelle();
-            Fill_SortCategory();
+            Fill_FilterCategory();
         }
 
         #region MenuItem_Click
@@ -216,19 +223,23 @@ namespace CompUI
         {
             _dialogNewCategory.ShowDialog();
             _iLogicSearch.FillListCategory(ref _ListCategory);
-            Fill_SortCategory();
+            Fill_FilterCategory();
         }
 
 
         // Eventhandler Verkaufen
         private void buttonSell_Click(object sender, EventArgs e)
         {
+            // Erstellt einen array mit allen Mengen von Allen produckten die man zu einem Zeitpunkt Verkaufen will
             NumericUpDown[] quantarray = ((TableLayoutPanel)this.Controls.Find("tableLayoutPanelSelling", true)[0]).Controls.OfType<NumericUpDown>().ToArray();
             double price = 0;
+            // Iteriert durch den Array
             for (int row = 0; row < quantarray.Length; row++)
             {
+                // falls der Wert des Panels größer null ist
                 if (Convert.ToInt32(quantarray[row].Value) > 0)
-                {
+                { 
+                    //wird ein Datenbankupdate angestoßen das die zu Verkaufende Menge von der Vorhanden Menge des Produktes Abzieht
                     string guid = _productDataTable.Rows[row]["GUID"].ToString();
                     if (!_iLogicUpdate.SellProduct(guid, Convert.ToInt32(quantarray[row].Value)))
                     {
@@ -258,7 +269,7 @@ namespace CompUI
         //Eventhandler Grenze geändert
         private void numericUpDownWarningLimit_ValueChanged(object sender, EventArgs e)
         {
-            this.displayWarning();
+            this.redrawWarning();
         }
         //Eventhandler Anzahl verkauft geändert
         private void numericUpDownInPanel_ValueChanged(object sender, EventArgs e, double price)
@@ -273,6 +284,7 @@ namespace CompUI
             this.sumPrice += ((thisValue - lastValue) * price);
             labelPrize.Text = sumPrice.ToString("F") + "€";
         }
+        // Eventhandler andere Kategorie zum Filtern ausgewält
         private void comboBoxSortCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
             redrawPanel();
