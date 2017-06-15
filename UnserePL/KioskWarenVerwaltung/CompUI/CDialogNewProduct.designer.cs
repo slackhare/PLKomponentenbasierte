@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CDialogNew));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CDialogNewProduct));
             this.buttonOK = new System.Windows.Forms.Button();
             this.labelKategorie = new System.Windows.Forms.Label();
             this.labelName = new System.Windows.Forms.Label();

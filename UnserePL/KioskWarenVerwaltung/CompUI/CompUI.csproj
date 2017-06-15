@@ -103,11 +103,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="CDialogNew.cs">
+    <Compile Include="CDialogNewProduct.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CDialogNew.designer.cs">
-      <DependentUpon>CDialogNew.cs</DependentUpon>
+    <Compile Include="CDialogNewProduct.designer.cs">
+      <DependentUpon>CDialogNewProduct.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -136,8 +136,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="CDialogNew.resx">
-      <DependentUpon>CDialogNew.cs</DependentUpon>
+    <EmbeddedResource Include="CDialogNewProduct.resx">
+      <DependentUpon>CDialogNewProduct.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
