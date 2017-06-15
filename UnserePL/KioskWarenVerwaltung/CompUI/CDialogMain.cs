@@ -76,7 +76,6 @@ namespace CompUI
         {
             this.dataGridViewWarning.Controls.Clear();
             this.dataGridViewWarning.DataSource = _iLogicWarning.Format(_productDataTable.Copy(), numericUpDownWarningLimit.Value);
-
             this.dataGridViewWarning.Refresh();
             dataGridViewWarning.ClearSelection();
         }
@@ -162,6 +161,7 @@ namespace CompUI
 
         private void FillProductList()
         {
+            this._ListIProduct.Clear();
             foreach (DataRow row in _productDataTable.Rows)
             {
                 _ListIProduct.Add(_iFactoryProduct.Create(row["GUID"].ToString(), row["Produktname"].ToString(), row["Kategorie"].ToString(), double.Parse(row["Preis"].ToString()), int.Parse(row["Lagerbestand"].ToString())));
@@ -198,16 +198,7 @@ namespace CompUI
         // Eventhandler lager auffüllen
         private void restockMenuItem_Click(object sender, EventArgs e)
         {
-            this._ListIProduct.Clear();
             this.FillProductList();
-            DialogResult dialogResult = _dialogRestock.ShowDialog();
-            if (dialogResult == DialogResult.OK)
-            {
-                foreach (IProduct product in _ListIProduct)
-                {
-                    _iLogicUpdate.RestockProduct(product);
-                }
-            }
             loadProductTabelle();
         }
         // Eventhandler Sortiment erweitern

@@ -16,10 +16,8 @@ namespace CompUI
     {
 
         #region Fields
-        private ILogicSearch _iLogicSearch;
         private ILogicUpdate _iLogicUpdate;
         private CDialogMain _dialogMain;
-        private DataTable _productDataTable;
         
         #endregion
 
@@ -27,10 +25,8 @@ namespace CompUI
         internal CDialogRestock(ILogic iLogic, CDialogMain dialogMain)
         {
             InitializeComponent();
-            _iLogicSearch = iLogic.LogicSearch;
             _iLogicUpdate = iLogic.LogicUpdate;
             _dialogMain = dialogMain;
-            _productDataTable = new DataTable();
         }
         #endregion
 
@@ -39,28 +35,26 @@ namespace CompUI
         private void loadProductsintoTableLayout()
         {
             tableLayoutPanelRestock.Controls.Clear();
-            _productDataTable.Clear();
-            _iLogicSearch.SelectAllProducts(ref _productDataTable);
             tableLayoutPanelRestock.RowStyles.Clear();
 
-            for (int i = 0; i < _productDataTable.Rows.Count; i++)
+            foreach (IProduct product in _dialogMain.ProductList)
             {
                 // Erstellt für jede Spalte der Tabelle die Nötigen Objekte
                 Label col0 = new Label();
                 Label col1 = new Label();
                 NumericUpDown col2 = new NumericUpDown();
-                col0.Name = "Label" + i;
-                col2.Name = "NumUpDownRow" + i;
+                col0.Name = "Label"+product.GUID;
+                col2.Name = "NumUpDownRow"+product.GUID;
                 col2.Minimum = 0;
-
                 // Setzt den Nötigen beschriftingstext
                 //col0.Text = _productDataTable.Rows[i]["Produktname"].ToString();
                 //col1.Text = _productDataTable.Rows[i]["Lagerbestand"].ToString();
-                col0.Text = _dialogMain.ProductList[i].Name;
-                col1.Text = _dialogMain.ProductList[i].Stock.ToString();
+                //col0.Text = _dialogMain.ProductList[i].Name;
+                //col1.Text = _dialogMain.ProductList[i].Stock.ToString();
+                col0.Text = product.Name;
+                col1.Text = product.Stock.ToString();
 
                 // Setzen von Zusatzinformationen
-
                 col1.TextAlign = ContentAlignment.BottomCenter;
 
                 // Füllt die Aktuelle Spalte des tableLayoutPanelRestock mit drei Control Objekten zur bearbeitung
@@ -79,14 +73,13 @@ namespace CompUI
         // Wird die Angaben aus der Tabelle für das Datenbankupdate Vorbereiten
         private void buttonAcc_ClicktTabelLayout(object sender, EventArgs e)
         {
-
             NumericUpDown[] quantarray = tableLayoutPanelRestock.Controls.OfType<NumericUpDown>().ToArray();
-
             for(int row = 0; row < quantarray.Length; row++)
             {
                 if(Convert.ToInt32(quantarray[row].Value) > 0)
                 {
-                    _dialogMain.ProductList[row].Stock += Convert.ToInt32(quantarray[row].Value);
+                    string GUID = _dialogMain.ProductList[row].GUID;
+                    _iLogicUpdate.RestockProduct(GUID, int.Parse(quantarray[row].Value.ToString()));
                 }
             }
             this.DialogResult = DialogResult.OK;
