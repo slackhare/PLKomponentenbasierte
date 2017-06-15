@@ -103,7 +103,7 @@
             this.labelWarning.AutoSize = true;
             this.labelWarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelWarning.ForeColor = System.Drawing.Color.Red;
-            this.labelWarning.Location = new System.Drawing.Point(611, 114);
+            this.labelWarning.Location = new System.Drawing.Point(718, 46);
             this.labelWarning.Name = "labelWarning";
             this.labelWarning.Size = new System.Drawing.Size(369, 55);
             this.labelWarning.TabIndex = 6;
@@ -145,12 +145,12 @@
             this.dataGridViewWarning.ColumnHeadersVisible = false;
             this.dataGridViewWarning.EnableHeadersVisualStyles = false;
             this.dataGridViewWarning.GridColor = System.Drawing.SystemColors.Info;
-            this.dataGridViewWarning.Location = new System.Drawing.Point(621, 172);
+            this.dataGridViewWarning.Location = new System.Drawing.Point(728, 102);
             this.dataGridViewWarning.Margin = new System.Windows.Forms.Padding(10);
             this.dataGridViewWarning.Name = "dataGridViewWarning";
             this.dataGridViewWarning.RowHeadersVisible = false;
             this.dataGridViewWarning.RowTemplate.Height = 24;
-            this.dataGridViewWarning.Size = new System.Drawing.Size(359, 190);
+            this.dataGridViewWarning.Size = new System.Drawing.Size(359, 433);
             this.dataGridViewWarning.TabIndex = 11;
             // 
             // tableLayoutPanelSelling
@@ -165,11 +165,11 @@
             this.tableLayoutPanelSelling.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanelSelling.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanelSelling.Location = new System.Drawing.Point(12, 86);
-            this.tableLayoutPanelSelling.MaximumSize = new System.Drawing.Size(593, 453);
+            this.tableLayoutPanelSelling.MaximumSize = new System.Drawing.Size(700, 453);
             this.tableLayoutPanelSelling.Name = "tableLayoutPanelSelling";
             this.tableLayoutPanelSelling.RowCount = 1;
             this.tableLayoutPanelSelling.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelSelling.Size = new System.Drawing.Size(10, 10);
+            this.tableLayoutPanelSelling.Size = new System.Drawing.Size(20, 20);
             this.tableLayoutPanelSelling.TabIndex = 12;
             // 
             // labelPrize

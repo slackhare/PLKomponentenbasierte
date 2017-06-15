@@ -37,7 +37,7 @@
             // buttonAcc
             // 
             this.buttonAcc.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAcc.Location = new System.Drawing.Point(347, 12);
+            this.buttonAcc.Location = new System.Drawing.Point(12, 403);
             this.buttonAcc.Name = "buttonAcc";
             this.buttonAcc.Size = new System.Drawing.Size(137, 56);
             this.buttonAcc.TabIndex = 4;
@@ -48,21 +48,25 @@
             // tableLayoutPanelRestock
             // 
             this.tableLayoutPanelRestock.AutoScroll = true;
+            this.tableLayoutPanelRestock.AutoSize = true;
+            this.tableLayoutPanelRestock.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanelRestock.ColumnCount = 3;
             this.tableLayoutPanelRestock.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanelRestock.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelRestock.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 77F));
+            this.tableLayoutPanelRestock.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanelRestock.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.tableLayoutPanelRestock.Location = new System.Drawing.Point(12, 12);
+            this.tableLayoutPanelRestock.MaximumSize = new System.Drawing.Size(743, 385);
             this.tableLayoutPanelRestock.Name = "tableLayoutPanelRestock";
             this.tableLayoutPanelRestock.RowCount = 1;
             this.tableLayoutPanelRestock.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelRestock.Size = new System.Drawing.Size(306, 239);
+            this.tableLayoutPanelRestock.Size = new System.Drawing.Size(35, 29);
             this.tableLayoutPanelRestock.TabIndex = 7;
             // 
             // buttonCancel
             // 
             this.buttonCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonCancel.Location = new System.Drawing.Point(347, 195);
+            this.buttonCancel.Location = new System.Drawing.Point(618, 403);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(137, 56);
             this.buttonCancel.TabIndex = 8;
@@ -72,7 +76,7 @@
             // 
             // CDialogRestock
             // 
-            this.ClientSize = new System.Drawing.Size(496, 263);
+            this.ClientSize = new System.Drawing.Size(767, 471);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.tableLayoutPanelRestock);
             this.Controls.Add(this.buttonAcc);
@@ -81,6 +85,7 @@
             this.Text = "Lager Auffüllen";
             this.Load += new System.EventHandler(this.CDialogRestock_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

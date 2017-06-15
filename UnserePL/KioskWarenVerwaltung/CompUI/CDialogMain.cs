@@ -97,13 +97,13 @@ namespace CompUI
             displayWarning();
         }
 
-        private Label newHeaderLabel(String text)
+        internal Label newHeaderLabel(String text)
         {
             Label header = new Label();
             header.Text = text;
-            header.TextAlign = ContentAlignment.TopRight;
+            header.TextAlign = ContentAlignment.BottomRight;
             header.AutoSize = true;
-            header.Anchor = (AnchorStyles.Top | AnchorStyles.Right); ;
+            header.Anchor = (AnchorStyles.None | AnchorStyles.Right); ;
             return header;
         }
 
@@ -126,19 +126,19 @@ namespace CompUI
                 col0cat.Text = product.Category.Name;
                 col0cat.TextAlign = ContentAlignment.BottomRight;
                 col0cat.AutoSize = true;
-                col0cat.Anchor = (AnchorStyles.Top | AnchorStyles.Right); ;
+                col0cat.Anchor = (AnchorStyles.None | AnchorStyles.Right);
 
                 Label col1name = new Label();
                 col1name.Text = product.Name.ToString();
                 col1name.TextAlign = ContentAlignment.BottomRight;
                 col1name.AutoSize = true;
-                col1name.Anchor = (AnchorStyles.Top | AnchorStyles.Right); ;
+                col1name.Anchor = (AnchorStyles.None | AnchorStyles.Right);
 
                 Label col2stock = new Label();
                 col2stock.Text = product.Stock.ToString();
                 col2stock.TextAlign = ContentAlignment.BottomRight;
                 col2stock.AutoSize = true;
-                col2stock.Anchor = (AnchorStyles.Top | AnchorStyles.Right); ;
+                col2stock.Anchor = (AnchorStyles.None | AnchorStyles.Right);
 
                 NumericUpDown col3tosell = new NumericUpDown();
                 col3tosell.ValueChanged += (sender, e) => this.numericUpDownInPanel_ValueChanged(sender, e, price);
@@ -146,13 +146,13 @@ namespace CompUI
                 col3tosell.Minimum = 0;
                 col3tosell.TextAlign = HorizontalAlignment.Right;
                 col3tosell.AutoSize = true;
-                col3tosell.Anchor = (AnchorStyles.Top | AnchorStyles.Right); ;
+                col3tosell.Anchor = (AnchorStyles.None | AnchorStyles.Right);
 
                 Label col4price = new Label();
                 col4price.Text = price.ToString("F") + "€";
                 col4price.TextAlign = ContentAlignment.BottomRight;
                 col4price.AutoSize = true;
-                col4price.Anchor = (AnchorStyles.Top | AnchorStyles.Right); ;
+                col4price.Anchor = (AnchorStyles.None | AnchorStyles.Right);
 
                 // Füllt die Aktuelle Spalte des tableLayoutPanelRestock mit drei Control Objekten zur bearbeitung
                 Control[] rowcontrols = new Control[5] { col0cat, col1name, col2stock, col3tosell, col4price };
