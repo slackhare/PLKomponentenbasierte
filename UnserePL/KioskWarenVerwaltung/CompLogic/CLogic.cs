@@ -136,7 +136,6 @@ namespace CompLogic
             }
         }
         // Restocks a Product with an IProduct and the Attributes associated with it
-
         public void RestockProduct(IProduct iProduct)
         {
             if(iProduct.Stock >=0)
@@ -152,7 +151,8 @@ namespace CompLogic
 
         #region Interface ILogicWarning Methods
         /// <summary>
-        /// Returns a formated DataTable where all unnecessary columns and rows witch are above the given limit of stock
+        /// Returns a formated DataTable where all unnecessary columns and rows witch are above the given limit of stock,
+        /// are deleted
         /// </summary>
         /// <param name="toformat">DataTable that needs to be formated</param>
         /// <param name="limit">limit at witch the rows with more stock will be removed</param>
