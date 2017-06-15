@@ -66,6 +66,7 @@ namespace CompLogic
 
         public void FillListProduct(ref List<IProduct> listIProduct)
         {
+            listIProduct.Clear();
             DataTable datatable = new DataTable();
             _iDataDis.SelectAllProducts(ref datatable);
             foreach (DataRow row in datatable.Rows)
@@ -75,7 +76,8 @@ namespace CompLogic
         }
         public void FillListCategory(ref List<IProductCategory> listICategory)
         {
-            DataTable datatable = new DataTable;
+            listICategory.Clear();
+            DataTable datatable = new DataTable();
             _iDataDis.SelectAllProductCategories(ref datatable);
             foreach (DataRow row in datatable.Rows)
             {
