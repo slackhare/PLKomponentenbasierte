@@ -38,7 +38,6 @@ namespace CompUI
         #endregion
 
         #region Properties
-        internal DataTable ProductCategoryDataTable { get { return _productCategoryDataTable; } }
         internal List<IProduct> ProductList { get { return _ListIProduct; } }
         internal List<IProductCategory> CategoryList { get { return _ListCategory; } }
         internal IFactoryIProduct FactoryProduct { get { return _iFactoryProduct; } }
@@ -64,9 +63,6 @@ namespace CompUI
 
             _iFactoryProduct = new CFactoryCProduct();
             _iFactoryProductCategory = new CFactoryCProductCategory();
-
-            _productDataTable = new DataTable();
-            _productCategoryDataTable = new DataTable();
         }
         #endregion
 
@@ -238,18 +234,18 @@ namespace CompUI
                 if (Convert.ToInt32(quantarray[row].Value) > 0)
                 { 
                     //wird ein Datenbankupdate angestoßen das die zu Verkaufende Menge von der Vorhanden Menge des Produktes Abzieht
-                    string guid = _productDataTable.Rows[row]["GUID"].ToString();
+                    string guid = _ListIProduct[row].GUID;
                     // Falls das Update nicht erfolgreich war wird ein Fehler Ausgegeben
                     if (!_iLogicUpdate.SellProduct(guid, Convert.ToInt32(quantarray[row].Value)))
                     {
                         MessageBox.Show("Das Produkt "
-                            + _productDataTable.Rows[row]["Produktname"].ToString()
+                            + _ListIProduct[row].Name
                             + " ist nicht mehr oft genug vorrätig und konnte nicht verkauft werden!",
                             "Fehler!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
-                        price += Convert.ToInt32(quantarray[row].Value) * ((double)_productDataTable.Rows[row]["Preis"]);
+                        price += Convert.ToInt32(quantarray[row].Value) * ((double)_ListIProduct[row].Price);
                     }
                 }
             }
@@ -292,4 +288,3 @@ namespace CompUI
         #endregion
     }
 }
-   

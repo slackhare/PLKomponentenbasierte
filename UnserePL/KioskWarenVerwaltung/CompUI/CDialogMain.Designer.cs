@@ -231,8 +231,6 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem restockMenuItem;
-        private System.Windows.Forms.Timer timerWarnung;
-        private System.Windows.Forms.Timer timerUpdate;
         private System.Windows.Forms.Label labelSelling;
         private System.Windows.Forms.Button buttonSell;
         private System.Windows.Forms.Label labelWarning;

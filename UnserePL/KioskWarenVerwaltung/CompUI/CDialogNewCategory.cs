@@ -10,7 +10,6 @@ namespace CompUI
     {
         #region Fields
         private CDialogMain _dialogMain;
-        private List<string> Categories;
         private ILogicInsert _iLogicInsert;
         #endregion
 
@@ -19,32 +18,40 @@ namespace CompUI
         {
             InitializeComponent();
             _dialogMain = dialogMain;
-            Categories = new List<string>();
             textBoxNewCategory.Text = "";
             _iLogicInsert = iLogicInsert;
         }
         #endregion
 
         #region Events
+        // Eventhandler für das Laden des Dialogs
         private void CDialogNewCategory_Load(object sender, EventArgs e)
         {
+            // um alte Texte zu Löschen
             textBoxNewCategory.Clear();
-            foreach (DataRow row in _dialogMain.ProductCategoryDataTable.Rows)
-            {
-                Categories.Add(row[1].ToString());
-            }
         }
+        // Eventhandler für das Klicken des Hinzufügen Buttons
         private void buttonHinzufuegen_Click(object sender, EventArgs e)
         {
-            IProductCategory iProductCategory = _dialogMain.FactoryProductCategory.Create();
-            iProductCategory.Name = textBoxNewCategory.Text;
-            _iLogicInsert.InsertProductCategory(iProductCategory);
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            // Überprüfung ob die eingegbene Kategorie bereits Existiert
+            if (_dialogMain.CategoryList.Exists(X => X.Name.ToUpper() == textBoxNewCategory.Text.ToUpper()))
+            {
+                MessageBox.Show("Diese Kategorie ist bereits Vorhanden", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            // Falls nicht wird eine neue Kategorie angelegt
+            else
+            {
+                IProductCategory iProductCategory = _dialogMain.FactoryProductCategory.Create();
+                iProductCategory.Name = textBoxNewCategory.Text;
+                _iLogicInsert.InsertProductCategory(iProductCategory);
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
         }
-
+        // Eventhander für das Klicken des Abbrehen Buttons
         private void buttonAbbrechen_Click(object sender, EventArgs e)
         {
+            // Schließt den Dialog
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
