@@ -63,30 +63,37 @@ namespace CompLogic
         {
             _iDataDis.SelectAllProductCategories(ref datatable);
         }
-
+        //Lites der Produckte wird mit Daten aus der Produckttabelle gefüllt
         public void FillListProduct(ref List<IProduct> listIProduct, List<IProductCategory> listIProductCategory)
         {
             listIProduct.Clear();
+            //Tabelle wird aus Datenbank geholt
             DataTable datatable = new DataTable();
             _iDataDis.SelectAllProducts(ref datatable);
+
             foreach (DataRow row in datatable.Rows)
             {
                 foreach(IProductCategory category in listIProductCategory)
                 {
+                    // Passenedes Kategorieobjekt aus der Kategorieliste wird gesucht
                     if (row["Kategorie"].ToString().CompareTo(category.GUID) == 0)
                     {
+                        // Liste wird mit neuen Objekten gefüllt
                         listIProduct.Add(new CProduct(row["GUID"].ToString(), row["Produktname"].ToString(), category, double.Parse(row["Preis"].ToString()), int.Parse(row["Lagerbestand"].ToString())));
                     }
                 }
             }
         }
+        // Liste der Kategorien wird mit den Daten der Producktkategorien Tabelle gefüllt
         public void FillListCategory(ref List<IProductCategory> listICategory)
         {
             listICategory.Clear();
+            // Tabelle wird aus Datenbank geholt
             DataTable datatable = new DataTable();
             _iDataDis.SelectAllProductCategories(ref datatable);
             foreach (DataRow row in datatable.Rows)
             {
+                // Liste wird mit neuen objekten gefüllt
                 listICategory.Add(new CProductCategory(row["GUID"].ToString(), row["Kategoriename"].ToString()));
             }
         }
@@ -104,18 +111,22 @@ namespace CompLogic
         #endregion
 
         #region Interface ILogicUpdate Methods
-        //Stockt ein Produkt mit einer guid um eine Menge auf
+        //Stockt ein Produkt mit einer guid um einer Menge auf
         public bool RestockProduct(string guid, int restockNumber)
         {
             DataTable dataTable = new DataTable();
 
             IProduct iProduct = new CFactoryCProduct().Create();
             iProduct.GUID = guid;
+            // Alter Lagerbestand wir aus Datenbank geholt
             _iDataDis.SelectProduct(iProduct, ref dataTable);
             int oldStock = (System.Int32)dataTable.Rows[0]["Lagerbestand"];
+            
+            // neuer Lagerbestand wird errechnet
             iProduct.Stock = oldStock + restockNumber;
             if (iProduct.Stock >= 0)
             {
+                // Datensatz wird zum Update in die Datenschicht gegeben
                 _iDataDis.UpdateProduct(iProduct);
                 return true;
             }
@@ -124,7 +135,7 @@ namespace CompLogic
                 return false;
             }
         }
-        
+        // Restocks a Product with an IProduct and the Attributes associated with it
         public void RestockProduct(IProduct iProduct)
         {
             if(iProduct.Stock >=0)
@@ -140,7 +151,8 @@ namespace CompLogic
 
         #region Interface ILogicWarning Methods
         /// <summary>
-        /// Returns a formated DataTable where all unnecessary columns and rows witch are above the given limit of stock
+        /// Returns a formated DataTable where all unnecessary columns and rows witch are above the given limit of stock,
+        /// are deleted
         /// </summary>
         /// <param name="toformat">DataTable that needs to be formated</param>
         /// <param name="limit">limit at witch the rows with more stock will be removed</param>
