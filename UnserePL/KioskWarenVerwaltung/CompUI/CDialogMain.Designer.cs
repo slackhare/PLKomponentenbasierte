@@ -37,6 +37,8 @@
             this.tableLayoutPanelSelling = new System.Windows.Forms.TableLayoutPanel();
             this.labelPrize = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.comboBoxSortCategory = new System.Windows.Forms.ComboBox();
+            this.labelSortCategory = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWarningLimit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWarning)).BeginInit();
@@ -190,6 +192,24 @@
             this.label1.TabIndex = 14;
             this.label1.Text = "Preis insgesamt:";
             // 
+            // comboBoxSortCategory
+            // 
+            this.comboBoxSortCategory.FormattingEnabled = true;
+            this.comboBoxSortCategory.Location = new System.Drawing.Point(12, 568);
+            this.comboBoxSortCategory.Name = "comboBoxSortCategory";
+            this.comboBoxSortCategory.Size = new System.Drawing.Size(305, 28);
+            this.comboBoxSortCategory.TabIndex = 15;
+            this.comboBoxSortCategory.SelectedIndexChanged += new System.EventHandler(this.comboBoxSortCategory_SelectedIndexChanged);
+            // 
+            // labelSortCategory
+            // 
+            this.labelSortCategory.AutoSize = true;
+            this.labelSortCategory.Location = new System.Drawing.Point(12, 545);
+            this.labelSortCategory.Name = "labelSortCategory";
+            this.labelSortCategory.Size = new System.Drawing.Size(189, 20);
+            this.labelSortCategory.TabIndex = 16;
+            this.labelSortCategory.Text = "Sortieren nach Kategorie:";
+            // 
             // CDialogMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -197,6 +217,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1099, 658);
+            this.Controls.Add(this.labelSortCategory);
+            this.Controls.Add(this.comboBoxSortCategory);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.labelPrize);
             this.Controls.Add(this.tableLayoutPanelSelling);
@@ -243,5 +265,7 @@
         private System.Windows.Forms.Label labelPrize;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem newCategoryMenuItem;
+        private System.Windows.Forms.ComboBox comboBoxSortCategory;
+        private System.Windows.Forms.Label labelSortCategory;
     }
 }

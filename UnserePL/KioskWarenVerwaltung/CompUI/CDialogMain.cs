@@ -107,6 +107,64 @@ namespace CompUI
             return header;
         }
 
+        private void redrawPanel(string categoryname)
+        {
+            this.tableLayoutPanelSelling.Visible = false;
+
+            this.tableLayoutPanelSelling.Controls.Clear();
+            this.tableLayoutPanelSelling.RowStyles.Clear();
+            this.tableLayoutPanelSelling.Dock = System.Windows.Forms.DockStyle.Fill;
+
+            tableLayoutPanelSelling.Controls.AddRange(new Control[5] { newHeaderLabel("Kategoriename"), newHeaderLabel("Produktname"), newHeaderLabel("Lagerbestand"), newHeaderLabel("Verkaufte Stückzahl"), newHeaderLabel("Preis") });
+            tableLayoutPanelSelling.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
+
+            foreach (IProduct product in _ListIProduct)
+            {
+                if (product.Category.Name == categoryname)
+                {
+                    double price = (double)product.Price;
+
+                    Label col0cat = new Label();
+                    col0cat.Text = product.Category.Name;
+                    col0cat.TextAlign = ContentAlignment.BottomRight;
+                    col0cat.AutoSize = true;
+                    col0cat.Anchor = (AnchorStyles.None | AnchorStyles.Right);
+
+                    Label col1name = new Label();
+                    col1name.Text = product.Name.ToString();
+                    col1name.TextAlign = ContentAlignment.BottomRight;
+                    col1name.AutoSize = true;
+                    col1name.Anchor = (AnchorStyles.None | AnchorStyles.Right);
+
+                    Label col2stock = new Label();
+                    col2stock.Text = product.Stock.ToString();
+                    col2stock.TextAlign = ContentAlignment.BottomRight;
+                    col2stock.AutoSize = true;
+                    col2stock.Anchor = (AnchorStyles.None | AnchorStyles.Right);
+
+                    NumericUpDown col3tosell = new NumericUpDown();
+                    col3tosell.ValueChanged += (sender, e) => this.numericUpDownInPanel_ValueChanged(sender, e, price);
+                    col3tosell.Value = 0;
+                    col3tosell.Minimum = 0;
+                    col3tosell.TextAlign = HorizontalAlignment.Right;
+                    col3tosell.AutoSize = true;
+                    col3tosell.Anchor = (AnchorStyles.None | AnchorStyles.Right);
+
+                    Label col4price = new Label();
+                    col4price.Text = price.ToString("F") + "€";
+                    col4price.TextAlign = ContentAlignment.BottomRight;
+                    col4price.AutoSize = true;
+                    col4price.Anchor = (AnchorStyles.None | AnchorStyles.Right);
+
+                    // Füllt die Aktuelle Spalte des tableLayoutPanelRestock mit drei Control Objekten zur bearbeitung
+                    Control[] rowcontrols = new Control[5] { col0cat, col1name, col2stock, col3tosell, col4price };
+                    tableLayoutPanelSelling.Controls.AddRange(rowcontrols);
+                    tableLayoutPanelSelling.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
+                }
+            }
+            this.tableLayoutPanelSelling.Visible = true;
+        }
+
         private void redrawPanel()
         {
             this.tableLayoutPanelSelling.Visible = false;
@@ -216,6 +274,16 @@ namespace CompUI
             }
         }
         */
+        private void Fill_SortCategory()
+        {
+            comboBoxSortCategory.Items.Clear();
+            comboBoxSortCategory.Items.Add("Alle");
+            foreach (IProductCategory category in _ListCategory)
+            {
+                comboBoxSortCategory.Items.Add(category.Name);
+            }
+            comboBoxSortCategory.Text = comboBoxSortCategory.Items[0].ToString();
+        }
         #endregion
 
         #region Events
@@ -223,8 +291,9 @@ namespace CompUI
         {
 
             // loadCategoryTabelle();
-            _iLogicSearch.FillListCategory(ref _ListCategory);
+            _iLogicSearch.FillListCategory(ref _ListCategory);           
             loadProductTabelle();
+            Fill_SortCategory();
         }
 
         #region MenuItem_Click
@@ -254,6 +323,7 @@ namespace CompUI
             //    //_iLogicInsert.InsertProductCategory(_iProductCategory);
             //}
             _iLogicSearch.FillListCategory(ref _ListCategory);
+            Fill_SortCategory();
         }
         
 
@@ -310,7 +380,20 @@ namespace CompUI
             this.sumPrice += ((thisValue - lastValue) * price);
             labelPrize.Text = sumPrice.ToString("F") + "€";
         }
+        private void comboBoxSortCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxSortCategory.Text == "Alle") 
+            {
+                redrawPanel();
+            }
+            else
+            {
+                redrawPanel(comboBoxSortCategory.Text);
+            }
+        }
         #endregion
+
+
     }
 
 }
