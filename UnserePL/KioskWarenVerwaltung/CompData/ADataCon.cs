@@ -4,7 +4,7 @@ using System.Data;
 using System.Data.Common;
 using CompLogic;
 namespace CompData {
-    internal abstract class ADataCon : IDataCon {
+    internal abstract class ADataCon {
 
         #region Fields        
         private    AData            _aData;

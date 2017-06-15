@@ -14,12 +14,10 @@ namespace CompData {
         protected  DbProviderFactory  _dbProviderFactory;
         protected  DbConnection       _dbConnection;
         // Assoziationen
-        protected  IDataCon           _iDataCon;
         protected  IDataDis           _iDataDis;     
         #endregion
 
         #region Properties
-        public     IDataCon           DataCon          { get { return _iDataCon;         } }
         public     IDataDis           DataDis          { get { return _iDataDis;         } }
         #endregion
 

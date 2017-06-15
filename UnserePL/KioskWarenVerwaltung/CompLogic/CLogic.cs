@@ -11,7 +11,6 @@ namespace CompLogic
 
         #region Fields
         private IData _iData;
-        private IDataCon _iDataCon;
         private IDataDis _iDataDis;
         #endregion
 
@@ -26,27 +25,11 @@ namespace CompLogic
         internal CLogic(IData iData)
         {
             _iData = iData;
-            _iDataCon = iData.DataCon;
             _iDataDis = iData.DataDis;
         }
         #endregion
 
         #region Interface ILogicSearch Methods
-        public void Init(ref int nCars, out object[] arrayMake)
-        {
-            _iDataCon.Init(ref nCars, out arrayMake);
-        }
-
-        public void InitCat(out object[] arrayCategory)
-        {
-            _iDataCon.InitCat(out arrayCategory);
-        }
-
-        public object[] GetModel(string make)
-        {
-            return _iDataCon.GetModel(make);
-        }
-
         public void SelectAllProducts(ref DataTable datatable)
         {
             _iDataDis.SelectAllProducts(ref datatable);

@@ -4,15 +4,6 @@ namespace CompLogic
     public interface IData
     {
         IDataDis DataDis { get; }
-        IDataCon DataCon { get; }
-    }
-
-    public interface IDataCon
-    {
-        void Init(ref int nCars, out object[] arrayMake);
-        void InitCat(out object[] arrayKategorie);
-        object[] GetModel(string make);
-
     }
 
     public interface IDataDis

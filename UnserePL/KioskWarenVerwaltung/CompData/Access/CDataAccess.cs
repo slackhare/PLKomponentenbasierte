@@ -10,7 +10,6 @@ namespace CompData.Dbase.Access {
             _providerString   = "System.Data.OleDb";
             this.Setup( );
 
-            _iDataCon = new CDataConAccess( this );
             _iDataDis = new CDataDisAccess( this );           
         }
         #endregion        
