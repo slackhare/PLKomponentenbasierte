@@ -33,9 +33,7 @@ namespace CompUI
 
         private IFactoryIProduct _iFactoryProduct;
         private IFactoryIProductCategory _iFactoryProductCategory;
-        // Tabellen
-        private DataTable _productDataTable;
-        private DataTable _productCategoryDataTable;
+
         private double sumPrice = 0;
         #endregion
 
@@ -241,6 +239,7 @@ namespace CompUI
                 { 
                     //wird ein Datenbankupdate angestoßen das die zu Verkaufende Menge von der Vorhanden Menge des Produktes Abzieht
                     string guid = _productDataTable.Rows[row]["GUID"].ToString();
+                    // Falls das Update nicht erfolgreich war wird ein Fehler Ausgegeben
                     if (!_iLogicUpdate.SellProduct(guid, Convert.ToInt32(quantarray[row].Value)))
                     {
                         MessageBox.Show("Das Produkt "
@@ -254,12 +253,13 @@ namespace CompUI
                     }
                 }
             }
+            // Gibt eine Nachricht us wie viel der Kunde Bezahlen muss
             if (price > 0)
             {
                 MessageBox.Show("Der Kunde muss: " + Environment.NewLine + price.ToString("F") + "€" + Environment.NewLine + "bezahlen!",
                                 "Rechung", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
+            // Aktualiesiert das Verkaufspanel
             loadProductTabelle();
             sumPrice = 0;
             labelPrize.Text = sumPrice.ToString("F") + "€";
