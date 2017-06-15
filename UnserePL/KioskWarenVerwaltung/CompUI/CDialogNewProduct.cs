@@ -40,7 +40,7 @@ namespace CompUI
         {
             IProduct iProduct = _dialogMain.FactoryProduct.Create();
             iProduct.Name = this.textBoxName.Text;
-            iProduct.Category = _dialogMain.ProductCategoryDataTable.Rows[this.comboBoxKategorie.SelectedIndex]["GUID"].ToString();
+            iProduct.Category = _dialogMain.CategoryList[this.comboBoxKategorie.SelectedIndex];
             iProduct.Stock = Convert.ToInt32(numericUpDownAnz.Value.ToString());
 
             this.textBoxPrice.Text.Replace(",", ".");
