@@ -2,23 +2,26 @@
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="TestApp.Test">
     <Position X="0.5" Y="0.5" Width="1.5" />
+    <AssociationLine Name="_iLogic" Type="CompLogic.ILogic" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="0.75" Y="1.796" />
+        <Point X="0.75" Y="4.59" />
+        <Point X="4.25" Y="4.59" />
+      </Path>
+    </AssociationLine>
     <TypeIdentifier>
       <HashCode>AAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAABAAAAEI=</HashCode>
       <FileName>Test.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="_iDbase" />
       <Field Name="_iDialog" />
       <Field Name="_iLogic" />
+      <Field Name="_iDbase" />
     </ShowAsAssociation>
   </Class>
   <Interface Name="CompLogic.IData">
     <Position X="4.25" Y="0.5" Width="1.5" />
     <TypeIdentifier />
-    <ShowAsAssociation>
-      <Property Name="DataCon" />
-      <Property Name="DataDis" />
-    </ShowAsAssociation>
   </Interface>
   <Interface Name="CompLogic.IDialog">
     <Position X="4.25" Y="2" Width="1.5" />
@@ -26,21 +29,6 @@
   </Interface>
   <Interface Name="CompLogic.ILogic">
     <Position X="4.25" Y="3.75" Width="1.5" />
-    <TypeIdentifier />
-    <ShowAsAssociation>
-      <Property Name="LogicSearch" />
-    </ShowAsAssociation>
-  </Interface>
-  <Interface Name="CompLogic.IDataCon">
-    <Position X="7.75" Y="0.5" Width="1.5" />
-    <TypeIdentifier />
-  </Interface>
-  <Interface Name="CompLogic.IDataDis">
-    <Position X="7.75" Y="2.25" Width="1.5" />
-    <TypeIdentifier />
-  </Interface>
-  <Interface Name="CompLogic.ILogicSearch" Collapsed="true">
-    <Position X="7.75" Y="4.5" Width="1.5" />
     <TypeIdentifier />
   </Interface>
   <Font Name="Segoe UI" Size="9" />

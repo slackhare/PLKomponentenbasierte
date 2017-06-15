@@ -36,7 +36,7 @@ namespace CompData
             this.AddParameter(dbCommand, "pGUID", iProduct.GUID);
             this.AddParameter(dbCommand, "pProduktname", iProduct.Name);
             this.AddParameter(dbCommand, "pLagerbestand", iProduct.Stock);
-            this.AddParameter(dbCommand, "pKategorie", iProduct.Category);
+            this.AddParameter(dbCommand, "pKategorie", iProduct.Category.GUID);
             this.AddParameter(dbCommand, "pPreis", iProduct.Price);
             _dbConnection.Open();
             dbCommand.ExecuteNonQuery();
@@ -112,7 +112,7 @@ namespace CompData
                 if (row["GUID"].ToString().CompareTo(iProduct.GUID) == 0)
                 {
                     if (iProduct.Name != null) row["Produktname"] = iProduct.Name;
-                    if (iProduct.Category != null) row["Kategorie"] = iProduct.Category;
+                    if (iProduct.Category.GUID != null) row["Kategorie"] = iProduct.Category.GUID;
                     if (iProduct.Stock != null) row["Lagerbestand"] = iProduct.Stock;
                     if (iProduct.Price != null) row["Preis"] = iProduct.Price;
                     break;

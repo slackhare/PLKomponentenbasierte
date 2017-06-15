@@ -38,7 +38,8 @@ namespace CompLogic
 
     public interface ILogicWarning
     {
-        DataTable Format(DataTable toformat, decimal grenze);
+        DataTable Format(DataTable toformat, decimal limit);
+        DataTable Format(decimal limit);
     }
 
 
