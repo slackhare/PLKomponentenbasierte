@@ -127,9 +127,6 @@ namespace CompUI
             {
                 newPanel.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
             }
-            this.Controls.Add(newPanel);
-
-
             newPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
             newPanel.Controls.AddRange(new Control[5] { newHeaderLabel("Kategoriename"), newHeaderLabel("Produktname"), newHeaderLabel("Lagerbestand"), newHeaderLabel("Verkaufte Stückzahl"), newHeaderLabel("Preis") });
 
@@ -178,6 +175,7 @@ namespace CompUI
                 }
             }
             newPanel.Visible = true;
+            this.Controls.Add(newPanel);
         }
 
         private void Fill_SortCategory()
