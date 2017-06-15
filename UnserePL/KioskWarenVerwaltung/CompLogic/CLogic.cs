@@ -1,4 +1,6 @@
 ﻿using CompLogic.Product;
+using CompLogic.ProductCategory;
+using System.Collections.Generic;
 using System.Data;
 
 namespace CompLogic
@@ -60,6 +62,25 @@ namespace CompLogic
         public void SelectAllProductCategories(ref DataTable datatable) // Not needed
         {
             _iDataDis.SelectAllProductCategories(ref datatable);
+        }
+
+        public void FillListProduct(ref List<IProduct> listIProduct)
+        {
+            DataTable datatable = new DataTable();
+            _iDataDis.SelectAllProducts(ref datatable);
+            foreach (DataRow row in datatable.Rows)
+            {
+                listIProduct.Add(new CProduct(row["GUID"].ToString(), row["Produktname"].ToString(), row["Kategorie"].ToString(), double.Parse(row["Preis"].ToString()), int.Parse(row["Lagerbestand"].ToString())));
+            }
+        }
+        public void FillListCategory(ref List<IProductCategory> listICategory)
+        {
+            DataTable datatable = new DataTable;
+            _iDataDis.SelectAllProductCategories(ref datatable);
+            foreach (DataRow row in datatable.Rows)
+            {
+                listICategory.Add(new CProductCategory(row["GUID"].ToString(), row["Kategoriename"].ToString()));
+            }
         }
         #endregion
 

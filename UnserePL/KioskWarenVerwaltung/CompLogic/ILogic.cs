@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System.Collections.Generic;
+using System.Data;
 namespace CompLogic
 {
     public interface ILogic
@@ -16,6 +17,8 @@ namespace CompLogic
         object[] GetModel(string make);
         void SelectAllProducts(ref DataTable dataTable);
         void SelectAllProductCategories(ref DataTable dataTable);
+        void FillListProduct(ref List<IProduct> ListIProduct);
+        void FillListCategory(ref List<IProductCategory> ListICategory);
     }
 
     public interface ILogicInsert
