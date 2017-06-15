@@ -18,7 +18,6 @@ namespace CompUI
 
         #region Fields
         // Komposition 
-        private CDialogSearch _dialogSearch;
         private CDialogSearchView _dialogSearchView;
         private CDialogNewProduct _dialogNew;
         private CDialogRestock _dialogRestock;
@@ -93,7 +92,7 @@ namespace CompUI
 
         private void loadProductTabelle()
         {
-            _iLogicSearch.FillListProduct(ref _ListIProduct);
+            _iLogicSearch.FillListProduct(ref _ListIProduct, _ListCategory);
             //_productDataTable.Clear();
             //_iLogicSearch.SelectAllProducts(ref _productDataTable);
             redrawPanel();
@@ -123,9 +122,47 @@ namespace CompUI
 
             foreach (IProduct product in _ListIProduct)
             {
-              
+                double price = (double)product.Price;
+
+                Label col0cat = new Label();
+                col0cat.Text = product.Category.Name;
+                col0cat.TextAlign = ContentAlignment.BottomRight;
+                col0cat.AutoSize = true;
+                col0cat.Anchor = (AnchorStyles.Top | AnchorStyles.Right); ;
+
+                Label col1name = new Label();
+                col1name.Text = product.Name.ToString();
+                col1name.TextAlign = ContentAlignment.BottomRight;
+                col1name.AutoSize = true;
+                col1name.Anchor = (AnchorStyles.Top | AnchorStyles.Right); ;
+
+                Label col2stock = new Label();
+                col2stock.Text = product.Stock.ToString();
+                col2stock.TextAlign = ContentAlignment.BottomRight;
+                col2stock.AutoSize = true;
+                col2stock.Anchor = (AnchorStyles.Top | AnchorStyles.Right); ;
+
+                NumericUpDown col3tosell = new NumericUpDown();
+                col3tosell.ValueChanged += (sender, e) => this.numericUpDownInPanel_ValueChanged(sender, e, price);
+                col3tosell.Value = 0;
+                col3tosell.Minimum = 0;
+                col3tosell.TextAlign = HorizontalAlignment.Right;
+                col3tosell.AutoSize = true;
+                col3tosell.Anchor = (AnchorStyles.Top | AnchorStyles.Right); ;
+
+                Label col4price = new Label();
+                col4price.Text = price.ToString("F") + "€";
+                col4price.TextAlign = ContentAlignment.BottomRight;
+                col4price.AutoSize = true;
+                col4price.Anchor = (AnchorStyles.Top | AnchorStyles.Right); ;
+
+                // Füllt die Aktuelle Spalte des tableLayoutPanelRestock mit drei Control Objekten zur bearbeitung
+                Control[] rowcontrols = new Control[5] { col0cat, col1name, col2stock, col3tosell, col4price };
+                tableLayoutPanelSelling.Controls.AddRange(rowcontrols);
+                tableLayoutPanelSelling.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
             }
 
+            /*
             for (int i = 0; i < _productDataTable.Rows.Count; i++)
             {
                 double price = (double)_productDataTable.Rows[i]["Preis"];
@@ -167,9 +204,11 @@ namespace CompUI
                 tableLayoutPanelSelling.Controls.AddRange(rowcontrols);
                 tableLayoutPanelSelling.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
             }
+            */
             this.tableLayoutPanelSelling.Visible = true;
         }
 
+        /*
         private void FillProductList()
         {
             this._ListIProduct.Clear();
@@ -178,6 +217,7 @@ namespace CompUI
                 _ListIProduct.Add(_iFactoryProduct.Create(row["GUID"].ToString(), row["Produktname"].ToString(), row["Kategorie"].ToString(), double.Parse(row["Preis"].ToString()), int.Parse(row["Lagerbestand"].ToString())));
             }
         }
+        */
         #endregion
 
         #region Events
@@ -190,28 +230,10 @@ namespace CompUI
         }
 
         #region MenuItem_Click
-        // Eventhandler Suchen
-        private void searchMenuItem_Click(object sender, EventArgs e)
-        {
-            DialogResult dialogResult = _dialogSearch.ShowDialog();
-            if (dialogResult == DialogResult.OK)
-            {
-                // Suchen ausführen
-                _productDataTable.Clear();
-                _iLogicSearch.SelectAllProducts(ref _productDataTable);
-                // Ergebnis in DialogSearchView darstellen
-                if (_dialogSearchView is CDialogSearchView)
-                {
-                    // Down Cast
-                    (_dialogSearchView as CDialogSearchView).ResultTable = _productDataTable;
-                }
-                dialogResult = _dialogSearchView.ShowDialog();
-            }
-        }
         // Eventhandler lager auffüllen
         private void restockMenuItem_Click(object sender, EventArgs e)
         { 
-            this.FillProductList();
+            //this.FillProductList();
             _dialogRestock.ShowDialog();
             loadProductTabelle();
         }

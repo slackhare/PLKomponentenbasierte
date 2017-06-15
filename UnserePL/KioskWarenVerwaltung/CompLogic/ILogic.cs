@@ -17,7 +17,7 @@ namespace CompLogic
         object[] GetModel(string make);
         void SelectAllProducts(ref DataTable dataTable);
         void SelectAllProductCategories(ref DataTable dataTable);
-        void FillListProduct(ref List<IProduct> ListIProduct);
+        void FillListProduct(ref List<IProduct> listIProduct, List<IProductCategory> listIProductCategory);
         void FillListCategory(ref List<IProductCategory> ListICategory);
     }
 

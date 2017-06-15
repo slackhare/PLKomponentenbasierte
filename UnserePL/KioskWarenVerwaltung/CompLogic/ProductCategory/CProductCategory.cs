@@ -13,6 +13,8 @@ namespace CompLogic.ProductCategory
         #region Ctor
         public CProductCategory()
         {
+            this.GUID = Utils.CreateGUID().ToString();
+            this.Name = null;
         }
         public CProductCategory(string guid, string name)
         {

@@ -64,14 +64,20 @@ namespace CompLogic
             _iDataDis.SelectAllProductCategories(ref datatable);
         }
 
-        public void FillListProduct(ref List<IProduct> listIProduct)
+        public void FillListProduct(ref List<IProduct> listIProduct, List<IProductCategory> listIProductCategory)
         {
             listIProduct.Clear();
             DataTable datatable = new DataTable();
             _iDataDis.SelectAllProducts(ref datatable);
             foreach (DataRow row in datatable.Rows)
             {
-                listIProduct.Add(new CProduct(row["GUID"].ToString(), row["Produktname"].ToString(), row["Kategorie"].ToString(), double.Parse(row["Preis"].ToString()), int.Parse(row["Lagerbestand"].ToString())));
+                foreach(IProductCategory category in listIProductCategory)
+                {
+                    if (row["Kategorie"].ToString().CompareTo(category.GUID) == 0)
+                    {
+                        listIProduct.Add(new CProduct(row["GUID"].ToString(), row["Produktname"].ToString(), category, double.Parse(row["Preis"].ToString()), int.Parse(row["Lagerbestand"].ToString())));
+                    }
+                }
             }
         }
         public void FillListCategory(ref List<IProductCategory> listICategory)
