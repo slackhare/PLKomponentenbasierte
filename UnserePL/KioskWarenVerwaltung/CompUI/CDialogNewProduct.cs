@@ -12,6 +12,7 @@ namespace CompUI
         #region Fields
         private CDialogMain _dialogMain;
         private ILogicInsert _iLogicInsert;
+        private IFactoryIProduct _iFactoryProduct;
         #endregion
 
         #region Ctor
@@ -20,6 +21,7 @@ namespace CompUI
             InitializeComponent();
             _dialogMain = dialogMain;
             _iLogicInsert = iLogicInsert;
+            _iFactoryProduct = new CFactoryCProduct();
         }
         #endregion
 
@@ -39,7 +41,7 @@ namespace CompUI
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            IProduct iProduct = new CFactoryCProduct().Create();
+            IProduct iProduct = _iFactoryProduct.Create();
             iProduct.Name = this.textBoxName.Text;
             iProduct.Category = _dialogMain.ProductCategoryDataTable.Rows[this.comboBoxKategorie.SelectedIndex]["GUID"].ToString();
             iProduct.Stock = Convert.ToInt32(numericUpDownAnz.Value.ToString());

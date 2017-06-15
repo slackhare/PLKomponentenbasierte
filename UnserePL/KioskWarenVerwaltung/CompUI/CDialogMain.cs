@@ -29,10 +29,11 @@ namespace CompUI
         private ILogicInsert _iLogicInsert;
         private ILogicWarning _iLogicWarning;
         private ILogicUpdate _iLogicUpdate;
-        private IProduct _iProduct;
-        private IProductCategory _iProductCategory;
+
         private List<IProduct> _ListIProduct;
+
         private IFactoryIProduct _iFactoryProduct;
+        private IFactoryIProductCategory _iFactoryProductCategory;
         // Tabellen
         private DataTable _productDataTable;
         private DataTable _productCategoryDataTable;
@@ -40,10 +41,10 @@ namespace CompUI
         #endregion
 
         #region Properties
-        internal IProduct Produkt { get { return _iProduct; } }
-        internal IProductCategory ProductCategory { get { return _iProductCategory; } }
         internal DataTable ProductCategoryDataTable { get { return _productCategoryDataTable; } }
         internal List<IProduct> ProductList { get { return _ListIProduct; } }
+        internal IFactoryIProduct FactoryProduct { get { return _iFactoryProduct; } }
+        internal IFactoryIProduct FactoryProductCategory { get { return _iFactoryProduct; } }
         #endregion
 
         #region Ctor
@@ -62,8 +63,6 @@ namespace CompUI
             _dialogRestock = new CDialogRestock(iLogic, this);
             _dialogNewCategory = new CDialogNewCategory(_iLogicInsert, this);
 
-            _iProduct = new CFactoryCProduct().Create();
-            _iProductCategory = new CFactoryCProductCategory().Create();
             _ListIProduct = new List<IProduct>();
             _iFactoryProduct = new CFactoryCProduct();
             _productDataTable = new DataTable();
