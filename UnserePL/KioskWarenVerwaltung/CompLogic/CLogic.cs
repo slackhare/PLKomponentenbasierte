@@ -15,7 +15,7 @@ namespace CompLogic
 
         #region Properties         
         public ILogicSearch LogicSearch { get { return this; } }
-        public ILogicInsert LogicTrade { get { return this; } }
+        public ILogicInsert LogicInsert { get { return this; } }
         public ILogicUpdate LogicUpdate { get { return this; } }
         public ILogicWarning LogicWarning { get { return this; } }
         #endregion

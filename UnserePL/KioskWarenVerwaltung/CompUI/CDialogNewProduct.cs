@@ -2,21 +2,24 @@
 using System.Windows.Forms;
 using CompLogic;
 using System.Data;
+using CompLogic.Product;
 
 namespace CompUI
 {
-    internal partial class CDialogNew : Form
+    internal partial class CDialogNewProduct : Form
     {
 
         #region Fields
         private CDialogMain _dialogMain;
+        private ILogicInsert _iLogicInsert;
         #endregion
 
         #region Ctor
-        internal CDialogNew(CDialogMain dialogMain)
+        internal CDialogNewProduct(ILogicInsert iLogicInsert, CDialogMain dialogMain)
         {
             InitializeComponent();
             _dialogMain = dialogMain;
+            _iLogicInsert = iLogicInsert;
         }
         #endregion
 
@@ -36,7 +39,7 @@ namespace CompUI
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            IProduct iProduct = _dialogMain.Produkt;
+            IProduct iProduct = new CFactoryCProduct().Create();
             iProduct.Name = this.textBoxName.Text;
             iProduct.Category = _dialogMain.ProductCategoryDataTable.Rows[this.comboBoxKategorie.SelectedIndex]["GUID"].ToString();
             iProduct.Stock = Convert.ToInt32(numericUpDownAnz.Value.ToString());
@@ -49,7 +52,7 @@ namespace CompUI
             {
                 iProduct.Price = 0;
             }
-
+            _iLogicInsert.InsertProduct(iProduct);
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
