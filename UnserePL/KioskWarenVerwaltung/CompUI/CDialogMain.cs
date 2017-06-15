@@ -44,7 +44,7 @@ namespace CompUI
         internal DataTable ProductCategoryDataTable { get { return _productCategoryDataTable; } }
         internal List<IProduct> ProductList { get { return _ListIProduct; } }
         internal IFactoryIProduct FactoryProduct { get { return _iFactoryProduct; } }
-        internal IFactoryIProduct FactoryProductCategory { get { return _iFactoryProduct; } }
+        internal IFactoryIProductCategory FactoryProductCategory { get { return _iFactoryProductCategory; } }
         #endregion
 
         #region Ctor
@@ -57,14 +57,16 @@ namespace CompUI
             _iLogicInsert = iLogic.LogicInsert;
             _iLogicWarning = iLogic.LogicWarning;
             _iLogicUpdate = iLogic.LogicUpdate;
-            _dialogSearch = new CDialogSearch(iLogic, this);
             _dialogSearchView = new CDialogSearchView(this);
             _dialogNew = new CDialogNewProduct(_iLogicInsert, this);
-            _dialogRestock = new CDialogRestock(iLogic, this);
+            _dialogRestock = new CDialogRestock(_iLogicUpdate, this);
             _dialogNewCategory = new CDialogNewCategory(_iLogicInsert, this);
 
             _ListIProduct = new List<IProduct>();
+
             _iFactoryProduct = new CFactoryCProduct();
+            _iFactoryProductCategory = new CFactoryCProductCategory();
+
             _productDataTable = new DataTable();
             _productCategoryDataTable = new DataTable();
         }

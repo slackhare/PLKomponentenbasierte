@@ -23,10 +23,8 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent( ) {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CDialogMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.searchMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.restockMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newProductMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newCategoryMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,7 +47,6 @@
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.searchMenuItem,
             this.restockMenuItem,
             this.newProductMenuItem,
             this.newCategoryMenuItem});
@@ -59,13 +56,6 @@
             this.menuStrip1.Size = new System.Drawing.Size(1099, 31);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // searchMenuItem
-            // 
-            this.searchMenuItem.Name = "searchMenuItem";
-            this.searchMenuItem.Size = new System.Drawing.Size(65, 23);
-            this.searchMenuItem.Text = "Suchen";
-            this.searchMenuItem.Click += new System.EventHandler(this.searchMenuItem_Click);
             // 
             // restockMenuItem
             // 
@@ -88,42 +78,42 @@
             this.newCategoryMenuItem.Text = "Produktkategorie Hinzufügen";
             this.newCategoryMenuItem.Click += new System.EventHandler(this.newCategoryMenuItem_Click);
             // 
-            // labelVerkauf
+            // labelSelling
             // 
             this.labelSelling.AutoSize = true;
             this.labelSelling.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSelling.Location = new System.Drawing.Point(12, 46);
-            this.labelSelling.Name = "labelVerkauf";
+            this.labelSelling.Name = "labelSelling";
             this.labelSelling.Size = new System.Drawing.Size(128, 37);
             this.labelSelling.TabIndex = 1;
             this.labelSelling.Text = "Verkauf";
             // 
-            // buttonVerkaufen
+            // buttonSell
             // 
             this.buttonSell.Location = new System.Drawing.Point(408, 545);
-            this.buttonSell.Name = "buttonVerkaufen";
+            this.buttonSell.Name = "buttonSell";
             this.buttonSell.Size = new System.Drawing.Size(110, 49);
             this.buttonSell.TabIndex = 5;
             this.buttonSell.Text = "Verkaufen";
             this.buttonSell.UseVisualStyleBackColor = true;
             this.buttonSell.Click += new System.EventHandler(this.buttonSell_Click);
             // 
-            // labelWarnung
+            // labelWarning
             // 
             this.labelWarning.AutoSize = true;
             this.labelWarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelWarning.ForeColor = System.Drawing.Color.Red;
             this.labelWarning.Location = new System.Drawing.Point(611, 114);
-            this.labelWarning.Name = "labelWarnung";
+            this.labelWarning.Name = "labelWarning";
             this.labelWarning.Size = new System.Drawing.Size(369, 55);
             this.labelWarning.TabIndex = 6;
             this.labelWarning.Text = "!!!WARNUNG!!!";
             // 
-            // labelWarnungGrenze
+            // labelWarningLimit
             // 
             this.labelWarningLimit.AutoSize = true;
             this.labelWarningLimit.Location = new System.Drawing.Point(524, 574);
-            this.labelWarningLimit.Name = "labelWarnungGrenze";
+            this.labelWarningLimit.Name = "labelWarningLimit";
             this.labelWarningLimit.Size = new System.Drawing.Size(169, 20);
             this.labelWarningLimit.TabIndex = 9;
             this.labelWarningLimit.Text = "Warnung anzeigen ab:";
@@ -163,7 +153,7 @@
             this.dataGridViewWarning.Size = new System.Drawing.Size(359, 190);
             this.dataGridViewWarning.TabIndex = 11;
             // 
-            // tableLayoutPanelVerkauf
+            // tableLayoutPanelSelling
             // 
             this.tableLayoutPanelSelling.AutoScroll = true;
             this.tableLayoutPanelSelling.AutoSize = true;
@@ -176,7 +166,7 @@
             this.tableLayoutPanelSelling.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanelSelling.Location = new System.Drawing.Point(12, 86);
             this.tableLayoutPanelSelling.MaximumSize = new System.Drawing.Size(593, 453);
-            this.tableLayoutPanelSelling.Name = "tableLayoutPanelVerkauf";
+            this.tableLayoutPanelSelling.Name = "tableLayoutPanelSelling";
             this.tableLayoutPanelSelling.RowCount = 1;
             this.tableLayoutPanelSelling.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanelSelling.Size = new System.Drawing.Size(10, 10);
@@ -239,7 +229,6 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem searchMenuItem;
         private System.Windows.Forms.ToolStripMenuItem restockMenuItem;
         private System.Windows.Forms.Timer timerWarnung;
         private System.Windows.Forms.Timer timerUpdate;

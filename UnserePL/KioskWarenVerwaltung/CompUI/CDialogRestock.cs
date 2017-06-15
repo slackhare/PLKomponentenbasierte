@@ -22,10 +22,10 @@ namespace CompUI
         #endregion
 
         #region Ctor
-        internal CDialogRestock(ILogic iLogic, CDialogMain dialogMain)
+        internal CDialogRestock(ILogicUpdate iLogicUpdate, CDialogMain dialogMain)
         {
             InitializeComponent();
-            _iLogicUpdate = iLogic.LogicUpdate;
+            _iLogicUpdate = iLogicUpdate;
             _dialogMain = dialogMain;
         }
         #endregion

@@ -36,9 +36,11 @@ namespace CompUI {
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
+            /*
             IProduct iProduct = _dialogMain.Produkt;
             iProduct.Name = this.textBoxName.Text;
             iProduct.Category = this.comboBoxKategorie.Text;
+            */
 
             this.DialogResult = DialogResult.OK;
             this.Close();

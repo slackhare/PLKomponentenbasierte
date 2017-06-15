@@ -1,5 +1,4 @@
 ﻿using CompLogic;
-using CompLogic.ProductCategory;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -37,7 +36,7 @@ namespace CompUI
         }
         private void buttonHinzufuegen_Click(object sender, EventArgs e)
         {
-            IProductCategory iProductCategory = new CFactoryCProductCategory().Create();
+            IProductCategory iProductCategory = _dialogMain.FactoryProductCategory.Create();
             iProductCategory.Name = textBoxNewCategory.Text;
             _iLogicInsert.InsertProductCategory(iProductCategory);
             this.DialogResult = DialogResult.OK;
