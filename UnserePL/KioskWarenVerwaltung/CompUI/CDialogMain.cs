@@ -81,18 +81,9 @@ namespace CompUI
             dataGridViewWarning.ClearSelection();
         }
 
-        //private void loadCategoryTabelle()
-        //{
-
-        //    _productCategoryDataTable.Clear();
-        //    _iLogicSearch.SelectAllProductCategories(ref _productCategoryDataTable);
-        //}
-
         private void loadProductTabelle()
         {
             _iLogicSearch.FillListProduct(ref _ListIProduct, _ListCategory);
-            //_productDataTable.Clear();
-            //_iLogicSearch.SelectAllProducts(ref _productDataTable);
             redrawPanel();
             displayWarning();
         }
@@ -103,44 +94,63 @@ namespace CompUI
             header.Text = text;
             header.TextAlign = ContentAlignment.BottomRight;
             header.AutoSize = true;
-            header.Anchor = (AnchorStyles.None | AnchorStyles.Right); ;
+            header.Anchor = (AnchorStyles.Top | AnchorStyles.Right); ;
             return header;
         }
 
-        private void redrawPanel(string categoryname)
+        private void redrawPanel()
         {
-            this.tableLayoutPanelSelling.Visible = false;
+            List<IProductCategory> categoryList;
+            if (comboBoxSortCategory.SelectedIndex  < 1)
+            {
+                categoryList = _ListCategory;
+            }
+            else
+            {
+                categoryList = new List<IProductCategory>();
+                categoryList.Add(_ListCategory[comboBoxSortCategory.SelectedIndex-1]);
+            }
 
+            this.tableLayoutPanelSelling.Visible = false;
             this.tableLayoutPanelSelling.Controls.Clear();
             this.tableLayoutPanelSelling.RowStyles.Clear();
+            //this.tableLayoutPanelSelling.ColumnStyles.Clear();
             this.tableLayoutPanelSelling.Dock = System.Windows.Forms.DockStyle.Fill;
 
-            tableLayoutPanelSelling.Controls.AddRange(new Control[5] { newHeaderLabel("Kategoriename"), newHeaderLabel("Produktname"), newHeaderLabel("Lagerbestand"), newHeaderLabel("Verkaufte Stückzahl"), newHeaderLabel("Preis") });
+            /*
+            for (int i = tableLayoutPanelSelling.Controls.Count - 1; i >= 0; --i)
+            {
+                tableLayoutPanelSelling.Controls[i].Dispose();
+            }
+            tableLayoutPanelSelling.RowCount = 0;
+            */
+            tableLayoutPanelSelling.Anchor = AnchorStyles.Left;
+
             tableLayoutPanelSelling.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
+            tableLayoutPanelSelling.Controls.AddRange(new Control[5] { newHeaderLabel("Kategoriename"), newHeaderLabel("Produktname"), newHeaderLabel("Lagerbestand"), newHeaderLabel("Verkaufte Stückzahl"), newHeaderLabel("Preis") });
 
             foreach (IProduct product in _ListIProduct)
             {
-                if (product.Category.Name == categoryname)
-                {
+                if(categoryList.Contains(product.Category)){
                     double price = (double)product.Price;
 
                     Label col0cat = new Label();
                     col0cat.Text = product.Category.Name;
                     col0cat.TextAlign = ContentAlignment.BottomRight;
                     col0cat.AutoSize = true;
-                    col0cat.Anchor = (AnchorStyles.None | AnchorStyles.Right);
+                    col0cat.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
 
                     Label col1name = new Label();
                     col1name.Text = product.Name.ToString();
                     col1name.TextAlign = ContentAlignment.BottomRight;
                     col1name.AutoSize = true;
-                    col1name.Anchor = (AnchorStyles.None | AnchorStyles.Right);
+                    col1name.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
 
                     Label col2stock = new Label();
                     col2stock.Text = product.Stock.ToString();
                     col2stock.TextAlign = ContentAlignment.BottomRight;
                     col2stock.AutoSize = true;
-                    col2stock.Anchor = (AnchorStyles.None | AnchorStyles.Right);
+                    col2stock.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
 
                     NumericUpDown col3tosell = new NumericUpDown();
                     col3tosell.ValueChanged += (sender, e) => this.numericUpDownInPanel_ValueChanged(sender, e, price);
@@ -148,131 +158,22 @@ namespace CompUI
                     col3tosell.Minimum = 0;
                     col3tosell.TextAlign = HorizontalAlignment.Right;
                     col3tosell.AutoSize = true;
-                    col3tosell.Anchor = (AnchorStyles.None | AnchorStyles.Right);
+                    col3tosell.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
 
                     Label col4price = new Label();
                     col4price.Text = price.ToString("F") + "€";
                     col4price.TextAlign = ContentAlignment.BottomRight;
                     col4price.AutoSize = true;
-                    col4price.Anchor = (AnchorStyles.None | AnchorStyles.Right);
+                    col4price.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
 
                     // Füllt die Aktuelle Spalte des tableLayoutPanelRestock mit drei Control Objekten zur bearbeitung
                     Control[] rowcontrols = new Control[5] { col0cat, col1name, col2stock, col3tosell, col4price };
-                    tableLayoutPanelSelling.Controls.AddRange(rowcontrols);
                     tableLayoutPanelSelling.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
+                    tableLayoutPanelSelling.Controls.AddRange(rowcontrols);                    
                 }
             }
             this.tableLayoutPanelSelling.Visible = true;
         }
-
-        private void redrawPanel()
-        {
-            this.tableLayoutPanelSelling.Visible = false;
-            this.tableLayoutPanelSelling.Controls.Clear();
-            this.tableLayoutPanelSelling.RowStyles.Clear();
-            this.tableLayoutPanelSelling.Dock = System.Windows.Forms.DockStyle.Fill;
-
-            tableLayoutPanelSelling.Controls.AddRange(new Control[5] { newHeaderLabel("Kategoriename"), newHeaderLabel("Produktname"), newHeaderLabel("Lagerbestand"), newHeaderLabel("Verkaufte Stückzahl"), newHeaderLabel("Preis") });
-            tableLayoutPanelSelling.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
-
-            foreach (IProduct product in _ListIProduct)
-            {
-                double price = (double)product.Price;
-
-                Label col0cat = new Label();
-                col0cat.Text = product.Category.Name;
-                col0cat.TextAlign = ContentAlignment.BottomRight;
-                col0cat.AutoSize = true;
-                col0cat.Anchor = (AnchorStyles.None | AnchorStyles.Right);
-
-                Label col1name = new Label();
-                col1name.Text = product.Name.ToString();
-                col1name.TextAlign = ContentAlignment.BottomRight;
-                col1name.AutoSize = true;
-                col1name.Anchor = (AnchorStyles.None | AnchorStyles.Right);
-
-                Label col2stock = new Label();
-                col2stock.Text = product.Stock.ToString();
-                col2stock.TextAlign = ContentAlignment.BottomRight;
-                col2stock.AutoSize = true;
-                col2stock.Anchor = (AnchorStyles.None | AnchorStyles.Right);
-
-                NumericUpDown col3tosell = new NumericUpDown();
-                col3tosell.ValueChanged += (sender, e) => this.numericUpDownInPanel_ValueChanged(sender, e, price);
-                col3tosell.Value = 0;
-                col3tosell.Minimum = 0;
-                col3tosell.TextAlign = HorizontalAlignment.Right;
-                col3tosell.AutoSize = true;
-                col3tosell.Anchor = (AnchorStyles.None | AnchorStyles.Right);
-
-                Label col4price = new Label();
-                col4price.Text = price.ToString("F") + "€";
-                col4price.TextAlign = ContentAlignment.BottomRight;
-                col4price.AutoSize = true;
-                col4price.Anchor = (AnchorStyles.None | AnchorStyles.Right);
-
-                // Füllt die Aktuelle Spalte des tableLayoutPanelRestock mit drei Control Objekten zur bearbeitung
-                Control[] rowcontrols = new Control[5] { col0cat, col1name, col2stock, col3tosell, col4price };
-                tableLayoutPanelSelling.Controls.AddRange(rowcontrols);
-                tableLayoutPanelSelling.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
-            }
-
-            /*
-            for (int i = 0; i < _productDataTable.Rows.Count; i++)
-            {
-                double price = (double)_productDataTable.Rows[i]["Preis"];
-
-                Label col0cat = new Label();
-                col0cat.Text = _productDataTable.Rows[i]["Kategoriename"].ToString();
-                col0cat.TextAlign = ContentAlignment.BottomRight;
-                col0cat.AutoSize = true;
-                col0cat.Anchor = (AnchorStyles.Top | AnchorStyles.Right); ;
-
-                Label col1name = new Label();
-                col1name.Text = _productDataTable.Rows[i]["Produktname"].ToString();
-                col1name.TextAlign = ContentAlignment.BottomRight;
-                col1name.AutoSize = true;
-                col1name.Anchor = (AnchorStyles.Top | AnchorStyles.Right); ;
-
-                Label col2stock = new Label();
-                col2stock.Text = _productDataTable.Rows[i]["Lagerbestand"].ToString();
-                col2stock.TextAlign = ContentAlignment.BottomRight;
-                col2stock.AutoSize = true;
-                col2stock.Anchor = (AnchorStyles.Top | AnchorStyles.Right); ;
-
-                NumericUpDown col3tosell = new NumericUpDown();
-                col3tosell.ValueChanged += (sender, e) => this.numericUpDownInPanel_ValueChanged(sender, e, price);
-                col3tosell.Value = 0;
-                col3tosell.Minimum = 0;
-                col3tosell.TextAlign = HorizontalAlignment.Right;
-                col3tosell.AutoSize = true;
-                col3tosell.Anchor = (AnchorStyles.Top | AnchorStyles.Right); ;
-
-                Label col4price = new Label();
-                col4price.Text = price.ToString("F") + "€";
-                col4price.TextAlign = ContentAlignment.BottomRight;
-                col4price.AutoSize = true;
-                col4price.Anchor = (AnchorStyles.Top | AnchorStyles.Right); ;
-
-                // Füllt die Aktuelle Spalte des tableLayoutPanelRestock mit drei Control Objekten zur bearbeitung
-                Control[] rowcontrols = new Control[5] { col0cat, col1name, col2stock, col3tosell, col4price };
-                tableLayoutPanelSelling.Controls.AddRange(rowcontrols);
-                tableLayoutPanelSelling.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
-            }
-            */
-            this.tableLayoutPanelSelling.Visible = true;
-        }
-
-        /*
-        private void FillProductList()
-        {
-            this._ListIProduct.Clear();
-            foreach (DataRow row in _productDataTable.Rows)
-            {
-                _ListIProduct.Add(_iFactoryProduct.Create(row["GUID"].ToString(), row["Produktname"].ToString(), row["Kategorie"].ToString(), double.Parse(row["Preis"].ToString()), int.Parse(row["Lagerbestand"].ToString())));
-            }
-        }
-        */
         private void Fill_SortCategory()
         {
             comboBoxSortCategory.Items.Clear();
@@ -288,9 +189,7 @@ namespace CompUI
         #region Events
         private void CDialogMain_Load(object sender, EventArgs e)
         {
-
-            // loadCategoryTabelle();
-            _iLogicSearch.FillListCategory(ref _ListCategory);
+            _iLogicSearch.FillListCategory(ref _ListCategory);           
             loadProductTabelle();
             Fill_SortCategory();
         }
@@ -315,6 +214,7 @@ namespace CompUI
             //}
             loadProductTabelle();
         }
+        // Eventhandler neue Kategorie
         private void newCategoryMenuItem_Click(object sender, EventArgs e)
         {
             _dialogNewCategory.ShowDialog();
@@ -382,16 +282,7 @@ namespace CompUI
         }
         private void comboBoxSortCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Normal Redraw if no specific Category is selected
-            if (comboBoxSortCategory.Text == "Alle")
-            {
-                redrawPanel();
-            }
-            // Alternative call if a category is Selected
-            else
-            {
-                redrawPanel(comboBoxSortCategory.Text);
-            }
+            redrawPanel();
         }
         #endregion
     }

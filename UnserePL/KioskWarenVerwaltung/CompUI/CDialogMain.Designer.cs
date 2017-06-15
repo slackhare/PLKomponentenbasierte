@@ -157,8 +157,10 @@
             // 
             // tableLayoutPanelSelling
             // 
+            this.tableLayoutPanelSelling.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.tableLayoutPanelSelling.AutoScroll = true;
             this.tableLayoutPanelSelling.AutoSize = true;
+            this.tableLayoutPanelSelling.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tableLayoutPanelSelling.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanelSelling.ColumnCount = 5;
             this.tableLayoutPanelSelling.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -171,7 +173,7 @@
             this.tableLayoutPanelSelling.Name = "tableLayoutPanelSelling";
             this.tableLayoutPanelSelling.RowCount = 1;
             this.tableLayoutPanelSelling.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelSelling.Size = new System.Drawing.Size(20, 20);
+            this.tableLayoutPanelSelling.Size = new System.Drawing.Size(6, 2);
             this.tableLayoutPanelSelling.TabIndex = 12;
             // 
             // labelPrize
