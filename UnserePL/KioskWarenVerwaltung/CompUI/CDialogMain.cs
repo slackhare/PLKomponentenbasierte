@@ -168,7 +168,6 @@ namespace CompUI
         private void redrawPanel()
         {
             this.tableLayoutPanelSelling.Visible = false;
-
             this.tableLayoutPanelSelling.Controls.Clear();
             this.tableLayoutPanelSelling.RowStyles.Clear();
             this.tableLayoutPanelSelling.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -291,7 +290,7 @@ namespace CompUI
         {
 
             // loadCategoryTabelle();
-            _iLogicSearch.FillListCategory(ref _ListCategory);           
+            _iLogicSearch.FillListCategory(ref _ListCategory);
             loadProductTabelle();
             Fill_SortCategory();
         }
@@ -299,7 +298,7 @@ namespace CompUI
         #region MenuItem_Click
         // Eventhandler lager auffüllen
         private void restockMenuItem_Click(object sender, EventArgs e)
-        { 
+        {
             //this.FillProductList();
             _dialogRestock.ShowDialog();
             loadProductTabelle();
@@ -307,7 +306,8 @@ namespace CompUI
         // Eventhandler Sortiment erweitern
         private void newMenuItem_Click(object sender, EventArgs e)
         {
-            /*DialogResult dialogResult =*/ _dialogNew.ShowDialog();
+            /*DialogResult dialogResult =*/
+            _dialogNew.ShowDialog();
             //if (dialogResult == DialogResult.OK)
             //{
             //    // Einfügen ausführen
@@ -325,7 +325,7 @@ namespace CompUI
             _iLogicSearch.FillListCategory(ref _ListCategory);
             Fill_SortCategory();
         }
-        
+
 
         // Eventhandler Verkaufen
         private void buttonSell_Click(object sender, EventArgs e)
@@ -383,7 +383,7 @@ namespace CompUI
         private void comboBoxSortCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Normal Redraw if no specific Category is selected
-            if (comboBoxSortCategory.Text == "Alle") 
+            if (comboBoxSortCategory.Text == "Alle")
             {
                 redrawPanel();
             }
@@ -395,5 +395,5 @@ namespace CompUI
         }
         #endregion
     }
-
 }
+   

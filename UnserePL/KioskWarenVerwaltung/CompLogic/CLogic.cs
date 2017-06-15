@@ -162,7 +162,11 @@ namespace CompLogic
             toformat.AcceptChanges();
             return toformat;
         }
-
+        /// <summary>
+        /// Returns a formated DataTable where all unnecessary columns and rows witch are above the given limit of stock
+        /// </summary>
+        /// <param name="limit">limit at witch the rows with more stock will be removed</param>
+        /// <returns>The formated DataTable</returns>
         public DataTable Format(decimal limit)
         {
             DataTable toformat = new DataTable();
