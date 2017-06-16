@@ -7,6 +7,7 @@ using System.Windows.Forms;
 
 namespace CompData
 {
+    //Dient als Vaterklasse für CDataDisAccess. Implementiert die Funktionen, die in IDataDis definiert werden.
     internal abstract class ADataDis : IDataDis
     {
 
@@ -23,6 +24,7 @@ namespace CompData
         }
         #endregion
 
+        //Fügt das IProduct in die Datenbank ein
         public virtual void InsertProduct(IProduct iProduct)
         {
             DbDataAdapter dbDataAdapter = this.CreateDbDataAdapter("Produkt");
@@ -43,6 +45,7 @@ namespace CompData
             _dbConnection.Close();
         }
 
+        //Fügt die IProductCategory in die Datenbank ein
         public virtual void InsertProductCategory(IProductCategory iProductCategory)
         {
             DbDataAdapter dbDataAdapter = this.CreateDbDataAdapter("Produktkategorie");
@@ -60,6 +63,7 @@ namespace CompData
             _dbConnection.Close();
         }
 
+        //Führt einen full-table-scan der Produkt-Tabelle aus
         public void SelectAllProducts(ref DataTable dataTable)
         {
             DbDataAdapter dbDataAdapter = this.CreateDbDataAdapter("Produkt");
@@ -70,6 +74,7 @@ namespace CompData
             Fill(dataTable, dbDataAdapter);
         }
 
+        //Selektiert ein IProduct via GUID-Index
         public void SelectProduct(IProduct iProduct, ref DataTable dataTable)
         {
             DbDataAdapter dbDataAdapter = this.CreateDbDataAdapter("Produkt");
@@ -81,6 +86,7 @@ namespace CompData
             Fill(dataTable, dbDataAdapter);
         }
 
+        //Führt einen full-table-scan der Produkt-Kategorie-Tabelle aus
         public void SelectAllProductCategories(ref DataTable dataTable)
         {
             DbDataAdapter dbDataAdapter = this.CreateDbDataAdapter("Produktkategorie");
@@ -91,6 +97,7 @@ namespace CompData
             Fill(dataTable, dbDataAdapter);
         }
 
+        //Selektiert eine IProductCategory via GUID-Index
         public void SelectProductCategory(IProductCategory iProductCategory, ref DataTable dataTable)
         {
             DbDataAdapter dbDataAdapter = this.CreateDbDataAdapter("Produktkategorie");
@@ -102,6 +109,8 @@ namespace CompData
             Fill(dataTable, dbDataAdapter);
         }
 
+        //Ändert die Werte der Datarow mit der GUID von IProduct ab, sodass alle Werte denen von IProduct entsprechen.
+        //null-Werte werden ignoriert.
         public void UpdateProduct(IProduct iProduct)
         {
             DbDataAdapter dbDataAdapter = this.CreateDbDataAdapter("Produkt");
@@ -121,25 +130,7 @@ namespace CompData
             Update(tableContent, dbDataAdapter);
         }
 
-        /*
-        public virtual void RestockProduct(string guid, int restockNumber)
-        {
-            DbDataAdapter dbDataAdapter = this.CreateDbDataAdapter("Produkt");
-            DataTable tableContent = new DataTable();
-            SelectAllProducts(ref tableContent);
-            foreach (DataRow row in tableContent.Rows)
-            {
-                if (row["GUID"].ToString().CompareTo(guid) == 0)
-                {
-                    int stock = Utils.ParseInt(row["Lagerbestand"].ToString(), 0);
-                    row["Lagerbestand"] = stock + restockNumber;
-                    break;
-                }
-            }
-            Update(tableContent, dbDataAdapter);
-        }
-        */
-
+        //Fügt dbCommand einen dbParameter mit den Werten name und value hinzu.
         protected void AddParameter(DbCommand dbCommand, string name, object value)
         {
             DbParameter dbParameter = _aData.ProviderFactory.CreateParameter();
@@ -168,6 +159,7 @@ namespace CompData
             return dbDataAdapter;
         }
 
+        //Rumrahmt die DbDataAdapter.Fill-Methode mit Fehlerbehandelungen
         protected virtual int Fill(DataTable dataTable, DbDataAdapter dbDataAdapter)
         {
             // preconditions
@@ -190,6 +182,7 @@ namespace CompData
             }
         }
 
+        //Rumrahmt die DbDataAdapter.Update-Methode mit Fehlerbehandelungen
         protected virtual int Update(DataTable dataTable, DbDataAdapter dbDataAdapter)
         {
             // preconditions
@@ -204,6 +197,7 @@ namespace CompData
             return nRows;
         }
 
+        //Rumrahmt die DbDataAdapter.FillSchema-Methode mit Fehlerbehandelungen
         public virtual DataTable GetSchema(DbDataAdapter dbDataAdapter)
         {
             // preconditions

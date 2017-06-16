@@ -6,6 +6,7 @@ namespace CompLogic
         IDataDis DataDis { get; }
     }
 
+    //Interface für den Datenbankzugriff für die Logik-Komponente
     public interface IDataDis
     {
         void SelectAllProducts(ref DataTable dataTable);
@@ -15,9 +16,5 @@ namespace CompLogic
         void SelectAllProductCategories(ref DataTable dataTable);
         void SelectProductCategory(IProductCategory iProductCategory, ref DataTable dataTable);
         void InsertProductCategory(IProductCategory iProductCategor);
-        //void RestockProduct(string guid, int restockNumber);
-        //Unnötig, wird in der logic gemacht, braucht keinen eignen Datenbankzugriff
-        //void WarningUpdate(decimal grenze, ref DataTable datatable);
-
     }
 }

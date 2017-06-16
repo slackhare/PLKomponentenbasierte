@@ -1,6 +1,7 @@
 ﻿using CompLogic;
 namespace CompData.Dbase.Access {
 
+    //Wird von CFactoryCData erzeugt und füllt _iDataDis mit einem CDataDisAccess Objekt
     internal class CDataAccess : AData {
 
         #region ctor
