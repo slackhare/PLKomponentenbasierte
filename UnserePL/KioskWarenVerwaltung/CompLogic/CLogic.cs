@@ -11,7 +11,7 @@ namespace CompLogic
 
         #region Fields
         private IData _iData;
-        private IDataDis _iDataDis;
+        private IDataAccess _iDataDis;
         #endregion
 
         #region Properties         
@@ -25,7 +25,7 @@ namespace CompLogic
         internal CLogic(IData iData)
         {
             _iData = iData;
-            _iDataDis = iData.DataDis;
+            _iDataDis = iData.DataAccess;
         }
         #endregion
 

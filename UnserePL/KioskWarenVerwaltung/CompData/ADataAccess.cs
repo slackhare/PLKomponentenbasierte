@@ -8,7 +8,7 @@ using System.Windows.Forms;
 namespace CompData
 {
     //Dient als Vaterklasse für CDataDisAccess. Implementiert die Funktionen, die in IDataDis definiert werden.
-    internal abstract class ADataDis : IDataDis
+    internal abstract class ADataAccess : IDataAccess
     {
 
         #region Fields        
@@ -17,7 +17,7 @@ namespace CompData
         #endregion
 
         #region Ctor
-        internal ADataDis(AData aData)
+        internal ADataAccess(AData aData)
         {
             _aData = aData;
             _dbConnection = aData.Connection;
@@ -216,7 +216,5 @@ namespace CompData
                 throw new Exception(message);
             }
         }
-
-
     }
 }

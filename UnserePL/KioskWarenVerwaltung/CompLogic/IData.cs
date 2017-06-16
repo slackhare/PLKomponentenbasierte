@@ -3,11 +3,11 @@ namespace CompLogic
 {
     public interface IData
     {
-        IDataDis DataDis { get; }
+        IDataAccess DataAccess { get; }
     }
 
     //Interface für den Datenbankzugriff für die Logik-Komponente
-    public interface IDataDis
+    public interface IDataAccess
     {
         void SelectAllProducts(ref DataTable dataTable);
         void SelectProduct(IProduct iProduct, ref DataTable dataTable);

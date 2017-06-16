@@ -61,11 +61,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AData.cs" />
-    <Compile Include="ADataCon.cs" />
-    <Compile Include="ADbaseDis.cs" />
+    <Compile Include="ADataAccess.cs" />
     <Compile Include="Access\CFactoryCDataAccess.cs" />
     <Compile Include="Access\CDataAccess.cs" />
-    <Compile Include="Access\CDataConAccess.cs" />
     <Compile Include="Access\CDataDisAccess.cs" />
     <Compile Include="IFactoryIData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -17,11 +17,11 @@ namespace CompData
         protected DbProviderFactory _dbProviderFactory;
         protected DbConnection _dbConnection;
         // Assoziationen
-        protected IDataDis _iDataDis;
+        protected IDataAccess _iDataAccess;
         #endregion
 
         #region Properties
-        public IDataDis DataDis { get { return _iDataDis; } }
+        public IDataAccess DataAccess { get { return _iDataAccess; } }
         #endregion
 
         internal DbProviderFactory ProviderFactory { get { return _dbProviderFactory; } }

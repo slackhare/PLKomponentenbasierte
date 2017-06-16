@@ -1,18 +1,9 @@
 ﻿using CompLogic;
 namespace CompData.Dbase.Access {
-
-    //Wird von CFactoryCData erzeugt und füllt _iDataDis mit einem CDataDisAccess Objekt
-    internal class CDataAccess : AData {
-
-        #region ctor
-        internal CDataAccess( string connectionString ) 
-            : base( ) {
-             _connectionString = connectionString;
-            _providerString   = "System.Data.OleDb";
-            this.Setup( );
-
-            _iDataDis = new CDataDisAccess( this );           
+    //Konkrete Klasse, die die Implementation von ADataDis ermöglicht.
+    internal class CDataAccess : ADataAccess {        
+        internal CDataAccess( AData aData ) 
+            : base( aData ) {
         }
-        #endregion        
     }
 }
