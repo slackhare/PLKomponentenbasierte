@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CompLogic.Utils">
+    <Position X="1.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAEAAAAAAAAQ=</HashCode>
+      <FileName>Utils.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CompLogic.CLogic" BaseTypeListCollapsed="true">
+    <Position X="10.5" Y="3.5" Width="2.5" />
+    <AssociationLine Name="_iDataDis" Type="CompLogic.IDataAccess" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="10.625" Y="7.363" />
+        <Point X="10.625" Y="7.989" />
+        <Point X="2.75" Y="7.989" />
+        <Point X="2.75" Y="6.562" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>EAAQAIBACABCAAAAAABIAAQAAAgAgAAAAIIAAAAAEAA=</HashCode>
+      <FileName>CLogic.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_iData" />
+      <Field Name="_iDataDis" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.641" />
+  </Class>
+  <Class Name="CompLogic.CFactoryCLogic" BaseTypeListCollapsed="true">
+    <Position X="3.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>CFactoryCLogic.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CompLogic.ProductCategory.CProductCategory" BaseTypeListCollapsed="true">
+    <Position X="18.75" Y="2.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAQAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ProductCategory\CProductCategory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Right" Position="0.1" />
+  </Class>
+  <Class Name="CompLogic.ProductCategory.CFactoryCProductCategory" BaseTypeListCollapsed="true">
+    <Position X="18.75" Y="1.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>ProductCategory\CFactoryCProductCategory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CompLogic.Product.CProduct" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="2.75" Width="2.25" />
+    <AssociationLine Name="Category" Type="CompLogic.IProductCategory" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="18.062" Y="5.074" />
+        <Point X="18.062" Y="5.449" />
+        <Point X="23.5" Y="5.449" />
+        <Point X="23.5" Y="3.562" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAQAAAAAAAAAAAAQAoAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Product\CProduct.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Category" />
+    </ShowAsAssociation>
+    <Lollipop Orientation="Left" Position="0.1" />
+  </Class>
+  <Class Name="CompLogic.Product.CFactoryCProduct" BaseTypeListCollapsed="true">
+    <Position X="16.5" Y="1.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Product\CFactoryCProduct.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.231" />
+  </Class>
+  <Interface Name="CompLogic.IData" Collapsed="true">
+    <Position X="8" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>IData.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="DataAccess" />
+    </ShowAsAssociation>
+  </Interface>
+  <Interface Name="CompLogic.IDataAccess" Collapsed="true">
+    <Position X="1.75" Y="6" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EAAAAIAAAAACAAAAAAAAAQCAAAAAAAAAAAIAAIAAAAA=</HashCode>
+      <FileName>IData.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CompLogic.IDialog" Collapsed="true">
+    <Position X="4" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IDialog.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CompLogic.IFactoryILogic" Collapsed="true">
+    <Position X="3.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>IFactoryILogic.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CompLogic.ILogic" Collapsed="true">
+    <Position X="10.75" Y="1.5" Width="1.5" />
+    <AssociationLine Name="LogicInsert" Type="CompLogic.ILogicInsert" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="11.688" Y="1.5" />
+        <Point X="11.688" Y="0.906" />
+        <Point X="12" Y="0.906" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="LogicWarning" Type="CompLogic.ILogicWarning" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="11.094" Y="1.5" />
+        <Point X="11.094" Y="1.036" />
+        <Point X="9.25" Y="1.036" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAABAAAAAAAAAAAQAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>ILogic.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="LogicInsert" />
+      <Property Name="LogicUpdate" />
+      <Property Name="LogicWarning" />
+      <Property Name="LogicSearch" />
+    </ShowAsAssociation>
+  </Interface>
+  <Interface Name="CompLogic.ILogicSearch" Collapsed="true">
+    <Position X="6" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIBACAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>ILogic.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CompLogic.ILogicInsert" Collapsed="true">
+    <Position X="12" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ILogic.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CompLogic.ILogicUpdate" Collapsed="true">
+    <Position X="13.75" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ILogic.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CompLogic.ILogicWarning" Collapsed="true">
+    <Position X="7.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ILogic.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CompLogic.IProduct" Collapsed="true">
+    <Position X="14" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAQAAAAAAAAAAAAQAoAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>IProduct.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CompLogic.IProductCategory" Collapsed="true">
+    <Position X="22.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAQAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IProductCategory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CompLogic.ProductCategory.IFactoryIProductCategory" Collapsed="true">
+    <Position X="19" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>ProductCategory\IFactoryIProductCategory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CompLogic.Product.IFactoryIProduct" Collapsed="true">
+    <Position X="16.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Product\IFactoryIProduct.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
