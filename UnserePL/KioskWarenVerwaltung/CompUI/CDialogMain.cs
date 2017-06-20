@@ -34,6 +34,7 @@ namespace CompUI
         private IFactoryIProduct _iFactoryProduct;
         private IFactoryIProductCategory _iFactoryProductCategory;
 
+        // Für die Preisanzeige im Verkaufsdialog
         private double sumPrice = 0;
         #endregion
 
@@ -98,10 +99,12 @@ namespace CompUI
         private void redrawPanel()
         {
             List<IProductCategory> categoryList;
+            // Wenn Keine Kategorie zur filterung ausgewählt ist werden alle Produkte angezeigt
             if (comboBoxFilterCategory.SelectedIndex < 1)
             {
                 categoryList = _ListCategory;
             }
+            // Ansonsten wird die ausgewälte kategorie als Filter gesetzt
             else
             {
                 categoryList = new List<IProductCategory>();
