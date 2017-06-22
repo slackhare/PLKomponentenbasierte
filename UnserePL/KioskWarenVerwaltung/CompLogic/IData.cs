@@ -11,7 +11,7 @@ namespace CompLogic
     {
         void SelectAllProducts(ref DataTable dataTable);
         void SelectProduct(IProduct iProduct, ref DataTable dataTable);
-        void InsertProduct(IProduct iProduct);
+        bool InsertProduct(IProduct iProduct);
         void UpdateProduct(IProduct iProduct);
         void SelectAllProductCategories(ref DataTable dataTable);
         void SelectProductCategory(IProductCategory iProductCategory, ref DataTable dataTable);

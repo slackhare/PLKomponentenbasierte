@@ -72,7 +72,13 @@ namespace CompUI
                 iProduct.Category = _dialogMain.CategoryList[this.comboBoxKategorie.SelectedIndex];
                 iProduct.Stock = Convert.ToInt32(numericUpDownAnz.Value.ToString());
 
-                _iLogicInsert.InsertProduct(iProduct);
+                this.DialogResult = DialogResult.OK;
+                if (!_iLogicInsert.InsertProduct(iProduct))
+                {
+                    MessageBox.Show("Das Produkt existiert bereits!",
+                            "Fehler!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.DialogResult = DialogResult.Cancel;
+                }
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }

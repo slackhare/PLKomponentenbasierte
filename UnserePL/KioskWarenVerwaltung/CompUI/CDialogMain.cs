@@ -18,7 +18,7 @@ namespace CompUI
 
         #region Fields
         // Komposition 
-        private CDialogNewProduct _dialogNew;
+        private CDialogNewProduct _dialogNewProduct;
         private CDialogRestock _dialogRestock;
         private CDialogNewCategory _dialogNewCategory;
         // externe Komponenten
@@ -29,6 +29,7 @@ namespace CompUI
         private ILogicUpdate _iLogicUpdate;
 
         private List<IProduct> _ListIProduct;
+        private List<IProduct> _ListDisplayedIProduct;
         private List<IProductCategory> _ListCategory;
 
         private IFactoryIProduct _iFactoryProduct;
@@ -55,11 +56,12 @@ namespace CompUI
             _iLogicInsert = iLogic.LogicInsert;
             _iLogicWarning = iLogic.LogicWarning;
             _iLogicUpdate = iLogic.LogicUpdate;
-            _dialogNew = new CDialogNewProduct(_iLogicInsert, this);
+            _dialogNewProduct = new CDialogNewProduct(_iLogicInsert, this);
             _dialogRestock = new CDialogRestock(_iLogicUpdate, this);
             _dialogNewCategory = new CDialogNewCategory(_iLogicInsert, this);
 
             _ListIProduct = new List<IProduct>();
+            _ListDisplayedIProduct = new List<IProduct>();
             _ListCategory = new List<IProductCategory>();
 
             _iFactoryProduct = new CFactoryCProduct();
@@ -131,11 +133,14 @@ namespace CompUI
             newPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
             newPanel.Controls.AddRange(new Control[5] { newHeaderLabel("Kategoriename"), newHeaderLabel("Produktname"), newHeaderLabel("Lagerbestand"), newHeaderLabel("Verkaufte Stückzahl"), newHeaderLabel("Preis") });
 
+            _ListDisplayedIProduct.Clear();
             // Fügt die nötigen Elemente wie Producktname KAtegorie Preis und einen regler für die Anzahl der zu Verkaufenden Produkte in das Verkaufspanel ein
             foreach (IProduct product in _ListIProduct)
             {
                 if (categoryList.Contains(product.Category))
                 {
+                    _ListDisplayedIProduct.Add(product);
+
                     double price = (double)product.Price;
 
                     Label col0cat = new Label();
@@ -212,7 +217,7 @@ namespace CompUI
         // Eventhandler Sortiment erweitern
         private void newMenuItem_Click(object sender, EventArgs e)
         {
-            _dialogNew.ShowDialog();
+            _dialogNewProduct.ShowDialog();
             loadProductTabelle();
         }
         // Eventhandler neue Kategorie
@@ -221,6 +226,7 @@ namespace CompUI
             _dialogNewCategory.ShowDialog();
             _iLogicSearch.FillListCategory(ref _ListCategory);
             Fill_FilterCategory();
+            loadProductTabelle();
         }
 
 
@@ -237,18 +243,18 @@ namespace CompUI
                 if (Convert.ToInt32(quantarray[row].Value) > 0)
                 { 
                     //wird ein Datenbankupdate angestoßen das die zu Verkaufende Menge von der Vorhanden Menge des Produktes Abzieht
-                    string guid = _ListIProduct[row].GUID;
+                    string guid = _ListDisplayedIProduct[row].GUID;
                     // Falls das Update nicht erfolgreich war wird ein Fehler Ausgegeben
                     if (!_iLogicUpdate.SellProduct(guid, Convert.ToInt32(quantarray[row].Value)))
                     {
                         MessageBox.Show("Das Produkt "
-                            + _ListIProduct[row].Name
+                            + _ListDisplayedIProduct[row].Name
                             + " ist nicht mehr oft genug vorrätig und konnte nicht verkauft werden!",
                             "Fehler!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
-                        price += Convert.ToInt32(quantarray[row].Value) * ((double)_ListIProduct[row].Price);
+                        price += Convert.ToInt32(quantarray[row].Value) * ((double)_ListDisplayedIProduct[row].Price);
                     }
                 }
             }

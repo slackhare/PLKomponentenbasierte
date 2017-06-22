@@ -88,9 +88,9 @@ namespace CompLogic
 
         #region Interface ILogicInsert Methods
         // Gibt den Aufruf für das einfügen eines neuen Produktes in die Produkttabelle an die  Datenschicht weiter
-        public void InsertProduct(IProduct iProduct)
+        public bool InsertProduct(IProduct iProduct)
         {
-            _iDataDis.InsertProduct(iProduct);
+            return _iDataDis.InsertProduct(iProduct);
         }
         // Gibt den Aufruf für das einfügen einer neuen Produktkategorie in die Produktkategorietabelle an die Datenschichrt weiter
         public void InsertProductCategory(IProductCategory iProductCategory)

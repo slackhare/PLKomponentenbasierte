@@ -20,7 +20,7 @@ namespace CompLogic
 
     public interface ILogicInsert
     {
-        void InsertProduct(IProduct iProduct);
+        bool InsertProduct(IProduct iProduct);
 
         void InsertProductCategory(IProductCategory iProductCategory);
     }
