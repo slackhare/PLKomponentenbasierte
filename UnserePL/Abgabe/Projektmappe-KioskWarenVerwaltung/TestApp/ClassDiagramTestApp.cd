@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TestApp.Test">
+    <Position X="7.5" Y="3" Width="1.5" />
+    <AssociationLine Name="_iLogic" Type="CompLogic.ILogic" FixedToPoint="true">
+      <Path>
+        <Point X="8.125" Y="3" />
+        <Point X="8.125" Y="1.562" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAABAAAAEI=</HashCode>
+      <FileName>Test.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_iDialog" />
+      <Field Name="_iLogic" />
+      <Field Name="_iDbase" />
+    </ShowAsAssociation>
+  </Class>
+  <Interface Name="CompLogic.IData" Collapsed="true">
+    <Position X="9.5" Y="1" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="CompLogic.IDialog" Collapsed="true">
+    <Position X="5.25" Y="1" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="CompLogic.ILogic" Collapsed="true">
+    <Position X="7.25" Y="1" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
